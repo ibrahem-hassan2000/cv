@@ -8,5 +8,5 @@ Old tutorial repos (2022–2023): li-course, Web-Page-2, React-App-todo-list, HT
 osloop-website (live), apple (live), arvamethod (live), faq, kalima, gpstracking, elevate-mate (live), kyascoApp.
 
 ## To decide
-- Which account goes on the CV? (two accounts split the green-squares graph — consider one main account and add the other email to it)
+- **Main account on the CV: `ibrahem-hassan2000`** (decided 2026-10-27). Consider moving/transferring the best `ibrahemhassan-cpu` repos (osloop-website, apple, arvamethod, kalima) to it, and adding `ibrahem.hassan@osloop.dev` as a verified email so those commits count on the main graph.
 - Pin 6 best, add READMEs + screenshots + live links.

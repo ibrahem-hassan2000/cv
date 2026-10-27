@@ -156,13 +156,13 @@ Not verified yet. Phase 3 confirms each one's product, stack, and whether they h
 
 Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Senior). Old = `Downloads/Ibrahem_Hassan_CV (2).pdf`.
 
-1. **Unproven numbers** — `~40% fewer payloads`, `Lighthouse 62→94+`, `FCP −35%`, `bounce −20%`, `30+ components`, `mentored 3`. Each needs proof or the user's confirmation → `inventory/user-answers.md`.
+1. **Unproven numbers — REMOVE** (user confirmed 2026-10-27 they are not known): `~40% fewer payloads`, `Lighthouse 62→94+`, `FCP −35%`, `bounce −20%`, `30+ components`. `Mentored 3` → **mentored 2** at nWeave. Replace with numbers we measure ourselves in Phase 2 (module/commit/test counts, live Lighthouse runs).
 2. **TanStack migration claim "across 10+ modules"** — verify from his 52 AHS commits (Dec 2025–Feb 2026) before keeping.
 3. **ElevateMate** listed as featured but he has only 5 commits there (Apr 2026). Re-check scope; may downgrade.
 4. **Missing strong work:** Smart FAQ frontend (166 commits in Oct 2026, React + TanStack Query + Playwright), Kalima (Expo + i18n + Supabase, 25 commits), Osloop website (39 commits, R3F/GSAP), Apple / Arvamethod / Makka Juice live 3D/GSAP sites, Zeustra & The Code (Astro/GSAP), Firebase-Auth-React.
 5. **Old CV projects not yet located on this laptop:** okoRent, Takhawy (GitHub: Takhawy_Next), Kyasco (GitHub: kyascoApp), Edubrain, Megaminds — expected on laptop 2/3.
 6. **"Senior" title & "4+ years"** — commercial experience since 10/2022 = ~4 years. Title must match how nWeave lists him (§11 Q3).
-7. **Osloop vs nWeave** — his commit email is `@osloop.dev` while CV says nWeave. Clarify the relationship (§11 Q3).
+7. **Osloop = nWeave** (same company, confirmed). Employer on CV stays nWeave; Osloop website counts as nWeave work.
 8. ONE14 dates in old CV were `07/2026–10/2026` — confirm.
 9. Contact links (LinkedIn/GitHub) must be clickable and correct in the PDF.
 
@@ -177,7 +177,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 | 1.3 | Laptop 3 — collect | TODO | |
 | 1.4 | GitHub (both accounts) — public repos listed | DONE (surface) | `inventory/github.md`; private repos need login |
 | 1.5 | Bitbucket (nWeave) — remotes known, local clones read | PARTIAL | only repos cloned locally |
-| 1.6 | User answers (metrics, roles, dates) | TODO | `inventory/user-answers.md` |
+| 1.6 | User answers (metrics, roles, dates) | PARTIAL | `inventory/user-answers.md` — title at nWeave still open |
 | 2 | Deep dive per project | TODO | start with Smart FAQ, AHS, ONE14, Osloop |
 | 3 | Market research | TODO | |
 | 4 | Master CV | TODO | |
@@ -189,6 +189,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 ## 10. Session Log
 
 - **2026-10-27 — Laptop 1 (DELL):** Read new + old CV. Scanned home/Desktop/Documents/Downloads: 20 git repos. Listed GitHub `ibrahem-hassan2000` (24 repos) and `ibrahemhassan-cpu` (8 repos). Built identity map; found that `IbrahimNweave` is a different person (earlier count was inflated — corrected). Created this plan, `CLAUDE.md`, `inventory/laptop-1-dell.md`, `inventory/github.md`. User decided sync/location/seniority/extras (§11). Local git initialised and first commit made (not pushed). Next: user answers §11 "Still open", then Phase 1 on laptops 2 and 3, then Phase 2 deep dives here.
+- **2026-10-27 (later):** User answered: nWeave = Osloop; current CV metrics unknown → removed; mentored 2; main GitHub `ibrahem-hassan2000`. Saved in `inventory/user-answers.md`.
 
 ---
 
@@ -200,8 +201,8 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 - **Seniority:** two tracks per archetype — **Senior** variant and **Mid-level** variant.
 - **Extras (all in scope, after Phase 5):** LinkedIn + GitHub clean-up, STAR story bank, cover letters + JD-tailoring prompt, portfolio site + job tracker.
 
+- **nWeave = Osloop** (same company). **No unknown metrics** — only measured ones. **Mentored 2** at nWeave. **Main GitHub:** `ibrahem-hassan2000`. Details in `inventory/user-answers.md`.
+
 ### Still open
-1. Exact title at nWeave — and what is Osloop to you (nWeave brand? second job? freelance)?
-2. Real metrics you remember (Lighthouse, users, downloads, team size, mentees) → `inventory/user-answers.md`.
-3. Which GitHub account is the main one on the CV?
-4. Where are ONE14 / okoRent / Kyasco / Profound / Aquadic code — laptop 2 or 3?
+1. Exact job title at nWeave (contract / LinkedIn wording).
+2. Where are ONE14 / okoRent / Kyasco / Profound / Aquadic code — laptop 2 or 3?
