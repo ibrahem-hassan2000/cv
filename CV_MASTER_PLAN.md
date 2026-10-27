@@ -157,7 +157,7 @@ Not verified yet. Phase 3 confirms each one's product, stack, and whether they h
 Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Senior). Old = `Downloads/Ibrahem_Hassan_CV (2).pdf`.
 
 1. **Unproven numbers — REMOVE** (user confirmed 2026-10-27 they are not known): `~40% fewer payloads`, `Lighthouse 62→94+`, `FCP −35%`, `bounce −20%`, `30+ components`. `Mentored 3` → **mentored 2** at nWeave. Replace with numbers we measure ourselves in Phase 2 (module/commit/test counts, live Lighthouse runs).
-2. **TanStack migration claim "across 10+ modules"** — verify from his 52 AHS commits (Dec 2025–Feb 2026) before keeping.
+2. **AHS claims checked (see `evidence/projects/ahs-medx.md`):** TanStack migration = 25 modules but branch `MEDX-879` not merged; MSAL, SignalR integration and QuestionMaker have no support in his commits → remove unless the user shows otherwise. His strongest AHS item is the **formula builder/evaluation engine** (merged).
 3. **ElevateMate** listed as featured but he has only 5 commits there (Apr 2026). Re-check scope; may downgrade.
 4. **Missing strong work:** Smart FAQ frontend (166 commits in Oct 2026, React + TanStack Query + Playwright), Kalima (Expo + i18n + Supabase, 25 commits), Osloop website (39 commits, R3F/GSAP), Apple / Arvamethod / Makka Juice live 3D/GSAP sites, Zeustra & The Code (Astro/GSAP), Firebase-Auth-React.
 5. **Old CV projects not yet located on this laptop:** okoRent, Takhawy (GitHub: Takhawy_Next), Kyasco (GitHub: kyascoApp), Edubrain, Megaminds — expected on laptop 2/3.
@@ -178,7 +178,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 | 1.4 | GitHub (both accounts) — public repos listed | DONE (surface) | `inventory/github.md`; private repos need login |
 | 1.5 | Bitbucket (nWeave) — remotes known, local clones read | PARTIAL | only repos cloned locally |
 | 1.6 | User answers (metrics, roles, dates) | MOSTLY DONE | `inventory/user-answers.md` — team sizes still open |
-| 2 | Deep dive per project | TODO | start with Smart FAQ, AHS, ONE14, Osloop |
+| 2 | Deep dive per project | IN PROGRESS | DONE: `smart-faq.md`, `ahs-medx.md` (3 AHS questions open). NEXT: Osloop website, Kalima, Boost-KGoal, The Code, Zeustra, Trackoo, ElevateMate, Apple/Arvamethod/Makka Juice |
 | 3 | Market research | TODO | |
 | 4 | Master CV | TODO | |
 | 5 | Variants | TODO | |
@@ -191,6 +191,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 - **2026-10-27 — Laptop 1 (DELL):** Read new + old CV. Scanned home/Desktop/Documents/Downloads: 20 git repos. Listed GitHub `ibrahem-hassan2000` (24 repos) and `ibrahemhassan-cpu` (8 repos). Built identity map; found that `IbrahimNweave` is a different person (earlier count was inflated — corrected). Created this plan, `CLAUDE.md`, `inventory/laptop-1-dell.md`, `inventory/github.md`. User decided sync/location/seniority/extras (§11). Local git initialised and first commit made (not pushed). Next: user answers §11 "Still open", then Phase 1 on laptops 2 and 3, then Phase 2 deep dives here.
 - **2026-10-27 (later):** User answered: nWeave = Osloop; current CV metrics unknown → removed; mentored 2; main GitHub `ibrahem-hassan2000`. Saved in `inventory/user-answers.md`.
 - **2026-10-27 (later):** Title = Software Engineer (contract), frontend work. gmail personal / osloop.dev work email. Other projects on another laptop — later.
+- **2026-10-27 — Phase 2 started:** Smart FAQ (166/173 commits, 27 screens, 551 tests, 75 stories, 94 typed endpoints) and AHS (52 commits; formula engine merged; TanStack migration on unmerged branch; MSAL/SignalR/QuestionMaker not his per commits). Evidence files in `evidence/projects/`.
 
 ---
 
@@ -209,3 +210,4 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 
 ### Still open
 - Team sizes per company (rough).
+- AHS: was MEDX-879 (TanStack migration) merged later? Were MSAL / SignalR / QuestionMaker his work? What did he do on AHS after Feb 2026?
