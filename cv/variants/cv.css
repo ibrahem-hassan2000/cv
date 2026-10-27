@@ -18,5 +18,8 @@ ul { margin: 1px 0 3px; padding-left: 15px; }
 li { margin: 1.5px 0; }
 .skills p { margin: 1.5px 0; display: grid; grid-template-columns: 124px 1fr; }
 .contact a { white-space: nowrap; }
-.job { margin-bottom: 4px; break-inside: avoid-page; }
+.job { margin-bottom: 4px; }
+/* Keep headings with their first lines and bullets whole, but let a long job flow across pages. */
+h2, .row, .meta, .sub { break-after: avoid; page-break-after: avoid; }
+li { break-inside: avoid; page-break-inside: avoid; }
 p { margin: 0; }
