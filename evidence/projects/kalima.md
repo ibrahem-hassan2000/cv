@@ -15,8 +15,8 @@ Arabic-first app to memorise English words with **spaced repetition and AI** (Ge
 - Bilingual UI and bilingual legal pages (i18next); one shared motion language.
 - Build hygiene: pinned `@expo/require-utils` so `npm ci` resolves the same everywhere.
 
-## Open
-- [ ] Published on Play Store / TestFlight? Users? (ask user)
+## Status
+- **Not published** on any store (user, 2026-10-27). → Label "Personal project", link the GitHub repo; never imply users or downloads. Option: publish an APK / Expo link or record a short demo video for the portfolio.
 
 ## Candidate CV bullets
 1. Built an Arabic/English vocabulary app in React Native (Expo) with spaced repetition and Gemini-generated content, offline-first with Supabase sync.

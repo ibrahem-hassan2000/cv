@@ -211,6 +211,5 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 
 ### Still open
 - Team sizes per company (rough).
-- Trackoo: GPS / 3D story cube / map camera — his work in another repo (ONE14?) or someone else's?
-- Kalima: published on a store? Did the FAQ AI POC lead into the Smart FAQ product?
+- ~~Trackoo / Kalima / FAQ POC~~ answered 2026-10-27: Trackoo GPS + story cube co-built with a teammate ("co-built", never "built"); Kalima not published; FAQ AI POC = concept demo he built for the client, complements Smart FAQ.
 - ~~AHS questions~~ answered 2026-10-27: migration partly merged; MSAL/SignalR/QuestionMaker not his (removed); after Feb 2026 moved to other nWeave projects.
