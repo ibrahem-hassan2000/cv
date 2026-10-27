@@ -18,8 +18,9 @@
 - Accepted the Xcode license on laptop 2 (system git works again).
 - **Bites title:** Frontend Developer, working with React and Next.js. The project was mostly Next.js.
 - **ONE14 belongs to nWeave.** List it under nWeave experience, not as a separate contract.
+- **Bites location:** he worked remotely; the company is based in Cairo.
+- **GitHub `cv` repo:** stays **public for now**. The user makes it private when the project is finished.
 
 ## Still to ask
 - Team sizes per company (rough is fine).
 - Downloads / users for ONE14 QARDIO if visible in Play Console / App Store Connect. (Public Play page shows 100+.)
-- Bites location (on-site / remote).

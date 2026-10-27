@@ -86,7 +86,7 @@ Healthcare and B2B SaaS products, agency websites, and mobile apps (including ON
 **Team**
 - Mentored two teammates through code reviews and pairing. ⟨user-answers⟩
 
-### Bites — Frontend Developer (Part-time) · `[VERIFY location]` · 09/2025 – 04/2026
+### Bites — Frontend Developer (Part-time) · Remote (Cairo-based) · 09/2025 – 04/2026
 All-in-one business platform (bites.com) on Next.js 14: finance, sales CRM, contracts, payments and vertical modules.
 - Built finance modules: invoices (builder, payments, attachments, email tracking), bills, expenses, debit notes, receivables and payables reports, and double-entry journal reports. ⟨bites-mart⟩
 - Added OTP-verified e-signatures to contracts and invoices and built the contract-creation workflow. ⟨bites-mart⟩

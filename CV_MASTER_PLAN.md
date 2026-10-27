@@ -202,13 +202,14 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 - **2026-10-27 — Laptop 2 (MacBook Pro M4):** Cloned `ibrahem-hassan2000/cv`, repo-local git identity set to the gmail. Phase 1 surface scan: 10 git repos. New employer-level evidence: Bites Development `Bites-Mart-Nextjs` (Next.js 14 ERP: invoices, sales, double-entry, Theater OS, LiveKit; 192 commits, 190 on production) + `inbz` (1). ONE14 QARDIO repo present but no commits under his identities. kyascoApp here = Expo app (2 commits, osloop email), not the Next.js platform. Kalima + Trackoo duplicate laptop 1. lingo/lingo2 = Kalima prototypes. Found that the GitHub `cv` repo is **public** (plan says private) → told the user. NEXT: user answers §11 laptop-2 questions, Phase 2 deep dive on Bites-Mart, then laptop 3.
 - **2026-10-27 — Laptop 2, Phase 2:** User answered: Bites part-time 09/2025–04/2026; ONE14 role = lead (no commits, AI-assisted build by a teammate); Kyasco personal. Verified ONE14 from the repo: GPS under-count docs (−17% on 30 km), the filter change in code (10 m OS filter → 1 Hz Highest + software floor), Strava OAuth, surah/ayah audio experiments, live store listings (Play 100+, App Store 08/2026). Bites deep dive: invoices main author, e-signatures, accounting, Theater OS co-built, sales contributor; #2 of 14. Wrote `evidence/projects/one14-qardio.md`, `bites-mart.md`; updated `master-cv.md`. NEXT: Bites title + ONE14 employer/dates, regenerate the 4 variants + PDFs, then laptop 3.
 - **2026-10-27 — Laptop 2:** User confirmed Bites title = Frontend Developer (React / Next.js) and ONE14 = nWeave. Master CV: ONE14 moved from Projects into the nWeave section (Apr – Sep 2026). NEXT: regenerate the 4 variants + PDFs, then laptop 3.
+- **2026-10-27 — Laptop 2:** Bites = remote (Cairo-based company). Repo stays public until the project is done (user's choice).
 
 ---
 
 ## 11. Decisions & open questions
 
 ### Decided (2026-10-27)
-- **Sync:** private GitHub repo for this folder. Local git is set up; the user creates the private repo and approves the first push. Never push without approval.
+- **Sync:** GitHub repo `github.com/ibrahem-hassan2000/cv`. It is **public for now, by the user's choice** (2026-10-27); he makes it private when the project is finished. Never push without approval.
 - **Target location:** Cairo + Alexandria (on-site/hybrid). Remote/Gulf section in §6 is out of scope for now.
 - **Seniority:** two tracks per archetype — **Senior** variant and **Mid-level** variant.
 - **Extras (all in scope, after Phase 5):** LinkedIn + GitHub clean-up, STAR story bank, cover letters + JD-tailoring prompt, portfolio site + job tracker.
@@ -219,10 +220,9 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 - **Other projects** are on another laptop; the user connects it later. Current phase = data collection.
 
 ### Still open
-- **Repo visibility:** `github.com/ibrahem-hassan2000/cv` is **public** (checked 2026-10-27). Decision was private → user changes it in GitHub Settings.
 - ~~Bites / ONE14 role / Kyasco~~ answered 2026-10-27 (see `inventory/user-answers.md`): Bites = separate company, part-time 09/2025–04/2026; ONE14 = he led (planning, UX, tech choices, QA, GPS distance fix), code written via AI by a teammate; Kyasco = personal.
 - ~~Bites title / ONE14 employer~~ answered 2026-10-27: Bites = Frontend Developer (React / Next.js); ONE14 = nWeave project (Apr – Sep 2026 per repo).
-- Bites location (on-site / remote).
+- ~~Bites location~~ answered: remote, Cairo-based company.
 - Team sizes per company (rough).
 - ~~Trackoo / Kalima / FAQ POC~~ answered 2026-10-27: Trackoo GPS + story cube co-built with a teammate ("co-built", never "built"); Kalima not published; FAQ AI POC = concept demo he built for the client, complements Smart FAQ.
 - ~~AHS questions~~ answered 2026-10-27: migration partly merged; MSAL/SignalR/QuestionMaker not his (removed); after Feb 2026 moved to other nWeave projects.

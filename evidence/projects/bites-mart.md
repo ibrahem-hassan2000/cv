@@ -35,6 +35,6 @@ Fintech ★★★ (invoices, payments, accounting, e-signatures) · Enterprise/E
 
 ## Open
 - ~~Job title~~ answered: Frontend Developer, React and Next.js; the project was mostly Next.js.
-- Location (on-site / remote).
+- ~~Location~~ answered: remote; the company is based in Cairo.
 - Start month: the user said 9/2025 (wrote "2015", read as a typo). First commit is 2025-10-13.
 - `~/inbz` (same org, Laravel + Inertia): 1 commit on 2026-05-08 (`feat/invoices`). Too small for the CV.
