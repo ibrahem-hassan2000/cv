@@ -177,7 +177,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 | 1.3 | Laptop 3 — collect | TODO | |
 | 1.4 | GitHub (both accounts) — public repos listed | DONE (surface) | `inventory/github.md`; private repos need login |
 | 1.5 | Bitbucket (nWeave) — remotes known, local clones read | PARTIAL | only repos cloned locally |
-| 1.6 | User answers (metrics, roles, dates) | PARTIAL | `inventory/user-answers.md` — title at nWeave still open |
+| 1.6 | User answers (metrics, roles, dates) | MOSTLY DONE | `inventory/user-answers.md` — team sizes still open |
 | 2 | Deep dive per project | TODO | start with Smart FAQ, AHS, ONE14, Osloop |
 | 3 | Market research | TODO | |
 | 4 | Master CV | TODO | |
@@ -190,6 +190,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 
 - **2026-10-27 — Laptop 1 (DELL):** Read new + old CV. Scanned home/Desktop/Documents/Downloads: 20 git repos. Listed GitHub `ibrahem-hassan2000` (24 repos) and `ibrahemhassan-cpu` (8 repos). Built identity map; found that `IbrahimNweave` is a different person (earlier count was inflated — corrected). Created this plan, `CLAUDE.md`, `inventory/laptop-1-dell.md`, `inventory/github.md`. User decided sync/location/seniority/extras (§11). Local git initialised and first commit made (not pushed). Next: user answers §11 "Still open", then Phase 1 on laptops 2 and 3, then Phase 2 deep dives here.
 - **2026-10-27 (later):** User answered: nWeave = Osloop; current CV metrics unknown → removed; mentored 2; main GitHub `ibrahem-hassan2000`. Saved in `inventory/user-answers.md`.
+- **2026-10-27 (later):** Title = Software Engineer (contract), frontend work. gmail personal / osloop.dev work email. Other projects on another laptop — later.
 
 ---
 
@@ -203,6 +204,8 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 
 - **nWeave = Osloop** (same company). **No unknown metrics** — only measured ones. **Mentored 2** at nWeave. **Main GitHub:** `ibrahem-hassan2000`. Details in `inventory/user-answers.md`.
 
+- **Title:** contract = Software Engineer, work = frontend → CV line `nWeave — Software Engineer (Frontend)`. **Emails:** gmail = personal (on CV), osloop.dev = company work email (never on CV/GitHub).
+- **Other projects** are on another laptop; the user connects it later. Current phase = data collection.
+
 ### Still open
-1. Exact job title at nWeave (contract / LinkedIn wording).
-2. Where are ONE14 / okoRent / Kyasco / Profound / Aquadic code — laptop 2 or 3?
+- Team sizes per company (rough).

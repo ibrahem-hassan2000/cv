@@ -6,7 +6,10 @@
 - **Mentoring:** mentored **2** team members at nWeave (current company). Not 3.
 - **Main GitHub on the CV:** `github.com/ibrahem-hassan2000`. `ibrahemhassan-cpu` is secondary — its live demos can be linked per project, or its repos moved to the main account.
 
+- **Title at nWeave:** contract says **Software Engineer**; actual work is frontend. → CV title: `Software Engineer (Frontend)` at nWeave. Headline per variant: Senior variant "Senior Frontend Engineer", Mid variant "Frontend Engineer" — the experience line keeps the contract title so background checks match.
+- **Emails:** `hibrahem266@gmail.com` = personal. `ibrahem.hassan@osloop.dev` = company work email (nWeave). Both count as his commits; only the personal one goes on the CV and on GitHub.
+- **Other projects** (ONE14, okoRent, Kyasco, Profound, Aquadic…): on another laptop — the user will connect it later. We are still in data collection.
+
 ## Still to ask
-- Exact job title at nWeave (as written in contract / LinkedIn).
 - Team sizes per company (rough is fine).
 - Downloads / users for ONE14 QARDIO if visible in Play Console / App Store Connect.
