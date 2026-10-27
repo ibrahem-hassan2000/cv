@@ -6,9 +6,7 @@ window.HANDBOOK = {
   todo: [
     { name: "Smart FAQ", where: "laptop 1 · priority 1" },
     { name: "AHS Medical Exchange", where: "laptop 1 · priority 1" },
-    { name: "ONE14 QARDIO", where: "laptop 2 · priority 1" },
     { name: "Osloop website", where: "laptop 1 · priority 2" },
-    { name: "Kalima", where: "laptop 1 / 2 · priority 2" },
     { name: "Other nWeave work", where: "laptop 1 · priority 3" },
     { name: "Side showcases", where: "laptop 1 · priority 3" }
   ]
