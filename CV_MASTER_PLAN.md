@@ -179,7 +179,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 | 1.5 | Bitbucket (nWeave) — remotes known, local clones read | PARTIAL | only repos cloned locally |
 | 1.6 | User answers (metrics, roles, dates) | MOSTLY DONE | `inventory/user-answers.md` — team sizes still open |
 | 2 | Deep dive per project | LAPTOP 1 DONE | `smart-faq`, `ahs-medx`, `osloop-website`, `kalima`, `nweave-other` (Boost-KGoal, Trackoo, ElevateMate, The Code, Zeustra), `side-showcases` (FAQ AI POC, Orchard, ARVAmethod, Makka Juice). TODO: Lighthouse on live links; laptop 2/3 projects |
-| 3 | Market research | PASS 1 DONE | `market/companies.md` (Tier A: Thndr, MNT-Halan, _VOIS, Robusta, Bosta, Yassir, mylo, Dopay), `market/archetypes.md`. Pass 2: careers pages, salaries, interview styles |
+| 3 | Market research | PASS 2 DONE | `market/companies.md` (Tier A + Money Fellows; careers check, Levels.fyi salaries, interview styles + prep list), `market/archetypes.md`. Optional pass 3: LinkedIn pages for companies that timed out |
 | 4 | Master CV | TODO | |
 | 5 | Variants | TODO | |
 | 6 | Review & export | TODO | |
@@ -194,6 +194,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 - **2026-10-27 — Phase 2 started:** Smart FAQ (166/173 commits, 27 screens, 551 tests, 75 stories, 94 typed endpoints) and AHS (52 commits; formula engine merged; TanStack migration on unmerged branch; MSAL/SignalR/QuestionMaker not his per commits). Evidence files in `evidence/projects/`.
 - **2026-10-27 — Phase 2 laptop 1 finished:** AHS answers recorded (migration partly merged; MSAL/SignalR/QuestionMaker removed). Deep dives for Osloop website, Kalima, Boost-KGoal, Trackoo, ElevateMate, The Code, Zeustra, FAQ AI POC, Orchard, ARVAmethod, Makka Juice. Found unsupported claims in Boost-KGoal/Trackoo/ElevateMate bullets.
 - **2026-10-27 — Phase 3 pass 1:** Web research on Cairo/Alex frontend hiring. Tier-A list, ATS keyword table, gaps (GraphQL, E2E, measured perf). Alexandria market thin → Cairo hybrid/remote-friendly roles. Archetype → project order table written. Many postings old — re-check before applying.
+- **2026-10-27 — Phase 3 pass 2:** Thndr senior closed but hires often (VC job boards); Paymob/Instabug no FE openings; Money Fellows added. Salaries: Levels.fyi Cairo senior median ~EGP 938K/yr. Interview styles: Robusta take-home, _VOIS JS/React internals. Interview prep list written.
 
 ---
 

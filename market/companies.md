@@ -67,7 +67,51 @@ React frontend roles in Alexandria are few; most React/Next jobs are in Cairo ([
 2. **E2E tests with Playwright or Cypress** — he has Vitest + Playwright browser runner; one real E2E suite on a public repo makes the "testing" line undeniable.
 3. **Measured performance numbers** — Lighthouse on live sites replaces the deleted unproven metrics.
 
-## Still to research (pass 2)
-- Careers pages directly: Instabug, Paymob, valU, Telda, Breadfast, Rabbit, Talabat, Noon, Vezeeta, Swvl, Sumerge, ITWorx, Link Development.
-- Glassdoor/Wuzzuf salary ranges for Mid vs Senior frontend in Cairo.
-- Interview style per Tier-A company (take-home vs live coding vs system design).
+---
+
+# Pass 2 (2026-10-27): careers pages, salaries, interview styles
+
+## Careers-page check
+| Company | Result | Source |
+|---|---|---|
+| **Thndr** | Senior Frontend (React, ground-up trading platform, Cairo hybrid) — **closed**; Frontend Intern (React + RN) 6+ months old; Full-stack roles in internal-tools team. Hires repeatedly → **watch their BECO / Hub71 board.** FRA-licensed, expanded to UAE | [BECO senior](https://careers.becocapital.com/companies/thndr/jobs/57343679-senior-frontend-engineer), [Hub71](https://jobs.hub71.com/companies/thndr/jobs/57343679-senior-frontend-engineer), [intern](https://careers.becocapital.com/companies/thndr/jobs/50211005-frontend-intern) |
+| **Instabug** | No frontend opening found; Built In shows backend/product roles | [Built In](https://builtin.com/company/instabug/jobs), [startup.jobs](https://startup.jobs/company/instabug) |
+| **Paymob** | **No open roles** on Wuzzuf right now; has Frontend Developers on staff (501–1000+ employees) | [Wuzzuf](https://wuzzuf.net/jobs/careers/Paymob-Solutions-Egypt-43747) |
+| **Money Fellows** (NEW, fintech, Cairo) | Senior Frontend Engineer posting on MEVP board → add to Tier A fintech | [MEVP](https://jobs.mevp.com/companies/moneyfellows/jobs/35882619-senior-frontend-engineer) |
+| Cairo frontend board | ~20 active frontend listings, mostly senior (Jul 2026) | [corvi.careers](https://corvi.careers/jobs/cairo/frontend-development-jobs/) |
+| valU, Telda, Khazna, Rabbit, Noon, Talabat, Sumerge, ITWorx, Link Dev | Searches timed out / nothing returned → check their LinkedIn pages by hand | — |
+
+**Takeaway:** fintech VC portfolio job boards (BECO, Hub71, MEVP, Global Ventures, 4DX) list Thndr, Money Fellows, Bosta… roles before Wuzzuf. Add them to the job tracker.
+
+## Salaries (indicative only — self-reported data, verify in offers)
+| Source | Figure | Note |
+|---|---|---|
+| Levels.fyi — Software Engineer, Cairo (all levels) | median **$11.3K/yr** total comp; 25th pct $6.4K, 75th pct $18K (Nov 2025) | [levels.fyi Cairo](https://www.levels.fyi/t/software-engineer/locations/cairo-egy) |
+| Levels.fyi — **Senior** Software Engineer, Cairo | median **EGP 937.7K/yr** (~EGP 78K/month) (Dec 2025) | [levels.fyi senior Cairo](https://www.levels.fyi/t/software-engineer/levels/senior/locations/cairo-egy) |
+| Levels.fyi — Instabug, Egypt | median ~EGP 528–581K/yr; top reported ~EGP 1.02M/yr | [levels.fyi Instabug](https://www.levels.fyi/companies/instabug/salaries/software-engineer) |
+| PayScale — Front End Developer, Cairo | avg EGP 74K/yr; mid-career ~EGP 144K/yr | [PayScale](https://www.payscale.com/research/EG/Job=Front_End_Developer_%2F_Engineer/Salary/755df604/Cairo) — **looks outdated/low; don't anchor on it** |
+
+→ Use Levels.fyi as the benchmark for product/fintech companies; agencies and local outsourcing usually pay below it. Ask the user for current salary + target to set a negotiation range (private — keep in `inventory/user-answers.md` only if he wants).
+
+## Interview styles (from candidate reports — unverified)
+| Company | Reported process | Prepare |
+|---|---|---|
+| **Robusta** | HR phone screen → **take-home task** → technical review of the task + background → manager "mindset" talk; described as relaxed | Clean, tested take-home; explain trade-offs. Smart FAQ structure is a good model |
+| **_VOIS** | HR screen → technical: JS fundamentals (**closures**, OOP), **frontend→backend request flow**; React rounds (India reports) ask **reconciliation, why/when components re-render, preventing re-renders, closures in hooks**, real debugging | React internals + JS core; his real fix "stop re-rendering every row's menu and badge" (Smart FAQ) is a perfect story |
+| **Instabug** | (2022 internship) application → **challenge** → interviews | Expect a coding challenge; high bar |
+| Thndr, Halan, Bosta | no reliable reports found | Generic: React fundamentals, state, testing, a take-home or live coding; RN questions for mobile roles |
+
+Sources: [Robusta Glassdoor](https://www.glassdoor.ie/Interview/Robusta-Interview-Questions-E940231.htm), [_VOIS Glassdoor](https://www.glassdoor.sg/Interview/-VOIS-Interview-E8261962-RVW91461987.htm), [_VOIS fullstack posting](https://nodeflair.com/jobs/_vois-fullstack-developer-vois-549745).
+
+## Interview prep list (feeds the STAR story bank, Phase 7)
+1. React rendering: reconciliation, memo/useMemo/useCallback, keys, the Smart FAQ re-render fix.
+2. JS core: closures (incl. stale closures in hooks), event loop, promises.
+3. Data layer: why TanStack Query over custom Axios hook — cache, invalidation, race conditions (AHS story).
+4. Testing strategy: what he tests and why (551 tests story).
+5. Auth & roles: capability-based routing, MFA, session expiry (Smart FAQ).
+6. Frontend→backend flow: OpenAPI-typed client → ASP.NET API → errors catalogue.
+7. Take-home template: repo structure, tests, README, deployed preview link.
+
+## Still to research (pass 3, optional)
+- LinkedIn pages for valU, Telda, Khazna, Rabbit, Noon, Talabat Egypt, Sumerge, ITWorx, Link Development.
+- Glassdoor interview reports for Thndr, Halan, Bosta, Breadfast.
