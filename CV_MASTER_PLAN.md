@@ -181,7 +181,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 | 2 | Deep dive per project | LAPTOP 1 DONE | `smart-faq`, `ahs-medx`, `osloop-website`, `kalima`, `nweave-other` (Boost-KGoal, Trackoo, ElevateMate, The Code, Zeustra), `side-showcases` (FAQ AI POC, Orchard, ARVAmethod, Makka Juice). TODO: Lighthouse on live links; laptop 2/3 projects |
 | 3 | Market research | PASS 2 DONE | `market/companies.md` (Tier A + Money Fellows; careers check, Levels.fyi salaries, interview styles + prep list), `market/archetypes.md`. Optional pass 3: LinkedIn pages for companies that timed out |
 | 4 | Master CV | DRAFT (laptop 1) | `cv/master-cv.md` — nWeave + personal projects done; `[LAPTOP-2]`/`[VERIFY]` slots for Profound, Aquadic, ONE14, Kyasco, okoRent, Takhawy, Edubrain, Megaminds |
-| 5 | Variants | TODO | |
+| 5 | Variants | 2 DRAFTS | `cv/variants/fintech-senior.html`, `enterprise-senior.html` (+ shared `cv.css`) → PDFs in `cv/output/`. Profound/Aquadic/ONE14 use the user's old-CV wording minus numbers until laptop 2 is checked. Export: headless Chrome `--print-to-pdf`. NEXT: Product SaaS Mid, Mid versions, Mobile after ONE14 |
 | 6 | Review & export | TODO | |
 
 ---
@@ -196,6 +196,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 - **2026-10-27 — Phase 3 pass 1:** Web research on Cairo/Alex frontend hiring. Tier-A list, ATS keyword table, gaps (GraphQL, E2E, measured perf). Alexandria market thin → Cairo hybrid/remote-friendly roles. Archetype → project order table written. Many postings old — re-check before applying.
 - **2026-10-27 — Phase 3 pass 2:** Thndr senior closed but hires often (VC job boards); Paymob/Instabug no FE openings; Money Fellows added. Salaries: Levels.fyi Cairo senior median ~EGP 938K/yr. Interview styles: Robusta take-home, _VOIS JS/React internals. Interview prep list written.
 - **2026-10-27 — Phase 4 draft:** `cv/master-cv.md` written from evidence: header, 6 summary angles, evidence-only skills, nWeave experience (Smart FAQ, AHS, Osloop, others), personal projects, numbers bank, removed-claims list. Profound/Aquadic/ONE14 left as `[LAPTOP-2]`/`[VERIFY]`.
+- **2026-10-27 — Phase 5:** Fintech Senior + Enterprise Senior variants as HTML (ATS-friendly single column) → 2-page PDFs via headless Chrome. Awaiting user review.
 
 ---
 

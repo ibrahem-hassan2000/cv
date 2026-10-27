@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ibrahem Hassan - Senior Frontend Engineer (Fintech)</title>
+<link rel="stylesheet" href="cv.css">
+</head>
+<body>
+<!-- Variant: Fintech Senior. Targets: Thndr, MNT-Halan, Money Fellows, Yassir, mylo, Dopay, Paymob, valU. Source: ../master-cv.md -->
+<h1>IBRAHEM HASSAN</h1>
+<div class="headline">Senior Frontend Engineer · React · TypeScript · React Native</div>
+<div class="contact">Alexandria, Egypt (open to Cairo / hybrid) · +20 127 679 0349 · <a href="mailto:hibrahem266@gmail.com">hibrahem266@gmail.com</a> · <a href="https://linkedin.com/in/ibrahem-hassan-521956247">linkedin.com/in/ibrahem-hassan-521956247</a> · <a href="https://github.com/ibrahem-hassan2000">github.com/ibrahem-hassan2000</a> · Military status: Exempted</div>
+
+<h2>Summary</h2>
+<p>Frontend engineer with 4 years of commercial experience building React, TypeScript and React Native products. I build frontends where correctness matters: role-based access with MFA, typed API contracts, data layers built on TanStack Query, and test suites that catch regressions before users do. Recently I led the frontend of a healthcare-operations platform from the first commit to 27 screens and 551 automated tests, and built a formula engine for healthcare billing. I've mentored two teammates and I'm comfortable owning a product area end to end.</p>
+
+<h2>Skills</h2>
+<div class="skills">
+<p><b>Core</b>TypeScript, JavaScript, React 19, Next.js, React Native (Expo), HTML, CSS</p>
+<p><b>Data &amp; state</b>TanStack Query, Zustand, React Hook Form, Zod, OpenAPI-generated types, REST, Supabase, Firebase</p>
+<p><b>Testing &amp; quality</b>Vitest, React Testing Library, Jest, Playwright, Storybook (a11y), oxlint, code review</p>
+<p><b>Security &amp; access</b>Role- and capability-based routing, MFA flows, session expiry handling, route guards, biometric sign-in</p>
+<p><b>UI</b>Tailwind CSS, shadcn/ui, Radix UI, PrimeReact, Atomic Design, Arabic/English (RTL) with i18next</p>
+<p><b>Process</b>Git, Bitbucket, Jira, Figma, Agile/Scrum, AI-assisted development</p>
+</div>
+
+<h2>Experience</h2>
+
+<div class="job">
+<div class="row"><div class="role">nWeave <span>— Software Engineer (Frontend)</span></div><div class="date">10/2025 – Present</div></div>
+<p class="meta">Alexandria, Egypt · Healthcare and B2B SaaS products, mobile apps</p>
+
+<p class="sub">Smart FAQ System <em>— knowledge platform for a healthcare operations client · lead frontend</em></p>
+<ul>
+<li>Built the frontend from the first commit (React 19, TypeScript, TanStack Query, Tailwind, shadcn/ui): 27 Figma screens for desktop and mobile, shipped in about three weeks as the main author (166 of 173 commits).</li>
+<li>Implemented three user roles with capability-based routing and navigation, invitation activation, session-expiry handling and <b>MFA for administrators</b>.</li>
+<li>Typed the full API contract (<b>94 endpoints</b>) from OpenAPI and built the data layer with a typed error catalogue against an ASP.NET Core backend, then removed every mock once the API was live.</li>
+<li>Wrote <b>551 unit and component tests</b> (Vitest, Testing Library) covering the request layer, query client, sign-in journeys and the review workflow, plus 75 Storybook stories with accessibility checks.</li>
+<li>Built an approval workflow (draft → submit → return or publish), version comparison and a filterable audit log, so every published answer is reviewed and traceable.</li>
+<li>Fixed list performance by rendering one table layout and stopping per-row menu and badge re-renders.</li>
+</ul>
+
+<p class="sub">AHS Medical Exchange <em>— healthcare B2B platform · large multi-team codebase</em></p>
+<ul>
+<li>Built a <b>formula builder and evaluation engine for billing</b>: drag-and-drop editor, custom parser and evaluator on mathjs, live validation and a test panel to try formulas before saving. It shipped, and later payment features build on it.</li>
+<li>Designed a TanStack Query layer of <b>25 domain modules</b> to replace a custom Axios hook and migrated core flows (orders, invitations, messaging, staff, billing) in stages, removing duplicated request and loading logic.</li>
+<li>Wrote the team's React Query implementation guide and <b>mentored two teammates</b> through code reviews and pairing.</li>
+</ul>
+
+<p class="sub">Mobile &amp; other products</p>
+<ul>
+<li>Trackoo (React Native): built the Quran audio player with lock-screen controls, the stories viewer and the feed's TanStack Query data layer; co-built background GPS tracking with a teammate.</li>
+<li>Boost-KGoal (health workouts dashboard): built the pulse-pattern editor and secured the admin area with route guards and tests.</li>
+</ul>
+</div>
+
+<div class="job">
+<div class="row"><div class="role">Profound Agency <span>— Frontend Developer</span></div><div class="date">07/2024 – 09/2025</div></div>
+<p class="meta">Alexandria, Egypt · Client web applications in Next.js</p>
+<ul>
+<li>Built Kyasco, a B2B wholesale platform in Next.js: customer storefront, admin dashboard, inventory and invoices, with full Arabic/English RTL support.</li>
+<li>Built okoRent, a peer-to-peer rental marketplace: storefront and admin panel with live chat, notifications and user roles.</li>
+</ul>
+</div>
+
+<div class="job">
+<div class="row"><div class="role">Aquadic <span>— Frontend Developer</span></div><div class="date">10/2022 – 07/2024</div></div>
+<p class="meta">Alexandria, Egypt · Client websites</p>
+<ul>
+<li>Built responsive React and Next.js websites for e-commerce and corporate clients from Figma designs.</li>
+<li>Built a shared Axios layer with interceptors for auth tokens, unified error handling and retries.</li>
+</ul>
+</div>
+
+<h2>Projects</h2>
+<div class="job">
+<div class="row"><div class="role">ONE14 QARDIO <span>— React Native, Expo, Firebase</span></div><div class="date">Google Play &amp; App Store</div></div>
+<ul>
+<li>Qur'an-and-running app: background GPS tracking, lock-screen audio synced to each ayah, Strava sync, offline-first session recovery; owned Firebase Auth (Apple &amp; Google sign-in), Firestore and store releases.</li>
+</ul>
+</div>
+<div class="job">
+<div class="row"><div class="role">Kalima <span>— React Native, Expo, Supabase, Gemini</span></div><div class="date">Personal · 2026</div></div>
+<ul>
+<li>Arabic/English vocabulary app with spaced repetition, fingerprint sign-in, an Android home-screen widget, reminders and offline-first sync.</li>
+</ul>
+</div>
+
+<h2>Education</h2>
+<div class="row"><div><b>B.Sc. Computer Science</b> — Faculty of Science, Minia University</div><div class="date">10/2018 – 06/2022</div></div>
+</body>
+</html>
