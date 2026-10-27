@@ -16,9 +16,10 @@
 - **ONE14 GPS:** the hardest part was distance. At first it under-counted. He found the code waited until the runner left a circle of about 8 m before counting a point. They decided to shrink it (1–2 m) or remove it, and since then distance is counted well. Users told them it measures better than Strava and the new smartwatches → `[NEEDS-PROOF]` until there's a logged comparison. Strava integration was done. If evidence is missing he can pull the latest code.
 - **Kyasco:** a **personal** project, not client work. The idea: sell plastic materials as a wholesale trader. Built for his own use. He's unsure it belongs on the CV, so include it only where it helps (e.g. the mobile variant).
 - Accepted the Xcode license on laptop 2 (system git works again).
+- **Bites title:** Frontend Developer, working with React and Next.js. The project was mostly Next.js.
+- **ONE14 belongs to nWeave.** List it under nWeave experience, not as a separate contract.
 
 ## Still to ask
 - Team sizes per company (rough is fine).
 - Downloads / users for ONE14 QARDIO if visible in Play Console / App Store Connect. (Public Play page shows 100+.)
-- Job title at Bites.
-- ONE14: nWeave client project or separate contract? Dates (repo 04/2026 → 09/2026, old CV said 07/2026 – 10/2026)?
+- Bites location (on-site / remote).

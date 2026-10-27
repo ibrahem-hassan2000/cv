@@ -48,7 +48,7 @@ Summary angles per archetype (pick one):
 ## Experience
 
 ### nWeave (Osloop) — Software Engineer (Frontend) · Alexandria · 10/2025 – Present
-Healthcare and B2B SaaS products, agency websites, and mobile apps.
+Healthcare and B2B SaaS products, agency websites, and mobile apps (including ONE14 QARDIO, live on both stores).
 
 **Smart FAQ System — healthcare operations knowledge platform (lead frontend, Oct 2026)**
 - Built the frontend from the first commit — React 19, TypeScript, TanStack Query, Tailwind and shadcn/ui — with 27 Figma screens for desktop and mobile, shipped in about three weeks (166 of 173 commits). ⟨smart-faq⟩
@@ -69,6 +69,14 @@ Healthcare and B2B SaaS products, agency websites, and mobile apps.
 - Built the studio's website with React Three Fiber and GSAP: a draggable 3D glass hero, a 3D markets globe and a scroll-driven process ring, responsive from 320px with lazy-loaded media. ⟨osloop-website⟩
 - Built four custom loading screens and a script that exports the 3D brand icon to GLB, OBJ and STL; delivered two client feedback rounds (26+ tracked items). ⟨osloop-website⟩
 
+**ONE14 QARDIO — Qur'an & running app, product & technical lead (Apr – Sep 2026)** — live on Google Play (`com.one14.qardio`, 100+ downloads) and the App Store (id6796342246, released 08/2026)
+> He led the project. A teammate wrote the code through an AI-assisted workflow, so the wording is "led / directed / drove", never "built" or "coded". Dates come from the repo (04/2026 → 09/2026).
+- Led product and technical direction for a Qur'an-and-running app (React Native / Expo, Firebase) live on Google Play and the App Store. Planned features, UX flows and technical approach and directed an AI-assisted build with a teammate. ⟨one14-qardio, user-answers⟩
+- Drove the fix for GPS distance under-counting (a 30 km run recorded as ~25 km). Identified that coarse location filters were discarding real movement, then moved tracking to 1 Hz high-accuracy fixes with a tuned software filter. Field-tested against Strava and Apple Watch on paired iPhone and Android devices. ⟨one14-qardio⟩
+- Owned on-device QA across iOS and Android: UI, performance and usability reviews through TestFlight and internal Android builds. ⟨one14-qardio, user-answers⟩
+- Shaped the Qur'an audio experience (per-ayah vs full-surah playback with timestamp sync, lock-screen controls) and the Strava integration. ⟨one14-qardio⟩
+- `[NEEDS-PROOF]` "measures distance better than Strava / smartwatches". Don't use it without a logged comparison.
+
 **Other nWeave work**
 - Boost-KGoal (pelvic-health workouts): built the pulse-pattern editor and pattern-matching configuration, and secured the admin area with route guards and tests. ⟨nweave-other⟩
 - Trackoo (Muslim fitness app, React Native): built the Quran audio player with lock-screen controls, the stories viewer and the feed's TanStack Query data layer; co-built background GPS tracking and a 3D story-cube transition with a teammate. ⟨nweave-other⟩
@@ -78,7 +86,7 @@ Healthcare and B2B SaaS products, agency websites, and mobile apps.
 **Team**
 - Mentored two teammates through code reviews and pairing. ⟨user-answers⟩
 
-### Bites — Frontend Developer `[VERIFY title]` (Part-time) · Remote/Alexandria `[VERIFY]` · 09/2025 – 04/2026
+### Bites — Frontend Developer (Part-time) · `[VERIFY location]` · 09/2025 – 04/2026
 All-in-one business platform (bites.com) on Next.js 14: finance, sales CRM, contracts, payments and vertical modules.
 - Built finance modules: invoices (builder, payments, attachments, email tracking), bills, expenses, debit notes, receivables and payables reports, and double-entry journal reports. ⟨bites-mart⟩
 - Added OTP-verified e-signatures to contracts and invoices and built the contract-creation workflow. ⟨bites-mart⟩
@@ -104,14 +112,6 @@ All-in-one business platform (bites.com) on Next.js 14: finance, sales CRM, cont
 ---
 
 ## Projects
-
-### ONE14 QARDIO — Qur'an & running app · Product & technical lead · `[VERIFY: nWeave client or contract? repo 04/2026 – 09/2026]` · Google Play & App Store
-Live: Google Play `com.one14.qardio` (100+ downloads) · App Store id6796342246 (released 08/2026). He led; the code was written through an AI-assisted workflow by a teammate, so the wording is "led / directed / drove", never "built" or "coded".
-- Led product and technical direction for a Qur'an-and-running app (React Native / Expo, Firebase) live on Google Play and the App Store. Planned features, UX flows and technical approach and directed an AI-assisted build with a teammate. ⟨one14-qardio, user-answers⟩
-- Drove the fix for GPS distance under-counting (a 30 km run recorded as ~25 km). Identified that coarse location filters were discarding real movement, then moved tracking to 1 Hz high-accuracy fixes with a tuned software filter. Field-tested against Strava and Apple Watch on paired iPhone and Android devices. ⟨one14-qardio⟩
-- Owned on-device QA across iOS and Android: UI, performance and usability reviews through TestFlight and internal Android builds. ⟨one14-qardio, user-answers⟩
-- Shaped the Qur'an audio experience (per-ayah vs full-surah playback with timestamp sync, lock-screen controls) and the Strava integration. ⟨one14-qardio⟩
-- `[NEEDS-PROOF]` "measures distance better than Strava / smartwatches". Don't use it without a logged comparison.
 
 ### Kalima — English vocabulary app · Personal · 08/2026 – 09/2026 · GitHub
 - Built an Arabic/English vocabulary app in React Native (Expo) with spaced repetition and Gemini-generated content, offline-first with Supabase sync. ⟨kalima⟩

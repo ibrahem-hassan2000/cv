@@ -1,4 +1,4 @@
-# Bites business platform (Bites-Mart-Nextjs) | Bites (bites.com) — part-time | 09/2025 – 04/2026 (his commits 2025-10-13 → 2026-04-14) | Frontend developer `[VERIFY title]` | 14 active contributors
+# Bites business platform (Bites-Mart-Nextjs) | Bites (bites.com) — part-time | 09/2025 – 04/2026 (his commits 2025-10-13 → 2026-04-14) | Frontend Developer (React / Next.js — user, 2026-10-27) | 14 active contributors
 
 Local repo: `~/Documents/projects/Bites-Mart-Nextjs` on laptop 2 (GitHub org `bites-development`, private client code — facts only). Package name `ibeauty`. Product domain: bites.com.
 Stack: Next.js 14.2 (App Router), React 18, TypeScript, TanStack Query v4, Zustand, MUI 6 + Tailwind + Radix, react-hook-form + Zod, i18next, LiveKit, socket.io, Pusher, Firebase, FullCalendar, dnd-kit, TipTap/Lexical.
@@ -34,6 +34,7 @@ An all-in-one business platform (ERP-style) on Next.js: finance (invoices, bills
 Fintech ★★★ (invoices, payments, accounting, e-signatures) · Enterprise/ERP ★★★ · Product SaaS ★★★ · E-commerce ★★☆ (booking/checkout) · Healthtech ★☆☆ · Mobile ☆ · Agency ☆
 
 ## Open
-- Exact job title at Bites.
+- ~~Job title~~ answered: Frontend Developer, React and Next.js; the project was mostly Next.js.
+- Location (on-site / remote).
 - Start month: the user said 9/2025 (wrote "2015", read as a typo). First commit is 2025-10-13.
 - `~/inbz` (same org, Laravel + Inertia): 1 commit on 2026-05-08 (`feat/invoices`). Too small for the CV.

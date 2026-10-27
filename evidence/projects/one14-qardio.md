@@ -42,5 +42,5 @@ Mobile ★★★ · Healthtech/fitness ★★★ · Product SaaS ★★☆ (prod
 S: Runners reported missing distance (30 km → ~25 km; a track run at half). T: make distance trustworthy without rewriting the tracking engine. A: found the metre-level "circle" gate and coarse OS filters, decided to shrink/remove them, set up twin-device field tests against Strava/Apple Watch, iterated on the filter. R: release builds track distance closely; the app is live on both stores.
 
 ## Open
-- Was ONE14 an nWeave client project (Bitbucket `nweave`, nWeave teammates) or a separate contract? Old CV said "Contract 07/2026 – 10/2026"; repo runs 04/2026 → 09/2026.
+- ~~nWeave or contract?~~ Answered 2026-10-27: **nWeave project**. On the CV it sits under nWeave, Apr – Sep 2026 (repo dates). The old CV's "Contract 07/2026 – 10/2026" is dropped.
 - Latest code may be newer than 2026-09-15. The user offered to pull it if more evidence is needed.

@@ -181,7 +181,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 | 1.6 | User answers (metrics, roles, dates) | MOSTLY DONE | `inventory/user-answers.md` — team sizes still open |
 | 2 | Deep dive per project | LAPTOPS 1 + 2 DONE | Laptop 1: `smart-faq`, `ahs-medx`, `osloop-website`, `kalima`, `nweave-other` (Boost-KGoal, Trackoo, ElevateMate, The Code, Zeustra), `side-showcases` (FAQ AI POC, Orchard, ARVAmethod, Makka Juice). Laptop 2: `bites-mart`, `one14-qardio` (role from user's words + repo docs/store pages). TODO: Lighthouse on live links; laptop 3 projects |
 | 3 | Market research | PASS 2 DONE | `market/companies.md` (Tier A + Money Fellows; careers check, Levels.fyi salaries, interview styles + prep list), `market/archetypes.md`. Optional pass 3: LinkedIn pages for companies that timed out |
-| 4 | Master CV | DRAFT (laptops 1 + 2) | `cv/master-cv.md` — nWeave, **Bites (part-time)**, ONE14 (led), Kyasco (personal, optional) added; `[LAPTOP-3]`/`[VERIFY]` slots left for Profound, Aquadic, okoRent, Takhawy, Edubrain, Megaminds. Variants/PDFs NOT yet regenerated with laptop-2 content |
+| 4 | Master CV | DRAFT (laptops 1 + 2) | `cv/master-cv.md` — nWeave (incl. ONE14, led), **Bites (part-time, Frontend Developer)**, Kyasco (personal, optional) added; `[LAPTOP-3]`/`[VERIFY]` slots left for Profound, Aquadic, okoRent, Takhawy, Edubrain, Megaminds. Variants/PDFs NOT yet regenerated with laptop-2 content |
 | 5 | Variants | 4 DRAFTS | `cv/variants/fintech-senior.html`, `enterprise-senior.html`, `fintech-mid.html`, `enterprise-mid.html` (+ shared `cv.css`). Mid = same facts, headline "Frontend Engineer", no "led/designed/lead", mentoring softened → PDFs in `cv/output/`. Profound/Aquadic/ONE14 use the user's old-CV wording minus numbers until laptop 2 is checked. Export: headless Chrome `--print-to-pdf`. NEXT: Product SaaS Mid, Mid versions, Mobile after ONE14 |
 | 6 | Review & export | TODO | |
 
@@ -201,6 +201,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 - **2026-10-27 — Phase 5:** Fintech Mid + Enterprise Mid variants and PDFs. NEXT: user review notes on all four, then Product SaaS / Mobile / Agency.
 - **2026-10-27 — Laptop 2 (MacBook Pro M4):** Cloned `ibrahem-hassan2000/cv`, repo-local git identity set to the gmail. Phase 1 surface scan: 10 git repos. New employer-level evidence: Bites Development `Bites-Mart-Nextjs` (Next.js 14 ERP: invoices, sales, double-entry, Theater OS, LiveKit; 192 commits, 190 on production) + `inbz` (1). ONE14 QARDIO repo present but no commits under his identities. kyascoApp here = Expo app (2 commits, osloop email), not the Next.js platform. Kalima + Trackoo duplicate laptop 1. lingo/lingo2 = Kalima prototypes. Found that the GitHub `cv` repo is **public** (plan says private) → told the user. NEXT: user answers §11 laptop-2 questions, Phase 2 deep dive on Bites-Mart, then laptop 3.
 - **2026-10-27 — Laptop 2, Phase 2:** User answered: Bites part-time 09/2025–04/2026; ONE14 role = lead (no commits, AI-assisted build by a teammate); Kyasco personal. Verified ONE14 from the repo: GPS under-count docs (−17% on 30 km), the filter change in code (10 m OS filter → 1 Hz Highest + software floor), Strava OAuth, surah/ayah audio experiments, live store listings (Play 100+, App Store 08/2026). Bites deep dive: invoices main author, e-signatures, accounting, Theater OS co-built, sales contributor; #2 of 14. Wrote `evidence/projects/one14-qardio.md`, `bites-mart.md`; updated `master-cv.md`. NEXT: Bites title + ONE14 employer/dates, regenerate the 4 variants + PDFs, then laptop 3.
+- **2026-10-27 — Laptop 2:** User confirmed Bites title = Frontend Developer (React / Next.js) and ONE14 = nWeave. Master CV: ONE14 moved from Projects into the nWeave section (Apr – Sep 2026). NEXT: regenerate the 4 variants + PDFs, then laptop 3.
 
 ---
 
@@ -220,8 +221,8 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 ### Still open
 - **Repo visibility:** `github.com/ibrahem-hassan2000/cv` is **public** (checked 2026-10-27). Decision was private → user changes it in GitHub Settings.
 - ~~Bites / ONE14 role / Kyasco~~ answered 2026-10-27 (see `inventory/user-answers.md`): Bites = separate company, part-time 09/2025–04/2026; ONE14 = he led (planning, UX, tech choices, QA, GPS distance fix), code written via AI by a teammate; Kyasco = personal.
-- **Bites job title.**
-- **ONE14:** nWeave client project or separate contract? Real dates (repo 04/2026 → 09/2026; old CV 07/2026 – 10/2026).
+- ~~Bites title / ONE14 employer~~ answered 2026-10-27: Bites = Frontend Developer (React / Next.js); ONE14 = nWeave project (Apr – Sep 2026 per repo).
+- Bites location (on-site / remote).
 - Team sizes per company (rough).
 - ~~Trackoo / Kalima / FAQ POC~~ answered 2026-10-27: Trackoo GPS + story cube co-built with a teammate ("co-built", never "built"); Kalima not published; FAQ AI POC = concept demo he built for the client, complements Smart FAQ.
 - ~~AHS questions~~ answered 2026-10-27: migration partly merged; MSAL/SignalR/QuestionMaker not his (removed); after Feb 2026 moved to other nWeave projects.
