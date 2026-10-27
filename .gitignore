@@ -1,0 +1,3 @@
+cv/output/*.tmp
+.DS_Store
+Thumbs.db
