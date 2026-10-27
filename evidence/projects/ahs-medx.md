@@ -43,7 +43,12 @@ Healthcare B2B platform connecting practices, providers and services: orders, cl
 ## Archetype fit
 Healthtech ★★★ · Enterprise ★★★ · Fintech ★★☆ (billing formulas) · SaaS ★★☆ · E-commerce ★☆☆
 
-## Open questions for the user
-- Was the TanStack migration (MEDX-879) merged/shipped later on Bitbucket, or stopped?
-- Did you do MSAL, SignalR or the QuestionMaker on another branch, or were they others' work?
-- What happened in AHS after Feb 2026 — did you move to Smart FAQ / other projects?
+## User answers (2026-10-27)
+- TanStack migration: **part of it was merged** (rolled out in stages). → Bullet wording: "designed the 25-module query layer and migrated core flows, rolled out incrementally" — do not claim the whole app is on TanStack Query.
+- MSAL, SignalR, QuestionMaker: **not his work** → removed from all CVs. SignalR/MSAL may appear only as "codebase stack" context, never as his achievement.
+- After Feb 2026 he moved to **other nWeave projects** (Boost-KGoal, Osloop website, Smart FAQ, etc.).
+
+## Final bullets to use (supersede the candidates above)
+1. Built a formula builder and evaluation engine for healthcare billing — drag-and-drop editor, custom parser/evaluator on mathjs, live validation and a test panel; shipped and reused by later payment features.
+2. Designed a TanStack Query layer of 25 domain modules to replace a custom Axios hook, migrated core flows (orders, invitations, messaging, staff, billing) and rolled it out in stages.
+3. Wrote the team's React Query implementation guide and mentored 2 engineers on the new data layer.

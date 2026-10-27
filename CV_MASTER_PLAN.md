@@ -158,7 +158,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 
 1. **Unproven numbers — REMOVE** (user confirmed 2026-10-27 they are not known): `~40% fewer payloads`, `Lighthouse 62→94+`, `FCP −35%`, `bounce −20%`, `30+ components`. `Mentored 3` → **mentored 2** at nWeave. Replace with numbers we measure ourselves in Phase 2 (module/commit/test counts, live Lighthouse runs).
 2. **AHS claims checked (see `evidence/projects/ahs-medx.md`):** TanStack migration = 25 modules but branch `MEDX-879` not merged; MSAL, SignalR integration and QuestionMaker have no support in his commits → remove unless the user shows otherwise. His strongest AHS item is the **formula builder/evaluation engine** (merged).
-3. **ElevateMate** listed as featured but he has only 5 commits there (Apr 2026). Re-check scope; may downgrade.
+3. **More unsupported claims found** (see `evidence/projects/nweave-other.md`): Boost-KGoal "engineered the portal / JSXGraph plotting" (his diffs: no JSXGraph — he built the pulse-pattern editor + admin guard); Trackoo "GPS / 3D story cube / map camera" (his diffs: audio player, stories, feed data layer only); ElevateMate "virtualized TanStack Table / LocalForage" (his diffs: job dashboard + application form). Rewrite all three.
 4. **Missing strong work:** Smart FAQ frontend (166 commits in Oct 2026, React + TanStack Query + Playwright), Kalima (Expo + i18n + Supabase, 25 commits), Osloop website (39 commits, R3F/GSAP), Apple / Arvamethod / Makka Juice live 3D/GSAP sites, Zeustra & The Code (Astro/GSAP), Firebase-Auth-React.
 5. **Old CV projects not yet located on this laptop:** okoRent, Takhawy (GitHub: Takhawy_Next), Kyasco (GitHub: kyascoApp), Edubrain, Megaminds — expected on laptop 2/3.
 6. **"Senior" title & "4+ years"** — commercial experience since 10/2022 = ~4 years. Title must match how nWeave lists him (§11 Q3).
@@ -178,7 +178,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 | 1.4 | GitHub (both accounts) — public repos listed | DONE (surface) | `inventory/github.md`; private repos need login |
 | 1.5 | Bitbucket (nWeave) — remotes known, local clones read | PARTIAL | only repos cloned locally |
 | 1.6 | User answers (metrics, roles, dates) | MOSTLY DONE | `inventory/user-answers.md` — team sizes still open |
-| 2 | Deep dive per project | IN PROGRESS | DONE: `smart-faq.md`, `ahs-medx.md` (3 AHS questions open). NEXT: Osloop website, Kalima, Boost-KGoal, The Code, Zeustra, Trackoo, ElevateMate, Apple/Arvamethod/Makka Juice |
+| 2 | Deep dive per project | LAPTOP 1 DONE | `smart-faq`, `ahs-medx`, `osloop-website`, `kalima`, `nweave-other` (Boost-KGoal, Trackoo, ElevateMate, The Code, Zeustra), `side-showcases` (FAQ AI POC, Orchard, ARVAmethod, Makka Juice). TODO: Lighthouse on live links; laptop 2/3 projects |
 | 3 | Market research | TODO | |
 | 4 | Master CV | TODO | |
 | 5 | Variants | TODO | |
@@ -192,6 +192,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 - **2026-10-27 (later):** User answered: nWeave = Osloop; current CV metrics unknown → removed; mentored 2; main GitHub `ibrahem-hassan2000`. Saved in `inventory/user-answers.md`.
 - **2026-10-27 (later):** Title = Software Engineer (contract), frontend work. gmail personal / osloop.dev work email. Other projects on another laptop — later.
 - **2026-10-27 — Phase 2 started:** Smart FAQ (166/173 commits, 27 screens, 551 tests, 75 stories, 94 typed endpoints) and AHS (52 commits; formula engine merged; TanStack migration on unmerged branch; MSAL/SignalR/QuestionMaker not his per commits). Evidence files in `evidence/projects/`.
+- **2026-10-27 — Phase 2 laptop 1 finished:** AHS answers recorded (migration partly merged; MSAL/SignalR/QuestionMaker removed). Deep dives for Osloop website, Kalima, Boost-KGoal, Trackoo, ElevateMate, The Code, Zeustra, FAQ AI POC, Orchard, ARVAmethod, Makka Juice. Found unsupported claims in Boost-KGoal/Trackoo/ElevateMate bullets.
 
 ---
 
@@ -210,4 +211,6 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 
 ### Still open
 - Team sizes per company (rough).
-- AHS: was MEDX-879 (TanStack migration) merged later? Were MSAL / SignalR / QuestionMaker his work? What did he do on AHS after Feb 2026?
+- Trackoo: GPS / 3D story cube / map camera — his work in another repo (ONE14?) or someone else's?
+- Kalima: published on a store? Did the FAQ AI POC lead into the Smart FAQ product?
+- ~~AHS questions~~ answered 2026-10-27: migration partly merged; MSAL/SignalR/QuestionMaker not his (removed); after Feb 2026 moved to other nWeave projects.
