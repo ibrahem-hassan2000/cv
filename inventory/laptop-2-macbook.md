@@ -10,9 +10,9 @@ Scanned: home folder recursively (excluding `node_modules`, `Library`, caches), 
 |---|---|---|---|---|---|
 | `~/one14-qardio-app` | pnpm monorepo: Expo RN mobile (`artifacts/mobile`), api-server, Firebase Functions. Firebase (Auth, App Check, Crashlytics, Messaging), react-native-maps, react-native-track-player, expo-task-manager/location, TanStack Query, custom native modules `one14-gps-watch`, `one14-pedometer` | 413 | **0** | — | = ONE14 QARDIO. Repo dates 2026-04-20 → 09-15. Authors: Replit Agent 98, abdelOsloop 66, Ahmed Alaa 41, ahmadfikryfahmy 34, Abdelrahman 12. **None of the commits are his under any known identity.** Local changes = Gradle cache files only (he ran Android builds here). 15 build logs + `TESTFLIGHT_RELEASE_GUIDE.md` are tracked, last touched by Ahmed Alaa. → Ask the user what he did (see §11). |
 | `~/tmt-trackooo` | Expo RN, Supabase, TanStack Query, NativeWind, expo-audio, expo-location | 122 | 8 | 2026-05-06 → 05-14 | **Same repo as laptop 1** — no new evidence. 12 local branches incl. `feat/audio-*`, `feat/story`, `feat/post-story`. |
-| `~/Documents/projects/kyascoApp` | Expo RN, Expo Router, TanStack Query, axios, Uniwind/Tailwind | 2 | 2 (osloop.dev) | 2026-01-21 → 04-30 | GitHub `ibrahemhassan-cpu/kyascoApp`. **Mobile app, not the Next.js B2B platform** in the old CV. Committed with the nWeave email → ask whose project it was. |
+| `~/Documents/projects/kyascoApp` | Expo RN, Expo Router, TanStack Query, axios, Uniwind/Tailwind | 2 | 2 (osloop.dev) | 2026-01-21 → 04-30 | GitHub `ibrahemhassan-cpu/kyascoApp`. **Mobile app, not the Next.js B2B platform** in the old CV. Committed with the nWeave email, but the user says it is **personal** (his plastic-materials wholesale idea), not nWeave or Profound work. |
 
-## Bites Development — GitHub org `bites-development` (NEW, not in any CV)
+## Bites — GitHub org `bites-development` (NEW, not in any CV). Separate company, part-time 09/2025 – 04/2026 (user, 2026-10-27)
 
 | Repo | Stack | Total commits | His commits | His dates | Notes |
 |---|---|---|---|---|---|
