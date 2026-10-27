@@ -21,7 +21,8 @@ Success = each CV passes ATS keyword checks for its target, every bullet is defe
 1. **Evidence first.** Every bullet in a CV cites an entry in `inventory/`. If a number (%, ms, Lighthouse score, users) has no evidence, it's marked `[NEEDS-PROOF]` and the user is asked — never invented, never inflated.
 2. **One identity map.** The user commits under several identities. Only these count as his:
    - `ibrahem.hassan@osloop.dev` (name "Ibrahem Hassan" / "ibrahem hassan")
-   - `hibrahem266@gmail.com` (name "ibrahem-hassan2000")
+   - `hibrahem266@gmail.com` (names "ibrahem-hassan2000", "ibrahem hassan", "hibrahem266@gmail.com")
+   - `110791444+ibrahem-hassan2000@users.noreply.github.com` (GitHub web/PR commits, found on laptop 2)
    - GitHub accounts: `ibrahem-hassan2000`, `ibrahemhassan-cpu`
    - ⚠️ **NOT him:** `IbrahimNweave <ibrahim@nweave.com>`, `Ibrahim Mustafa (ibra-mustafa)`, `Hagar Hassan`. Do not count their commits.
    - Add any new identity found on laptop 2/3 to this list.
@@ -41,7 +42,7 @@ cv/
 ├── CV_MASTER_PLAN.md          ← this file (the brain)
 ├── inventory/
 │   ├── laptop-1-dell.md       ← repos, commits, features found on this laptop
-│   ├── laptop-2.md            ← (to create on laptop 2)
+│   ├── laptop-2-macbook.md    ← MacBook Pro M4
 │   ├── laptop-3.md            ← (to create on laptop 3)
 │   ├── github.md              ← public repos, both accounts
 │   └── user-answers.md        ← facts only the user can give (metrics, dates, roles)
@@ -173,7 +174,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 | # | Step | Status | Notes |
 |---|---|---|---|
 | 1.1 | Laptop 1 (DELL, this one) — collect | DONE (surface) | `inventory/laptop-1-dell.md` |
-| 1.2 | Laptop 2 — collect | TODO | |
+| 1.2 | Laptop 2 (MacBook Pro M4) — collect | DONE (surface) | `inventory/laptop-2-macbook.md`. New: **Bites Development** (Bites-Mart-Nextjs, 192 commits, 10/2025–04/2026). ONE14 repo found but **0 commits by him** → §11 questions. No Profound/Aquadic work here |
 | 1.3 | Laptop 3 — collect | TODO | |
 | 1.4 | GitHub (both accounts) — public repos listed | DONE (surface) | `inventory/github.md`; private repos need login |
 | 1.5 | Bitbucket (nWeave) — remotes known, local clones read | PARTIAL | only repos cloned locally |
@@ -198,6 +199,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 - **2026-10-27 — Phase 4 draft:** `cv/master-cv.md` written from evidence: header, 6 summary angles, evidence-only skills, nWeave experience (Smart FAQ, AHS, Osloop, others), personal projects, numbers bank, removed-claims list. Profound/Aquadic/ONE14 left as `[LAPTOP-2]`/`[VERIFY]`.
 - **2026-10-27 — Phase 5:** Fintech Senior + Enterprise Senior variants as HTML (ATS-friendly single column) → 2-page PDFs via headless Chrome. Awaiting user review.
 - **2026-10-27 — Phase 5:** Fintech Mid + Enterprise Mid variants and PDFs. NEXT: user review notes on all four, then Product SaaS / Mobile / Agency.
+- **2026-10-27 — Laptop 2 (MacBook Pro M4):** Cloned `ibrahem-hassan2000/cv`, repo-local git identity set to the gmail. Phase 1 surface scan: 10 git repos. New employer-level evidence: Bites Development `Bites-Mart-Nextjs` (Next.js 14 ERP: invoices, sales, double-entry, Theater OS, LiveKit; 192 commits, 190 on production) + `inbz` (1). ONE14 QARDIO repo present but no commits under his identities. kyascoApp here = Expo app (2 commits, osloop email), not the Next.js platform. Kalima + Trackoo duplicate laptop 1. lingo/lingo2 = Kalima prototypes. Found that the GitHub `cv` repo is **public** (plan says private) → told the user. NEXT: user answers §11 laptop-2 questions, Phase 2 deep dive on Bites-Mart, then laptop 3.
 
 ---
 
@@ -215,6 +217,10 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 - **Other projects** are on another laptop; the user connects it later. Current phase = data collection.
 
 ### Still open
+- **Repo visibility:** `github.com/ibrahem-hassan2000/cv` is **public** (checked 2026-10-27). Decision was private → user changes it in GitHub Settings.
+- **Bites Development (laptop 2):** what was it — employer, freelance, or part-time? Title, dates, and how it fits with nWeave (10/2025–) since the commits overlap (10/2025–04/2026). Is it the same as Profound?
+- **ONE14 QARDIO (laptop 2):** 413 commits, none under his identities (Replit Agent, abdelOsloop, Ahmed Alaa, ahmadfikryfahmy, Abdelrahman). Did he work through Replit / someone else's account? What exactly did he build? Without evidence the ONE14 bullets stay `[VERIFY]`.
+- **Kyasco:** laptop 2 has an Expo app (`ibrahemhassan-cpu/kyascoApp`, 2 commits with the nWeave email). Where is the Next.js B2B platform from the old CV, and was Kyasco nWeave or Profound work?
 - Team sizes per company (rough).
 - ~~Trackoo / Kalima / FAQ POC~~ answered 2026-10-27: Trackoo GPS + story cube co-built with a teammate ("co-built", never "built"); Kalima not published; FAQ AI POC = concept demo he built for the client, complements Smart FAQ.
 - ~~AHS questions~~ answered 2026-10-27: migration partly merged; MSAL/SignalR/QuestionMaker not his (removed); after Feb 2026 moved to other nWeave projects.
