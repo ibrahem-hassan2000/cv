@@ -33,6 +33,15 @@ An all-in-one business platform (ERP-style) on Next.js: finance (invoices, bills
 ## Archetype fit
 Fintech ★★★ (invoices, payments, accounting, e-signatures) · Enterprise/ERP ★★★ · Product SaaS ★★★ · E-commerce ★★☆ (booking/checkout) · Healthtech ★☆☆ · Mobile ☆ · Agency ☆
 
+## Code read on laptop 3 (2026-10-28, same repo at `Desktop/Bites-Mart-Nextjs`)
+- **His hooks** (added lines in his diffs): `useQuery` 293, `useMutation` 96, `invalidateQueries` 157, `useForm` 17 + `useFieldArray` 13 + `useWatch` 10 + `zodResolver` 67, `useDebounce` 5, `useState` 647, `useEffect` 175. **Zustand: 0 imports in his code** → don't list Zustand for his Bites work.
+- **Invoice builder:** line items with `useFieldArray({ name: "items" })`; `useWatch` on items, tax and invoice type recalculates subtotal / discount / tax totals live.
+- **OTP e-signature flow** (`sign-circle.tsx` in invoices and contracts, API `DashContractSignatureApi`: requestOtp → verifyOtp → sign / ownerSign): pick email or phone → send OTP → enter 6-digit code → accept terms → draw signature (PNG data URL) → save.
+- **QR codes** (`qrcode.react`, 12 files): contract/quote QR links to the public document page (blurred until saved); Theater OS ticket QR links to a public ticket page with a ticket token.
+- **Cache:** invalidation by entity keys, e.g. `["invoice", id]`, `["contract", id]`, `["credit-notes-list", invoiceId]`.
+- **Journal reports:** show total debit, total credit and the absolute difference.
+- **Also his (small):** public support-ticket page and the support widget tabs; film-projects dialog in the video editor (crew, budget, script, storyboard; API migration + dark theme, 01/2026).
+
 ## Open
 - ~~Job title~~ answered: Frontend Developer, React and Next.js; the project was mostly Next.js.
 - ~~Location~~ answered: remote; the company is based in Cairo.

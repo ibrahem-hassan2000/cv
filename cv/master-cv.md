@@ -2,7 +2,7 @@
 
 > How to use: every variant in `cv/variants/` is cut from this file. Each bullet ends with an evidence tag `⟨…⟩` pointing to `evidence/projects/*.md` — strip the tags in the final PDF.
 > `[LAPTOP-2]` = placeholder, fill from the other laptop. `[VERIFY]` = old-CV wording kept for now, must be confirmed with evidence or removed.
-> Last updated: 2026-10-27 (laptop 1 + laptop 2 evidence).
+> Last updated: 2026-10-27 (evidence from all three laptops; Profound, Freelance and Aquadic rewritten from laptop-3 deep dives).
 
 ---
 
@@ -17,7 +17,7 @@ linkedin.com/in/ibrahem-hassan-521956247 · github.com/ibrahem-hassan2000 · Mil
 
 ## Summary (long form — variants pick 3–4 lines)
 
-Frontend engineer with 4 years of commercial experience building React, Next.js and React Native products for healthcare, B2B SaaS and agency clients. At nWeave I built a healthcare-operations knowledge platform's frontend from the first commit — 27 screens, role-based access with MFA, and 551 automated tests — and designed a 25-module TanStack Query data layer for a large healthcare exchange platform. I care about typed, tested code, a reusable component system, and shipping what the design actually shows. I also build interactive 3D/motion sites (Three.js, React Three Fiber, GSAP) and mobile apps with Expo, and I've mentored two teammates.
+Frontend engineer with 4 years of commercial experience building React, Next.js and React Native products for healthcare, B2B SaaS and agency clients. At nWeave I built a healthcare-operations knowledge platform's frontend from the first commit — 27 screens, role-based access with MFA, and 551 automated tests — and designed a 25-module TanStack Query data layer for a large healthcare exchange platform. Before that, at Profound, I was the only frontend developer on a rental marketplace (110 pages across four portals, SignalR chat) and built the admin and doctor portals of a healthcare platform. I care about typed, tested code, a reusable component system, and shipping what the design actually shows. I also build interactive 3D/motion sites (Three.js, React Three Fiber, GSAP) and mobile apps with Expo, and I've mentored two teammates.
 
 Summary angles per archetype (pick one):
 - **Fintech:** "…correct, well-tested frontends with role-based access, MFA and typed API contracts, including invoicing, double-entry accounting and OTP-verified e-signatures in a Next.js business platform, plus React Native apps with biometrics and offline-first data."
@@ -25,6 +25,7 @@ Summary angles per archetype (pick one):
 - **Enterprise:** "…in large multi-team codebases (3.9k-commit repo, Jira-ticketed branches, code review) and as the lead frontend on greenfield client products."
 - **Product SaaS:** "…design systems in Storybook, typed data layers from OpenAPI, and test suites that let a team move fast."
 - **Mobile:** "…React Native / Expo apps with background audio, background GPS, home-screen widgets, biometrics and offline-first sync. I led a Qur'an-and-running app that is live on Google Play and the App Store."
+- **E-commerce / Marketplace:** "…marketplace and commerce frontends: a rental marketplace built end to end (booking, checkout, payments, wallet, real-time chat, business and admin portals), finance modules in a Next.js business platform, and bilingual Arabic/English storefronts."
 - **Agency / Creative:** "…interactive 3D and motion websites with React Three Fiber, Three.js, GSAP and Lenis, delivered through client feedback rounds."
 
 ---
@@ -32,16 +33,17 @@ Summary angles per archetype (pick one):
 ## Skills (only what has evidence; order changes per variant)
 
 - **Languages:** TypeScript, JavaScript (ES2022+), HTML, CSS
-- **Frameworks:** React 19, Next.js 14 (App Router — Bites, 192 commits), React Native + Expo, Vite, Astro
-- **Data & state:** TanStack Query, Zustand, React Hook Form, Zod, OpenAPI-generated types, REST, Supabase, Firebase
-- **UI:** Tailwind CSS v4, shadcn/ui, Radix UI, PrimeReact, MUI, Storybook, Atomic Design, TipTap, dnd-kit
+- **Frameworks:** React 19, Next.js 13–15 (App Router since 2023 — Aquadic, Profound, Bites), React Native + Expo, Vite, Astro
+- **Data & state:** TanStack Query, TanStack Table, Zustand, React Hook Form, Zod, Yup, nuqs (URL state), OpenAPI-generated types, REST, Supabase, Firebase
+- **UI:** Tailwind CSS v4, shadcn/ui, Radix UI, Mantine, PrimeReact, MUI, Storybook, Atomic Design, TipTap, dnd-kit, FullCalendar, Recharts / Chart.js
+- **i18n:** next-intl, i18next — Arabic / English (RTL) in most projects since 2023
 - **Testing & quality:** Vitest, React Testing Library, Jest, Playwright (browser runner), Storybook a11y, oxlint
 - **Motion & 3D:** GSAP (ScrollTrigger, SplitText), Three.js, React Three Fiber, Lenis, Motion, SVG/Canvas, WebGL
 - **Mobile:** Expo, react-native-track-player, background GPS (expo-location / task manager), Android widgets, biometrics, notifications, offline-first, i18next (Arabic/English), TestFlight / Google Play releases
-- **Real-time & integrations:** LiveKit (video calls), Strava OAuth, Firebase (Auth, Crashlytics, Messaging)
-- **Auth & access:** role/capability-based routing, MFA flows, session handling, route guards
+- **Real-time & integrations:** SignalR (okoRent chat + notifications), LiveKit (video calls), Firebase (real-time chat, Auth, Crashlytics, Messaging), Strava OAuth, Google Maps
+- **Auth & access:** role/capability-based routing, user permissions, MFA flows, next-auth (Google sign-in), OTP, reCAPTCHA, session handling, route guards
 - **Tools & process:** Git, Bitbucket, GitHub, Jira, Figma, Vercel, Agile/Scrum, AI-assisted development (Claude Code-style context docs)
-- **Removed vs old CV (no evidence):** Azure MSAL, SignalR integration, JSXGraph, Redux Toolkit, Webpack, PWA/Workbox (except Orchard PWA — keep as project detail), "WCAG 2.1 compliant".
+- **Removed vs old CV (no evidence):** Azure MSAL, SignalR at AHS (okoRent SignalR is fine), JSXGraph, ISR, shared Radix component library at Profound, Axios retries / unified errors, Redux Toolkit, Webpack, PWA/Workbox (except Orchard PWA — keep as project detail), "WCAG 2.1 compliant".
 
 ---
 
@@ -91,23 +93,37 @@ All-in-one business platform (bites.com) on Next.js 14: finance, sales CRM, cont
 - Built finance modules: invoices (builder, payments, attachments, email tracking), bills, expenses, debit notes, receivables and payables reports, and double-entry journal reports. ⟨bites-mart⟩
 - Added OTP-verified e-signatures to contracts and invoices and built the contract-creation workflow. ⟨bites-mart⟩
 - Co-built Theater OS, a cinema and events module: admin for movies, food, seating templates and ticket types, plus a public booking flow with seat selection, food ordering and checkout. ⟨bites-mart⟩
-- Built sales CRM screens (orders, quotes, accounts, opportunities) with Next.js 14, TanStack Query, Zustand, react-hook-form + Zod and MUI. ⟨bites-mart⟩
+- Built sales CRM screens (orders, quotes, accounts, opportunities) with Next.js 14, TanStack Query, react-hook-form + Zod and MUI. ⟨bites-mart⟩
 - Worked in a 14-person team: 192 commits over 7 months part-time, 190 merged to production, the second-most of any contributor. ⟨bites-mart⟩
 
 ### Profound Agency — Frontend Developer · Alexandria · 07/2024 – 09/2025
-`[LAPTOP-3]` Collect repos and commits (not on laptops 1 or 2). Old-CV content to verify:
-- ~~Kyasco~~ moved to Projects: the user says it is a **personal** project, not Profound work (2026-10-27).
-- `[VERIFY]` okoRent — peer-to-peer rental marketplace in Next.js: storefront, admin panel, live chat, notifications, user roles.
-- `[VERIFY]` Shared Tailwind + Radix component library reused across client apps — **count must come from code, not "30+".**
-- `[VERIFY]` ISR, image optimisation, code-splitting — **no Lighthouse numbers until measured.**
-- `[LAPTOP-2]` Takhawy (trip-sharing, Next.js — GitHub `Takhawy_Next`, live takhawy-next.vercel.app), Edubrain (AI homework assistant, Next.js) — which company?
+> End date: he left around 07 or 08/2025 and chose to show 09/2025 so it runs into the next job (user, 2026-10-27). Bites starts 09/2025, so the real month (07 or 08/2025) would leave at most a one-month gap if he ever wants to use it.
+Client products for a software agency, on .NET backends (Azure DevOps).
+
+**okoRent — peer-to-peer rental marketplace (sole frontend developer, 08/2024 – 04/2025)** — no link (user's choice)
+- Built the entire frontend as the only frontend developer: 110 pages across four portals (guest, user, business, admin) in Next.js 14, TypeScript and TanStack Query (336 of the repo's 364 commits). ⟨okorent⟩
+- Added real-time chat and notifications with SignalR, with an infinite-scroll, virtualized inbox. ⟨okorent⟩
+- Built booking, checkout and payment flows: date-range availability, a resource-timeline booking calendar, payment links, wallet and invoices. ⟨okorent⟩
+- Built the business portal (orders, clients, maintenance, taxes, warehouses, employees, invoice and quotation templates) and the admin back office (accounts, bookings, listings, master data, plans, support). ⟨okorent⟩
+- Structured the data layer as 31 TanStack Query modules with cache invalidation and URL-synced filters; one shared wrapper for loading, empty and error states (401/403/404/500); role-based route protection in Next.js middleware. ⟨okorent⟩
+
+**Spectra — healthcare services platform (admin and doctor portals, 07 – 11/2024)**
+- Built the admin and doctor portals of a healthcare platform in Next.js 14 and TanStack Query: about 120 pages for appointments, prescriptions, medical reports, contracts and staff. A second developer owned the client portal. ⟨spectra⟩
+- Built the admin back office: client organizations and families, staff, master-data CRUD (drugs, diagnostics, departments, specialties, services), website content and user permissions. ⟨spectra⟩
+- Built the doctor workspace: appointments with a calendar, patient records with prescriptions and reports, contracts, chats, ratings and wallet, plus doctor–client video pages. All 242 of his commits shipped to production. ⟨spectra⟩
+
+**Other:** Nearcare — pharmacy section (4 commits). Too small for the CV. ⟨laptop-3⟩
+
+### Freelance — Frontend Developer · Remote · 02/2024 – 05/2025
+Alongside Aquadic and Profound (user, 2026-10-27). Solo on each project.
+- Built bilingual (Arabic / English) Next.js 14 + TypeScript websites for four clients: a Saudi trip-sharing app's site (driver sign-up, investors, jobs), a homework-help platform (Google sign-in, reCAPTCHA, user dashboard, Markdown blog), a fitness centre and a travel landing page. ⟨freelance⟩
 
 ### Aquadic — Frontend Developer · Alexandria · 10/2022 – 07/2024
-`[LAPTOP-2]` Collect repos. Old-CV content to verify:
-- `[VERIFY]` Built responsive React and Next.js websites for 10+ clients (e-commerce, corporate) — count clients.
-- `[VERIFY]` Centralised Axios layer with interceptors for auth tokens, unified errors and retries.
-- `[VERIFY]` Translated Figma designs into responsive layouts. (Remove "−20% bounce", "−35% FCP" — no proof.)
-- `[LAPTOP-2]` Megaminds Academy (HTML/CSS/JS) — which company? Public GitHub client sites from this period: anyShop, e-comerce, rehla, sanaTes, rashaktk, erpDash.
+Software company; client websites and web apps (GitHub org `AQuadic`).
+- Built 9 client websites and web apps (e-learning, services marketplace, resort community portal, e-commerce) as the main frontend developer on each — about 530 commits. ⟨aquadic⟩
+- Built a bilingual (Arabic / English, RTL) e-learning platform in Next.js 13: courses, video lessons, quizzes, certificates, Google sign-in and checkout. ⟨aquadic⟩
+- Built a services marketplace in Next.js 13 with real-time chat (Firebase), SMS OTP sign-in, Google Maps addresses and checkout, and a community portal for the Marina North Coast resort (listings, guides, invoices, service requests). ⟨aquadic⟩
+- Built responsive HTML / CSS / JavaScript sites for six more clients (e-commerce, academies, landing pages). ⟨aquadic⟩
 
 ---
 
@@ -126,8 +142,8 @@ All-in-one business platform (bites.com) on Next.js 14: finance, sales CRM, cont
 ### Kyasco — wholesale ordering app · Personal · 01/2026 – 04/2026 · GitHub `ibrahemhassan-cpu/kyascoApp` (optional, mobile variant only)
 - Built an Expo / React Native app for his own plastic-materials wholesale idea, using Expo Router, TanStack Query and axios. Only 2 commits, so keep it as a one-line project or leave it out. ⟨laptop-2-macbook, user-answers⟩
 
-### `[LAPTOP-3]` slots
-- okoRent · Takhawy · Edubrain · Megaminds · Profound and Aquadic client work.
+### Not CV material (laptop 3)
+- anyShop, hemaApp, car (2023–2024 learning projects), dubisign-task and singleclic-task (job take-home tasks), ecommerce-angular (1 commit), the Builder.io-generated Kyasco web prototype. See `inventory/laptop-3.md`.
 
 ---
 
@@ -150,7 +166,11 @@ All-in-one business platform (bites.com) on Next.js 14: finance, sales CRM, cont
 | Bites: 192 commits, 190 on production, #2 of 14 contributors, 7 months part-time, 78 pages created | git (laptop 2) |
 | ONE14: live on Google Play (100+ downloads) and App Store (08/2026) | store pages, checked 2026-10-27 |
 | ONE14: −17% distance under-count on a 30 km run before the GPS fix | `docs/GPS_DISTANCE_ACCURACY_TUNING.md` |
+| okoRent: 336 of 364 commits, sole frontend dev, 110 pages, 4 portals, 31 query modules | git + user (laptop 3) |
+| Spectra: 242 commits, all on Production; ~143 pages created (80 admin, 40 doctor) | git (laptop 3) |
+| Aquadic: 9 client repos, ~529 commits | git (laptop 3) |
+| Freelance: 4 clients, 2024–2025 | git + user (laptop 3) |
 | **To add:** Lighthouse scores of live sites | run before use |
 
 ## Removed from the old CVs (do not bring back without evidence)
-~40% fewer payloads · Lighthouse 62→94+ · FCP −35% · bounce −20% · 30+ components · mentored 3 · Azure MSAL SSO · SignalR integration · QuestionMaker/Clinical rules engine · JSXGraph plotting · ElevateMate virtualized TanStack Table / LocalForage · Trackoo GPS as solo work.
+~40% fewer payloads · Lighthouse 62→94+ · FCP −35% · bounce −20% · 30+ components · mentored 3 · Azure MSAL SSO · SignalR integration **at AHS** (SignalR at okoRent does have evidence — laptop 3) · ISR / code-splitting at Profound · shared Radix component library · Axios retries / unified errors · TanStack Query at Aquadic (installed, never used) · "10+ clients" (9 proven) · "AI homework assistant" (AI is backend; say homework-help site) · okoRent live link (user: no link) · QuestionMaker/Clinical rules engine · JSXGraph plotting · ElevateMate virtualized TanStack Table / LocalForage · Trackoo GPS as solo work.

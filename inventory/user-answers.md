@@ -21,6 +21,13 @@
 - **Bites location:** he worked remotely; the company is based in Cairo.
 - **GitHub `cv` repo:** stays **public for now**. The user makes it private when the project is finished.
 
+## 2026-10-27 — laptop 3 (Windows)
+- **`hibrahem226@gmail.com` is his** (typo of the gmail). All commits under it count.
+- **Profound end date:** he left around **07 or 08/2025**. He chose to show **09/2025** on the CV so it runs straight into the next job ("the month won't matter"). Note: Bites starts 09/2025, so the real month (07 or 08/2025) leaves at most a one-month gap. If a background check asks, the real month is 07 or 08/2025.
+- **Freelance:** Takhawy, Edubrain, Rehla and Rashaktk were all **freelance** work (not Aquadic or Profound).
+- **okoRent:** he built the whole frontend ("I did everything"). **No link on the CV**: he isn't sure the Vercel link still works and prefers not to put links.
+- **Spectra:** he owned the **admin portal and the doctor portal**. Moataz Ali owned the **client / customer portal**.
+
 ## Still to ask
 - Team sizes per company (rough is fine).
 - Downloads / users for ONE14 QARDIO if visible in Play Console / App Store Connect. (Public Play page shows 100+.)
