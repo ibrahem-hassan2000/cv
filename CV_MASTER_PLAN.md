@@ -100,8 +100,9 @@ Rewrite from evidence: summary, skills (grouped, no fluff), experience (per comp
 ### Phase 5 — Variants → `cv/variants/*.md` + PDFs
 Per archetype: reorder projects, swap bullets, change summary headline + skills order, keep 1–2 pages. Run an ATS keyword check against 2–3 real JDs per archetype.
 
-### Phase 6 — Review & polish
-User reviews every variant. Fix. Export to PDF (and DOCX if needed). Optional: per-company tailoring when he applies.
+### Phase 6 — Per-job CVs (on request only)
+**Changed 2026-10-27 by the user:** CVs are no longer regenerated whenever new evidence arrives. New facts only update `inventory/`, `evidence/` and `master-cv.md`.
+When the user says "I want to apply to this job" (with the posting): read the job post, pick the best-fitting projects and bullets from `master-cv.md`, mirror the job's keywords honestly, keep 1–2 pages, export the PDF to `cv/output/<company>-<role>.pdf`, and log it (company, role, date, file) in `cv/applications.md`. The four files in `cv/variants/` are starting templates.
 
 ---
 
@@ -109,7 +110,7 @@ User reviews every variant. Fix. Export to PDF (and DOCX if needed). Optional: p
 
 - This folder is the single source of truth. Move it between laptops via **(decision pending — see §11 Q1)**: private GitHub repo / Google Drive / USB.
 - On laptop 2 and 3: open this folder, tell Claude "كمل الخطة" → it reads `CLAUDE.md` → runs Phase 1 for that laptop → writes `inventory/laptop-N.md` → updates STATUS.
-- After all three are collected, **all further work happens on one laptop** (the user picks which).
+- After all three are collected, **all further work happens on one laptop**: **laptop 2 (MacBook Pro M4)**, the user's main personal laptop (decided 2026-10-27).
 
 ---
 
@@ -183,7 +184,8 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 | 3 | Market research | PASS 2 DONE | `market/companies.md` (Tier A + Money Fellows; careers check, Levels.fyi salaries, interview styles + prep list), `market/archetypes.md`. Optional pass 3: LinkedIn pages for companies that timed out |
 | 4 | Master CV | DRAFT (laptops 1 + 2) | `cv/master-cv.md` — nWeave (incl. ONE14, led), **Bites (part-time, Frontend Developer)**, Kyasco (personal, optional) added; `[LAPTOP-3]`/`[VERIFY]` slots left for Profound, Aquadic, okoRent, Takhawy, Edubrain, Megaminds. Variants/PDFs NOT yet regenerated with laptop-2 content |
 | 5 | Variants | 4 DRAFTS | `cv/variants/fintech-senior.html`, `enterprise-senior.html`, `fintech-mid.html`, `enterprise-mid.html` (+ shared `cv.css`). Mid = same facts, headline "Frontend Engineer", no "led/designed/lead", mentoring softened → PDFs in `cv/output/`. **Regenerated 2026-10-27 on laptop 2 with Bites + ONE14 (under nWeave); old ONE14 "Projects" entry and Kyasco-at-Profound removed.** Profound/Aquadic still use the user's old-CV wording minus numbers until laptop 3 is checked. Export: headless Chrome `--print-to-pdf` (Windows), or on a Mac without Chrome `swiftc -O cv/variants/html2pdf.swift -o /tmp/html2pdf && /tmp/html2pdf <variant>.html <out>.pdf` (WebKit, A4, same margins). `cv.css` now lets long jobs flow across pages (bullets kept whole). NEXT: Product SaaS Mid, Mid versions, Mobile after ONE14 |
-| 6 | Review & export | TODO | |
+| 6 | Per-job CVs | ON REQUEST | Only when the user shares a job he wants to apply to (see §3 Phase 6). Do not regenerate variants on new evidence |
+| 7 | Extras beyond the CV (interview prep etc.) | LATER | The user will add new plans later (interview prep and similar). Laptop 3 collection also later |
 
 ---
 
@@ -204,6 +206,7 @@ Current CV = `Desktop/Ibrahem_Hassan_Senior_Frontend_Engineer_CV.pdf` (new, Seni
 - **2026-10-27 — Laptop 2:** User confirmed Bites title = Frontend Developer (React / Next.js) and ONE14 = nWeave. Master CV: ONE14 moved from Projects into the nWeave section (Apr – Sep 2026). NEXT: regenerate the 4 variants + PDFs, then laptop 3.
 - **2026-10-27 — Laptop 2:** Bites = remote (Cairo-based company). Repo stays public until the project is done (user's choice).
 - **2026-10-27 — Laptop 2, Phase 5 refresh:** All 4 variants updated: Bites job (fintech: finance/e-signature focus + "Finance domain" skills line; enterprise: ERP/team focus), ONE14 under nWeave (Senior "led/drove", Mid "planned/found"), Trackoo dropped from fintech, Next.js 14 in skills, summaries mention Bites/ONE14. No Chrome on the Mac → added `cv/variants/html2pdf.swift` (WebKit). Fixed a page-break rule that left page 1 half empty. All 4 PDFs = 2 pages. NEXT: user review of the 4 PDFs, then laptop 3.
+- **2026-10-27 — Workflow change (user):** (1) don't regenerate CVs when new info arrives; only update the evidence base; make a tailored CV only when he shares a job to apply for. (2) Laptop 2 (MacBook) = main laptop from now on. (3) Laptop 3 (old, other projects) comes later. (4) New plans beyond the CV (e.g. interview prep) will come later. Written into `CLAUDE.md` and §3/§4/§9.
 
 ---
 
