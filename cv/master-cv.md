@@ -17,11 +17,11 @@ linkedin.com/in/ibrahem-hassan-521956247 · github.com/ibrahem-hassan2000 · Mil
 
 ## Summary (long form — variants pick 3–4 lines)
 
-Frontend engineer with 4 years of commercial experience building React, Next.js and React Native products for healthcare, B2B SaaS and agency clients. At nWeave I built a healthcare-operations knowledge platform's frontend from the first commit — 27 screens, role-based access with MFA, and 551 automated tests — and designed a 25-module TanStack Query data layer for a large healthcare exchange platform. Before that, at Profound, I was the only frontend developer on a rental marketplace (110 pages across four portals, SignalR chat) and built the admin and doctor portals of a healthcare platform. I care about typed, tested code, a reusable component system, and shipping what the design actually shows. I also build interactive 3D/motion sites (Three.js, React Three Fiber, GSAP) and mobile apps with Expo, and I've mentored two teammates.
+Frontend engineer with 4 years of commercial experience building React, Next.js and React Native products for healthcare, B2B SaaS and agency clients. At nWeave I built a healthcare-operations knowledge platform's frontend from the first commit — 27 screens, role-based access with MFA, and 551 automated tests — and introduced TanStack Query to a large healthcare exchange platform. Before that, at Profound, I was the only frontend developer on a rental marketplace (110 pages across four portals, SignalR chat) and built the admin and doctor portals of a healthcare platform. I care about typed, tested code, a reusable component system, and shipping what the design actually shows. I also build interactive 3D/motion sites (Three.js, React Three Fiber, GSAP) and mobile apps with Expo, and I've mentored two teammates.
 
 Summary angles per archetype (pick one):
 - **Fintech:** "…correct, well-tested frontends with role-based access, MFA and typed API contracts, including invoicing, double-entry accounting and OTP-verified e-signatures in a Next.js business platform, plus React Native apps with biometrics and offline-first data."
-- **Healthtech:** "…complex clinical and billing workflows: a formula engine for healthcare billing and a review-and-approval knowledge platform for a healthcare operations client."
+- **Healthtech:** "…complex clinical and billing workflows: a formula builder for healthcare billing and a review-and-approval knowledge platform for a healthcare operations client."
 - **Enterprise:** "…in large multi-team codebases (3.9k-commit repo, Jira-ticketed branches, code review) and as the lead frontend on greenfield client products."
 - **Product SaaS:** "…design systems in Storybook, typed data layers from OpenAPI, and test suites that let a team move fast."
 - **Mobile:** "…React Native / Expo apps with background audio, background GPS, home-screen widgets, biometrics and offline-first sync. I led a Qur'an-and-running app that is live on Google Play and the App Store."
@@ -62,8 +62,8 @@ Healthcare and B2B SaaS products, agency websites, and mobile apps (including ON
 - Built an AI FAQ proof of concept that matches intent across Arabic, Franco-Arabic and English, to show the client what the product could do. ⟨side-showcases⟩
 
 **AHS Medical Exchange — healthcare B2B platform (Dec 2025 – Feb 2026)**
-- Built a formula builder and evaluation engine for healthcare billing: drag-and-drop editor, custom parser and evaluator on mathjs, live validation and a test panel. It shipped and later payment features build on it. ⟨ahs-medx⟩
-- Designed a TanStack Query layer of 25 domain modules to replace a custom Axios hook, migrated core flows (orders, invitations, messaging, staff, billing) and rolled it out in stages. ⟨ahs-medx⟩
+- Built the first version of a billing-formula builder for healthcare services: insert variables and operators at the cursor, live validation with mathjs (allowlisted variables and operators, no functions, divide-by-zero check) and a test panel. A teammate later restructured it; about half of the shipped module and its validator are my code. ⟨ahs-medx — corrected 2026-10-28: no drag-and-drop or own parser in the shipped version⟩
+- Introduced TanStack Query to the codebase: set up the shared query client and a services → query-hooks pattern the team now uses for new modules, and migrated orders, invitations, messaging, staff and billing (25 domain modules) on a branch rolled out in stages. ⟨ahs-medx — corrected 2026-10-28: most screens still use the old hook⟩
 - Wrote the team's React Query implementation guide. ⟨ahs-medx⟩
 - Worked in a 3.9k-commit, multi-team codebase through Jira-ticketed branches and code review. ⟨ahs-medx⟩
 
