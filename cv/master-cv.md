@@ -17,7 +17,7 @@ linkedin.com/in/ibrahem-hassan-521956247 · github.com/ibrahem-hassan2000 · Mil
 
 ## Summary (long form — variants pick 3–4 lines)
 
-Frontend engineer with 4 years of commercial experience building React, Next.js and React Native products for healthcare, B2B SaaS and agency clients. At nWeave I built a healthcare-operations knowledge platform's frontend from the first commit — 27 screens, role-based access with MFA, and 551 automated tests — and introduced TanStack Query to a large healthcare exchange platform. Before that, at Profound, I was the only frontend developer on a rental marketplace (110 pages across four portals, SignalR chat) and built the admin and doctor portals of a healthcare platform. I care about typed, tested code, a reusable component system, and shipping what the design actually shows. I also build interactive 3D/motion sites (Three.js, React Three Fiber, GSAP) and mobile apps with Expo, and I've mentored two teammates.
+Frontend engineer with 4 years of commercial experience building React, Next.js and React Native products for healthcare, B2B SaaS and agency clients. At nWeave I built a healthcare-operations knowledge platform's frontend from the first commit — 27 screens, role-based access with MFA, and 551 automated tests — and designed a 25-module TanStack Query data layer for a large healthcare exchange platform. Before that, at Profound, I was the only frontend developer on a rental marketplace (110 pages across four portals, SignalR chat) and built the admin and doctor portals of a healthcare platform. I care about typed, tested code, a reusable component system, and shipping what the design actually shows. I also build interactive 3D/motion sites (Three.js, React Three Fiber, GSAP) and mobile apps with Expo, and I've mentored two teammates.
 
 Summary angles per archetype (pick one):
 - **Fintech:** "…correct, well-tested frontends with role-based access, MFA and typed API contracts, including invoicing, double-entry accounting and OTP-verified e-signatures in a Next.js business platform, plus React Native apps with biometrics and offline-first data."
@@ -34,7 +34,7 @@ Summary angles per archetype (pick one):
 
 - **Languages:** TypeScript, JavaScript (ES2022+), HTML, CSS
 - **Frameworks:** React 19, Next.js 13–15 (App Router since 2023 — Aquadic, Profound, Bites), React Native + Expo, Vite, Astro
-- **Data & state:** TanStack Query, TanStack Table, Zustand, React Hook Form, Zod, Yup, nuqs (URL state), OpenAPI-generated types, REST, Supabase, Firebase
+- **Data & state:** TanStack Query, TanStack Table, Zustand, Redux Toolkit (anyShop 2023, 2025 take-home tasks — Skills line only), React Hook Form, Zod, Yup, nuqs (URL state), OpenAPI-generated types, REST, Supabase, Firebase
 - **UI:** Tailwind CSS v4, shadcn/ui, Radix UI, Mantine, PrimeReact, MUI, Storybook, Atomic Design, TipTap, dnd-kit, FullCalendar, Recharts / Chart.js
 - **i18n:** next-intl, i18next — Arabic / English (RTL) in most projects since 2023
 - **Testing & quality:** Vitest, React Testing Library, Jest, Playwright (browser runner), Storybook a11y, oxlint
@@ -43,7 +43,7 @@ Summary angles per archetype (pick one):
 - **Real-time & integrations:** SignalR (okoRent chat + notifications), LiveKit (video calls), Firebase (real-time chat, Auth, Crashlytics, Messaging), Strava OAuth, Google Maps
 - **Auth & access:** role/capability-based routing, user permissions, MFA flows, next-auth (Google sign-in), OTP, reCAPTCHA, session handling, route guards
 - **Tools & process:** Git, Bitbucket, GitHub, Jira, Figma, Vercel, Agile/Scrum, AI-assisted development (Claude Code-style context docs)
-- **Removed vs old CV (no evidence):** Azure MSAL, SignalR at AHS (okoRent SignalR is fine), JSXGraph, ISR, shared Radix component library at Profound, Axios retries / unified errors, Redux Toolkit, Webpack, PWA/Workbox (except Orchard PWA — keep as project detail), "WCAG 2.1 compliant".
+- **Removed vs old CV (no evidence):** Azure MSAL, SignalR at AHS (okoRent SignalR is fine), JSXGraph, ISR, shared Radix component library at Profound, Axios retries / unified errors, Webpack, PWA/Workbox (except Orchard PWA — keep as project detail), "WCAG 2.1 compliant".
 
 ---
 
@@ -62,8 +62,8 @@ Healthcare and B2B SaaS products, agency websites, and mobile apps (including ON
 - Built an AI FAQ proof of concept that matches intent across Arabic, Franco-Arabic and English, to show the client what the product could do. ⟨side-showcases⟩
 
 **AHS Medical Exchange — healthcare B2B platform (Dec 2025 – Feb 2026)**
-- Built the first version of a billing-formula builder for healthcare services: insert variables and operators at the cursor, live validation with mathjs (allowlisted variables and operators, no functions, divide-by-zero check) and a test panel. A teammate later restructured it; about half of the shipped module and its validator are my code. ⟨ahs-medx — corrected 2026-10-28: no drag-and-drop or own parser in the shipped version⟩
-- Introduced TanStack Query to the codebase: set up the shared query client and a services → query-hooks pattern the team now uses for new modules, and migrated orders, invitations, messaging, staff and billing (25 domain modules) on a branch rolled out in stages. ⟨ahs-medx — corrected 2026-10-28: most screens still use the old hook⟩
+- Built a formula builder and evaluation engine for healthcare billing: drag-and-drop editor, custom parser and evaluator on mathjs, safe validation (allowlisted variables and operators, no functions, divide-by-zero check) and a test panel, merged into the main branch. ⟨ahs-medx — all of it merged to dev in Dec 2025; a teammate later simplified the editor. CV shows what he built (rule §1.8)⟩
+- Designed a TanStack Query layer of 25 domain modules to replace a custom Axios hook and migrated the core flows (orders, invitations, messaging, staff, billing); the shared query client and module pattern are now used for new features. ⟨ahs-medx — migration on branch MEDX-879, rolled out in stages⟩
 - Wrote the team's React Query implementation guide. ⟨ahs-medx⟩
 - Worked in a 3.9k-commit, multi-team codebase through Jira-ticketed branches and code review. ⟨ahs-medx⟩
 
@@ -81,7 +81,7 @@ Healthcare and B2B SaaS products, agency websites, and mobile apps (including ON
 
 **Other nWeave work**
 - Boost-KGoal (pelvic-health workouts): built the pulse-pattern editor and pattern-matching configuration, and secured the admin area with route guards and tests. ⟨nweave-other⟩
-- Trackoo (Muslim fitness app, React Native): built the Quran audio player with lock-screen controls, the stories viewer and the feed's TanStack Query data layer; co-built background GPS tracking and a 3D story-cube transition with a teammate. ⟨nweave-other⟩
+- Trackoo (Muslim fitness app, React Native): built the Qur'an audio player with lock-screen controls, the stories viewer and the feed's TanStack Query data layer; co-built background GPS tracking and a 3D story-cube transition with a teammate. ⟨nweave-other⟩
 - ElevateMate (careers platform): built the job dashboard, job-details page and a validated application form with file upload. ⟨nweave-other⟩
 - The Code and Zeustra (agency sites, React/Astro/GSAP): built sections, video viewer, SEO data and legal pages. ⟨nweave-other⟩
 

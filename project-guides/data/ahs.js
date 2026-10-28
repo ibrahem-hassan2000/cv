@@ -45,7 +45,7 @@ HANDBOOK.projects.push({
 
   myRole: [
     { en: "52 commits (Dec 2025 – Feb 2026) in a repo with ~3.9k commits and many developers. Then I moved to other nWeave projects.", ar: "52 كوميت (ديسمبر 2025 – فبراير 2026) في repo فيه حوالي 3.9k كوميت ومطورين كتير. وبعدها اتنقلت لمشاريع تانية في nWeave." },
-    { en: "<b>Formula builder: co-built.</b> I built the first version; a teammate restructured and extended it. On <code>dev</code> today about half of the module's lines are mine, and the mathjs validator is fully mine.", ar: "<b>الـ Formula builder: اتبنى مع زميل.</b> أنا عملت أول نسخة؛ وزميل عمل restructure وزوّد عليها. على <code>dev</code> النهارده حوالي نص سطور الموديول بتوعي، والـ validator بتاع mathjs كله بتاعي." },
+    { en: "<b>Formula builder: I built it</b> — drag-and-drop editor, my own parser and evaluator, mathjs validation, test panel — and it was merged into <code>dev</code>. Later a teammate restructured it into a simpler text editor; about half of today's module and the whole validator are still my code.", ar: "<b>الـ Formula builder: اتبنى مع زميل.</b> أنا عملت أول نسخة؛ وزميل عمل restructure وزوّد عليها. على <code>dev</code> النهارده حوالي نص سطور الموديول بتوعي، والـ validator بتاع mathjs كله بتاعي." },
     { en: "<b>TanStack Query: I led it</b> on branch MEDX-879. The base (QueryClient + the <code>src/query</code> pattern) shipped, and the team uses it for new modules; most screens still use <code>useAxios</code> and move over in stages.", ar: "<b>TanStack Query: أنا اللي قُدته</b> على branch اسمه MEDX-879. الأساس (QueryClient و شكل <code>src/query</code>) نزل، والتيم بيستخدمه في الموديولات الجديدة؛ ومعظم الشاشات لسه على <code>useAxios</code> وبتتنقل على مراحل." },
     { en: "Not mine: Azure MSAL, SignalR, the QuestionMaker. They were in the codebase before me.", ar: "مش بتوعي: Azure MSAL، و SignalR، و الـ QuestionMaker. كانوا موجودين قبلي." }
   ],
@@ -219,7 +219,7 @@ HANDBOOK.projects.push({
   dont: [
     { en: "Don't say you implemented Azure MSAL SSO, SignalR or the QuestionMaker — they were there before you.", ar: "متقولش إنك عملت Azure MSAL SSO أو SignalR أو الـ QuestionMaker — كانوا موجودين قبلك." },
     { en: "Don't say the whole app runs on TanStack Query — the base shipped; most screens move over in stages.", ar: "متقولش إن التطبيق كله على TanStack Query — الأساس نزل، ومعظم الشاشات بتتنقل على مراحل." },
-    { en: "Don't say the shipped formula builder is drag-and-drop or uses your own parser — that was your first version; the team simplified it.", ar: "متقولش إن الـ formula builder اللي نزل drag-and-drop أو بالـ parser بتاعك — دي كانت أول نسخة؛ والتيم بسّطها." },
+    { en: "If asked whether it's still drag-and-drop today, say no: the team later simplified it to a text editor with click-to-insert — and explain why that was a good call.", ar: "لو اتسألت هو لسه drag-and-drop النهارده، قول لأ: التيم بعدين بسّطه لـ text editor فيه click-to-insert — واشرح ليه ده كان قرار كويس." },
     { en: "Don't quote \"40% fewer requests\" or any percentage — nothing was measured.", ar: "متقولش «40% requests أقل» أو أي نسبة — مفيش حاجة اتقاست." }
   ],
 
