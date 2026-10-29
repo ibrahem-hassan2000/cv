@@ -22,7 +22,7 @@ HANDBOOK.concepts = [
     what: { en: "Update the cache immediately (e.g. a chat message with status “pending”), then confirm or roll back when the request finishes.", ar: "حدّث الكاش فورًا (زي رسالة شات بحالة «pending»)، وبعدين أكّد أو ارجع لما الـ request يخلص." },
     when: { en: "Actions that almost always succeed and where speed matters: chat, likes, toggles. Avoid for payments.", ar: "حاجات غالبًا بتنجح والسرعة فيها مهمة: شات، لايك، toggle. وابعد عنها في الدفع." },
     pitfall: { en: "Forgetting the rollback on error.", ar: "تنسى ترجع الحالة لو حصل error." },
-    q: "How would you roll back an optimistic update?", a: { en: "In onMutate, snapshot the old cache value and return it; in onError, restore it with setQueryData; in onSettled, invalidate to sync with the server.", ar: "في onMutate خد نسخة من الكاش القديم ورجّعها؛ في onError رجّعها بـ setQueryData؛ وفي onSettled اعمل invalidate علشان تتزامن مع السيرفر." }
+    q: "How would you roll back an optimistic update?", a: { en: "In onMutate, snapshot the old cache value and return it; in onError, restore it with setQueryData; in onSettled, invalidate to sync with the server.", ar: "في onMutate، خد نسخة من الكاش القديم ورجّعها. وفي onError، رجّعها بـ setQueryData. وفي onSettled، اعمل invalidate علشان تتزامن مع السيرفر." }
   },
   {
     id: "realtime", name: "Real-time options",
@@ -35,16 +35,16 @@ HANDBOOK.concepts = [
   {
     id: "token-storage", name: "Where to keep the auth token",
     tagline: { en: "localStorage vs httpOnly cookie vs session library.", ar: "localStorage ولا httpOnly cookie ولا مكتبة sessions." },
-    what: { en: "<b>localStorage</b>: easy, but any script can read it (XSS). <b>httpOnly cookie</b>: JS can't read it, the browser sends it automatically; protect against CSRF with SameSite. <b>Auth.js</b>: manages the cookie and refresh for you.", ar: "<b>localStorage</b>: سهل بس أي script يقدر يقراه (XSS). <b>httpOnly cookie</b>: الـ JS مايقدرش يقراه، والمتصفح بيبعته لوحده؛ واحمي من الـ CSRF بـ SameSite. <b>Auth.js</b>: بيدير الكوكي والـ refresh عنك." },
-    when: { en: "Prefer httpOnly cookies for anything sensitive; read them in middleware / server code.", ar: "فضّل الـ httpOnly cookies لأي حاجة حساسة؛ واقراها في الـ middleware أو كود السيرفر." },
+    what: { en: "<b>localStorage</b>: easy, but any script can read it (XSS). <b>httpOnly cookie</b>: JS can't read it, the browser sends it automatically; protect against CSRF with SameSite. <b>Auth.js</b>: manages the cookie and refresh for you.", ar: "<b>localStorage</b>: سهل، بس أي script يقدر يقراه (XSS). <b>httpOnly cookie</b>: الـ JS مايقدرش يقراه، والمتصفح بيبعته لوحده. واحمي من الـ CSRF بـ SameSite. <b>Auth.js</b>: بيدير الكوكي والـ refresh بدالك." },
+    when: { en: "Prefer httpOnly cookies for anything sensitive; read them in middleware / server code.", ar: "فضّل الـ httpOnly cookies لأي حاجة حساسة. واقراها في الـ middleware أو كود السيرفر." },
     pitfall: { en: "Client features that need the raw token (sockets) — plan how they get it.", ar: "features في المتصفح محتاجة التوكن نفسه (sockets) — خطط إزاي توصلها." },
-    q: "What is the difference between XSS and CSRF here?", a: { en: "XSS = attacker's script runs in your page and can read localStorage. CSRF = another site makes the browser send your cookie. httpOnly stops the first; SameSite and CSRF tokens stop the second.", ar: "XSS = script بتاع مهاجم بيشتغل في صفحتك ويقدر يقرا localStorage. CSRF = موقع تاني بيخلي المتصفح يبعت الكوكي بتاعك. الـ httpOnly بيمنع الأول؛ و SameSite و CSRF tokens بيمنعوا التاني." }
+    q: "What is the difference between XSS and CSRF here?", a: { en: "XSS = attacker's script runs in your page and can read localStorage. CSRF = another site makes the browser send your cookie. httpOnly stops the first; SameSite and CSRF tokens stop the second.", ar: "الـ XSS معناه script بتاع مهاجم بيشتغل في صفحتك، ويقدر يقرا الـ localStorage. والـ CSRF معناه موقع تاني بيخلي المتصفح يبعت الكوكي بتاعك. الـ httpOnly بيمنع الأول. و SameSite و CSRF tokens بيمنعوا التاني." }
   },
   {
     id: "virtualization", name: "List virtualization",
     tagline: { en: "Render only what is on screen.", ar: "ارسم اللي ظاهر على الشاشة بس." },
     what: { en: "A virtual list keeps a few DOM nodes and swaps their content while you scroll, so 10,000 rows cost the same as 30.", ar: "الـ virtual list بتمسك عدد قليل من الـ DOM nodes وبتبدل محتواها وانت بتعمل scroll، فـ 10,000 صف بيكلفوا زي 30." },
-    when: { en: "Long chats, feeds, big tables. Variable heights or reverse scroll → react-virtuoso; fixed heights → react-window; full control → TanStack Virtual.", ar: "شاتات طويلة، feeds، جداول كبيرة. أطوال مختلفة أو scroll عكسي ← react-virtuoso؛ أطوال ثابتة ← react-window؛ تحكم كامل ← TanStack Virtual." },
+    when: { en: "Long chats, feeds, big tables. Variable heights or reverse scroll → react-virtuoso; fixed heights → react-window; full control → TanStack Virtual.", ar: "شاتات طويلة، و feeds، وجداول كبيرة. لو الأطوال مختلفة أو الـ scroll بالعكس، react-virtuoso. ولو الأطوال ثابتة، react-window. ولو عايز تحكم كامل، TanStack Virtual." },
     pitfall: { en: "Find-in-page (Ctrl+F) and screen readers only see rendered rows.", ar: "البحث في الصفحة (Ctrl+F) وقارئات الشاشة بيشوفوا الصفوف المرسومة بس." },
     q: "How do you load older messages without the list jumping?", a: { en: "Prepend the page and shift the index base (Virtuoso's firstItemIndex) so the visible item keeps its position.", ar: "ضيف الصفحة فوق وزحّح بداية الـ index (firstItemIndex في Virtuoso) فالعنصر الظاهر يفضل في مكانه." }
   },
@@ -52,7 +52,7 @@ HANDBOOK.concepts = [
     id: "url-state", name: "The URL as state",
     tagline: { en: "If refresh should keep it, put it in the URL.", ar: "لو الـ refresh لازم يحافظ عليه، حطه في الـ URL." },
     what: { en: "Filters, search, page number and tabs stored in search params survive refresh, Back and sharing.", ar: "الفلاتر والبحث ورقم الصفحة والتابات لو في الـ search params بيفضلوا بعد الـ refresh والـ Back والمشاركة." },
-    when: { en: "Lists and dashboards. nuqs gives typed parsers; plain useSearchParams works too.", ar: "القوايم والداشبوردات. nuqs بيدي parsers بـ types؛ و useSearchParams العادي شغال برضه." },
+    when: { en: "Lists and dashboards. nuqs gives typed parsers; plain useSearchParams works too.", ar: "القوايم والداشبوردات. الـ nuqs بيدي parsers بـ types، و useSearchParams العادي شغال برضه." },
     pitfall: { en: "Two different ways to read the same params in one app.", ar: "طريقتين مختلفتين تقرا بيهم نفس الـ params في نفس التطبيق." },
     q: "Why not keep filters in useState?", a: { en: "They'd reset on refresh and couldn't be shared or restored with Back.", ar: "هيتمسحوا مع الـ refresh، ومينفعش تبعتهم في لينك أو ترجعلهم بالـ Back." }
   },
@@ -86,13 +86,13 @@ HANDBOOK.concepts = [
     what: { en: "<b>Pages Router</b> (<code>pages/</code>): getServerSideProps / getStaticProps, next/head. <b>App Router</b> (<code>app/</code>, stable since 13.4): nested layouts, React Server Components by default, metadata API, server actions, loading/error files.", ar: "<b>Pages Router</b> (<code>pages/</code>): getServerSideProps / getStaticProps، و next/head. <b>App Router</b> (<code>app/</code>، stable من 13.4): layouts متداخلة، React Server Components بالـ default، metadata API، server actions، وملفات loading/error." },
     when: { en: "New projects: App Router. Old ones can migrate page by page — both routers work in one app.", ar: "مشاريع جديدة: App Router. والقديمة تقدر تنقل صفحة صفحة — الاتنين بيشتغلوا في نفس التطبيق." },
     pitfall: { en: "Adding \"use client\" everywhere and losing the server-component benefits.", ar: "تحط \"use client\" في كل حتة وتخسر مميزات الـ server components." },
-    q: "What is a Server Component?", a: { en: "A component rendered on the server only; it can read data directly and sends no JavaScript for itself to the browser. Interactive parts are Client Components.", ar: "component بيترسم على السيرفر بس؛ يقدر يقرا الداتا مباشرة ومش بيبعت JavaScript بتاعه للمتصفح. والأجزاء التفاعلية بتبقى Client Components." }
+    q: "What is a Server Component?", a: { en: "A component rendered on the server only; it can read data directly and sends no JavaScript for itself to the browser. Interactive parts are Client Components.", ar: "component بيترسم على السيرفر بس. يقدر يقرا الداتا مباشرة، ومش بيبعت الـ JavaScript بتاعه للمتصفح. والأجزاء التفاعلية بتبقى Client Components." }
   },
   {
     id: "i18n", name: "i18n and RTL",
-    tagline: { en: "Translations are half of it; direction is the other half.", ar: "الترجمة نص الموضوع؛ والاتجاه النص التاني." },
+    tagline: { en: "Translations are half of it; direction is the other half.", ar: "الترجمة نص الموضوع، والاتجاه النص التاني." },
     what: { en: "Locale in the URL (<code>/ar</code>, <code>/en</code>), message files, <code>dir=\"rtl\"</code> on the page, and logical CSS (<code>margin-inline-start</code>) so layouts flip.", ar: "اللغة في الـ URL (<code>/ar</code>، <code>/en</code>)، ملفات ترجمة، <code>dir=\"rtl\"</code> على الصفحة، و CSS منطقي (<code>margin-inline-start</code>) علشان الـ layout يتقلب." },
-    when: { en: "next-intl for the App Router; react-i18next / next-i18next for the Pages Router.", ar: "next-intl للـ App Router؛ و react-i18next / next-i18next للـ Pages Router." },
+    when: { en: "next-intl for the App Router; react-i18next / next-i18next for the Pages Router.", ar: "الـ next-intl للـ App Router. و react-i18next أو next-i18next للـ Pages Router." },
     pitfall: { en: "Locale routing without translated text (okoRent) is not “bilingual”.", ar: "routing باللغة من غير نصوص مترجمة (okoRent) مش اسمه «bilingual»." },
     q: "How do you handle RTL in CSS?", a: { en: "Logical properties (inline-start/end), dir on the root, and checking icons and arrows that must flip.", ar: "logical properties (inline-start/end)، و dir على الـ root، ومراجعة الأيقونات والأسهم اللي لازم تتقلب." }
   },

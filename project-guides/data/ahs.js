@@ -32,7 +32,7 @@ HANDBOOK.projects.push({
       { en: "Editor that inserts variables (from the service's questions) and operators at the cursor, with name suggestions", ar: "Editor بيحط المتغيرات (من أسئلة الخدمة) والعلامات مكان الـ cursor، ومعاه اقتراحات للأسماء" },
       { en: "Instant validation with mathjs: parse to a tree, allow only known variables and + − × ÷ ^ %, no functions, catch divide-by-zero", ar: "Validation فوري بـ mathjs: يحول المعادلة لشجرة، يسمح بس بالمتغيرات المعروفة و + − × ÷ ^ %، مفيش functions، ويمسك القسمة على صفر" },
       { en: "Output type, unique formula names, rounding warnings, a test panel", ar: "نوع الناتج، أسماء formulas مش متكررة، تحذيرات التقريب، و test panel" },
-      { en: "First version also had drag-and-drop and its own parser/evaluator; the team later simplified it", ar: "أول نسخة كان فيها drag-and-drop و parser/evaluator خاص؛ التيم بعدين بسّطها" }
+      { en: "First version also had drag-and-drop and its own parser/evaluator; the team later simplified it", ar: "أول نسخة كان فيها drag-and-drop و parser/evaluator خاص بيها. والتيم بعدين بسّطها" }
     ]},
     { title: { en: "TanStack Query migration (MEDX-879)", ar: "النقل لـ TanStack Query (MEDX-879)" }, items: [
       { en: "Shared QueryClient with defaults + devtools", ar: "QueryClient مشترك بـ defaults و devtools" },
@@ -45,8 +45,8 @@ HANDBOOK.projects.push({
 
   myRole: [
     { en: "52 commits (Dec 2025 – Feb 2026) in a repo with ~3.9k commits and many developers. Then I moved to other nWeave projects.", ar: "52 كوميت (ديسمبر 2025 – فبراير 2026) في repo فيه حوالي 3.9k كوميت ومطورين كتير. وبعدها اتنقلت لمشاريع تانية في nWeave." },
-    { en: "<b>Formula builder: I built it</b> — drag-and-drop editor, my own parser and evaluator, mathjs validation, test panel — and it was merged into <code>dev</code>. Later a teammate restructured it into a simpler text editor; about half of today's module and the whole validator are still my code.", ar: "<b>الـ Formula builder: اتبنى مع زميل.</b> أنا عملت أول نسخة؛ وزميل عمل restructure وزوّد عليها. على <code>dev</code> النهارده حوالي نص سطور الموديول بتوعي، والـ validator بتاع mathjs كله بتاعي." },
-    { en: "<b>TanStack Query: I led it</b> on branch MEDX-879. The base (QueryClient + the <code>src/query</code> pattern) shipped, and the team uses it for new modules; most screens still use <code>useAxios</code> and move over in stages.", ar: "<b>TanStack Query: أنا اللي قُدته</b> على branch اسمه MEDX-879. الأساس (QueryClient و شكل <code>src/query</code>) نزل، والتيم بيستخدمه في الموديولات الجديدة؛ ومعظم الشاشات لسه على <code>useAxios</code> وبتتنقل على مراحل." },
+    { en: "<b>Formula builder: I built it</b> — drag-and-drop editor, my own parser and evaluator, mathjs validation, test panel — and it was merged into <code>dev</code>. Later a teammate restructured it into a simpler text editor; about half of today's module and the whole validator are still my code.", ar: "<b>الـ formula builder: اتبنى مع زميل.</b> أنا عملت أول نسخة، وزميل عمل لها restructure وزوّد عليها. والنهارده على <code>dev</code>، حوالي نص سطور الموديول بتوعي، والـ validator بتاع mathjs كله بتاعي." },
+    { en: "<b>TanStack Query: I led it</b> on branch MEDX-879. The base (QueryClient + the <code>src/query</code> pattern) shipped, and the team uses it for new modules; most screens still use <code>useAxios</code> and move over in stages.", ar: "<b>الـ TanStack Query: أنا اللي قُدته</b>، على branch اسمه MEDX-879. الأساس نزل (الـ QueryClient وشكل <code>src/query</code>)، والتيم بيستخدمه في الموديولات الجديدة. ومعظم الشاشات لسه على <code>useAxios</code>، وبتتنقل على مراحل." },
     { en: "Not mine: Azure MSAL, SignalR, the QuestionMaker. They were in the codebase before me.", ar: "مش بتوعي: Azure MSAL، و SignalR، و الـ QuestionMaker. كانوا موجودين قبلي." }
   ],
 
@@ -65,7 +65,7 @@ HANDBOOK.projects.push({
       chose: "TanStack Query", alts: ["Keep useAxios + useEffect", "RTK Query", "SWR"],
       why: { en: "<code>useAxios</code> + <code>useEffect</code> meant every screen managed its own loading, errors and refetching, the same order was fetched many times, and two quick actions could race. TanStack Query gives one cache, request dedupe, invalidation after writes and devtools.", ar: "<code>useAxios</code> مع <code>useEffect</code> معناها إن كل شاشة بتدير الـ loading والـ errors والـ refetch لوحدها، ونفس الأوردر بيتجاب كذا مرة، واتنين أكشن ورا بعض ممكن يتسابقوا. TanStack Query بيدي كاش واحد، ويمنع تكرار الـ requests، و invalidation بعد الكتابة، و devtools." },
       both: { v: "partly", en: "Yes during a migration: old screens keep <code>useAxios</code>, new ones use queries. Long-term, one way only — otherwise data is fetched and cached two ways.", ar: "أيوه وقت الـ migration: الشاشات القديمة على <code>useAxios</code> والجديدة على queries. على المدى الطويل طريقة واحدة بس — غير كده الداتا بتتجاب وتتخزن بطريقتين." },
-      better: { en: "Same tool. RTK Query only makes sense if the app already lives in Redux; this app uses Zustand.", ar: "نفس الأداة. RTK Query بيبقى منطقي لو التطبيق أصلًا على Redux؛ وده على Zustand." },
+      better: { en: "Same tool. RTK Query only makes sense if the app already lives in Redux; this app uses Zustand.", ar: "نفس الأداة. الـ RTK Query بيبقى منطقي لو الـ app أصلًا على Redux، وده على Zustand." },
       say: "The custom hook made every screen own its loading and caching, so I moved server state to TanStack Query to get one cache, dedupe and invalidation.",
       concept: "server-state"
     },
@@ -105,7 +105,7 @@ HANDBOOK.projects.push({
     {
       title: { en: "Validating a formula", ar: "إزاي نتأكد إن المعادلة صح" },
       chose: "mathjs AST + allowlist (client) and the API (final)", alts: ["eval / new Function", "Regex", "Server only"],
-      why: { en: "Formulas decide how much a patient is billed, so they must be safe and correct. mathjs <b>parses to a tree</b>; I walk it and allow only the service's variables and basic operators — no functions, no <code>eval</code>. A trial run with every variable = 1 catches divide-by-zero. The API's <code>EvaluateExpressionSyntax</code> stays the final check before saving.", ar: "المعادلات بتحدد المريض هيدفع كام، فلازم تبقى آمنة وصح. mathjs <b>بيحوّل المعادلة لشجرة</b>؛ وأنا بمشي عليها وأسمح بس بمتغيرات الخدمة والعلامات الأساسية — مفيش functions، ومفيش <code>eval</code>. وتجربة بكل المتغيرات = 1 بتمسك القسمة على صفر. والـ API (<code>EvaluateExpressionSyntax</code>) هو الفحص النهائي قبل الحفظ." },
+      why: { en: "Formulas decide how much a patient is billed, so they must be safe and correct. mathjs <b>parses to a tree</b>; I walk it and allow only the service's variables and basic operators — no functions, no <code>eval</code>. A trial run with every variable = 1 catches divide-by-zero. The API's <code>EvaluateExpressionSyntax</code> stays the final check before saving.", ar: "المعادلات بتحدد المريض هيدفع كام، فلازم تبقى آمنة وصح. الـ mathjs <b>بيحوّل المعادلة لشجرة</b>، وأنا بمشي عليها. وبسمح بس بمتغيرات الخدمة والعلامات الأساسية، فمفيش functions ومفيش <code>eval</code>. وتجربة بكل المتغيرات = 1 بتمسك القسمة على صفر. والـ API (<code>EvaluateExpressionSyntax</code>) هو الفحص النهائي قبل الحفظ." },
       both: { v: "yes", en: "Client check for instant feedback, server check as the source of truth — always both for money.", ar: "فحص في الفرونت علشان الرد يبقى فوري، وفحص في السيرفر كمصدر الحقيقة — في الفلوس لازم الاتنين." },
       better: { en: "Same split. I'd add unit tests for tricky expressions (nested brackets, % and ^ precedence).", ar: "نفس التقسيم. كنت هضيف unit tests للمعادلات الصعبة (أقواس جوه أقواس، وأولوية % و ^)." },
       say: "I never eval user formulas: mathjs parses them into a tree, I allow only known variables and operators, and the server re-validates before saving."
@@ -153,7 +153,7 @@ HANDBOOK.projects.push({
     },
     {
       title: { en: "Service + query hook", ar: "Service و query hook" },
-      body: { en: "The service knows HTTP; the hook knows caching.", ar: "الـ service يعرف الـ HTTP؛ والـ hook يعرف الـ caching." },
+      body: { en: "The service knows HTTP; the hook knows caching.", ar: "الـ service يعرف الـ HTTP، والـ hook يعرف الـ caching." },
       code: "export const ordersService = {\n  get: (id) => api.get(`/orders/${id}`).then(r => r.data),\n  update: (id, body) => api.put(`/orders/${id}`, body).then(r => r.data),\n};\n\nexport const useOrder = (id) =>\n  useQuery({ queryKey: [\"orders\", id], queryFn: () => ordersService.get(id), enabled: !!id });\n\nexport const useUpdateOrder = () => {\n  const qc = useQueryClient();\n  return useMutation({\n    mutationFn: ({ id, body }) => ordersService.update(id, body),\n    onSuccess: (_, { id }) => qc.invalidateQueries({ queryKey: [\"orders\", id] }),\n  });\n};"
     },
     {
@@ -165,7 +165,7 @@ HANDBOOK.projects.push({
 
   hooks: [
     { group: { en: "On the migration branch (src/query)", ar: "على branch الـ migration (src/query)" }, items: [
-      { name: "useMutation", count: "×169", what: { en: "Every write: create/update/accept orders, invite, resend, delete…", ar: "كل كتابة: إنشاء وتعديل وقبول الأوردرات، الدعوة، إعادة الإرسال، الحذف…" }, remember: { en: "Some reads were also wrapped as mutations (search-as-you-type, counts) — a smell; they should be queries.", ar: "شوية قراية اتعملت كـ mutations (البحث وانت بتكتب، الأعداد) — ودي حاجة غلط؛ المفروض تبقى queries." } },
+      { name: "useMutation", count: "×169", what: { en: "Every write: create/update/accept orders, invite, resend, delete…", ar: "كل كتابة: إنشاء وتعديل وقبول الأوردرات، الدعوة، إعادة الإرسال، الحذف…" }, remember: { en: "Some reads were also wrapped as mutations (search-as-you-type, counts) — a smell; they should be queries.", ar: "شوية قراية اتعملت كـ mutations، زي البحث وإنت بتكتب، والأعداد. ودي غلطة، المفروض تبقى queries." } },
       { name: "useQuery", count: "×49", what: { en: "Order details, lists, settings, dashboards", ar: "تفاصيل الأوردر، القوايم، الإعدادات، الداشبورد" }, remember: { en: "<code>enabled: !!id</code> waits for the id.", ar: "<code>enabled: !!id</code> بيستنى الـ id." } },
       { name: "invalidateQueries", count: "×53", what: { en: "Refresh after writes", ar: "تحديث بعد الكتابة" }, remember: { en: "Hand-written keys must match exactly — a factory would help.", ar: "الـ keys المكتوبة بإيدك لازم تطابق بالظبط — الـ factory كان هيساعد." } },
       { name: "useQueryClient", count: "×44", what: { en: "Access the cache inside mutation hooks", ar: "الوصول للكاش جوه الـ mutation hooks" }, remember: { en: "One shared QueryClient created at the app root.", ar: "QueryClient واحد مشترك متعمل في أول التطبيق." } }
@@ -180,8 +180,8 @@ HANDBOOK.projects.push({
   problems: [
     {
       title: { en: "Same data fetched again and again", ar: "نفس الداتا بتتجاب كذا مرة" },
-      problem: { en: "With <code>useAxios</code> + <code>useEffect</code>, every component fetched on mount; the order page, its sidebar and notifications each loaded the same data, and two quick clicks could race.", ar: "مع <code>useAxios</code> و <code>useEffect</code>، كل component بيعمل fetch أول ما يظهر؛ صفحة الأوردر والـ sidebar والإشعارات كل واحد بيجيب نفس الداتا، ودوستين ورا بعض ممكن يتسابقوا." },
-      fix: { en: "Moved those domains to query hooks with shared keys; writes invalidate the affected keys.", ar: "نقلت الـ domains دي لـ query hooks بـ keys مشتركة؛ والكتابة بتعمل invalidate للـ keys اللي اتأثرت." },
+      problem: { en: "With <code>useAxios</code> + <code>useEffect</code>, every component fetched on mount; the order page, its sidebar and notifications each loaded the same data, and two quick clicks could race.", ar: "مع <code>useAxios</code> و <code>useEffect</code>، كل component بيعمل fetch أول ما يظهر. فصفحة الأوردر والـ sidebar والإشعارات، كل واحد بيجيب نفس الداتا. ودوستين ورا بعض ممكن يتسابقوا." },
+      fix: { en: "Moved those domains to query hooks with shared keys; writes invalidate the affected keys.", ar: "نقلت الـ domains دي لـ query hooks بـ keys مشتركة. والكتابة بتعمل invalidate للـ keys اللي اتأثرت." },
       result: { en: "One request per key on the migrated screens, and consistent data after edits.", ar: "Request واحد لكل key في الشاشات اللي اتنقلت، وداتا متسقة بعد التعديل." },
       lesson: { en: "I don't have a measured % — don't quote one.", ar: "معنديش نسبة متقاسة — متقولش رقم." }
     },
@@ -190,7 +190,7 @@ HANDBOOK.projects.push({
       problem: { en: "The QueryClient used <code>cacheTime</code>, which TanStack Query v5 renamed to <code>gcTime</code>, so the setting did nothing.", ar: "الـ QueryClient كان فيه <code>cacheTime</code>، و v5 غيّر اسمها لـ <code>gcTime</code>، فالإعداد ماكانش بيعمل حاجة." },
       fix: { en: "Switched to <code>gcTime</code> (commit 5ce75a0d).", ar: "غيرتها لـ <code>gcTime</code> (كوميت 5ce75a0d)." },
       result: { en: "Cache lifetime works as intended.", ar: "مدة الكاش بقت شغالة زي ما المفروض." },
-      lesson: { en: "Read the migration guide when a major version is installed; JS won't warn you — TypeScript would have.", ar: "اقرا الـ migration guide لما تنزّل major version؛ الـ JS مش هيحذرك — TypeScript كان هيحذر." }
+      lesson: { en: "Read the migration guide when a major version is installed; JS won't warn you — TypeScript would have.", ar: "اقرا الـ migration guide لما تنزّل major version. الـ JS مش هيحذّرك، لكن TypeScript كان هيحذّرك." }
     },
     {
       title: { en: "Unsafe or broken formulas", ar: "معادلات خطر أو بايظة" },
@@ -201,17 +201,17 @@ HANDBOOK.projects.push({
   ],
 
   star: {
-    s: { en: "A large healthcare platform fetched data with a custom hook: duplicated requests, scattered loading logic and occasional race conditions; many developers committed every day.", ar: "منصة صحية كبيرة كانت بتجيب الداتا بـ hook مخصوص: requests متكررة، loading متفرق، وأحيانًا race conditions؛ ومطورين كتير بيعملوا كوميت كل يوم." },
+    s: { en: "A large healthcare platform fetched data with a custom hook: duplicated requests, scattered loading logic and occasional race conditions; many developers committed every day.", ar: "منصة صحية كبيرة كانت بتجيب الداتا بـ hook مخصوص. فكان فيه requests متكررة، و loading متفرق، وأحيانًا race conditions. ومطورين كتير بيعملوا commit كل يوم." },
     t: { en: "Introduce TanStack Query without blocking other teams.", ar: "أدخّل TanStack Query من غير ما أعطّل التيمز التانية." },
     a: { en: "Set up a shared QueryClient and a services → hooks pattern, migrated 25 domains on a branch one by one, and wrote a guide for the team.", ar: "عملت QueryClient مشترك وشكل services ← hooks، ونقلت 25 domain على branch واحد ورا التاني، وكتبت guide للتيم." },
-    r: { en: "The base and the pattern shipped and the team uses them for new modules; the remaining screens move over in stages. Lesson: merge per domain instead of one long branch.", ar: "الأساس والشكل نزلوا والتيم بيستخدمهم في الموديولات الجديدة؛ والشاشات الباقية بتتنقل على مراحل. الدرس: merge لكل domain بدل branch واحد طويل." }
+    r: { en: "The base and the pattern shipped and the team uses them for new modules; the remaining screens move over in stages. Lesson: merge per domain instead of one long branch.", ar: "الأساس والشكل نزلوا، والتيم بيستخدمهم في الموديولات الجديدة. والشاشات الباقية بتتنقل على مراحل. والدرس: merge لكل domain، بدل branch واحد طويل." }
   },
 
   qa: [
-    { q: "Why move from a custom Axios hook to TanStack Query?", a: { en: "Server state needs caching, dedupe, invalidation and retry rules. The custom hook rebuilt that per screen; TanStack Query does it once.", ar: "الـ server state محتاج caching، ومنع التكرار، و invalidation، وقواعد retry. الـ hook المخصوص كان بيعمل ده في كل شاشة لوحدها؛ و TanStack Query بيعمله مرة واحدة." } },
+    { q: "Why move from a custom Axios hook to TanStack Query?", a: { en: "Server state needs caching, dedupe, invalidation and retry rules. The custom hook rebuilt that per screen; TanStack Query does it once.", ar: "الـ server state محتاج caching، ومنع للتكرار، و invalidation، وقواعد retry. الـ hook المخصوص كان بيعمل ده في كل شاشة لوحدها. أما TanStack Query فبيعمله مرة واحدة." } },
     { q: "How do you migrate a big codebase safely?", a: { en: "Strangler approach: land the base first, move one domain at a time behind the same UI, keep old and new side by side, merge small. My mistake was keeping one long branch.", ar: "الـ strangler approach: نزّل الأساس الأول، وانقل domain واحد كل مرة من غير ما الواجهة تتغير، وخلي القديم والجديد جنب بعض، واعمل merge صغير. غلطتي إني سبت branch واحد طويل." } },
-    { q: "How did you make user-written formulas safe?", a: { en: "No eval. mathjs parses to an AST; I allow only known variables and basic operators, block functions, do a trial run, and the server validates again before saving.", ar: "مفيش eval. mathjs بيعمل AST؛ وأنا بسمح بس بالمتغيرات المعروفة والعلامات الأساسية، وبمنع الـ functions، وبعمل تجربة، والسيرفر بيعمل validation تاني قبل الحفظ." } },
-    { q: "When would you use useMutation for a read?", a: { en: "Almost never. In this codebase some searches were mutations because they ran from event handlers; a query with <code>enabled</code> and a debounced key is the right tool.", ar: "تقريبًا أبدًا. في الكود ده شوية بحث اتعمل mutations لأنه كان بيتنادى من event handlers؛ الصح query بـ <code>enabled</code> و key عليه debounce." } }
+    { q: "How did you make user-written formulas safe?", a: { en: "No eval. mathjs parses to an AST; I allow only known variables and basic operators, block functions, do a trial run, and the server validates again before saving.", ar: "مفيش eval. الـ mathjs بيعمل AST، وأنا بسمح بس بالمتغيرات المعروفة والعلامات الأساسية. وبمنع الـ functions، وبعمل تجربة. والسيرفر بيعمل validation تاني قبل الحفظ." } },
+    { q: "When would you use useMutation for a read?", a: { en: "Almost never. In this codebase some searches were mutations because they ran from event handlers; a query with <code>enabled</code> and a debounced key is the right tool.", ar: "تقريبًا أبدًا. في الكود ده، شوية بحث اتعمل mutations لأنه كان بيتنادى من event handlers. والصح query بـ <code>enabled</code>، و key عليه debounce." } }
   ],
 
   terms: ["server state", "request deduplication", "query invalidation", "staleTime / gcTime", "strangler migration", "service layer", "AST", "allowlist", "mathjs", "client vs server validation"],

@@ -22,7 +22,7 @@ HANDBOOK.projects.push({
 
   pitch: [
     { en: "Smart FAQ lets a healthcare operations team find <b>approved answers</b> fast. Knowledge Managers write articles, Admins review and publish them, and every answer is traceable.", ar: "Smart FAQ بيخلي تيم التشغيل يلاقي <b>إجابات متراجعة ومعتمدة</b> بسرعة. الـ Knowledge Managers بيكتبوا المقالات، والأدمن بيراجع وينشر، وكل إجابة ليها مصدر." },
-    { en: "I built the frontend <b>from the first commit</b>: architecture, design system, 27 screens, data layer, auth and tests — React 19, TypeScript, TanStack Query, Tailwind, shadcn/ui.", ar: "بنيت الفرونت إند <b>من أول كوميت</b>: الـ architecture، الـ design system، 27 شاشة، الـ data layer، الـ auth، والـ tests — بـ React 19 و TypeScript و TanStack Query و Tailwind و shadcn/ui." },
+    { en: "I built the frontend <b>from the first commit</b>: architecture, design system, 27 screens, data layer, auth and tests — React 19, TypeScript, TanStack Query, Tailwind, shadcn/ui.", ar: "بنيت الفرونت إند <b>من أول commit</b>: الـ architecture، والـ design system، و 27 شاشة، والـ data layer، والـ auth، والـ tests. والـ stack: React 19 و TypeScript و TanStack Query و Tailwind و shadcn/ui." },
     { en: "Hardest parts: a <b>secure cookie session with XSRF tokens</b>, <b>safe concurrent edits with ETags</b>, and keeping a big admin table fast (<b>20 ms → 2 ms</b> per re-render).", ar: "أصعب حاجات: <b>session بالكوكي مع XSRF token</b>، <b>تعديل آمن لما اتنين يعدلوا نفس الحاجة (ETag)</b>، وإن جدول الأدمن الكبير يفضل سريع (<b>من 20ms لـ 2ms</b> في كل re-render)." }
   ],
 
@@ -47,9 +47,9 @@ HANDBOOK.projects.push({
       { en: "Review queue, compare a correction with the published version", ar: "قايمة المراجعة، ومقارنة التصحيح بالنسخة المنشورة" }
     ]},
     { title: { en: "Admin", ar: "الأدمن" }, items: [
-      { en: "Users: invite, edit, role, disable, delete; MFA reset", ar: "اليوزرز: دعوة، تعديل، role، إيقاف، حذف؛ وإعادة ضبط الـ MFA" },
+      { en: "Users: invite, edit, role, disable, delete; MFA reset", ar: "اليوزرز: دعوة، وتعديل، و role، وإيقاف، وحذف. وإعادة ضبط الـ MFA" },
       { en: "Department/category tree with drag-and-drop (mouse + keyboard)", ar: "شجرة الأقسام والتصنيفات بالـ drag-and-drop (ماوس وكيبورد)" },
-      { en: "Audit log with action/result/date filters; search synonyms; per-user time zone", ar: "Audit log بفلاتر للأكشن والنتيجة والتاريخ؛ مرادفات البحث؛ time zone لكل يوزر" }
+      { en: "Audit log with action/result/date filters; search synonyms; per-user time zone", ar: "audit log بفلاتر للأكشن والنتيجة والتاريخ. ومرادفات البحث. و time zone لكل يوزر" }
     ]}
   ],
 
@@ -81,7 +81,7 @@ HANDBOOK.projects.push({
     {
       title: { en: "Login session and CSRF", ar: "الـ session والحماية من CSRF" },
       chose: "Cookie session + XSRF header (double submit)", alts: ["JWT in localStorage", "JWT in memory + refresh token"],
-      why: { en: "The backend sets an httpOnly session cookie, so scripts can't steal it. Because cookies are sent automatically, every unsafe call (POST/PUT/PATCH/DELETE) also sends an <b>X-XSRF-TOKEN</b> header read from a <code>__Host-</code> cookie. If the token expired, the client fetches a new one and <b>retries once</b>; parallel calls share one refresh.", ar: "الباك إند بيحط session cookie نوعها httpOnly، فالـ scripts ماتقدرش تسرقه. وعلشان الكوكي بيتبعت لوحده، كل request بيغير داتا (POST/PUT/PATCH/DELETE) بيبعت كمان header اسمه <b>X-XSRF-TOKEN</b> بنقراه من كوكي <code>__Host-</code>. لو التوكن خلص، الـ client بيجيب واحد جديد و<b>يعيد مرة واحدة</b>؛ والـ requests اللي بتحصل في نفس الوقت بيستنوا نفس الـ refresh." },
+      why: { en: "The backend sets an httpOnly session cookie, so scripts can't steal it. Because cookies are sent automatically, every unsafe call (POST/PUT/PATCH/DELETE) also sends an <b>X-XSRF-TOKEN</b> header read from a <code>__Host-</code> cookie. If the token expired, the client fetches a new one and <b>retries once</b>; parallel calls share one refresh.", ar: "الـ backend بيحط session cookie نوعها httpOnly، فالـ scripts ماتقدرش تسرقها. وعلشان الكوكي بيتبعت لوحده، كل request بيغيّر داتا (POST/PUT/PATCH/DELETE) بيبعت كمان header اسمه <b>X-XSRF-TOKEN</b>، وبنقراه من كوكي <code>__Host-</code>. ولو الـ token خلص، الـ client بيجيب واحد جديد و<b>يعيد الـ request مرة واحدة</b>. والـ requests اللي بتحصل في نفس الوقت بيستنوا نفس الـ refresh." },
       both: { v: "no", en: "Mixing a cookie session with a bearer token in storage gives two auth paths to secure. Pick one.", ar: "لو خلطت session بالكوكي مع توكن في الـ storage يبقى عندك طريقتين auth لازم تأمنهم. اختار واحدة." },
       better: { en: "For a browser app talking to its own API, cookie + antiforgery is still the safest default (BFF pattern).", ar: "لـ app في المتصفح بيكلم الـ API بتاعه، الكوكي مع antiforgery لسه أأمن اختيار (BFF pattern)." },
       say: "The session lives in an httpOnly cookie, and every state-changing request carries an antiforgery header; if the token rotates, the client refreshes it once and retries.",
@@ -101,7 +101,7 @@ HANDBOOK.projects.push({
       chose: "Keys grouped by scope", alts: ["Each feature imports the others' keys", "Refetch everything"],
       why: { en: "Every key starts with a scope (<code>knowledge</code>, <code>drafts</code>, <code>admin</code>…). When an admin publishes, the mutation invalidates <code>[\"knowledge\"]</code> without importing the knowledge feature. Features stay independent.", ar: "كل key بيبدأ بـ scope (<code>knowledge</code>، <code>drafts</code>، <code>admin</code>…). لما الأدمن ينشر، الـ mutation بيعمل invalidate لـ <code>[\"knowledge\"]</code> من غير ما يعمل import للـ feature بتاعة الـ knowledge. فالـ features تفضل منفصلة." },
       both: { v: "yes", en: "Scopes and per-feature key factories work together: the factory builds keys, the scope is their first part.", ar: "الـ scopes والـ key factories بيشتغلوا مع بعض: الـ factory بيبني الـ keys، والـ scope أول جزء فيهم." },
-      better: { en: "Same approach; it scales well. TanStack's <code>queryOptions()</code> helper makes the factories even more typed.", ar: "نفس الطريقة؛ بتكبر كويس. والـ helper <code>queryOptions()</code> بيخلي الـ factories عليها types أكتر." },
+      better: { en: "Same approach; it scales well. TanStack's <code>queryOptions()</code> helper makes the factories even more typed.", ar: "نفس الطريقة، وبتكبر كويس. والـ helper اللي اسمه <code>queryOptions()</code> بيخلي الـ factories عليها types أكتر." },
       say: "Query keys start with a feature scope, so one feature can refresh another's data without importing it.",
       concept: "query-keys"
     },
@@ -109,14 +109,14 @@ HANDBOOK.projects.push({
       title: { en: "Who can do what", ar: "مين يقدر يعمل إيه" },
       chose: "Capabilities from the API", alts: ["Check the role name in the UI", "Hard-coded permission tables"],
       why: { en: "The session lists <b>capabilities</b> (<code>submission.publish</code>, <code>users.invite</code>…). Navigation, guards and buttons key on those, never on the role. When the backend changes what a role may do, the UI follows with no deploy. The backend still re-checks every request.", ar: "الـ session فيها قايمة <b>capabilities</b> (<code>submission.publish</code>، <code>users.invite</code>…). الـ navigation والـ guards والزراير بيشوفوا دي، مش اسم الـ role. لو الباك إند غيّر صلاحيات role، الواجهة بتتغير من غير deploy. والباك إند بيشيك تاني على كل request." },
-      both: { v: "partly", en: "The role is still shown as a label; only access decisions use capabilities.", ar: "اسم الـ role لسه بيظهر كـ label؛ بس قرارات الصلاحيات بتستخدم الـ capabilities." },
+      both: { v: "partly", en: "The role is still shown as a label; only access decisions use capabilities.", ar: "اسم الـ role لسه بيظهر كـ label. بس قرارات الصلاحيات بتستخدم الـ capabilities." },
       better: { en: "Same. It's how mature products do RBAC on the client.", ar: "نفس الحاجة. دي الطريقة اللي المنتجات الكبيرة بتعمل بيها RBAC في الفرونت." },
       say: "The UI never checks role names; it checks capabilities the API sends, so permissions live in one place and the server still enforces them."
     },
     {
       title: { en: "Two admins edit the same thing", ar: "اتنين أدمن يعدلوا نفس الحاجة" },
       chose: "ETag + If-Match (optimistic concurrency)", alts: ["Last write wins", "Locking"],
-      why: { en: "Each department, category, draft and setting comes with an <b>ETag</b>. Saving sends it in <code>If-Match</code>. If someone saved first, the API answers <b>412</b>; the UI reloads the tree and tells the admin, instead of silently overwriting.", ar: "كل قسم وتصنيف و draft وإعداد جاي معاه <b>ETag</b>. لما تحفظ بنبعته في <code>If-Match</code>. لو حد حفظ قبلك، الـ API بيرد <b>412</b>؛ والواجهة بتعيد تحميل الشجرة وتقول للأدمن، بدل ما تمسح شغل غيره من غير ما حد ياخد باله." },
+      why: { en: "Each department, category, draft and setting comes with an <b>ETag</b>. Saving sends it in <code>If-Match</code>. If someone saved first, the API answers <b>412</b>; the UI reloads the tree and tells the admin, instead of silently overwriting.", ar: "كل قسم وتصنيف و draft وإعداد جاي معاه <b>ETag</b>. ولما تحفظ، بنبعته في <code>If-Match</code>. ولو حد حفظ قبلك، الـ API بيرد <b>412</b>. والواجهة بتعيد تحميل الشجرة وتقول للأدمن، بدل ما تمسح شغل غيره من غير ما حد ياخد باله." },
       both: { v: "no", en: "It's one rule per resource: either you check the version or you don't.", ar: "قاعدة واحدة لكل resource: يا تشيك على النسخة يا لأ." },
       better: { en: "Same. Real-time presence (\"Sara is editing\") could be added on top, but ETags are the safety net.", ar: "نفس الحاجة. ممكن نضيف فوقها presence لايف («سارة بتعدل دلوقتي»)، بس الـ ETag هو شبكة الأمان." },
       say: "Edits send the ETag they were based on; a 412 means someone saved first, so we reload instead of overwriting their work."
@@ -126,7 +126,7 @@ HANDBOOK.projects.push({
       chose: "Generated from OpenAPI", alts: ["Hand-written interfaces", "tRPC / GraphQL codegen"],
       why: { en: "The backend publishes an OpenAPI contract (94 endpoints). <code>openapi-typescript</code> turns it into types, so a renamed field breaks the build, not production. One npm script refreshes them.", ar: "الباك إند بينشر OpenAPI contract (94 endpoint). <code>openapi-typescript</code> بيحوله لـ types، فلو field اسمه اتغير الـ build هو اللي يبوظ، مش الـ production. و script واحد بيحدّثهم." },
       both: { v: "partly", en: "Hand-written UI types can wrap the generated ones (e.g. a friendlier <code>Draft</code>), but the wire types should come from the contract.", ar: "ممكن تعمل types للواجهة فوق المتولدة (زي <code>Draft</code> أسهل)، بس types الـ API نفسها لازم تيجي من الـ contract." },
-      better: { en: "Same. tRPC only fits when both sides are TypeScript; here the backend is .NET.", ar: "نفس الحاجة. tRPC ينفع بس لو الناحيتين TypeScript؛ هنا الباك إند .NET." },
+      better: { en: "Same. tRPC only fits when both sides are TypeScript; here the backend is .NET.", ar: "نفس الحاجة. الـ tRPC ينفع بس لو الناحيتين TypeScript، وهنا الـ backend بـ .NET." },
       say: "Types are generated from the backend's OpenAPI contract, so contract changes show up as compile errors.",
       concept: "typescript"
     },
@@ -151,7 +151,7 @@ HANDBOOK.projects.push({
       title: { en: "How the app is tested", ar: "إزاي التطبيق بيتعمله test" },
       chose: "Vitest + Testing Library + a fake fetch", alts: ["MSW", "Mock the hooks", "Only E2E"],
       why: { en: "Tests replace only <code>fetch</code>. Every request still goes through the real HTTP client, query client and routes, and the fake answers use the contract's shapes and error codes. So a test of \"session expired\" exercises the same code as production.", ar: "الـ tests بتبدل الـ <code>fetch</code> بس. كل request لسه بيعدي على الـ HTTP client والـ query client والـ routes الحقيقيين، والردود المزيفة بنفس شكل الـ contract وأكواد الأخطاء. فـ test زي «الـ session خلصت» بيجرب نفس الكود اللي في الـ production." },
-      both: { v: "yes", en: "MSW does the same at the network level and also works in the browser; it could replace the helper. E2E on top is still useful.", ar: "MSW بيعمل نفس الحاجة على مستوى الشبكة وكمان بيشتغل في المتصفح؛ ممكن يحل محل الـ helper. و E2E فوقهم لسه مفيد." },
+      both: { v: "yes", en: "MSW does the same at the network level and also works in the browser; it could replace the helper. E2E on top is still useful.", ar: "الـ MSW بيعمل نفس الحاجة على مستوى الشبكة، وكمان بيشتغل في المتصفح، فممكن ياخد مكان الـ helper. والـ E2E فوقهم لسه مفيد." },
       better: { en: "MSW for the fake server plus a few Playwright E2E journeys.", ar: "MSW للسيرفر المزيف، ومعاه شوية رحلات E2E بـ Playwright." },
       say: "Tests fake only the network, so they run the real client, cache and routes; that's how 551 tests stay meaningful.",
       concept: "one-tool"
@@ -161,11 +161,11 @@ HANDBOOK.projects.push({
   flows: [
     { title: { en: "An unsafe request (e.g. publish)", ar: "Request بيغير داتا (زي النشر)" }, steps: [
       ["Mutation", { en: "useMutation calls http.post", ar: "useMutation بيكلم http.post" }],
-      ["XSRF", { en: "Read __Host-XSRF-TOKEN; fetch one if missing", ar: "اقرا __Host-XSRF-TOKEN؛ هات واحد لو مش موجود" }],
+      ["XSRF", { en: "Read __Host-XSRF-TOKEN; fetch one if missing", ar: "اقرا __Host-XSRF-TOKEN، وهات واحد لو مش موجود" }],
       ["Send", { en: "POST + X-XSRF-TOKEN (+ If-Match if editing)", ar: "POST + X-XSRF-TOKEN (+ If-Match لو تعديل)" }],
       ["Error?", { en: "problem+json → ApiError with a code", ar: "problem+json ← ApiError بـ code" }],
       ["Token rotated", { en: "refresh antiforgery once, retry", ar: "جدد الـ antiforgery مرة وأعد" }],
-      ["Success", { en: "invalidate [\"knowledge\"], [\"drafts\"]; toast", ar: "invalidate لـ [\"knowledge\"] و [\"drafts\"]؛ و toast" }]
+      ["Success", { en: "invalidate [\"knowledge\"], [\"drafts\"]; toast", ar: "invalidate لـ [\"knowledge\"] و [\"drafts\"]، و toast" }]
     ]},
     { title: { en: "Session ends", ar: "الـ session تخلص" }, steps: [
       ["401", { en: "Any query or mutation gets auth.session_expired", ar: "أي query أو mutation يرجعله auth.session_expired" }],
@@ -177,7 +177,7 @@ HANDBOOK.projects.push({
       ["Draft", { en: "Manager writes in TipTap", ar: "الـ Manager يكتب في TipTap" }],
       ["Submit", { en: "Validation, preview, submit", ar: "Validation و preview و submit" }],
       ["Review", { en: "Admin: return with feedback, or publish", ar: "الأدمن: يرجّعه بملاحظات أو ينشره" }],
-      ["Published", { en: "Readers see it; corrections compare with it", ar: "القرّاء يشوفوه؛ والتصحيحات تتقارن بيه" }]
+      ["Published", { en: "Readers see it; corrections compare with it", ar: "القرّاء يشوفوه، والتصحيحات تتقارن بيه" }]
     ]}
   ],
 
@@ -189,19 +189,19 @@ HANDBOOK.projects.push({
     },
     {
       title: { en: "One shared refresh for parallel calls", ar: "Refresh واحد لكل الـ calls اللي في نفس الوقت" },
-      body: { en: "Keep the in-flight promise; everyone awaits the same one.", ar: "احتفظ بالـ promise اللي شغال؛ والكل يستنى نفس الـ promise." },
+      body: { en: "Keep the in-flight promise; everyone awaits the same one.", ar: "احتفظ بالـ promise اللي شغال، والكل يستنى نفس الـ promise." },
       code: "let pending;\nexport function refreshToken() {\n  pending ??= fetch(\"/auth/antiforgery\").finally(() => { pending = undefined; });\n  return pending;\n}"
     },
     {
       title: { en: "Stop a list's menus from re-rendering", ar: "امنع منيو كل صف إنها تعمل re-render" },
-      body: { en: "memo + compare only what's shown; read the latest handler from a ref when clicked.", ar: "memo وقارن بس اللي ظاهر؛ واقرا آخر handler من ref وقت الضغط." },
+      body: { en: "memo + compare only what's shown; read the latest handler from a ref when clicked.", ar: "memo، وقارن اللي ظاهر بس. واقرا آخر handler من ref وقت الضغط." },
       code: "function RowMenu({ actions }) {\n  const latest = useRef(actions);\n  useEffect(() => { latest.current = actions; });\n  const run = (id) => latest.current.find(a => a.id === id)?.onSelect?.();\n  return <Menu items={actions} run={run} />; // Menu = memo(..., sameVisibleItems)\n}"
     }
   ],
 
   hooks: [
     { group: { en: "Data (TanStack Query)", ar: "الداتا (TanStack Query)" }, items: [
-      { name: "useQuery", count: "×37", what: { en: "Reads: session, articles, drafts, users, audit…", ar: "القراية: الـ session، المقالات، الـ drafts، اليوزرز، الـ audit…" }, remember: { en: "Key = scope + params; staleTime 30 s.", ar: "الـ key = scope + params؛ و staleTime 30 ثانية." } },
+      { name: "useQuery", count: "×37", what: { en: "Reads: session, articles, drafts, users, audit…", ar: "القراية: الـ session، المقالات، الـ drafts، اليوزرز، الـ audit…" }, remember: { en: "Key = scope + params; staleTime 30 s.", ar: "الـ key فيه الـ scope والـ params، والـ staleTime 30 ثانية." } },
       { name: "useMutation", count: "×32", what: { en: "Writes: publish, return, invite, reorder…", ar: "الكتابة: نشر، إرجاع، دعوة، ترتيب…" }, remember: { en: "No retries on mutations (default).", ar: "مفيش retry للـ mutations (الافتراضي)." } },
       { name: "invalidateQueries", count: "×40", what: { en: "Refresh by scope after a write", ar: "تحديث بالـ scope بعد أي كتابة" }, remember: { en: "Invalidate the scope, not one key, when many screens show the data.", ar: "اعمل invalidate للـ scope مش key واحد لو الداتا ظاهرة في شاشات كتير." } },
       { name: "setQueryData", count: "×18", what: { en: "Put the saved draft / new session straight into the cache", ar: "حط الـ draft المحفوظ أو الـ session الجديدة في الكاش على طول" }, remember: { en: "Saves a refetch when the response already has the new data.", ar: "بيوفر refetch لما الرد فيه الداتا الجديدة أصلًا." } }
@@ -228,43 +228,43 @@ HANDBOOK.projects.push({
     {
       title: { en: "Admin table lagged", ar: "جدول الأدمن كان بيهنج" },
       problem: { en: "Opening the Articles details panel was slow. Every row's ⋮ menu and status tooltip re-rendered — twice, because the table and the hidden phone cards were both drawn.", ar: "فتح الـ details panel في صفحة المقالات كان بطيء. منيو ⋮ بتاعة كل صف و tooltip الحالة كانوا بيعملوا re-render — مرتين، لأن الجدول وكروت الموبايل المستخبية الاتنين كانوا مرسومين." },
-      fix: { en: "Draw only one layout by screen width; <code>memo</code> the menu and badge with a comparison of what they show; read handlers from a ref; mount menu lists and tooltips on first open.", ar: "ارسم layout واحد بس على حسب عرض الشاشة؛ <code>memo</code> للمنيو والـ badge ومقارنة باللي ظاهر بس؛ اقرا الـ handlers من ref؛ وخلي المنيو والـ tooltip يتعملوا mount أول ما يتفتحوا." },
-      result: { en: "A 10-row table re-render went from ~20 ms to ~2 ms (measured in the test harness); the panel opens without lag.", ar: "الـ re-render لجدول 10 صفوف نزل من حوالي 20ms لـ 2ms (متقاس في الـ test harness)؛ والـ panel بيفتح من غير تهنيج." },
-      lesson: { en: "Measure first; hidden duplicate DOM is a common cause.", ar: "قيس الأول؛ والـ DOM المتكرر المستخبي سبب شائع." }
+      fix: { en: "Draw only one layout by screen width; <code>memo</code> the menu and badge with a comparison of what they show; read handlers from a ref; mount menu lists and tooltips on first open.", ar: "ارسم layout واحد بس حسب عرض الشاشة. واعمل <code>memo</code> للمنيو والـ badge، وقارن باللي ظاهر بس. واقرا الـ handlers من ref. وخلي المنيو والـ tooltip يتعمل لهم mount أول ما يتفتحوا بس." },
+      result: { en: "A 10-row table re-render went from ~20 ms to ~2 ms (measured in the test harness); the panel opens without lag.", ar: "الـ re-render لجدول فيه 10 صفوف نزل من حوالي 20ms لـ 2ms (متقاس في الـ test harness). والـ panel بقى بيفتح من غير تهنيج." },
+      lesson: { en: "Measure first; hidden duplicate DOM is a common cause.", ar: "قيس الأول. والـ DOM المتكرر والمستخبي سبب شائع." }
     },
     {
       title: { en: "Two admins, one tree", ar: "اتنين أدمن وشجرة واحدة" },
       problem: { en: "Reordering departments while another admin renamed one could silently lose a change.", ar: "ترتيب الأقسام وأدمن تاني بيغير اسم قسم كان ممكن يضيّع تعديل من غير ما حد يعرف." },
       fix: { en: "Send each node's ETag with If-Match. On 409/412 reload the tree and tell the admin what happened.", ar: "ابعت الـ ETag بتاع كل node في If-Match. ولو جه 409 أو 412، أعد تحميل الشجرة وقول للأدمن اللي حصل." },
-      result: { en: "No silent overwrites; the admin always works on the latest tree.", ar: "مفيش تعديل بيتمسح في السر؛ والأدمن دايمًا شغال على آخر نسخة." }
+      result: { en: "No silent overwrites; the admin always works on the latest tree.", ar: "مفيش تعديل بيتمسح في السر، والأدمن دايمًا شغال على آخر نسخة." }
     },
     {
       title: { en: "Session expired vs. never signed in", ar: "الـ session خلصت ولا مسجلش أصلًا" },
       problem: { en: "Both come back as 401, but they need different screens.", ar: "الاتنين بيرجعوا 401، بس محتاجين شاشتين مختلفين." },
-      fix: { en: "The API sends a code; the query cache's onError clears data and sets a memory-only \"expired\" flag that the layout reads.", ar: "الـ API بيبعت code؛ والـ onError في الكاش بيمسح الداتا ويحط علامة «expired» في الميموري بس، والـ layout بيقراها." },
-      result: { en: "Expired users see \"Your session ended\"; new visitors go straight to sign-in. Server unreachable shows its own message instead of signing out.", ar: "اللي الـ session بتاعته خلصت يشوف «الـ session خلصت»؛ والجديد يروح للـ sign-in على طول. ولو السيرفر مش متاح بتظهر رسالة لوحدها بدل ما يعمل sign out." }
+      fix: { en: "The API sends a code; the query cache's onError clears data and sets a memory-only \"expired\" flag that the layout reads.", ar: "الـ API بيبعت code. والـ onError في الكاش بيمسح الداتا، ويحط علامة «expired» في الميموري بس، والـ layout بيقراها." },
+      result: { en: "Expired users see \"Your session ended\"; new visitors go straight to sign-in. Server unreachable shows its own message instead of signing out.", ar: "اللي الـ session بتاعته خلصت بيشوف «الـ session خلصت». واليوزر الجديد بيروح للـ sign-in على طول. ولو السيرفر مش متاح، بتظهر رسالة لوحدها، بدل ما يعمل sign out." }
     },
     {
       title: { en: "From mocks to the real API", ar: "من الـ mocks للـ API الحقيقي" },
       problem: { en: "The UI was built before the backend existed, on mock APIs.", ar: "الواجهة اتبنت قبل الباك إند، على mock APIs." },
-      fix: { en: "Generated types from the OpenAPI contract, rewired every feature to the real client, then deleted all mocks from the app; tests kept a fake fetch.", ar: "ولّدت types من الـ OpenAPI contract، ووصلت كل feature بالـ client الحقيقي، وبعدين مسحت كل الـ mocks من التطبيق؛ والـ tests فضل فيها fake fetch." },
-      result: { en: "No mock code in production builds; contract changes break the build.", ar: "مفيش كود mock في الـ production؛ وأي تغيير في الـ contract بيبوّظ الـ build." }
+      fix: { en: "Generated types from the OpenAPI contract, rewired every feature to the real client, then deleted all mocks from the app; tests kept a fake fetch.", ar: "ولّدت types من الـ OpenAPI contract، ووصّلت كل feature بالـ client الحقيقي. وبعدين مسحت كل الـ mocks من الـ app. والـ tests فضل فيها fake fetch." },
+      result: { en: "No mock code in production builds; contract changes break the build.", ar: "مفيش كود mock في الـ production. وأي تغيير في الـ contract بيبوّظ الـ build." }
     }
   ],
 
   star: {
-    s: { en: "A healthcare operations client needed an internal knowledge hub; the backend was still being built by another team.", ar: "عميل في تشغيل الخدمات الصحية كان محتاج مكتبة معلومات داخلية؛ والباك إند كان لسه بيتبني مع تيم تاني." },
+    s: { en: "A healthcare operations client needed an internal knowledge hub; the backend was still being built by another team.", ar: "عميل في تشغيل الخدمات الصحية كان محتاج مكتبة معلومات داخلية. والـ backend كان لسه بيتبني مع تيم تاني." },
     t: { en: "Own the whole frontend and match the Figma 1:1, without waiting for the API.", ar: "أمسك الفرونت كله وأطابق الـ Figma 1:1، من غير ما أستنى الـ API." },
-    a: { en: "Built the design system and screens on mocks, then typed the OpenAPI contract, built a secure client (cookie + XSRF, typed errors, ETags), swapped mocks for the real API and covered it with tests.", ar: "بنيت الـ design system والشاشات على mocks، وبعدين عملت types من الـ OpenAPI، وبنيت client آمن (كوكي + XSRF، أخطاء ليها types، ETags)، وبدلت الـ mocks بالـ API الحقيقي، وغطيته بـ tests." },
+    a: { en: "Built the design system and screens on mocks, then typed the OpenAPI contract, built a secure client (cookie + XSRF, typed errors, ETags), swapped mocks for the real API and covered it with tests.", ar: "بنيت الـ design system والشاشات على mocks. وبعدين عملت types من الـ OpenAPI، وبنيت client آمن: كوكي و XSRF، وأخطاء ليها types، و ETags. وبدّلت الـ mocks بالـ API الحقيقي، وغطيته بـ tests." },
     r: { en: "27 screens, 3 roles with MFA, 551 tests, no mocks in production — in about three weeks (166 of 173 commits).", ar: "27 شاشة، 3 roles مع MFA، 551 test، ومفيش mocks في الـ production — في حوالي 3 أسابيع (166 من 173 كوميت)." }
   },
 
   qa: [
     { q: "Why not store the token in localStorage?", a: { en: "Any XSS could read it. The session is an httpOnly cookie, and CSRF is handled by an antiforgery header on every unsafe request.", ar: "أي XSS يقدر يقراه. الـ session كوكي httpOnly، والـ CSRF متحلول بـ antiforgery header في كل request بيغير داتا." } },
-    { q: "How do you decide what to retry?", a: { en: "Only failures that can succeed later: network errors, 5xx and 429, with backoff or Retry-After. A 4xx is final; mutations never retry automatically.", ar: "بس الأخطاء اللي ممكن تنجح بعدين: النت، والـ 5xx، والـ 429، بـ backoff أو Retry-After. الـ 4xx نهائي؛ والـ mutations مفيش retry أوتوماتيك." } },
+    { q: "How do you decide what to retry?", a: { en: "Only failures that can succeed later: network errors, 5xx and 429, with backoff or Retry-After. A 4xx is final; mutations never retry automatically.", ar: "بس الأخطاء اللي ممكن تنجح بعدين: النت، والـ 5xx، والـ 429، بـ backoff أو Retry-After. الـ 4xx نهائي. والـ mutations مفيش ليها retry أوتوماتيك." } },
     { q: "How did you find and fix the slow table?", a: { en: "Measured re-renders in the test harness: every row's menu and tooltip re-rendered twice. I drew one layout, memoized with a 'what is shown' comparison, and lazy-mounted menus — 20 ms to 2 ms.", ar: "قست الـ re-renders في الـ test harness: منيو و tooltip كل صف كانوا بيعملوا re-render مرتين. رسمت layout واحد، وعملت memo بمقارنة «اللي ظاهر»، وخليت المنيوهات تتعمل mount وقت الفتح — من 20ms لـ 2ms." } },
     { q: "How do you handle permissions on the frontend?", a: { en: "With capabilities from the session, not role names. The UI hides what you can't do; the backend re-checks every call.", ar: "بالـ capabilities اللي جاية في الـ session، مش أسماء الـ roles. الواجهة بتخبي اللي متقدرش تعمله، والباك إند بيشيك تاني على كل call." } },
-    { q: "What's your testing strategy?", a: { en: "Unit tests for helpers, component tests with Testing Library through the real client and router, a fake fetch that speaks the contract, and Storybook for visual states and accessibility.", ar: "Unit tests للـ helpers، و component tests بـ Testing Library بتعدي على الـ client والـ router الحقيقيين، و fake fetch بيتكلم بنفس الـ contract، و Storybook للحالات الشكلية والـ accessibility." } },
+    { q: "What's your testing strategy?", a: { en: "Unit tests for helpers, component tests with Testing Library through the real client and router, a fake fetch that speaks the contract, and Storybook for visual states and accessibility.", ar: "unit tests للـ helpers. و component tests بـ Testing Library، بتعدّي على الـ client والـ router الحقيقيين. و fake fetch بيتكلم بنفس الـ contract. و Storybook للحالات الشكلية والـ accessibility." } },
     { q: "How did AI fit into your workflow?", a: { en: "I kept context docs, unit plans and a progress tracker so the AI worked inside our rules. I reviewed every change, ran the tests and own the code.", ar: "كنت عامل context docs وخطط لكل unit و progress tracker علشان الـ AI يشتغل جوه قواعدنا. وكنت براجع كل تغيير وأشغل الـ tests، والكود مسؤوليتي." } }
   ],
 
@@ -274,7 +274,7 @@ HANDBOOK.projects.push({
     { en: "Don't say you built the backend or the API — you built the client against its contract.", ar: "متقولش إنك بنيت الباك إند أو الـ API — انت بنيت الـ client على الـ contract بتاعه." },
     { en: "Don't say \"E2E tests\": the 551 are unit and component tests (Vitest + Testing Library).", ar: "متقولش «E2E tests»: الـ 551 دول unit و component tests (Vitest + Testing Library)." },
     { en: "Don't say the AI wrote it: say you used an AI-assisted workflow and reviewed every change.", ar: "متقولش إن الـ AI كتبه: قول إنك استخدمت AI-assisted workflow وراجعت كل تغيير." },
-    { en: "Don't call it real-time: there are no WebSockets here; data refreshes on navigation, focus and after mutations.", ar: "متقولش real-time: مفيش WebSockets هنا؛ الداتا بتتحدث مع التنقل والـ focus وبعد الـ mutations." },
+    { en: "Don't call it real-time: there are no WebSockets here; data refreshes on navigation, focus and after mutations.", ar: "متقولش real-time: مفيش WebSockets هنا. الداتا بتتحدث مع التنقل، ومع الـ focus، وبعد الـ mutations." },
     { en: "Don't quote the 20→2 ms as a user-facing page metric — it's per table re-render in the test harness.", ar: "متقولش إن الـ 20←2ms ده رقم تحميل الصفحة — ده لكل re-render للجدول في الـ test harness." }
   ],
 

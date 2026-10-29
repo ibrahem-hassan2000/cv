@@ -42,7 +42,7 @@ HANDBOOK.projects.push({
   ],
 
   myRole: [
-    { en: "Solo developer on all four; client of Takhawy: Hayah Technology.", ar: "المطور الوحيد في الأربعة؛ عميل تخاوي: Hayah Technology." },
+    { en: "Solo developer on all four; client of Takhawy: Hayah Technology.", ar: "المطور الوحيد في الأربعة. والعميل بتاع تخاوي هو Hayah Technology." },
     { en: "On the CV this is one “Freelance” entry, not a company.", ar: "على الـ CV بيتكتب entry واحدة «Freelance»، مش شركة." }
   ],
 
@@ -59,7 +59,7 @@ HANDBOOK.projects.push({
       chose: "Puppeteer", alts: ["@react-pdf/renderer", "jsPDF"],
       why: { en: "Headless Chrome prints the real page — same fonts, layout and images — instead of rebuilding the design in a PDF library.", ar: "Chrome بدون واجهة بيطبع الصفحة الحقيقية — نفس الخطوط والشكل والصور — بدل ما أعيد بناء التصميم في مكتبة PDF." },
       both: { v: "partly", en: "The project also lists @react-pdf/renderer. Keep the one you use.", ar: "المشروع فيه @react-pdf/renderer كمان. سيب اللي بتستخدمه بس." },
-      better: { en: "Puppeteer is heavy (a whole browser) and won't run on many serverless hosts; in production move it to a worker or a PDF service. @react-pdf is lighter when the PDF has its own simple design.", ar: "Puppeteer تقيل (متصفح كامل) ومش بيشتغل على hosting كتير من نوع serverless؛ في production يتنقل لـ worker أو خدمة PDF. و @react-pdf أخف لو الـ PDF له تصميم بسيط خاص بيه." },
+      better: { en: "Puppeteer is heavy (a whole browser) and won't run on many serverless hosts; in production move it to a worker or a PDF service. @react-pdf is lighter when the PDF has its own simple design.", ar: "الـ Puppeteer تقيل، لأنه متصفح كامل، ومش بيشتغل على hosting كتير من نوع serverless. ففي الـ production يتنقل لـ worker أو خدمة PDF. و @react-pdf أخف، لو الـ PDF ليه تصميم بسيط خاص بيه." },
       say: "I generated PDFs with Puppeteer for pixel-perfect output, knowing it should run in a worker in production."
     },
     {
@@ -76,13 +76,13 @@ HANDBOOK.projects.push({
       chose: "bcryptjs", alts: ["bcrypt (native)", "argon2"],
       why: { en: "A one-way, salted, deliberately slow hash. The pure-JS version installs anywhere without native builds.", ar: "hash اتجاه واحد، فيه salt، وبطيء عن قصد. والنسخة الـ JS بتتسطب في أي حتة من غير native build." },
       both: { v: "no", en: "One hashing algorithm per user table.", ar: "خوارزمية hash واحدة لجدول المستخدمين." },
-      better: { en: "argon2id is the current recommendation; native bcrypt is faster than bcryptjs.", ar: "argon2id هو المُوصى بيه حاليًا؛ و bcrypt الـ native أسرع من bcryptjs." },
+      better: { en: "argon2id is the current recommendation; native bcrypt is faster than bcryptjs.", ar: "الـ argon2id هو المُوصى بيه حاليًا. والـ bcrypt الـ native أسرع من bcryptjs." },
       say: "Passwords are hashed with bcrypt and compared with bcrypt.compare — never stored or encrypted reversibly."
     },
     {
       title: { en: "Two sign-in systems", ar: "نظامين للدخول" },
       chose: "own JWT + next-auth (Google)", alts: ["Auth.js for both"],
-      why: { en: "Email/password went through my own route handlers and JWT; Google sign-in through next-auth.", ar: "الإيميل والباسورد عن طريق route handlers بتاعتي و JWT؛ و Google عن طريق next-auth." },
+      why: { en: "Email/password went through my own route handlers and JWT; Google sign-in through next-auth.", ar: "الإيميل والباسورد عن طريق route handlers بتاعتي و JWT. و Google عن طريق next-auth." },
       both: { v: "partly", en: "It works, but two session mechanisms must be kept in sync.", ar: "شغال، بس لازم آلية الـ sessions الاتنين يفضلوا متزامنين." },
       better: { en: "Auth.js with both the Credentials and Google providers — one session for everything.", ar: "Auth.js بالـ Credentials و Google providers — session واحدة لكل حاجة." },
       say: "Today I'd put credentials and Google behind one Auth.js session instead of two mechanisms.",
@@ -93,7 +93,7 @@ HANDBOOK.projects.push({
       chose: "Markdown files + gray-matter + remark", alts: ["headless CMS", "MDX"],
       why: { en: "Simple, versioned with the code, no CMS to pay for.", ar: "بسيط، متخزن مع الكود في git، ومن غير CMS تدفع له." },
       both: { v: "yes", en: "Markdown for developer content and a CMS for editors can coexist.", ar: "Markdown لمحتوى المطورين و CMS للمحررين ممكن يبقوا مع بعض." },
-      better: { en: "MDX if posts need components; a CMS if non-developers write.", ar: "MDX لو المقالات محتاجة components؛ و CMS لو اللي بيكتبوا مش مطورين." },
+      better: { en: "MDX if posts need components; a CMS if non-developers write.", ar: "MDX لو المقالات محتاجة components. و CMS لو اللي بيكتبوا مش developers." },
       say: "The blog is Markdown with front matter, rendered at build time."
     }
   ],
