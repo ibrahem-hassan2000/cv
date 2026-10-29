@@ -1,0 +1,92 @@
+<title>Ibrahem Interview Kit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Layout: one column of two big doors (study guide, project guides) and a short how-to — same look as the two dashboards. */
+  :root {
+    --bg: #f5f4ef; --surface: #ffffff; --text: #1c1c1a; --muted: #64625b; --line: #e3e0d6;
+    --study: #7c3aed; --study-soft: #efe9fd; --projects: #1f6f5c; --projects-soft: #e2f0ea;
+    --font-ar: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+    --font-en: "Inter", "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #151613; --surface: #1d1e1a; --text: #ecebe5; --muted: #a6a49b; --line: #33342e;
+      --study: #a78bfa; --study-soft: #2a2140; --projects: #5cc4a6; --projects-soft: #1b3830; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #151613; --surface: #1d1e1a; --text: #ecebe5; --muted: #a6a49b; --line: #33342e;
+    --study: #a78bfa; --study-soft: #2a2140; --projects: #5cc4a6; --projects-soft: #1b3830; color-scheme: dark;
+  }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--font-ar); font-size: 16px; line-height: 1.7;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding-block: 40px 56px; display: flex; flex-direction: column; gap: 28px; }
+  header { display: flex; align-items: center; gap: 14px; }
+  .mark { flex: none; width: 46px; height: 46px; border-radius: 13px; background: var(--text); color: var(--bg); display: grid; place-items: center; font: 700 17px var(--font-en); }
+  h1 { margin: 0; font-size: 28px; line-height: 1.25; text-wrap: balance; }
+  header p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+  .doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  a.door {
+    display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: inherit; min-width: 0;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px;
+    border-top: 5px solid var(--tone); transition: transform .12s ease;
+  }
+  a.door:hover { transform: translateY(-2px); }
+  a.door:focus-visible { outline: 3px solid var(--tone); outline-offset: 3px; }
+  .door .icon { width: 44px; height: 44px; border-radius: 12px; background: var(--tone-soft); color: var(--tone); display: grid; place-items: center; font: 800 18px var(--font-en); }
+  .door h2 { margin: 0; font-size: 21px; }
+  .door p { margin: 0; color: var(--muted); font-size: 15px; }
+  .facts { display: flex; flex-wrap: wrap; gap: 6px; }
+  .facts span { font: 600 12.5px var(--font-en); padding: 3px 10px; border-radius: 999px; background: var(--tone-soft); color: var(--tone); direction: ltr; unicode-bidi: isolate; }
+  .go { margin-top: auto; font-weight: 700; color: var(--tone); }
+  .study { --tone: var(--study); --tone-soft: var(--study-soft); }
+  .projects { --tone: var(--projects); --tone-soft: var(--projects-soft); }
+  .howto { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+  .howto h3 { margin: 0 0 8px; font-size: 17px; }
+  .howto ol { margin: 0; padding-inline-start: 22px; display: flex; flex-direction: column; gap: 4px; }
+  .howto code { font: 13px "JetBrains Mono", Consolas, monospace; background: var(--bg); border: 1px solid var(--line); padding: 1px 6px; border-radius: 6px; direction: ltr; unicode-bidi: isolate; }
+  footer { color: var(--muted); font-size: 13px; }
+  @media (prefers-reduced-motion: reduce) { a.door { transition: none; } }
+</style>
+
+<div class="wrap" dir="rtl" lang="ar">
+  <header>
+    <div class="mark">IH</div>
+    <div>
+      <h1>عُدّة الإنترفيو — إبراهيم حسن</h1>
+      <p>Frontend · React · Next.js · React Native</p>
+    </div>
+  </header>
+
+  <div class="doors">
+    <a class="door study" href="study-guide/index.html">
+      <div class="icon">SG</div>
+      <h2>دليل المذاكرة</h2>
+      <p>كل اللي ممكن يتسأل في إنترفيو Frontend، من HTML لحد الـ system design، ومعاه أسئلة «هيطبع إيه؟»، و live coding، والشغل مع الـ AI، والـ behavioral.</p>
+      <div class="facts"><span>27 sections</span><span>184 topics</span><span>468 questions</span></div>
+      <span class="go">افتح الدليل ←</span>
+    </a>
+    <a class="door projects" href="project-guides/index.html">
+      <div class="icon">PG</div>
+      <h2>شرح المشاريع</h2>
+      <p>كل مشروع اشتغلت عليه: عملت فيه إيه، وليه اخترت كل أداة، وشغال إزاي، والمشاكل اللي حليتها، وتجاوب إزاي في الإنترفيو.</p>
+      <div class="facts"><span>9 projects</span><span>Decisions</span><span>STAR</span></div>
+      <span class="go">افتح المشاريع ←</span>
+    </a>
+  </div>
+
+  <section class="howto">
+    <h3>عايز CV لوظيفة معينة؟</h3>
+    <ol>
+      <li>افتح شات Claude على اللاب (فولدر <code>cv</code>).</li>
+      <li>الصق إعلان الوظيفة وقول: «اعملي CV للوظيفة دي».</li>
+      <li>هيطلع CV متفصّل عليها من الـ master CV، وتراجعه قبل ما تبعته.</li>
+    </ol>
+  </section>
+
+  <footer>اللغة (عربي / English / Both) بتتغير من جوه كل دليل. الصفحة دي خاصة بيك.</footer>
+</div>
