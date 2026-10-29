@@ -1,6 +1,6 @@
 // State & data fetching — written 2026-10-29.
 STUDY.fill("state", {
-  intro: { en: "Where each kind of state belongs: server, client UI, URL, form and derived state; colocation; Context, Zustand, Redux Toolkit and RTK Query; and TanStack Query in depth (keys, freshness, invalidation, optimistic updates, pagination, prefetching, SSR).", ar: "كل نوع state مكانه فين: سيرفر، UI، URL، فورم، ومشتق؛ الـ colocation؛ و Context و Zustand و Redux Toolkit و RTK Query؛ و TanStack Query بالتفصيل (keys، الجِدّة، invalidation، optimistic، pagination، prefetch، SSR)." },
+  intro: { en: "Where each kind of state belongs: server, client UI, URL, form and derived state; colocation; Context, Zustand, Redux Toolkit and RTK Query; and TanStack Query in depth (keys, freshness, invalidation, optimistic updates, pagination, prefetching, SSR).", ar: "كل نوع state مكانه فين: السيرفر، والـ UI، والـ URL، والفورم، والمحسوب. والـ colocation. و Context و Zustand و Redux Toolkit و RTK Query. و TanStack Query بالتفصيل: keys، والـ freshness، و invalidation، و optimistic، و pagination، و prefetch، و SSR." },
   topics: [
     {
       id: "kinds-of-state",
@@ -21,7 +21,7 @@ STUDY.fill("state", {
         ] }
       ],
       say: "I split state by owner: the server cache in TanStack Query, shareable view state in the URL, forms in react-hook-form, and only small UI state in components or a tiny store.",
-      interview: [{ q: "Do you use Redux?", a: { en: "Rarely needed now: once server data lives in a query cache, what's left is small UI state. I'd pick Redux Toolkit for a large team with lots of complex client-side state and a need for devtools/time travel; otherwise Zustand or local state.", ar: "نادرًا ما بقى لازم: لما داتا السيرفر تبقى في كاش الـ queries، اللي بيفضل UI state صغير. هختار Redux Toolkit لتيم كبير فيه client state معقد كتير ومحتاج devtools و time travel؛ غير كده Zustand أو state محلي." } }],
+      interview: [{ q: "Do you use Redux?", a: { en: "Rarely needed now: once server data lives in a query cache, what's left is small UI state. I'd pick Redux Toolkit for a large team with lots of complex client-side state and a need for devtools/time travel; otherwise Zustand or local state.", ar: "نادرًا ما بقى لازم. لما داتا السيرفر تبقى في كاش الـ queries، اللي بيفضل UI state صغير. هختار Redux Toolkit لتيم كبير، فيه client state معقد كتير، ومحتاج devtools و time travel. غير كده Zustand أو state محلي." } }],
       quiz: [{ q: { en: "The selected tab should survive refresh and be shareable — where?", ar: "التاب المختار لازم يفضل بعد الـ refresh ويتبعت — فين؟" }, a: { en: "In the URL.", ar: "في الـ URL." } }],
       quick: [{ en: "Server → query cache · URL → params · form → RHF · UI → local · derived → compute.", ar: "سيرفر ← كاش queries · URL ← params · فورم ← RHF · UI ← محلي · مشتق ← احسبه." }]
     },
@@ -35,7 +35,7 @@ STUDY.fill("state", {
       say: "Before reaching for memo I move state down to the component that needs it — fewer components re-render and the code gets simpler.",
       interview: [{ q: "What's your first step when a page re-renders too much?", a: { en: "Profile it, then check where state lives: move state down, pass expensive subtrees as children, split contexts — and only then memoize.", ar: "أعمله profile، وبعدين أشوف الـ state عايش فين: أنزّله، أبعت الأجزاء التقيلة كـ children، أقسم الـ contexts — وبعد كده بس memo." } }],
       quiz: [{ q: { en: "Two siblings need the same value — where does state go?", ar: "أخين محتاجين نفس القيمة — الـ state يروح فين؟" }, a: { en: "Their nearest common parent.", ar: "أقرب أب مشترك ليهم." } }],
-      quick: [{ en: "Colocate; lift to the nearest common parent; move down before memoizing.", ar: "خليه قريب؛ ارفعه لأقرب أب مشترك؛ نزّله قبل الـ memo." }]
+      quick: [{ en: "Colocate; lift to the nearest common parent; move down before memoizing.", ar: "خليه قريب. ارفعه لأقرب أب مشترك. ونزّله لتحت قبل ما تفكر في الـ memo." }]
     },
     {
       id: "zustand-redux",
@@ -51,19 +51,19 @@ STUDY.fill("state", {
           [{ en: "Best for", ar: "أحسن لـ" }, { en: "Theme, locale, session", ar: "Theme، locale، session" }, { en: "Small/medium shared UI state", ar: "UI state مشترك صغير أو متوسط" }, { en: "Large apps, many devs, complex flows", ar: "تطبيقات كبيرة، مطورين كتير، flows معقدة" }]
         ] },
         { type: "projects", items: [
-          { text: { en: "okoRent and Spectra used Zustand for small shared state; AHS kept its existing Zustand store; anyShop and two 2025 take-home tasks used Redux Toolkit.", ar: "okoRent و Spectra استخدموا Zustand للـ state المشترك الصغير؛ و AHS حافظ على الـ Zustand store الموجود؛ و anyShop ومهمتين take-home في 2025 استخدموا Redux Toolkit." }, p: "okorent", tab: "decisions", label: "okoRent" }
+          { text: { en: "okoRent and Spectra used Zustand for small shared state; AHS kept its existing Zustand store; anyShop and two 2025 take-home tasks used Redux Toolkit.", ar: "okoRent و Spectra استخدموا Zustand للـ state المشترك الصغير. و AHS حافظ على الـ Zustand store اللي كان موجود. و anyShop واتنين take-home tasks في 2025 استخدموا Redux Toolkit." }, p: "okorent", tab: "decisions", label: "okoRent" }
         ] }
       ],
       say: "With server data in TanStack Query, what's left is small UI state, so Zustand with selectors is usually enough; Redux Toolkit earns its place in large apps with complex client flows.",
       interview: [{ q: "Why are selectors important?", a: { en: "Without them every subscriber re-renders on any store change. A selector subscribes a component to just the slice it reads, compared by reference.", ar: "من غيرهم كل مشترك بيعمل re-render مع أي تغيير في الـ store. والـ selector بيخلي الـ component مشترك في الجزء اللي بيقراه بس، والمقارنة بالـ reference." },
         follow: [{ q: "Selector returns a new object each time — problem?", a: { en: "Yes: a new reference every time means a re-render every time. Select primitives, or use a shallow-equality helper (useShallow).", ar: "أيوه: reference جديد كل مرة يعني re-render كل مرة. اختار primitives، أو استخدم مقارنة shallow (useShallow)." } }] }],
       quiz: [{ q: { en: "Why can RTK reducers “mutate” state?", ar: "ليه الـ reducers في RTK ينفع «تعدل» الـ state؟" }, a: { en: "Immer records the changes and produces a new immutable state.", ar: "Immer بيسجل التغييرات ويطلع state جديد immutable." } }],
-      quick: [{ en: "Context = no selectors; Zustand = tiny + selectors; RTK = structure + devtools + RTK Query.", ar: "Context = من غير selectors؛ Zustand = صغير و selectors؛ RTK = هيكل و devtools و RTK Query." }]
+      quick: [{ en: "Context = no selectors; Zustand = tiny + selectors; RTK = structure + devtools + RTK Query.", ar: "الـ Context من غير selectors. والـ Zustand صغير وفيه selectors. والـ RTK فيه structure و devtools و RTK Query." }]
     },
     {
       id: "query-deep",
       title: { en: "TanStack Query in depth", ar: "TanStack Query بالتفصيل" },
-      tldr: { en: "A query is “data described by a key, fetched by a function, cached and kept fresh”. Design keys hierarchically, set staleTime per kind of data, invalidate by scope after writes, prefetch on intent, use placeholder data for pagination, and hydrate the cache from the server in SSR.", ar: "الـ query = «داتا موصوفة بـ key، بتتجاب بـ function، ومتخزنة ومتحدثة». صمم الـ keys بشكل هرمي، وحدد staleTime لكل نوع داتا، واعمل invalidate بالـ scope بعد الكتابة، و prefetch مع النية، و placeholder data للـ pagination، و hydrate للكاش من السيرفر في الـ SSR." },
+      tldr: { en: "A query is “data described by a key, fetched by a function, cached and kept fresh”. Design keys hierarchically, set staleTime per kind of data, invalidate by scope after writes, prefetch on intent, use placeholder data for pagination, and hydrate the cache from the server in SSR.", ar: "الـ query معناها «داتا موصوفة بـ key، بتتجاب بـ function، ومتخزنة ومتحدّثة». صمم الـ keys بشكل هرمي. وحدد staleTime لكل نوع داتا. واعمل invalidate بالـ scope بعد الكتابة. و prefetch لما اليوزر يبان إنه رايح يفتحها. و placeholder data للـ pagination. وفي الـ SSR، اعمل hydrate للكاش من السيرفر." },
       blocks: [
         { type: "code", code: "// key factory per domain\nexport const orderKeys = {\n  all: [\"orders\"] as const,\n  lists: () => [...orderKeys.all, \"list\"] as const,\n  list: (f: Filters) => [...orderKeys.lists(), f] as const,\n  detail: (id: string) => [...orderKeys.all, \"detail\", id] as const,\n};\nqc.invalidateQueries({ queryKey: orderKeys.lists() });   // all lists, any filters\n\n// prefetch on hover\n<Link to={`/orders/${id}`} onMouseEnter={() => qc.prefetchQuery({ queryKey: orderKeys.detail(id), queryFn: () => api.get(id) })} />\n\n// seed a detail from the list cache\nuseQuery({ queryKey: orderKeys.detail(id), queryFn, initialData: () => qc.getQueryData(orderKeys.lists())?.find((o) => o.id === id) });" },
         { type: "compare", title: { en: "After a mutation", ar: "بعد الـ mutation" }, cols: [{ en: "Approach", ar: "الطريقة" }, { en: "When", ar: "إمتى" }], rows: [
@@ -77,18 +77,18 @@ STUDY.fill("state", {
           { en: "Using useMutation for reads → no caching, no dedupe (seen in a big codebase).", ar: "استخدام useMutation للقراية ← مفيش كاش ولا منع تكرار (شفتها في codebase كبير)." }
         ] },
         { type: "projects", items: [
-          { text: { en: "Smart FAQ: scope-first keys so one feature refreshes another without importing it; QueryCache onError clears the session on 401.", ar: "Smart FAQ: keys بتبدأ بالـ scope علشان feature تحدث التانية من غير import؛ و onError في الـ QueryCache بيمسح الـ session مع 401." }, p: "smartfaq", tab: "decisions", label: "Smart FAQ" },
+          { text: { en: "Smart FAQ: scope-first keys so one feature refreshes another without importing it; QueryCache onError clears the session on 401.", ar: "Smart FAQ: الـ keys بتبدأ بالـ scope، علشان feature تقدر تحدّث التانية من غير import. والـ onError في الـ QueryCache بيمسح الـ session مع الـ 401." }, p: "smartfaq", tab: "decisions", label: "Smart FAQ" },
           { text: { en: "AHS: the migration from a custom Axios hook — services → query hooks, 25 domain modules.", ar: "AHS: النقل من Axios hook مخصوص — services ← query hooks، و 25 domain module." }, p: "ahs", tab: "decisions", label: "AHS" },
           { text: { en: "Kalima: a persisted query cache for offline use.", ar: "Kalima: كاش queries متخزن للاستخدام offline." }, p: "kalima", tab: "decisions", label: "Kalima" }
         ] }
       ],
       say: "I design query keys as a hierarchy with a factory, so invalidating a whole scope after a write is one line, and I add optimistic updates only where instant feedback matters.",
       interview: [
-        { q: "How does React Query dedupe requests?", a: { en: "Components using the same key share one query; while it's fetching, new observers attach to the same promise instead of starting another request.", ar: "الـ components اللي بتستخدم نفس الـ key بتشارك query واحد؛ ولو بيتجاب، أي حد جديد بيتابع نفس الـ promise بدل ما يبدأ request تاني." } },
-        { q: "How do you use it with SSR (Next.js)?", a: { en: "Prefetch on the server into a QueryClient, dehydrate it, and wrap the client part in HydrationBoundary so the client starts with the data — or fetch in server components and pass data down.", ar: "اعمل prefetch على السيرفر في QueryClient، وبعدين dehydrate، ولف الجزء اللي في الـ client بـ HydrationBoundary علشان يبدأ بالداتا — أو هات الداتا في server components وابعتها لتحت." } }
+        { q: "How does React Query dedupe requests?", a: { en: "Components using the same key share one query; while it's fetching, new observers attach to the same promise instead of starting another request.", ar: "الـ components اللي بتستخدم نفس الـ key بتشارك query واحد. ولو هو بيتجاب دلوقتي، أي component جديد بيتابع نفس الـ promise، بدل ما يبدأ request تاني." } },
+        { q: "How do you use it with SSR (Next.js)?", a: { en: "Prefetch on the server into a QueryClient, dehydrate it, and wrap the client part in HydrationBoundary so the client starts with the data — or fetch in server components and pass data down.", ar: "اعمل prefetch على السيرفر في QueryClient، وبعدين dehydrate. ولف الجزء اللي في الـ client بـ HydrationBoundary، علشان يبدأ والداتا معاه. أو هات الداتا في server components وابعتها لتحت." } }
       ],
       quiz: [{ q: { en: "Invalidate every orders list regardless of filters?", ar: "تعمل invalidate لكل قوايم الأوردرات مهما كانت الفلاتر؟" }, a: { en: "invalidateQueries({ queryKey: [\"orders\", \"list\"] }) — prefix matching.", ar: "invalidateQueries({ queryKey: [\"orders\", \"list\"] }) — المطابقة بالبداية." } }],
-      quick: [{ en: "Key factory hierarchy; invalidate by prefix; setQueryData when the response has it; optimistic only where needed; prefetch + hydrate.", ar: "Key factory هرمي؛ invalidate بالبداية؛ setQueryData لما الرد فيه الداتا؛ optimistic بس لما يلزم؛ prefetch و hydrate." }]
+      quick: [{ en: "Key factory hierarchy; invalidate by prefix; setQueryData when the response has it; optimistic only where needed; prefetch + hydrate.", ar: "key factory هرمي. و invalidate بالبادئة. و setQueryData لما الرد فيه الداتا. و optimistic بس لما يلزم. و prefetch و hydrate." }]
     },
     {
       id: "derived-state",
@@ -100,12 +100,12 @@ STUDY.fill("state", {
       say: "I store the minimum state — ids, not copies — and derive the rest in render, so nothing needs to be kept in sync.",
       interview: [{ q: "Why is syncing state in useEffect a smell?", a: { en: "It renders once with stale data, then again after the effect — and the two copies can disagree. Deriving gives the right value in the first render.", ar: "بيعمل render مرة بداتا قديمة، وبعدين مرة تانية بعد الـ effect — والنسختين ممكن يختلفوا. الاشتقاق بيدي القيمة الصح من أول render." } }],
       quiz: [{ q: { en: "Store selectedUser object or selectedUserId?", ar: "تخزن الـ selectedUser object ولا الـ selectedUserId؟" }, a: { en: "The id.", ar: "الـ id." } }],
-      quick: [{ en: "Minimum state; derive in render; store ids not copies; no syncing effects.", ar: "أقل state؛ اشتق في الـ render؛ خزّن IDs مش نسخ؛ من غير effects مزامنة." }]
+      quick: [{ en: "Minimum state; derive in render; store ids not copies; no syncing effects.", ar: "أقل state ممكن. واحسب الباقي في الـ render. وخزّن IDs مش نسخ. ومن غير effects للمزامنة." }]
     },
     {
       id: "offline",
       title: { en: "Offline-first and syncing", ar: "الـ Offline-first والمزامنة" },
-      tldr: { en: "Offline-first means the UI reads and writes local data first and syncs later: persist the cache, queue mutations with idempotent ids, replay them when online, and resolve conflicts (last-write-wins, server wins, or merge).", ar: "الـ Offline-first معناه إن الواجهة بتقرا وتكتب داتا محلية الأول وتزامن بعدين: خزّن الكاش، وحط الـ mutations في طابور بـ IDs idempotent، وأعد تشغيلها لما النت يرجع، وحل التعارضات (آخر كتابة تكسب، أو السيرفر يكسب، أو دمج)." },
+      tldr: { en: "Offline-first means the UI reads and writes local data first and syncs later: persist the cache, queue mutations with idempotent ids, replay them when online, and resolve conflicts (last-write-wins, server wins, or merge).", ar: "الـ offline-first معناه إن الواجهة بتقرا وتكتب داتا محلية الأول، وتزامن بعدين. خزّن الكاش. وحط الـ mutations في طابور بـ IDs idempotent. وشغّلها تاني لما النت يرجع. وحل التعارضات: آخر كتابة تكسب، أو السيرفر يكسب، أو دمج." },
       blocks: [
         { type: "list", items: [
           { en: "Persist the query cache (React Query persister: AsyncStorage/IndexedDB/MMKV).", ar: "خزّن كاش الـ queries (persister في React Query: AsyncStorage أو IndexedDB أو MMKV)." },

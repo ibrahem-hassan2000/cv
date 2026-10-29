@@ -7,7 +7,7 @@ STUDY.fill("html", {
       title: { en: "Semantic HTML", ar: "الـ Semantic HTML" },
       tldr: { en: "Use the element that describes the meaning (<code>button</code>, <code>nav</code>, <code>article</code>), not a styled <code>div</code>. You get keyboard support, screen-reader roles and better SEO for free.", ar: "استخدم العنصر اللي بيوصف المعنى (<code>button</code>، <code>nav</code>، <code>article</code>)، مش <code>div</code> متستيل. هتاخد دعم الكيبورد، و roles لقارئ الشاشة، و SEO أحسن ببلاش." },
       blocks: [
-        { type: "text", body: { en: "<p>The browser and assistive tech read <b>roles</b> from elements. <code>&lt;button&gt;</code> is focusable, fires on Enter and Space, and is announced as “button”. A <code>&lt;div onClick&gt;</code> has none of that — you'd need <code>role</code>, <code>tabIndex</code> and key handlers to fake it.</p><p><b>Landmarks</b> (<code>header</code>, <code>nav</code>, <code>main</code>, <code>aside</code>, <code>footer</code>) let screen-reader users jump between regions. Headings <code>h1–h6</code> build the page outline — don't pick them for their size.</p>", ar: "<p>المتصفح وأدوات الـ accessibility بيقروا الـ <b>role</b> من العنصر. <code>&lt;button&gt;</code> بياخد focus، وبيشتغل بـ Enter و Space، وقارئ الشاشة بيقول «button». لكن <code>&lt;div onClick&gt;</code> مفيهوش أي حاجة من دي — هتحتاج <code>role</code> و <code>tabIndex</code> و key handlers علشان تقلّده.</p><p>الـ <b>Landmarks</b> (<code>header</code>، <code>nav</code>، <code>main</code>، <code>aside</code>، <code>footer</code>) بتخلي مستخدم قارئ الشاشة ينط بين أجزاء الصفحة. والـ headings من <code>h1</code> لـ <code>h6</code> بتعمل هيكل الصفحة — متختارهاش علشان حجمها.</p>" } },
+        { type: "text", body: { en: "<p>The browser and assistive tech read <b>roles</b> from elements. <code>&lt;button&gt;</code> is focusable, fires on Enter and Space, and is announced as “button”. A <code>&lt;div onClick&gt;</code> has none of that — you'd need <code>role</code>, <code>tabIndex</code> and key handlers to fake it.</p><p><b>Landmarks</b> (<code>header</code>, <code>nav</code>, <code>main</code>, <code>aside</code>, <code>footer</code>) let screen-reader users jump between regions. Headings <code>h1–h6</code> build the page outline — don't pick them for their size.</p>", ar: "<p>المتصفح وأدوات الـ accessibility بيقروا الـ <b>role</b> من العنصر. الـ <code>&lt;button&gt;</code> بياخد focus، وبيشتغل بـ Enter و Space، والـ screen reader بيقول «button». لكن <code>&lt;div onClick&gt;</code> مفيهوش أي حاجة من دي. هتحتاج <code>role</code> و <code>tabIndex</code> و key handlers علشان تقلّده.</p><p>الـ <b>landmarks</b> (<code>header</code> و <code>nav</code> و <code>main</code> و <code>aside</code> و <code>footer</code>) بتخلي اليوزر اللي بيستخدم screen reader ينط بين أجزاء الصفحة. والـ headings من <code>h1</code> لـ <code>h6</code> بتعمل هيكل الصفحة، فمتختارهاش علشان حجمها.</p>" } },
         { type: "compare", title: { en: "Look-alike elements", ar: "عناصر شبه بعض" },
           cols: [{ en: "Element", ar: "العنصر" }, { en: "Meaning", ar: "معناه" }, { en: "Use it for", ar: "استخدمه لـ" }],
           rows: [
@@ -45,7 +45,7 @@ STUDY.fill("html", {
     {
       id: "head-and-scripts",
       title: { en: "The head, meta tags and script loading", ar: "الـ head والـ meta وتحميل الـ scripts" },
-      tldr: { en: "The head tells the browser how to render (charset, viewport), how to share the page (title, description, Open Graph) and what to fetch early. Scripts with <code>defer</code> download in parallel and run in order after parsing; <code>async</code> runs as soon as it arrives.", ar: "الـ head بيقول للمتصفح يرسم إزاي (charset، viewport)، والصفحة تتشارك إزاي (title، description، Open Graph)، ويجيب إيه بدري. الـ script بـ <code>defer</code> بيتحمل بالتوازي وبيشتغل بالترتيب بعد الـ parsing؛ و <code>async</code> بيشتغل أول ما يوصل." },
+      tldr: { en: "The head tells the browser how to render (charset, viewport), how to share the page (title, description, Open Graph) and what to fetch early. Scripts with <code>defer</code> download in parallel and run in order after parsing; <code>async</code> runs as soon as it arrives.", ar: "الـ head بيقول للمتصفح يرسم إزاي (charset و viewport)، والصفحة تتشارك إزاي (title و description و Open Graph)، ويجيب إيه بدري. والـ script اللي عليه <code>defer</code> بيتحمّل بالتوازي، وبيشتغل بالترتيب بعد الـ parsing. أما <code>async</code> فبيشتغل أول ما يوصل." },
       blocks: [
         { type: "code", title: { en: "A solid head", ar: "head كويس" }, code: "<!doctype html>                         <!-- standards mode -->\n<html lang=\"en\" dir=\"ltr\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Orders — Acme</title>\n  <meta name=\"description\" content=\"Track and manage your orders.\">\n  <meta property=\"og:title\" content=\"Orders — Acme\">   <!-- link previews -->\n  <link rel=\"preconnect\" href=\"https://api.acme.com\">\n  <link rel=\"preload\" href=\"/fonts/inter.woff2\" as=\"font\" type=\"font/woff2\" crossorigin>\n  <script src=\"/app.js\" defer></script>\n</head>" },
         { type: "compare", title: { en: "How a script loads", ar: "الـ script بيتحمل إزاي" },
@@ -71,8 +71,8 @@ STUDY.fill("html", {
       say: "App scripts get defer so they download in parallel and run in order after parsing; independent third-party scripts get async.",
       interview: [
         { q: "What's the difference between async and defer?", a: { en: "Both download without blocking parsing. <code>defer</code> runs after parsing, in document order, before DOMContentLoaded. <code>async</code> runs as soon as it arrives, in any order.", ar: "الاتنين بيتحملوا من غير ما يوقفوا الـ parsing. <code>defer</code> بيشتغل بعد الـ parsing بترتيب الصفحة وقبل DOMContentLoaded. و <code>async</code> بيشتغل أول ما يوصل وبأي ترتيب." },
-          follow: [{ q: "Why do module scripts behave like defer?", a: { en: "Modules can import each other, so the browser must fetch the graph first; deferring is the safe default.", ar: "الـ modules بتعمل import لبعض، فالمتصفح لازم يجيب الشجرة كلها الأول؛ فالـ defer هو الافتراضي الآمن." } },
-                   { q: "preload vs prefetch vs preconnect?", a: { en: "preload = needed now on this page; prefetch = probably needed on the next page (low priority); preconnect = open the connection (DNS, TCP, TLS) to an origin early.", ar: "preload = محتاجه دلوقتي في الصفحة دي؛ prefetch = غالبًا هتحتاجه في الصفحة الجاية (أولوية قليلة)؛ preconnect = افتح الاتصال (DNS و TCP و TLS) بدري." } }] }
+          follow: [{ q: "Why do module scripts behave like defer?", a: { en: "Modules can import each other, so the browser must fetch the graph first; deferring is the safe default.", ar: "الـ modules بتعمل import لبعض، فالمتصفح لازم يجيب الشجرة كلها الأول. علشان كده الـ defer هو الافتراضي الآمن." } },
+                   { q: "preload vs prefetch vs preconnect?", a: { en: "preload = needed now on this page; prefetch = probably needed on the next page (low priority); preconnect = open the connection (DNS, TCP, TLS) to an origin early.", ar: "الـ preload معناه «محتاجه دلوقتي في الصفحة دي». والـ prefetch معناه «غالبًا هتحتاجه في الصفحة الجاية»، وأولويته قليلة. والـ preconnect معناه «افتح الاتصال بدري» (DNS و TCP و TLS)." } }] }
       ],
       quiz: [
         { q: { en: "Two scripts, B needs A. async or defer?", ar: "scriptين، B محتاج A. async ولا defer؟" }, a: { en: "defer — it keeps document order.", ar: "defer — بيحافظ على الترتيب." } },
@@ -103,7 +103,7 @@ STUDY.fill("html", {
           ] },
         { type: "pitfalls", items: [
           { en: "Placeholder is not a label — it disappears and has poor contrast.", ar: "الـ placeholder مش label — بيختفي و contrast بتاعه ضعيف." },
-          { en: "Client validation is UX only; the server must validate again.", ar: "الـ validation في الفرونت للتجربة بس؛ السيرفر لازم يعمل validation تاني." }
+          { en: "Client validation is UX only; the server must validate again.", ar: "الـ validation في الفرونت للتجربة بس، والسيرفر لازم يعمل validation تاني." }
         ] },
         { type: "projects", items: [
           { text: { en: "Smart FAQ: react-hook-form + Zod, and the API's 422 field errors mapped back onto the inputs.", ar: "Smart FAQ: react-hook-form مع Zod، وأخطاء الـ 422 من الـ API بترجع على الـ inputs." }, p: "smartfaq", tab: "hooks", label: "Smart FAQ" },
@@ -120,7 +120,7 @@ STUDY.fill("html", {
       ],
       quick: [
         { en: "Every input: label + name + right type + autocomplete.", ar: "كل input: label و name و type صح و autocomplete." },
-        { en: "Client validation = UX; server validation = truth.", ar: "Validation الفرونت = تجربة؛ validation السيرفر = الحقيقة." }
+        { en: "Client validation = UX; server validation = truth.", ar: "الـ validation في الفرونت للتجربة، وفي السيرفر للحقيقة." }
       ]
     },
     {
@@ -136,7 +136,7 @@ STUDY.fill("html", {
       ],
       say: "Every image gets dimensions to avoid layout shift, below-the-fold images are lazy, and the hero gets high fetch priority because it's usually the LCP.",
       interview: [
-        { q: "How do srcset and sizes work together?", a: { en: "<code>srcset</code> lists files and their widths; <code>sizes</code> tells the browser how wide the image will display at each breakpoint. The browser picks the smallest file that's sharp enough for that width and pixel density.", ar: "<code>srcset</code> بيقول الملفات وعرض كل واحد؛ و <code>sizes</code> بيقول الصورة هتظهر بعرض قد إيه في كل breakpoint. والمتصفح بيختار أصغر ملف واضح كفاية للعرض ده وكثافة الشاشة." } }
+        { q: "How do srcset and sizes work together?", a: { en: "<code>srcset</code> lists files and their widths; <code>sizes</code> tells the browser how wide the image will display at each breakpoint. The browser picks the smallest file that's sharp enough for that width and pixel density.", ar: "الـ <code>srcset</code> بيقول الملفات وعرض كل واحد. والـ <code>sizes</code> بيقول الصورة هتظهر بعرض قد إيه في كل breakpoint. والمتصفح بيختار أصغر ملف واضح كفاية، للعرض ده ولكثافة الشاشة." } }
       ],
       quiz: [
         { q: { en: "Decorative divider image — what alt?", ar: "صورة فاصل للزينة — الـ alt إيه؟" }, a: { en: "<code>alt=\"\"</code> so screen readers skip it (missing alt makes them read the file name).", ar: "<code>alt=\"\"</code> علشان قارئ الشاشة يتجاهلها (من غير alt بيقرا اسم الملف)." } }
@@ -165,11 +165,11 @@ STUDY.fill("html", {
     {
       id: "parsing-dom",
       title: { en: "From HTML to the page: parsing and the DOM", ar: "من HTML للصفحة: الـ parsing والـ DOM" },
-      tldr: { en: "The browser parses HTML into the DOM, CSS into the CSSOM, combines them into the render tree, then lays out, paints and composites. CSS blocks rendering; plain scripts block parsing.", ar: "المتصفح بيعمل parse للـ HTML ويطلع DOM، وللـ CSS ويطلع CSSOM، ويجمعهم في render tree، وبعدين layout و paint و composite. الـ CSS بيوقف الرسم؛ والـ scripts العادية بتوقف الـ parsing." },
+      tldr: { en: "The browser parses HTML into the DOM, CSS into the CSSOM, combines them into the render tree, then lays out, paints and composites. CSS blocks rendering; plain scripts block parsing.", ar: "المتصفح بيعمل parse للـ HTML ويطلّع DOM، وللـ CSS ويطلّع CSSOM. ويجمعهم في render tree، وبعدين layout و paint و composite. والـ CSS بيوقف الرسم، والـ scripts العادية بتوقف الـ parsing." },
       blocks: [
         { type: "list", title: { en: "The critical rendering path", ar: "الـ Critical rendering path" }, items: [
           { en: "<b>DOM</b> — tree of elements from HTML.", ar: "<b>DOM</b> — شجرة العناصر من الـ HTML." },
-          { en: "<b>CSSOM</b> — tree of styles; rendering waits for it (CSS is render-blocking).", ar: "<b>CSSOM</b> — شجرة الـ styles؛ الرسم بيستناها (الـ CSS بيوقف الرسم)." },
+          { en: "<b>CSSOM</b> — tree of styles; rendering waits for it (CSS is render-blocking).", ar: "<b>CSSOM</b>، يعني شجرة الـ styles. والرسم بيستناها، لأن الـ CSS بيوقف الرسم." },
           { en: "<b>Render tree</b> — only visible nodes (<code>display:none</code> is excluded).", ar: "<b>Render tree</b> — العناصر الظاهرة بس (<code>display:none</code> مش فيها)." },
           { en: "<b>Layout</b> (reflow) — sizes and positions. <b>Paint</b> — pixels. <b>Composite</b> — layers on the GPU.", ar: "<b>Layout</b> (reflow) — المقاسات والأماكن. <b>Paint</b> — البيكسلات. <b>Composite</b> — الطبقات على الـ GPU." }
         ] },
@@ -186,7 +186,7 @@ STUDY.fill("html", {
       ],
       say: "I animate transform and opacity because they only trigger compositing, not layout or paint.",
       interview: [
-        { q: "What happens between typing a URL and seeing the page?", a: { en: "DNS → TCP/TLS → HTTP request → HTML streams in → parser builds the DOM, fetches CSS/JS → CSSOM → render tree → layout → paint → composite. JS can block parsing; CSS blocks rendering.", ar: "DNS ← TCP/TLS ← HTTP request ← الـ HTML بيوصل على دفعات ← الـ parser بيبني الـ DOM ويجيب الـ CSS والـ JS ← CSSOM ← render tree ← layout ← paint ← composite. الـ JS ممكن يوقف الـ parsing؛ والـ CSS بيوقف الرسم." },
+        { q: "What happens between typing a URL and seeing the page?", a: { en: "DNS → TCP/TLS → HTTP request → HTML streams in → parser builds the DOM, fetches CSS/JS → CSSOM → render tree → layout → paint → composite. JS can block parsing; CSS blocks rendering.", ar: "DNS، وبعدين TCP/TLS، وبعدين HTTP request. والـ HTML بيوصل على دفعات، والـ parser بيبني الـ DOM ويجيب الـ CSS والـ JS. وبعدين CSSOM، و render tree، و layout، و paint، و composite. والـ JS ممكن يوقف الـ parsing، والـ CSS بيوقف الرسم." },
           follow: [{ q: "Reflow vs repaint?", a: { en: "Reflow recalculates geometry (expensive, can cascade to children/parents). Repaint redraws pixels without geometry changes.", ar: "الـ Reflow بيعيد حساب المقاسات (غالي، وممكن يأثر على الأولاد والأب). الـ Repaint بيعيد رسم البيكسلات من غير تغيير مقاسات." } }] }
       ],
       quiz: [
@@ -194,7 +194,7 @@ STUDY.fill("html", {
       ],
       quick: [
         { en: "DOM + CSSOM → render tree → layout → paint → composite.", ar: "DOM + CSSOM ← render tree ← layout ← paint ← composite." },
-        { en: "Animate transform/opacity; batch DOM reads before writes.", ar: "Animation بـ transform و opacity؛ واقرا الـ DOM كله قبل ما تكتب." }
+        { en: "Animate transform/opacity; batch DOM reads before writes.", ar: "الـ animation بـ transform و opacity. واقرا من الـ DOM كل اللي محتاجه قبل ما تكتب فيه." }
       ]
     }
   ]

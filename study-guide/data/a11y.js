@@ -5,20 +5,20 @@ STUDY.fill("a11y", {
     {
       id: "wcag",
       title: { en: "WCAG in one page", ar: "WCAG في صفحة" },
-      tldr: { en: "WCAG's four principles: <b>Perceivable</b> (alt text, captions, contrast), <b>Operable</b> (keyboard, enough time, no seizures), <b>Understandable</b> (labels, predictable, error help), <b>Robust</b> (valid semantics, works with assistive tech). Level AA is the usual target (and the legal one in many places).", ar: "مبادئ WCAG الأربعة: <b>Perceivable</b> (alt text، captions، contrast)، و<b>Operable</b> (كيبورد، وقت كفاية، من غير ومضات)، و<b>Understandable</b> (labels، متوقع، مساعدة في الأخطاء)، و<b>Robust</b> (semantics صح، يشتغل مع الأدوات المساعدة). والمستوى AA هو الهدف المعتاد (والقانوني في أماكن كتير)." },
+      tldr: { en: "WCAG's four principles: <b>Perceivable</b> (alt text, captions, contrast), <b>Operable</b> (keyboard, enough time, no seizures), <b>Understandable</b> (labels, predictable, error help), <b>Robust</b> (valid semantics, works with assistive tech). Level AA is the usual target (and the legal one in many places).", ar: "مبادئ WCAG الأربعة. <b>Perceivable</b>: alt text و captions و contrast. و<b>Operable</b>: كيبورد، ووقت كفاية، ومن غير ومضات. و<b>Understandable</b>: labels، وسلوك متوقع، ومساعدة في الأخطاء. و<b>Robust</b>: semantics صح، وشغال مع الأدوات المساعدة. والمستوى AA هو الهدف المعتاد، وهو المطلوب قانونًا في أماكن كتير." },
       blocks: [
         { type: "list", title: { en: "AA checks you'll be asked about", ar: "فحوصات AA اللي هتتسأل عنها" }, items: [
           { en: "Text contrast ≥ 4.5:1 (≥ 3:1 for large text and UI components/focus rings).", ar: "Contrast النص ≥ 4.5:1 (≥ 3:1 للنص الكبير والـ components وحلقة الـ focus)." },
-          { en: "Everything works with a keyboard; focus is visible; no keyboard traps.", ar: "كل حاجة بتشتغل بالكيبورد؛ والـ focus ظاهر؛ ومفيش حبسة للكيبورد." },
-          { en: "Every form field has a label; errors are identified in text, not only colour.", ar: "كل field ليه label؛ والأخطاء متوضحة بالكلام مش باللون بس." },
+          { en: "Everything works with a keyboard; focus is visible; no keyboard traps.", ar: "كل حاجة بتشتغل بالكيبورد. والـ focus ظاهر. والكيبورد عمره ما بيتحبس في حتة." },
+          { en: "Every form field has a label; errors are identified in text, not only colour.", ar: "كل field ليه label. والأخطاء متوضحة بالكلام، مش باللون بس." },
           { en: "Page works at 200% zoom and 320px width (reflow) without horizontal scrolling.", ar: "الصفحة بتشتغل على zoom 200% وعرض 320px (reflow) من غير scroll أفقي." },
           { en: "Touch targets at least 24×24 px (WCAG 2.2).", ar: "أهداف اللمس 24×24px على الأقل (WCAG 2.2)." }
         ] }
       ],
       say: "I target WCAG 2.2 AA: keyboard access with visible focus, labelled controls, text-based error messages, 4.5:1 contrast and layouts that reflow at 320px.",
-      interview: [{ q: "What does accessibility mean to you in practice?", a: { en: "Semantic HTML first, keyboard and focus handled, labels and announcements for screen readers, contrast and motion respected — checked with automated tools and by actually tabbing through and using a screen reader.", ar: "HTML semantic الأول، والكيبورد والـ focus متظبطين، و labels وإعلانات لقارئ الشاشة، والـ contrast والحركة محترمين — ومتأكد منها بأدوات أوتوماتيك وبإني فعلًا أتنقل بالـ Tab وأستخدم قارئ شاشة." } }],
+      interview: [{ q: "What does accessibility mean to you in practice?", a: { en: "Semantic HTML first, keyboard and focus handled, labels and announcements for screen readers, contrast and motion respected — checked with automated tools and by actually tabbing through and using a screen reader.", ar: "HTML semantic الأول. والكيبورد والـ focus متظبطين. و labels وإعلانات للـ screen reader. والـ contrast والحركة محترمين. وبتأكد من ده بأدوات أوتوماتيك، وبإني فعلًا أتنقل بالـ Tab وأستخدم screen reader." } }],
       quiz: [{ q: { en: "Minimum AA contrast for body text?", ar: "أقل contrast لـ AA للنص العادي؟" }, a: { en: "4.5:1.", ar: "4.5:1." } }],
-      quick: [{ en: "POUR; AA: 4.5:1, keyboard + visible focus, labels, text errors, reflow at 320px, 24px targets.", ar: "POUR؛ AA: 4.5:1، كيبورد و focus ظاهر، labels، أخطاء بالكلام، reflow على 320px، أهداف 24px." }]
+      quick: [{ en: "POUR; AA: 4.5:1, keyboard + visible focus, labels, text errors, reflow at 320px, 24px targets.", ar: "POUR. وفي AA: contrast بـ 4.5:1، وكيبورد و focus ظاهر، و labels، وأخطاء بالكلام، و reflow على 320px، وأهداف للضغط 24px." }]
     },
     {
       id: "keyboard-focus",
@@ -30,12 +30,12 @@ STUDY.fill("a11y", {
           { en: "<code>outline: none</code> without a replacement — keyboard users get lost.", ar: "<code>outline: none</code> من غير بديل — مستخدم الكيبورد بيتوه." },
           { en: "Positive <code>tabIndex</code> values break the natural order. Use 0 or -1 only.", ar: "قيم <code>tabIndex</code> موجبة بتبوظ الترتيب الطبيعي. استخدم 0 أو -1 بس." }
         ] },
-        { type: "projects", items: [{ text: { en: "Smart FAQ: dnd-kit with a KeyboardSensor (taxonomy reorder works by keyboard), Radix dialogs/menus for focus traps, “/” shortcut to focus search; Trackoo: sign-in keyboard navigation.", ar: "Smart FAQ: dnd-kit مع KeyboardSensor (ترتيب الـ taxonomy بيشتغل بالكيبورد)، و dialogs ومنيوهات Radix لحبس الـ focus، واختصار «/» للبحث؛ و Trackoo: تنقل بالكيبورد في الـ sign-in." }, p: "smartfaq", tab: "overview", label: "Smart FAQ" }] }
+        { type: "projects", items: [{ text: { en: "Smart FAQ: dnd-kit with a KeyboardSensor (taxonomy reorder works by keyboard), Radix dialogs/menus for focus traps, “/” shortcut to focus search; Trackoo: sign-in keyboard navigation.", ar: "Smart FAQ: فيه dnd-kit مع KeyboardSensor، فترتيب الـ taxonomy بيشتغل بالكيبورد. والـ dialogs والمنيوهات بـ Radix بتحبس الـ focus. واختصار «/» للبحث. و Trackoo: تنقل بالكيبورد في الـ sign-in." }, p: "smartfaq", tab: "overview", label: "Smart FAQ" }] }
       ],
       say: "Everything I build is usable from the keyboard: visible focus, trapped and restored focus in dialogs, focus moved after navigation, and drag-and-drop with a keyboard alternative.",
       interview: [{ q: "How should focus behave in a modal?", a: { en: "Move focus into the dialog on open (first field or the dialog), trap Tab inside, close on Escape, make the background inert, and return focus to the trigger on close.", ar: "حرك الـ focus جوه الـ dialog لما يفتح (أول field أو الـ dialog نفسه)، واحبس الـ Tab جوه، واقفل بـ Escape، وخلي الخلفية inert، ورجّع الـ focus للزرار اللي فتحه لما يتقفل." } }],
       quiz: [{ q: { en: ":focus vs :focus-visible?", ar: ":focus ولا :focus-visible؟" }, a: { en: ":focus-visible shows only when the browser thinks focus should be visible (keyboard), not on mouse clicks.", ar: ":focus-visible بيظهر بس لما المتصفح يشوف إن الـ focus لازم يبان (الكيبورد)، مش مع ضغط الماوس." } }],
-      quick: [{ en: "Native controls; :focus-visible; dialogs trap + restore; focus after navigation; no positive tabIndex; keyboard alternative to drag.", ar: "Controls أصلية؛ :focus-visible؛ الـ dialogs بتحبس وترجّع؛ focus بعد التنقل؛ مفيش tabIndex موجب؛ بديل كيبورد للسحب." }]
+      quick: [{ en: "Native controls; :focus-visible; dialogs trap + restore; focus after navigation; no positive tabIndex; keyboard alternative to drag.", ar: "controls أصلية. و :focus-visible. والـ dialogs بتحبس الـ focus وترجّعه. و focus بعد التنقل. ومفيش tabIndex موجب. وبديل بالكيبورد للسحب." }]
     },
     {
       id: "aria",
@@ -52,7 +52,7 @@ STUDY.fill("a11y", {
       say: "No ARIA is better than bad ARIA: native elements first, ARIA only for names, relationships, states and live announcements.",
       interview: [{ q: "How do you announce “Saved” to a screen reader without moving focus?", a: { en: "Render it inside an element with <code>role=\"status\"</code> / <code>aria-live=\"polite\"</code> that exists before the text changes.", ar: "اعرضها جوه عنصر عليه <code>role=\"status\"</code> أو <code>aria-live=\"polite\"</code> موجود قبل ما النص يتغير." } }],
       quiz: [{ q: { en: "Icon-only close button — what does it need?", ar: "زرار قفل أيقونة بس — محتاج إيه؟" }, a: { en: "An accessible name (aria-label) and the icon aria-hidden.", ar: "اسم (aria-label) والأيقونة aria-hidden." } }],
-      quick: [{ en: "Native first; ARIA = names, relations, states, live regions; it never adds behaviour.", ar: "الأصلي الأول؛ ARIA = أسماء وعلاقات وحالات و live regions؛ وعمرها ما بتضيف سلوك." }]
+      quick: [{ en: "Native first; ARIA = names, relations, states, live regions; it never adds behaviour.", ar: "العناصر الأصلية الأول. والـ ARIA للأسماء والعلاقات والحالات والـ live regions. وعمرها ما بتضيف سلوك." }]
     },
     {
       id: "a11y-visual",
@@ -60,12 +60,12 @@ STUDY.fill("a11y", {
       tldr: { en: "Never use colour alone to carry meaning (add an icon or text). Meet contrast ratios. Respect <code>prefers-reduced-motion</code> — big parallax and scroll animations can make people sick. Let text resize (rem) and keep line length readable.", ar: "عمرك ما تعتمد على اللون لوحده للمعنى (زود أيقونة أو كلام). والتزم بنسب الـ contrast. واحترم <code>prefers-reduced-motion</code> — الـ parallax الكبير وأنيميشن الـ scroll ممكن يتعبوا الناس. وسيب النص يكبر (rem) وخلي طول السطر مريح." },
       blocks: [
         { type: "code", code: "@media (prefers-reduced-motion: reduce) {\n  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }\n}\n// GSAP: gsap.matchMedia().add(\"(prefers-reduced-motion: no-preference)\", () => { /* scroll animations */ });" },
-        { type: "projects", items: [{ text: { en: "The motion-heavy sites (Osloop, ARVAmethod, Makka Juice) are where reduced-motion matters most; Smart FAQ has a usePrefersReducedMotion hook.", ar: "المواقع اللي فيها حركة كتير (Osloop، ARVAmethod، Makka Juice) هي أكتر مكان الـ reduced-motion مهم فيه؛ و Smart FAQ فيه hook اسمه usePrefersReducedMotion." }, p: "smartfaq", tab: "hooks", label: "Smart FAQ" }] }
+        { type: "projects", items: [{ text: { en: "The motion-heavy sites (Osloop, ARVAmethod, Makka Juice) are where reduced-motion matters most; Smart FAQ has a usePrefersReducedMotion hook.", ar: "المواقع اللي فيها حركة كتير (Osloop و ARVAmethod و Makka Juice) هي أكتر مكان الـ reduced-motion مهم فيه. و Smart FAQ فيه hook اسمه usePrefersReducedMotion." }, p: "smartfaq", tab: "hooks", label: "Smart FAQ" }] }
       ],
       say: "Status uses text or icons, not colour alone, and every scroll-driven animation has a reduced-motion version.",
       interview: [{ q: "How do you make a GSAP-heavy site accessible?", a: { en: "Respect prefers-reduced-motion (gsap.matchMedia), keep content readable without the animation, don't hijack scrolling for keyboard users, and keep focus order matching the visual order.", ar: "احترم prefers-reduced-motion (gsap.matchMedia)، وخلي المحتوى مقروء من غير الأنيميشن، ومتسيطرش على الـ scroll لمستخدم الكيبورد، وخلي ترتيب الـ focus زي الترتيب اللي ظاهر." } }],
       quiz: [{ q: { en: "A red border is the only error signal — OK?", ar: "إطار أحمر هو العلامة الوحيدة للخطأ — تمام؟" }, a: { en: "No — add text (and an icon).", ar: "لأ — زود كلام (وأيقونة)." } }],
-      quick: [{ en: "Not colour alone; contrast; prefers-reduced-motion (gsap.matchMedia); rem text; ~70ch lines.", ar: "مش اللون لوحده؛ contrast؛ prefers-reduced-motion (gsap.matchMedia)؛ نص بـ rem؛ سطور حوالي 70ch." }]
+      quick: [{ en: "Not colour alone; contrast; prefers-reduced-motion (gsap.matchMedia); rem text; ~70ch lines.", ar: "مش اللون لوحده. و contrast كويس. و prefers-reduced-motion (بـ gsap.matchMedia). ونص بـ rem. وسطور طولها حوالي 70ch." }]
     },
     {
       id: "a11y-testing",
@@ -77,7 +77,7 @@ STUDY.fill("a11y", {
       ],
       say: "Automated checks in Storybook and role-based queries in tests catch the basics; I still tab through every flow and try it with a screen reader.",
       interview: [{ q: "Why does getByRole improve your tests?", a: { en: "It finds elements the way assistive tech does — by role and accessible name — so a missing label or wrong element makes the test fail.", ar: "بيلاقي العناصر زي ما الأدوات المساعدة بتلاقيها — بالـ role والاسم — فلو label ناقص أو عنصر غلط الـ test بيفشل." } }],
-      quiz: [{ q: { en: "Do automated tools find most a11y issues?", ar: "الأدوات الأوتوماتيك بتلاقي معظم مشاكل الـ a11y؟" }, a: { en: "No — roughly a third; manual testing is required.", ar: "لأ — حوالي التلت؛ والاختبار اليدوي لازم." } }],
+      quiz: [{ q: { en: "Do automated tools find most a11y issues?", ar: "الأدوات الأوتوماتيك بتلاقي معظم مشاكل الـ a11y؟" }, a: { en: "No — roughly a third; manual testing is required.", ar: "لأ، بتمسك حوالي التلت بس، والاختبار اليدوي لازم." } }],
       quick: [{ en: "axe/Storybook/lint + getByRole in tests + manual keyboard, zoom and screen reader.", ar: "axe و Storybook و lint و getByRole في الـ tests + اختبار يدوي بالكيبورد والـ zoom وقارئ الشاشة." }]
     }
   ]
