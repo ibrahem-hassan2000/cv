@@ -13,6 +13,8 @@
 - `index.html` — loads `../project-guides/assets/guide.css` (shared look), `assets/study.css`, the data files, then `assets/study.js`.
 - `data/registry.js` — every section in order (planned ones too) + `STUDY.fill(id, data)`.
 - `data/<section>.js` — one file per section: `STUDY.fill("<id>", { intro, topics: [...] })`. The output section uses `{ intro, groups: [...] }`.
+- `tools/check-data.js` — validates every data file (fields, block types, links into the Handbook).
+- `tools/verify-live-coding.js` — executes every `solution: true` block in `data/live-coding.js` and runs tests against it.
 - `tools/verify-output.js` — runs every output question in Node and checks the answer. **Run it after any change to `data/js-output.js`** (`node study-guide/tools/verify-output.js`).
 - Routes: `#/` · `#/s/<section>` · `#/t/<section>/<topic>` · `#/o/<group>` · `#/quick` · `#/quiz[/<section>]` · `#/search/<q>`.
 
@@ -46,5 +48,11 @@ Output question: `{ level: 1|2|3, tags: [...], code: "…", answer: "exact conso
 - After adding a section: add its `<script>` line in `index.html`, check every route in the browser, update `CV_MASTER_PLAN.md` (§9 row 9 and §10).
 
 ## Status
-Ready (2026-10-29): HTML (6 topics), CSS (8), JavaScript (12), JS output questions (88 in 10 groups, all verified).
-Next in order: TypeScript → Browser & Web APIs → Networking → Security → React → **Hooks** → … (see `data/registry.js`). Planned extras from the user: more output questions over time; **Working with AI** (how to talk to and build with AI for the best result).
+All 27 sections ready (2026-10-29): 184 topics, 468 questions, 88 verified output questions, 12 tested live-coding solutions.
+Check before every commit that touches this folder:
+```bash
+node study-guide/tools/check-data.js          # shape, ids, Handbook links
+node study-guide/tools/verify-output.js       # 88 output questions
+node study-guide/tools/verify-live-coding.js  # live-coding solutions with tests
+```
+Next ideas: more output questions (React rendering, TypeScript), a GraphQL mini-section once he builds the practice project, refresh salary/company notes before applying.
