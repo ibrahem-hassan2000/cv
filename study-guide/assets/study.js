@@ -21,7 +21,10 @@
       quickIntro: "The short version of every ready topic: the key points and the sentence to say. Read it the hour before an interview.",
       quizIntro: "Random questions from the ready sections. Answer out loud, then open.", shuffle: "Another set", all: "All sections",
       outputIntro: "Read the code, write the output on paper, explain why — then open.", group: "Group", openSection: "Open the section",
-      comingText: "This section is planned. It will be written in the next rounds, in order.", level: { 1: "basic", 2: "medium", 3: "tricky" }, menu: "Menu"
+      comingText: "This section is planned. It will be written in the next rounds, in order.", level: { 1: "basic", 2: "medium", 3: "tricky" }, menu: "Menu",
+      basics: "Basics", deep: "Deep dive", whyDeep: "Why they dig here", howDeep: "How it really works", breaks: "Where it breaks", fix: "Fix",
+      levels: "Mid answer vs Senior answer", mid: "Mid", senior: "Senior", drill: "Drill-down: they keep asking “why?”", story: "From my work",
+      sources: "Sources", ranNode: "✓ Output checked by running it in Node", browserOnly: "Runs in a browser"
     },
     ar: {
       title: "دليل المذاكرة", sub: "إبراهيم حسن · Frontend", home: "الرئيسية", quick: "قبل الإنترفيو", quiz: "اختبر نفسك",
@@ -36,7 +39,10 @@
       quickIntro: "النسخة المختصرة من كل topic جاهز: أهم النقط والجملة اللي تقولها. اقراها في الساعة اللي قبل الإنترفيو.",
       quizIntro: "أسئلة عشوائية من الأقسام الجاهزة. جاوب بصوت عالي، وبعدين افتح.", shuffle: "أسئلة تانية", all: "كل الأقسام",
       outputIntro: "اقرا الكود، اكتب الناتج على ورقة، واشرح ليه — وبعدين افتح.", group: "مجموعة", openSection: "افتح القسم",
-      comingText: "القسم ده متخطط. هيتكتب في الجولات الجاية بالترتيب.", level: { 1: "سهل", 2: "متوسط", 3: "صعب" }, menu: "القايمة"
+      comingText: "القسم ده متخطط. هيتكتب في الجولات الجاية بالترتيب.", level: { 1: "سهل", 2: "متوسط", 3: "صعب" }, menu: "القايمة",
+      basics: "الأساس", deep: "التعمق", whyDeep: "ليه بيحفروا هنا", howDeep: "شغال إزاي بجد", breaks: "بيبوظ فين", fix: "الحل",
+      levels: "إجابة Mid وإجابة Senior", mid: "Mid", senior: "Senior", drill: "الحفر: هيفضلوا يسألوا «ليه؟»", story: "من شغلي",
+      sources: "المصادر", ranNode: "✓ الناتج اتأكد بتشغيله في Node", browserOnly: "بيشتغل في المتصفح"
     }
   };
 
@@ -77,6 +83,12 @@
   // ---------- Search index ----------
   var INDEX = [];
   function strip(s) { return String(s).replace(/<[^>]+>/g, " ").toLowerCase(); }
+  function texts(x) { // every string value in a deep-dive object (skips urls)
+    if (typeof x === "string") return /^https?:/.test(x) ? [] : [x];
+    if (Array.isArray(x)) return [].concat.apply([], x.map(texts));
+    if (x && typeof x === "object") return [].concat.apply([], Object.keys(x).map(function (k) { return texts(x[k]); }));
+    return [];
+  }
   function buildIndex() {
     S.sections.forEach(function (sec) {
       (sec.topics || []).forEach(function (t) {
@@ -89,6 +101,7 @@
         });
         (t.interview || []).forEach(function (q) { parts.push(q.q, plain(q.a)); });
         (t.quiz || []).forEach(function (q) { parts.push(plain(q.q), plain(q.a)); });
+        if (t.deep) parts.push(texts(t.deep).join(" "));
         INDEX.push({ kind: "topic", sec: sec, t: t, text: strip(parts.join(" ")) });
       });
       (sec.groups || []).forEach(function (g) {
@@ -107,7 +120,7 @@
     if (h[0] === "quiz") return { view: "quiz", sec: secById(h[1]) };
     if (h[0] === "search") return { view: "search", q: decodeURIComponent(h.slice(1).join("/")) };
     if (h[0] === "s" && secById(h[1])) return { view: "section", sec: secById(h[1]) };
-    if (h[0] === "t") { var sec = secById(h[1]), t = topicById(sec, h[2]); if (t) return { view: "topic", sec: sec, t: t }; }
+    if (h[0] === "t") { var sec = secById(h[1]), t = topicById(sec, h[2]); if (t) return { view: "topic", sec: sec, t: t, deep: h[3] === "deep" && !!t.deep }; }
     if (h[0] === "o") { var g = groupById(h[1]); if (g) return { view: "group", sec: g.sec, g: g.g, gi: g.i }; }
     return { view: "home" };
   }
@@ -135,7 +148,7 @@
         var subs = sec.groups ? sec.groups.map(function (g) {
           return '<a class="sub' + (r.g && r.g.id === g.id ? " active" : "") + '" href="#/o/' + g.id + '">' + T(g.title) + "</a>";
         }) : (sec.topics || []).map(function (t) {
-          return '<a class="sub' + (r.t && r.t.id === t.id ? " active" : "") + '" href="#/t/' + sec.id + "/" + t.id + '">' + T(t.title) + "</a>";
+          return '<a class="sub' + (r.t && r.t.id === t.id ? " active" : "") + '" href="#/t/' + sec.id + "/" + t.id + '">' + T(t.title) + deepMark(t) + "</a>";
         });
         item += '<div class="st-subs">' + subs.join("") + "</div>";
       }
@@ -218,23 +231,76 @@
       return s;
     }
     s += '<div class="p-cards">' + sec.topics.map(function (t, i) {
-      return '<a class="p-card" href="#/t/' + sec.id + "/" + t.id + '" style="--tile:' + sec.color + '"><h3>' + (i + 1) + ". " + T(t.title) + '</h3><div class="line">' + T(t.tldr) + "</div></a>";
+      return '<a class="p-card" href="#/t/' + sec.id + "/" + t.id + '" style="--tile:' + sec.color + '"><h3>' + (i + 1) + ". " + T(t.title) + deepMark(t) + '</h3><div class="line">' + T(t.tldr) + "</div></a>";
     }).join("") + "</div>";
     s += '<p style="margin-top:18px"><a href="#/quiz/' + sec.id + '" class="st-btn">' + U("quiz") + ": " + T(sec.name) + " " + arrow() + "</a></p>";
     return s;
   }
 
-  function topicView(sec, t) {
+  function topicView(sec, t, deep) {
     var i = sec.topics.indexOf(t), prev = sec.topics[i - 1], next = sec.topics[i + 1];
     var s = '<div class="st-crumb"><a href="#/s/' + sec.id + '">' + T(sec.name) + "</a> · " + (i + 1) + "/" + sec.topics.length + "</div>";
     s += '<h1 class="st-h1">' + T(t.title) + "</h1>";
+    if (t.deep) {
+      var base = "#/t/" + sec.id + "/" + t.id;
+      s += '<nav class="tabs st-tabs"><a href="' + base + '"' + (deep ? "" : ' class="active"') + ">" + U("basics") + '</a><a href="' + base + '/deep"' + (deep ? ' class="active"' : "") + ">" + U("deep") + "</a></nav>";
+    }
+    if (deep) return s + deepView(t.deep) + pager(sec, prev, next);
     s += '<div class="card pitch st-tldr"><div class="lbl">' + U("tldr") + "</div>" + T(t.tldr) + "</div>";
     s += (t.blocks || []).map(block).join("");
     if (t.say) s += '<div class="card st-say"><div class="lbl">' + U("say") + "</div><q>" + t.say + "</q></div>";
     if (t.interview && t.interview.length) s += '<h2 class="section-title">' + U("interview") + "</h2>" + qaList(t.interview);
     if (t.quiz && t.quiz.length) s += '<h2 class="section-title">' + U("selfTest") + ' <small>' + U("think") + "</small></h2>" + quizList(t.quiz);
-    s += '<div class="st-pager">' + (prev ? '<a href="#/t/' + sec.id + "/" + prev.id + '">' + (lang === "ar" ? "→ " : "← ") + T(prev.title) + "</a>" : "<span></span>") +
+    return s + pager(sec, prev, next);
+  }
+  function pager(sec, prev, next) {
+    return '<div class="st-pager">' + (prev ? '<a href="#/t/' + sec.id + "/" + prev.id + '">' + (lang === "ar" ? "→ " : "← ") + T(prev.title) + "</a>" : "<span></span>") +
       (next ? '<a href="#/t/' + sec.id + "/" + next.id + '">' + T(next.title) + " " + arrow() + "</a>" : "") + "</div>";
+  }
+  function deepMark(t) { return t.deep ? '<span class="st-deep-mark">DEEP</span>' : ""; }
+
+  // ---------- Deep dive ----------
+  function example(x) {
+    if (!x.code) return "";
+    return code(x.code) + (x.run === "node"
+      ? '<div class="st-answer"><div class="lbl">' + U("output") + '</div><pre class="st-console">' + esc(x.out) + '</pre><div class="st-out-run">' + U("ranNode") + "</div></div>"
+      : '<div class="st-out-run">' + U("browserOnly") + "</div>");
+  }
+  function drillList(items) {
+    return (items || []).map(function (q) {
+      return '<details class="qa"><summary>' + q.q + "</summary><div>" + T(q.a) +
+        (q.follow && q.follow.length ? '<div class="st-follow"><div class="lbl">' + U("follow") + "</div>" + drillList(q.follow) + "</div>" : "") + "</div></details>";
+    }).join("");
+  }
+  function deepView(d) {
+    var s = '<div class="card st-deep-intro"><div class="lbl">' + U("whyDeep") + "</div>" + T(d.why) + "</div>";
+    if (d.how && d.how.length) {
+      s += '<h2 class="section-title">' + U("howDeep") + "</h2>" + d.how.map(function (x, i) {
+        return '<div class="card st-step"><span class="st-n">' + (i + 1) + "</span><div><h3>" + T(x.title) + "</h3>" + T(x.body) + example(x) + "</div></div>";
+      }).join("");
+    }
+    if (d.breaks && d.breaks.length) {
+      s += '<h2 class="section-title">' + U("breaks") + "</h2>" + d.breaks.map(function (x) {
+        return '<div class="card st-break"><h3>' + T(x.title) + "</h3>" + T(x.body) + example(x) +
+          '<div class="st-fix"><span class="lbl">' + U("fix") + "</span>" + T(x.fix) + "</div></div>";
+      }).join("");
+    }
+    if (d.levels && d.levels.length) {
+      s += '<h2 class="section-title">' + U("levels") + "</h2>" + d.levels.map(function (x) {
+        return '<div class="card"><h3>' + x.q + '</h3><div class="st-levels"><div class="st-mid"><span class="lbl">' + U("mid") + "</span>" + T(x.mid) +
+          '</div><div class="st-senior"><span class="lbl">' + U("senior") + "</span>" + T(x.senior) + "</div></div></div>";
+      }).join("");
+    }
+    if (d.drill && d.drill.length) s += '<h2 class="section-title">' + U("drill") + '</h2><div class="st-drill">' + drillList(d.drill) + "</div>";
+    if (d.story) {
+      s += '<div class="card st-projects"><h3>' + U("story") + "</h3><p>" + T(d.story.text) +
+        (d.story.p ? ' <a href="../project-guides/index.html#/' + d.story.p + "/" + (d.story.tab || "decisions") + '">' + (d.story.label || d.story.p) + " " + arrow() + "</a>" : "") + "</p></div>";
+    }
+    if (d.sources && d.sources.length) {
+      s += '<div class="card st-sources"><h3>' + U("sources") + "</h3><ul>" + d.sources.map(function (x) {
+        return '<li><a href="' + x.url + '" target="_blank" rel="noopener noreferrer">' + x.label + "</a></li>";
+      }).join("") + "</ul></div>";
+    }
     return s;
   }
 
@@ -312,7 +378,7 @@
     var main, title;
     switch (r.view) {
       case "section": main = sectionView(r.sec); title = T(r.sec.name); break;
-      case "topic": main = topicView(r.sec, r.t); title = T(r.t.title); break;
+      case "topic": main = topicView(r.sec, r.t, r.deep); title = T(r.t.title); break;
       case "group": main = groupView(r.sec, r.g, r.gi); title = T(r.g.title); break;
       case "quick": main = quickView(); title = U("quick"); break;
       case "quiz": main = quizView(r.sec); title = U("quiz"); break;

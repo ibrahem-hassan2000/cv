@@ -35,5 +35,14 @@ window.STUDY = {
     for (var i = 0; i < this.sections.length; i++) {
       if (this.sections[i].id === id) { for (var k in data) this.sections[i][k] = data[k]; return; }
     }
+  },
+  // Deep-dive layer, kept in data/deep-<section>.js and loaded after the section: STUDY.deepen("<section>", { "<topic>": { ... } }).
+  // Shape: see README.md ("Deep dive").
+  deepen: function (id, byTopic) {
+    for (var i = 0; i < this.sections.length; i++) {
+      if (this.sections[i].id !== id) continue;
+      var topics = this.sections[i].topics || [];
+      for (var j = 0; j < topics.length; j++) if (byTopic[topics[j].id]) topics[j].deep = byTopic[topics[j].id];
+    }
   }
 };

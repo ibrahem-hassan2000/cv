@@ -42,6 +42,24 @@ for (const s of ctx.window.STUDY.sections) {
         if (i.tab && !TABS.has(i.tab)) problems.push(`${w}: unknown tab ${i.tab}`);
       }
     }
+    if (t.deep) {
+      const d = t.deep;
+      bi(d.why, w + " deep why");
+      (d.how || []).forEach((x, i) => { bi(x.title, `${w} deep how ${i}`); bi(x.body, `${w} deep how ${i}`); });
+      (d.breaks || []).forEach((x, i) => { bi(x.title, `${w} deep break ${i}`); bi(x.body, `${w} deep break ${i}`); bi(x.fix, `${w} deep break ${i} fix`); });
+      for (const x of [...(d.how || []), ...(d.breaks || [])]) {
+        if (x.code && x.run !== "node" && x.run !== "browser") problems.push(`${w}: deep code needs run "node" or "browser"`);
+        if (x.run === "node" && !x.out) problems.push(`${w}: deep node example needs out`);
+      }
+      (d.levels || []).forEach((x, i) => { bi(x.mid, `${w} deep level ${i} mid`); bi(x.senior, `${w} deep level ${i} senior`); questions++; });
+      const drill = (list, depth) => (list || []).forEach((x) => { bi(x.a, `${w} deep drill depth ${depth}`); questions++; drill(x.follow, depth + 1); });
+      drill(d.drill, 1);
+      if (d.story) {
+        bi(d.story.text, w + " deep story");
+        if (d.story.p && !projects.has(d.story.p)) problems.push(`${w}: deep story unknown project ${d.story.p}`);
+      }
+      for (const src of d.sources || []) if (!/^https:\/\//.test(src.url)) problems.push(`${w}: deep source must be https`);
+    }
     for (const q of t.interview || []) { bi(q.a, w + " interview"); questions++; }
     for (const q of t.quiz || []) { bi(q.q, w + " quiz q"); bi(q.a, w + " quiz a"); questions++; }
   }

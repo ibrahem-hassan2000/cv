@@ -42,6 +42,24 @@
 ```
 Output question: `{ level: 1|2|3, tags: [...], code: "…", answer: "exact console output, lines joined by \\n", why: { en, ar } }`, inside `groups: [{ id, title, intro, rules: [...], questions: [...] }]`.
 
+## Deep dive (added 2026-10-29, user: "the content is too shallow for Mid/Senior")
+A second tab on a topic (`#/t/<section>/<topic>/deep`, marked **DEEP** in the lists). It lives in `data/deep-<section>.js`, loaded after all sections (also imported in `site/src/data.ts`):
+```js
+STUDY.deepen("<section>", {
+  "<topic id>": {
+    why: { en, ar },                                    // why interviewers dig here
+    how:    [{ title, body, code?, out?, run? }],       // how it really works, step by step
+    breaks: [{ title, body, code?, out?, run?, fix }],  // edge cases / what breaks, with the fix
+    levels: [{ q: "…", mid: { en, ar }, senior: { en, ar } }],  // same question, two answers
+    drill:  [{ q: "…", a: { en, ar }, follow: [ …same shape, any depth… ] }],  // "why?" chains
+    story?: { text: { en, ar }, p, tab, label },        // only a real one from his projects
+    sources: [{ label, url }]                           // official docs / specs / well-known articles
+  }
+});
+```
+Code examples need `run: "node"` (with the exact `out`; executed by `tools/verify-deep.js`) or `run: "browser"` (shown as "runs in a browser").
+Order: JavaScript core first, then React rendering and hooks, performance and Next.js, system design. Done: `javascript/event-loop`.
+
 ## Rules for writing
 - Correct before clever: every code answer must be checked (output questions by the verifier; other snippets by running them).
 - Each topic answers: what it is, **when to use / when not**, **X vs Y** with cases, traps, how it showed up in his projects (only real ones — see `project-guides/data/*.js`), interview questions **with the follow-ups** an interviewer digs with, self-test, quick points.
@@ -55,5 +73,6 @@ Check before every commit that touches this folder:
 node study-guide/tools/check-data.js          # shape, ids, Handbook links
 node study-guide/tools/verify-output.js       # 88 output questions
 node study-guide/tools/verify-live-coding.js  # live-coding solutions with tests
+node study-guide/tools/verify-deep.js         # deep-dive examples marked run: "node"
 ```
 Next ideas: more output questions (React rendering, TypeScript), a GraphQL mini-section once he builds the practice project, refresh salary/company notes before applying.

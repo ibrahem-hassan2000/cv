@@ -14,6 +14,7 @@ export default function App() {
           <Route path="/study" element={<StudyHome />} />
           <Route path="/study/s/:sec" element={<StudySection />} />
           <Route path="/study/t/:sec/:topic" element={<StudyTopic />} />
+          <Route path="/study/t/:sec/:topic/deep" element={<StudyTopic deep />} />
           <Route path="/study/o/:group" element={<StudyGroup />} />
           <Route path="/study/quick" element={<StudyQuick />} />
           <Route path="/study/quiz/:sec?" element={<StudyQuiz />} />

@@ -29,6 +29,7 @@ import "../../study-guide/data/live-coding.js";
 import "../../study-guide/data/system-design.js";
 import "../../study-guide/data/ai.js";
 import "../../study-guide/data/behavioral.js";
+import "../../study-guide/data/deep-javascript.js";
 
 import "../../project-guides/data/handbook.js";
 import "../../project-guides/data/smartfaq.js";
@@ -58,7 +59,13 @@ export interface Block {
   title?: Bi; body?: Bi; code?: string; note?: Bi; items?: any[]; cols?: Bi[]; rows?: Bi[][]; use?: Bi[]; avoid?: Bi[];
 }
 export interface QA { q: Bi; a: Bi; follow?: QA[] }
-export interface Topic { id: string; title: Bi; tldr: Bi; blocks?: Block[]; say?: string; interview?: QA[]; quiz?: QA[]; quick?: Bi[] }
+export interface Example { title: Bi; body: Bi; code?: string; out?: string; run?: "node" | "browser"; fix?: Bi }
+/** Deep-dive layer (study-guide/data/deep-<section>.js). */
+export interface Deep {
+  why: Bi; how?: Example[]; breaks?: Example[]; levels?: { q: string; mid: Bi; senior: Bi }[]; drill?: QA[];
+  story?: { text: Bi; p?: string; tab?: string; label?: string }; sources?: { label: string; url: string }[];
+}
+export interface Topic { id: string; title: Bi; tldr: Bi; blocks?: Block[]; say?: string; interview?: QA[]; quiz?: QA[]; quick?: Bi[]; deep?: Deep }
 export interface OutputQuestion { level?: 1 | 2 | 3; tags?: string[]; code: string; answer: string; why: Bi }
 export interface Group { id: string; title: Bi; intro?: Bi; rules?: Bi[]; questions: OutputQuestion[] }
 export interface Section { id: string; icon: string; color: string; name: Bi; intro?: Bi; topics?: Topic[]; groups?: Group[] }

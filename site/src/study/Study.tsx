@@ -1,7 +1,7 @@
 // Study Guide — the React version of study-guide/assets/study.js, same markup and CSS classes.
 import { Fragment, useMemo, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { groupById, isReady, sectionById, sections, type Block, type Group, type OutputQuestion, type QA, type Section, type Topic } from "../data";
+import { groupById, isReady, sectionById, sections, type Block, type Deep, type Example, type Group, type OutputQuestion, type QA, type Section, type Topic } from "../data";
 import { plain, T, tr, useLang, useUI } from "../i18n";
 import { arrow, back, Brand, Code, Html, LangSwitch, List, NavItem, Shell, Tile } from "../ui";
 
@@ -20,6 +20,9 @@ const UI = {
     quizIntro: "Random questions from the ready sections. Answer out loud, then open.", shuffle: "Another set", all: "All sections",
     outputIntro: "Read the code, write the output on paper, explain why — then open.", group: "Group", rules: "Rules you need",
     comingText: "This section is planned. It will be written in the next rounds, in order.", level: { 1: "basic", 2: "medium", 3: "tricky" } as Record<number, string>,
+    basics: "Basics", deep: "Deep dive", whyDeep: "Why they dig here", howDeep: "How it really works", breaks: "Where it breaks", fix: "Fix",
+    levels: "Mid answer vs Senior answer", mid: "Mid", senior: "Senior", drill: "Drill-down: they keep asking “why?”", story: "From my work",
+    sources: "Sources", ranNode: "✓ Output checked by running it in Node", browserOnly: "Runs in a browser",
   },
   ar: {
     title: "دليل المذاكرة", sub: "إبراهيم حسن · Frontend", home: "الرئيسية", quick: "قبل الإنترفيو", quiz: "اختبر نفسك",
@@ -35,6 +38,9 @@ const UI = {
     quizIntro: "أسئلة عشوائية من الأقسام الجاهزة. جاوب بصوت عالي، وبعدين افتح.", shuffle: "أسئلة تانية", all: "كل الأقسام",
     outputIntro: "اقرا الكود، اكتب الناتج على ورقة، واشرح ليه — وبعدين افتح.", group: "مجموعة", rules: "القواعد اللي هتحتاجها",
     comingText: "القسم ده متخطط. هيتكتب في الجولات الجاية بالترتيب.", level: { 1: "سهل", 2: "متوسط", 3: "صعب" } as Record<number, string>,
+    basics: "الأساس", deep: "التعمق", whyDeep: "ليه بيحفروا هنا", howDeep: "شغال إزاي بجد", breaks: "بيبوظ فين", fix: "الحل",
+    levels: "إجابة Mid وإجابة Senior", mid: "Mid", senior: "Senior", drill: "الحفر: هيفضلوا يسألوا «ليه؟»", story: "من شغلي",
+    sources: "المصادر", ranNode: "✓ الناتج اتأكد بتشغيله في Node", browserOnly: "بيشتغل في المتصفح",
   },
 };
 const useU = () => useUI(UI);
@@ -92,7 +98,7 @@ function Sidebar({ here }: { here: Here }) {
                 <div className="st-subs">
                   {sec.groups
                     ? sec.groups.map((g) => <Link key={g.id} className={"sub" + (here.group?.id === g.id ? " active" : "")} to={groupPath(g)}><T x={g.title} /></Link>)
-                    : (sec.topics ?? []).map((t) => <Link key={t.id} className={"sub" + (here.topic?.id === t.id ? " active" : "")} to={topicPath(sec, t)}><T x={t.title} /></Link>)}
+                    : (sec.topics ?? []).map((t) => <Link key={t.id} className={"sub" + (here.topic?.id === t.id ? " active" : "")} to={topicPath(sec, t)}><T x={t.title} /><DeepMark t={t} /></Link>)}
                 </div>
               )}
             </Fragment>
@@ -163,7 +169,7 @@ function QAList({ items }: { items: QA[] }) {
           <div><T x={q.a} />
             {q.follow?.length ? (
               <div className="st-follow"><div className="lbl">{U.follow}</div>
-                {q.follow.map((f, j) => <details className="qa sub" key={j}><summary><T x={f.q} /></summary><div><T x={f.a} /></div></details>)}
+                <QAList items={q.follow} />
               </div>
             ) : null}
           </div>
@@ -202,6 +208,74 @@ function Pager<X>({ prev, next, to, label }: { prev?: X; next?: X; to: (x: X) =>
       {prev ? <Link to={to(prev)}>{back(lang)} {label(prev)}</Link> : <span />}
       {next ? <Link to={to(next)}>{label(next)} {arrow(lang)}</Link> : null}
     </div>
+  );
+}
+
+// ---------- Deep dive ----------
+function DeepMark({ t }: { t: Topic }) {
+  return t.deep ? <span className="st-deep-mark">DEEP</span> : null;
+}
+
+function ExampleCode({ x }: { x: Example }) {
+  const U = useU();
+  if (!x.code) return null;
+  return (
+    <>
+      <Code code={x.code} />
+      {x.run === "node" ? (
+        <div className="st-answer">
+          <div className="lbl">{U.output}</div><pre className="st-console">{x.out}</pre>
+          <div className="st-out-run">{U.ranNode}</div>
+        </div>
+      ) : <div className="st-out-run">{U.browserOnly}</div>}
+    </>
+  );
+}
+
+function DeepView({ d }: { d: Deep }) {
+  const U = useU();
+  const { lang } = useLang();
+  return (
+    <>
+      <div className="card st-deep-intro"><div className="lbl">{U.whyDeep}</div><T x={d.why} /></div>
+      {d.how?.length ? <h2 className="section-title">{U.howDeep}</h2> : null}
+      {(d.how ?? []).map((x, i) => (
+        <div className="card st-step" key={i}>
+          <span className="st-n">{i + 1}</span>
+          <div><h3><T x={x.title} /></h3><T x={x.body} /><ExampleCode x={x} /></div>
+        </div>
+      ))}
+      {d.breaks?.length ? <h2 className="section-title">{U.breaks}</h2> : null}
+      {(d.breaks ?? []).map((x, i) => (
+        <div className="card st-break" key={i}>
+          <h3><T x={x.title} /></h3><T x={x.body} /><ExampleCode x={x} />
+          <div className="st-fix"><span className="lbl">{U.fix}</span><T x={x.fix} /></div>
+        </div>
+      ))}
+      {d.levels?.length ? <h2 className="section-title">{U.levels}</h2> : null}
+      {(d.levels ?? []).map((x, i) => (
+        <div className="card" key={i}>
+          <Html as="h3" html={x.q} />
+          <div className="st-levels">
+            <div className="st-mid"><span className="lbl">{U.mid}</span><T x={x.mid} /></div>
+            <div className="st-senior"><span className="lbl">{U.senior}</span><T x={x.senior} /></div>
+          </div>
+        </div>
+      ))}
+      {d.drill?.length ? <><h2 className="section-title">{U.drill}</h2><div className="st-drill"><QAList items={d.drill} /></div></> : null}
+      {d.story && (
+        <div className="card st-projects">
+          <h3>{U.story}</h3>
+          <p><T x={d.story.text} />{d.story.p && <> <Link to={`/projects/${d.story.p}/${d.story.tab || "decisions"}`}>{d.story.label || d.story.p} {arrow(lang)}</Link></>}</p>
+        </div>
+      )}
+      {d.sources?.length ? (
+        <div className="card st-sources">
+          <h3>{U.sources}</h3>
+          <ul>{d.sources.map((x) => <li key={x.url}><a href={x.url} target="_blank" rel="noopener noreferrer">{x.label}</a></li>)}</ul>
+        </div>
+      ) : null}
+    </>
   );
 }
 
@@ -254,7 +328,7 @@ export function StudySection() {
           <div className="p-cards">
             {(sec.topics ?? []).map((t, i) => (
               <Link key={t.id} className="p-card" to={topicPath(sec, t)} style={{ ["--tile" as string]: sec.color }}>
-                <h3>{i + 1}. <T x={t.title} /></h3><div className="line"><T x={t.tldr} /></div>
+                <h3>{i + 1}. <T x={t.title} /><DeepMark t={t} /></h3><div className="line"><T x={t.tldr} /></div>
               </Link>
             ))}
           </div>
@@ -265,7 +339,7 @@ export function StudySection() {
   );
 }
 
-export function StudyTopic() {
+export function StudyTopic({ deep }: { deep?: boolean }) {
   const U = useU();
   const { lang } = useLang();
   const { sec: secId, topic: topicId } = useParams();
@@ -278,6 +352,13 @@ export function StudyTopic() {
     <Page here={{ view: "topic", sec, topic: t }} title={plain(t.title, lang)}>
       <div className="st-crumb"><Link to={`/study/s/${sec.id}`}><T x={sec.name} /></Link> · {i + 1}/{list.length}</div>
       <h1 className="st-h1"><T x={t.title} /></h1>
+      {t.deep && (
+        <nav className="tabs st-tabs">
+          <Link to={topicPath(sec, t)} className={deep ? "" : "active"}>{U.basics}</Link>
+          <Link to={topicPath(sec, t) + "/deep"} className={deep ? "active" : ""}>{U.deep}</Link>
+        </nav>
+      )}
+      {deep && t.deep ? <DeepView d={t.deep} /> : <>
       <div className="card pitch st-tldr"><div className="lbl">{U.tldr}</div><T x={t.tldr} /></div>
       {(t.blocks ?? []).map((b, n) => <BlockView key={n} b={b} />)}
       {t.say && <div className="card st-say"><div className="lbl">{U.say}</div><Html as="q" html={t.say} /></div>}
@@ -290,6 +371,7 @@ export function StudyTopic() {
           ))}
         </>
       ) : null}
+      </>}
       <Pager prev={list[i - 1]} next={list[i + 1]} to={(x) => topicPath(sec, x)} label={(x) => <T x={x.title} />} />
     </Page>
   );
@@ -394,6 +476,9 @@ export function StudyQuiz() {
 type Hit = { kind: "topic"; sec: Section; t: Topic; text: string } | { kind: "output"; sec: Section; g: Group; q: OutputQuestion; n: number; text: string };
 const both = (x: any) => (typeof x === "string" ? x : x ? `${x.en ?? ""} ${x.ar ?? ""}` : "");
 const strip = (s: string) => s.replace(/<[^>]+>/g, " ").toLowerCase();
+/** Every string value in a deep-dive object (skips urls). */
+const texts = (x: unknown): string[] =>
+  typeof x === "string" ? (/^https?:/.test(x) ? [] : [x]) : Array.isArray(x) ? x.flatMap(texts) : x && typeof x === "object" ? Object.values(x).flatMap(texts) : [];
 let INDEX: Hit[] | null = null;
 function index(): Hit[] {
   if (INDEX) return INDEX;
@@ -409,6 +494,7 @@ function index(): Hit[] {
       }
       (t.interview ?? []).forEach((q) => parts.push(both(q.q), both(q.a)));
       (t.quiz ?? []).forEach((q) => parts.push(both(q.q), both(q.a)));
+      if (t.deep) parts.push(texts(t.deep).join(" "));
       INDEX.push({ kind: "topic", sec, t, text: strip(parts.join(" ")) });
     }
     for (const g of sec.groups ?? []) {
