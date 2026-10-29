@@ -32,13 +32,13 @@ HANDBOOK.projects.push({
     ]},
     { title: { en: "Find Help — services marketplace (98)", ar: "Find Help — ماركت بليس خدمات (98)" }, items: [
       { en: "Categories, service details, add and promote services, orders", ar: "التصنيفات، تفاصيل الخدمة، إضافة وترويج خدمات، الطلبات" },
-      { en: "Real-time chat on Firestore; phone OTP with Firebase", ar: "شات لايف على Firestore؛ OTP بالموبايل بـ Firebase" },
+      { en: "Real-time chat on Firestore; phone OTP with Firebase", ar: "شات لايف على Firestore. و OTP بالموبايل بـ Firebase" },
       { en: "Favourites, addresses on Google Maps, checkout", ar: "المفضلة، العناوين على Google Maps، الدفع" }
     ]},
     { title: { en: "Marina — resort portal (83)", ar: "Marina — بورتال منتجع (83)" }, items: [
       { en: "Listings, articles, guide (where to go, what to do)", ar: "الـ listings، المقالات، الدليل (تروح فين، تعمل إيه)" },
       { en: "Service requests, invoices and payment, lost & found, complaints", ar: "طلبات الخدمات، الفواتير ودفعها، المفقودات، الشكاوى" },
-      { en: "Admin login, OTP; Pages Router + react-i18next", ar: "login للأدمن، OTP؛ Pages Router + react-i18next" }
+      { en: "Admin login, OTP; Pages Router + react-i18next", ar: "login للأدمن، و OTP. و Pages Router مع react-i18next" }
     ]},
     { title: { en: "HTML / CSS / JS sites (6)", ar: "مواقع HTML / CSS / JS (6)" }, items: [
       { en: "Alwatania and MDR — e-commerce (basket, checkout, orders)", ar: "الوطنية و MDR — متاجر (سلة، دفع، طلبات)" },
@@ -48,7 +48,7 @@ HANDBOOK.projects.push({
   ],
 
   myRole: [
-    { en: "Main frontend developer on all 9 repos; the repo owner made a few commits.", ar: "الفرونت الأساسي في الـ 9 مشاريع؛ وصاحب الـ repo كان بيعمل كوميتات قليلة." },
+    { en: "Main frontend developer on all 9 repos; the repo owner made a few commits.", ar: "الفرونت الأساسي في الـ 9 مشاريع. وصاحب الـ repo كان بيعمل commits قليلة." },
     { en: "Megaminds: 60 of 83 commits (another developer did 21).", ar: "Megaminds: 60 من 83 كوميت (مطور تاني عمل 21)." }
   ],
 
@@ -82,7 +82,7 @@ HANDBOOK.projects.push({
     {
       title: { en: "Translations", ar: "الترجمة" },
       chose: "next-intl", alts: ["next-i18next / react-i18next"],
-      why: { en: "next-i18next was built for the Pages Router; next-intl supports the App Router (server components, <code>[locale]</code> routes, middleware). Marina used react-i18next because it was on the Pages Router.", ar: "next-i18next معمول للـ Pages Router؛ و next-intl بيدعم الـ App Router (server components، و routes بـ <code>[locale]</code>، و middleware). و Marina استخدم react-i18next علشان كان Pages Router." },
+      why: { en: "next-i18next was built for the Pages Router; next-intl supports the App Router (server components, <code>[locale]</code> routes, middleware). Marina used react-i18next because it was on the Pages Router.", ar: "الـ next-i18next معمول للـ Pages Router. أما next-intl فبيدعم الـ App Router: server components، و routes بـ <code>[locale]</code>، و middleware. و Marina استخدم react-i18next، علشان كان Pages Router." },
       both: { v: "no", en: "Two i18n libraries in one app means two message formats.", ar: "مكتبتين ترجمة في تطبيق واحد = شكلين مختلفين لملفات الترجمة." },
       better: { en: "next-intl for App Router projects.", ar: "next-intl لمشاريع الـ App Router." },
       say: "For App Router projects I use next-intl because it works in server components and with locale routing.",
@@ -113,7 +113,7 @@ HANDBOOK.projects.push({
       title: { en: "Find Help chat (Firestore)", ar: "شات Find Help (Firestore)" },
       steps: [
         ["Open chat", { en: "query messages for this chat, orderBy created_at", ar: "query لرسايل الشات ده، مترتبة بـ created_at" }],
-        ["onSnapshot", { en: "inside useEffect; fires on every change", ar: "جوه useEffect؛ بيشتغل مع أي تغيير" }],
+        ["onSnapshot", { en: "inside useEffect; fires on every change", ar: "جوه useEffect، وبيشتغل مع أي تغيير" }],
         ["setState", { en: "messages list updates", ar: "قايمة الرسايل بتتحدث" }],
         ["addDoc", { en: "sending writes a new message", ar: "الإرسال بيكتب رسالة جديدة" }],
         ["Cleanup", { en: "unsubscribe when leaving", ar: "unsubscribe لما تخرج" }]
@@ -140,11 +140,11 @@ HANDBOOK.projects.push({
 
   hooks: [
     { group: { en: "Hooks I used most", ar: "أكتر hooks استخدمتها" }, items: [
-      { name: "useEffect", what: { en: "Fetch on mount; Firestore subscription with unsubscribe in cleanup.", ar: "جلب الداتا أول ما الصفحة تفتح؛ واشتراك Firestore مع unsubscribe في الـ cleanup." }, remember: { en: "Return the cleanup — otherwise listeners pile up.", ar: "رجّع الـ cleanup — وإلا الـ listeners هتتراكم." } },
+      { name: "useEffect", what: { en: "Fetch on mount; Firestore subscription with unsubscribe in cleanup.", ar: "جلب الداتا أول ما الصفحة تفتح. و subscribe لـ Firestore، مع unsubscribe في الـ cleanup." }, remember: { en: "Return the cleanup — otherwise listeners pile up.", ar: "رجّع الـ cleanup — وإلا الـ listeners هتتراكم." } },
       { name: "useState", what: { en: "Data, loading, forms, messages.", ar: "الداتا، الـ loading، الفورمز، الرسايل." } },
       { name: "useSession", what: { en: "next-auth: is the user signed in?", ar: "next-auth: المستخدم عامل login؟" } },
-      { name: "useTranslations / useTranslation", what: { en: "next-intl on the App Router; react-i18next on Marina.", ar: "next-intl في الـ App Router؛ و react-i18next في Marina." } },
-      { name: "useRouter", what: { en: "Navigate after login or checkout; switch language.", ar: "التنقل بعد الـ login أو الدفع؛ وتغيير اللغة." } }
+      { name: "useTranslations / useTranslation", what: { en: "next-intl on the App Router; react-i18next on Marina.", ar: "next-intl في الـ App Router، و react-i18next في Marina." } },
+      { name: "useRouter", what: { en: "Navigate after login or checkout; switch language.", ar: "التنقل بعد الـ login أو الدفع. وتغيير اللغة." } }
     ]}
   ],
 
@@ -152,12 +152,12 @@ HANDBOOK.projects.push({
     {
       title: { en: "Live chat without a real-time backend", ar: "شات لايف من غير باك إند real-time" },
       problem: { en: "Find Help needed client–provider chat and had no socket server.", ar: "Find Help كان محتاج شات بين العميل ومقدم الخدمة ومفيش socket server." },
-      fix: { en: "Firestore: onSnapshot pushes new messages instantly, ordered by time; unsubscribe on leave.", ar: "Firestore: onSnapshot بيبعت الرسايل الجديدة فورًا مترتبة بالوقت؛ و unsubscribe لما تخرج." },
+      fix: { en: "Firestore: onSnapshot pushes new messages instantly, ordered by time; unsubscribe on leave.", ar: "Firestore: الـ onSnapshot بيبعت الرسايل الجديدة على طول، ومترتبة بالوقت. و unsubscribe لما تخرج." },
       result: { en: "Working chat with no extra server.", ar: "شات شغال من غير سيرفر زيادة." }
     },
     {
       title: { en: "Two languages and RTL everywhere", ar: "لغتين و RTL في كل حتة" },
-      problem: { en: "Every client wanted Arabic and English; Arabic needs RTL and a different font.", ar: "كل العملاء عايزين عربي وإنجليزي؛ والعربي محتاج RTL وخط مختلف." },
+      problem: { en: "Every client wanted Arabic and English; Arabic needs RTL and a different font.", ar: "كل العملاء عايزين عربي وإنجليزي. والعربي محتاج RTL وخط مختلف." },
       fix: { en: "Locale in the URL, message files, <code>dir</code> switching by language, separate Arabic styles.", ar: "اللغة في الـ URL، ملفات ترجمة، <code>dir</code> بيتغير حسب اللغة، وستايل منفصل للعربي." },
       result: { en: "Bilingual sites from one codebase.", ar: "مواقع بلغتين من نفس الكود." }
     }

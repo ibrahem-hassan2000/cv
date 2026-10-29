@@ -20,7 +20,7 @@ HANDBOOK.projects.push({
 
   pitch: [
     { en: "Spectra (spectra.sa) gives families of people with disabilities <b>appointments, prescriptions, medical reports, video sessions and contracts</b> with organizations.", ar: "Spectra (spectra.sa) بيدي أسر ذوي الإعاقة <b>مواعيد، روشتات، تقارير طبية، جلسات فيديو، وعقود</b> مع المؤسسات." },
-    { en: "I owned the <b>admin portal</b> (back office) and the <b>doctor portal</b>; a teammate owned the client portal.", ar: "كنت مسؤول عن <b>بوابة الأدمن</b> (الـ back office) و<b>بوابة الدكتور</b>؛ وزميلي كان مسؤول عن بوابة العميل." },
+    { en: "I owned the <b>admin portal</b> (back office) and the <b>doctor portal</b>; a teammate owned the client portal.", ar: "كنت مسؤول عن <b>بوابة الأدمن</b> (الـ back office) و<b>بوابة الدكتور</b>. وزميلي كان مسؤول عن بوابة العميل." },
     { en: "I built ~120 pages with one CRUD pattern for 8 master-data types, contract signing, and the doctor's in-session panel.", ar: "عملت حوالي 120 صفحة بـ pattern واحد للـ CRUD لـ 8 أنواع master data، وتوقيع العقود، وبانل الدكتور أثناء الجلسة." }
   ],
 
@@ -154,18 +154,18 @@ HANDBOOK.projects.push({
   hooks: [
     { group: { en: "Server data", ar: "داتا السيرفر" }, items: [
       { name: "useQuery", count: "×26", what: { en: "Get and GetByID per resource.", ar: "Get و GetByID لكل resource." } },
-      { name: "useMutation", count: "×31", what: { en: "Create / Update / Delete; then invalidate or refetch the list.", ar: "إنشاء / تعديل / حذف؛ وبعدها invalidate أو refetch للقايمة." }, remember: { en: "Invalidate with the <b>same key family</b> the query used.", ar: "اعمل invalidate بـ <b>نفس عيلة الـ key</b> اللي الـ query استخدمها." } },
+      { name: "useMutation", count: "×31", what: { en: "Create / Update / Delete; then invalidate or refetch the list.", ar: "إنشاء وتعديل وحذف. وبعدها invalidate أو refetch للقايمة." }, remember: { en: "Invalidate with the <b>same key family</b> the query used.", ar: "اعمل invalidate بـ <b>نفس عيلة الـ key</b> اللي الـ query استخدمها." } },
       { name: "invalidateQueries", count: "×20", what: { en: "Refresh lists after a change.", ar: "تحديث القوايم بعد أي تغيير." } }
     ]},
     { group: { en: "State and effects", ar: "الـ State والـ effects" }, items: [
       { name: "useState", count: "×308", what: { en: "Form fields (controlled inputs) and UI state.", ar: "حقول الفورم (controlled inputs) وحالة الواجهة." } },
-      { name: "useEffect", count: "×31", what: { en: "Copy fetched data into edit-form state; redirect after a successful mutation; reset the form after an add.", ar: "نسخ الداتا اللي جت لـ state فورم التعديل؛ redirect بعد نجاح الـ mutation؛ تفضية الفورم بعد الإضافة." }, remember: { en: "Depending on <code>[isLoading]</code> to copy data is fragile; a form library is cleaner.", ar: "الاعتماد على <code>[isLoading]</code> علشان تنسخ الداتا هش؛ الـ form library أنضف." } },
+      { name: "useEffect", count: "×31", what: { en: "Copy fetched data into edit-form state; redirect after a successful mutation; reset the form after an add.", ar: "نسخ الداتا اللي جت لـ state فورم التعديل. و redirect بعد نجاح الـ mutation. وتفضية الفورم بعد الإضافة." }, remember: { en: "Depending on <code>[isLoading]</code> to copy data is fragile; a form library is cleaner.", ar: "إنك تعتمد على <code>[isLoading]</code> علشان تنسخ الداتا حاجة هشة. والـ form library أنضف." } },
       { name: "useModal (Zustand)", what: { en: "Shared modal: open, id, type, selected count.", ar: "modal مشترك: مفتوح؟، id، type، عدد المختار." } },
       { name: "useRef", count: "×4", what: { en: "The signature canvas — clear it or export the image.", ar: "الـ signature canvas — تمسحه أو تاخده صورة." } },
       { name: "useMemo", count: "×5", what: { en: "Light derived values for tables.", ar: "قيم محسوبة بسيطة للجداول." } }
     ]},
     { group: { en: "Navigation", ar: "التنقل" }, items: [
-      { name: "useParams / useSearchParams / useRouter", count: "×31 / ×34 / ×27", what: { en: "Read the id and type from the URL; move between list, details and edit.", ar: "يقرا الـ id والـ type من الـ URL؛ ويتنقل بين القايمة والتفاصيل والتعديل." } },
+      { name: "useParams / useSearchParams / useRouter", count: "×31 / ×34 / ×27", what: { en: "Read the id and type from the URL; move between list, details and edit.", ar: "بيقرا الـ id والـ type من الـ URL، وبيتنقل بين القايمة والتفاصيل والتعديل." } },
       { name: "useDisclosure", count: "×8", what: { en: "Mantine: open/close modals.", ar: "Mantine: فتح وقفل الـ modals." } }
     ]}
   ],
@@ -173,21 +173,21 @@ HANDBOOK.projects.push({
   problems: [
     {
       title: { en: "Eight CRUD resources, consistent, in little time", ar: "8 أنواع CRUD، بنفس الشكل، في وقت قصير" },
-      problem: { en: "Admin needed full CRUD for 8 master-data types; building each separately would drift.", ar: "الأدمن محتاج CRUD كامل لـ 8 أنواع master data؛ لو كل واحد اتعمل لوحده هيختلفوا." },
+      problem: { en: "Admin needed full CRUD for 8 master-data types; building each separately would drift.", ar: "الأدمن محتاج CRUD كامل لـ 8 أنواع master data. ولو كل واحد اتعمل لوحده، هيطلعوا مختلفين عن بعض." },
       fix: { en: "Central endpoints + one hook set per resource + the same four pages and components.", ar: "endpoints مركزية + hooks لكل resource + نفس الـ 4 صفحات والـ components." },
-      result: { en: "“API in main data in 5 sections” landed in one commit (Oct 2024); the rest followed the same way.", ar: "«API في الـ main data في 5 أقسام» اتعمل في كوميت واحد (أكتوبر 2024)؛ والباقي بنفس الطريقة." }
+      result: { en: "“API in main data in 5 sections” landed in one commit (Oct 2024); the rest followed the same way.", ar: "«API في الـ main data في 5 أقسام» اتعمل في commit واحد (أكتوبر 2024). والباقي اتعمل بنفس الطريقة." }
     },
     {
       title: { en: "Lists that didn't refresh after an edit", ar: "قوايم ماكانتش بتتحدث بعد التعديل" },
       problem: { en: "Queries were keyed by URL while some invalidations used a different key (e.g. <code>[\"Drugs\"]</code>).", ar: "الـ queries كان الـ key بتاعها الـ URL، وبعض الـ invalidations بـ key تاني (زي <code>[\"Drugs\"]</code>)." },
-      fix: { en: "My teammate aligned the keys after I left; I applied the lesson on okoRent with a base key per domain.", ar: "زميلي ظبط الـ keys بعد ما مشيت؛ وأنا طبقت الدرس في okoRent بـ key أساسي لكل domain." },
+      fix: { en: "My teammate aligned the keys after I left; I applied the lesson on okoRent with a base key per domain.", ar: "زميلي ظبط الـ keys بعد ما مشيت. وأنا طبّقت الدرس في okoRent، بـ key أساسي لكل domain." },
       result: { en: "A concrete “what I learned” story for interviews.", ar: "قصة حقيقية لسؤال «اتعلمت إيه»." },
       lesson: { en: "Query keys need one convention, ideally a key factory.", ar: "الـ query keys محتاجة طريقة واحدة، والأحسن key factory." }
     },
     {
       title: { en: "Signing contracts inside the platform", ar: "توقيع العقود جوه المنصة" },
       problem: { en: "Contracts between the platform, organizations and doctors needed in-app signing.", ar: "العقود بين المنصة والمؤسسات والدكاترة كانت محتاجة توقيع جوه المنصة." },
-      fix: { en: "react-signature-canvas in a modal for admin, staff and doctor; the signature is sent as an image with the contract.", ar: "react-signature-canvas في modal للأدمن والموظف والدكتور؛ والتوقيع بيتبعت صورة مع العقد." },
+      fix: { en: "react-signature-canvas in a modal for admin, staff and doctor; the signature is sent as an image with the contract.", ar: "react-signature-canvas في modal للأدمن والموظف والدكتور. والتوقيع بيتبعت صورة مع العقد." },
       result: { en: "Contracts signed without leaving the platform.", ar: "العقود بتتوقع من غير ما تخرج من المنصة." }
     }
   ],
@@ -195,13 +195,13 @@ HANDBOOK.projects.push({
   star: {
     s: { en: "A Saudi healthcare platform with three user types and a large back office.", ar: "منصة صحية سعودية بـ 3 أنواع مستخدمين و back office كبير." },
     t: { en: "I owned the admin and doctor portals.", ar: "كنت مسؤول عن بوابة الأدمن والدكتور." },
-    a: { en: "Set one CRUD pattern (central endpoints, hook sets, identical pages) and built the doctor's screens: appointments, patient records, prescriptions, reports, signed contracts and the video-session panel.", ar: "عملت pattern واحد للـ CRUD (endpoints مركزية، hooks، صفحات بنفس الشكل)، وبنيت شاشات الدكتور: المواعيد، ملفات المرضى، الروشتات، التقارير، العقود بالتوقيع، وبانل جلسة الفيديو." },
+    a: { en: "Set one CRUD pattern (central endpoints, hook sets, identical pages) and built the doctor's screens: appointments, patient records, prescriptions, reports, signed contracts and the video-session panel.", ar: "عملت pattern واحد للـ CRUD: endpoints في مكان واحد، و hooks، وصفحات بنفس الشكل. وبنيت شاشات الدكتور: المواعيد، وملفات المرضى، والروشتات، والتقارير، والعقود بالتوقيع، وبانل جلسة الفيديو." },
     r: { en: "About 120 pages and 242 commits in 4 months, all on production.", ar: "حوالي 120 صفحة و 242 كوميت في 4 شهور، كلهم على production." }
   },
 
   qa: [
     { q: "How did you split work with the other frontend developer?", a: { en: "By portal: I owned admin and doctor, he owned client. Shared pieces (components, routes, endpoints) we both edited.", ar: "بالبوابة: أنا الأدمن والدكتور، وهو العميل. الحاجات المشتركة (components، routes، endpoints) كنا بنعدل فيها الاتنين." } },
-    { q: "How did permissions work?", a: { en: "An admin area lists users and their levels, with editing per user. Enforcement is on the backend; the frontend shows and edits it.", ar: "في جزء في الأدمن بيعرض المستخدمين ومستوياتهم، وتعديل صلاحيات كل واحد. التنفيذ الفعلي على الباك إند؛ والفرونت بيعرض ويعدّل." } },
+    { q: "How did permissions work?", a: { en: "An admin area lists users and their levels, with editing per user. Enforcement is on the backend; the frontend shows and edits it.", ar: "فيه جزء في الأدمن بيعرض اليوزرز ومستوياتهم، وبيعدّل صلاحيات كل واحد. والتنفيذ الفعلي على الـ backend، والفرونت بيعرض ويعدّل." } },
     { q: "What did you learn on this project?", a: { en: "Keep query keys consistent, prefer TypeScript, and don't copy server data into local state with effects. I applied all three on okoRent.", ar: "خلي الـ query keys بطريقة واحدة، استخدم TypeScript، وماتنسخش داتا السيرفر في state بـ effects. وطبقت التلاتة في okoRent." } }
   ],
 
