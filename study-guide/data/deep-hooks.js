@@ -4,7 +4,7 @@ STUDY.deepen("hooks", {
   useeffect: {
     why: {
       en: "Beyond “useEffect vs useLayoutEffect”, interviewers dig into timing and dependencies: when exactly cleanup runs, why an effect loops, and how to read the latest value without re-subscribing.",
-      ar: "بعد «useEffect ولا useLayoutEffect»، الإنترفيورز بيحفروا في التوقيت والـ dependencies: الـ cleanup بيشتغل إمتى بالظبط، وليه الـ effect بيلف في loop، وإزاي تقرا آخر قيمة من غير ما تعمل subscribe تاني."
+      ar: "بعد سؤال «useEffect ولا useLayoutEffect»، الإنترفيورز بيحفروا في التوقيت والـ dependencies. الـ cleanup بيشتغل إمتى بالظبط؟ وليه الـ effect بيلف في loop؟ وإزاي تقرا آخر قيمة من غير ما تعمل subscribe تاني؟"
     },
     how: [
       {
@@ -27,14 +27,14 @@ STUDY.deepen("hooks", {
         title: { en: "Deps are compared with Object.is, item by item", ar: "الـ deps بتتقارن بـ Object.is، عنصر عنصر" },
         body: {
           en: "Primitives compare by value; objects, arrays and functions by reference. An object or function created during render is “new” every time, so an effect that depends on it re-runs every render.",
-          ar: "الـ primitives بتتقارن بالقيمة؛ والـ objects والـ arrays والـ functions بالـ reference. فأي object أو function اتعمل وقت الـ render بيبقى «جديد» كل مرة، والـ effect المعتمد عليه بيشتغل مع كل render."
+          ar: "الـ primitives بتتقارن بالقيمة، والـ objects والـ arrays والـ functions بتتقارن بالـ reference. فأي object أو function اتعمل وقت الـ render بيبقى «جديد» كل مرة، والـ effect المعتمد عليه بيشتغل مع كل render."
         }
       },
       {
         title: { en: "useEffectEvent: read the latest value without depending on it", ar: "useEffectEvent: اقرا آخر قيمة من غير ما تعتمد عليها" },
         body: {
           en: "Some code inside an effect should see current values but shouldn't restart the effect — e.g. the theme used for a notification when a chat connects. Wrap it in <code>useEffectEvent</code> (stable since React 19.2) and call it from the effect; it isn't a dependency.",
-          ar: "فيه كود جوه الـ effect المفروض يشوف القيم الحالية بس مايعيدش تشغيل الـ effect — زي الـ theme اللي بيتستخدم في notification لما الشات يتوصل. لفّه في <code>useEffectEvent</code> (stable من React 19.2) وناديه من الـ effect؛ وهو مش dependency."
+          ar: "ساعات فيه كود جوه الـ effect لازم يشوف القيم الحالية، بس من غير ما يعيد تشغيل الـ effect. زي الـ theme اللي بيتستخدم في notification لما الشات يتوصل. لفّه في <code>useEffectEvent</code> (stable من React 19.2)، وناديه من الـ effect. وهو مش بيبقى dependency."
         },
         code: "const onConnected = useEffectEvent(() => showToast(\"Connected\", theme));\nuseEffect(() => {\n  const conn = connect(roomId);\n  conn.on(\"connected\", onConnected);   // reads the latest theme\n  return () => conn.close();\n}, [roomId]);                          // theme changes don't reconnect",
         run: "browser"
@@ -63,9 +63,9 @@ STUDY.deepen("hooks", {
         title: { en: "useLayoutEffect everywhere", ar: "useLayoutEffect في كل حتة" },
         body: {
           en: "Layout effects block painting, so heavy work there delays every frame; on the server they don't run at all (older React versions warned during SSR).",
-          ar: "الـ layout effects بتوقف الرسم، فأي شغل تقيل فيها بيأخر كل frame؛ وعلى السيرفر مش بتشتغل خالص (والإصدارات القديمة من React كانت بتطلع warning في الـ SSR)."
+          ar: "الـ layout effects بتوقف الرسم، فأي شغل تقيل فيها بيأخر كل frame. وعلى السيرفر مش بتشتغل خالص، والإصدارات القديمة من React كانت بتطلع warning في الـ SSR."
         },
-        fix: { en: "Use it only to measure the DOM and adjust before the user sees it (tooltips, scroll restoration); everything else in <code>useEffect</code>.", ar: "استخدمه بس علشان تقيس الـ DOM وتظبط قبل ما اليوزر يشوف (tooltips، رجوع الـ scroll)؛ وكل حاجة تانية في <code>useEffect</code>." }
+        fix: { en: "Use it only to measure the DOM and adjust before the user sees it (tooltips, scroll restoration); everything else in <code>useEffect</code>.", ar: "استخدمه بس علشان تقيس الـ DOM وتظبط قبل ما اليوزر يشوف، زي الـ tooltips أو رجوع الـ scroll. وكل حاجة تانية حطها في <code>useEffect</code>." }
       }
     ],
     levels: [
@@ -74,7 +74,7 @@ STUDY.deepen("hooks", {
         mid: { en: "<code>useLayoutEffect</code> runs before paint, <code>useEffect</code> after. Use layout effect to avoid flicker.", ar: "<code>useLayoutEffect</code> بيشتغل قبل الرسم، و <code>useEffect</code> بعده. استخدم الـ layout effect علشان تتجنب الـ flicker." },
         senior: {
           en: "Both run after the DOM is updated in the commit. <code>useLayoutEffect</code> runs synchronously before the browser paints: measure, then set state, and the user only sees the corrected frame — at the cost of blocking that frame. <code>useEffect</code> usually runs after paint and doesn't block. So layout effects only for measurement-driven positioning (tooltips, popovers, scroll restore), and I keep them small; everything else is a normal effect. <code>useInsertionEffect</code> exists only for CSS-in-JS libraries.",
-          ar: "الاتنين بيشتغلوا بعد ما الـ DOM يتحدث في الـ commit. و <code>useLayoutEffect</code> بيشتغل من غير توقف قبل ما المتصفح يرسم: تقيس، وبعدين تحط state، واليوزر يشوف الـ frame المظبوط بس — والتمن إنك بتوقف الـ frame ده. و <code>useEffect</code> غالبًا بيشتغل بعد الرسم ومش بيوقفه. فالـ layout effects بس للتمركز المعتمد على القياس (tooltips، popovers، رجوع الـ scroll)، وبخليها صغيرة؛ وأي حاجة تانية effect عادي. و <code>useInsertionEffect</code> موجود بس لمكتبات الـ CSS-in-JS."
+          ar: "الاتنين بيشتغلوا بعد ما الـ DOM يتحدث في الـ commit. الفرق إن <code>useLayoutEffect</code> بيشتغل قبل ما المتصفح يرسم، ومن غير توقف. فتقيس، وبعدين تحط state، واليوزر يشوف الـ frame المظبوط بس. والتمن إنك بتوقف الـ frame ده. أما <code>useEffect</code> فغالبًا بيشتغل بعد الرسم ومش بيوقفه. علشان كده الـ layout effects بستخدمها بس لما المكان معتمد على قياس (tooltips و popovers ورجوع الـ scroll)، وبخليها صغيرة. وأي حاجة تانية effect عادي. و <code>useInsertionEffect</code> موجود بس لمكتبات الـ CSS-in-JS."
         }
       },
       {
@@ -89,7 +89,7 @@ STUDY.deepen("hooks", {
     drill: [
       {
         q: "Can the effect function itself be async?",
-        a: { en: "No. It must return a cleanup function or nothing; an async function returns a promise.", ar: "لأ. لازم يرجّع cleanup function أو مفيش حاجة؛ والـ async function بترجّع promise." },
+        a: { en: "No. It must return a cleanup function or nothing; an async function returns a promise.", ar: "لأ. لازم يرجّع cleanup function أو مايرجّعش حاجة، والـ async function بترجّع promise." },
         follow: [
           {
             q: "So how do you fetch in an effect?",
@@ -133,7 +133,7 @@ STUDY.deepen("hooks", {
         title: { en: "DOM refs are set in the commit", ar: "الـ DOM refs بتتحط في الـ commit" },
         body: {
           en: "During the first render <code>ref.current</code> is still <code>null</code>; React sets it during the commit and resets it to <code>null</code> on removal. Read it in effects and handlers. A <b>ref callback</b> runs when the node attaches; in React 19 it can return a cleanup.",
-          ar: "في أول render <code>ref.current</code> لسه <code>null</code>؛ و React بيحطه وقت الـ commit ويرجّعه <code>null</code> لما الـ node يتشال. اقراه في الـ effects والـ handlers. والـ <b>ref callback</b> بيشتغل لما الـ node يتركب؛ وفي React 19 ينفع يرجّع cleanup."
+          ar: "في أول render، <code>ref.current</code> بيبقى لسه <code>null</code>. و React بيحط فيه الـ node وقت الـ commit، ويرجّعه <code>null</code> لما الـ node يتشال. فاقراه في الـ effects والـ handlers. والـ <b>ref callback</b> بيشتغل لما الـ node يتركب، وفي React 19 ينفع يرجّع cleanup."
         },
         code: "<div ref={(node) => {\n  const ro = new ResizeObserver(([e]) => setWidth(e.contentRect.width));\n  ro.observe(node);\n  return () => ro.disconnect();   // React 19: cleanup when the node is removed\n}} />",
         run: "browser"
@@ -178,10 +178,10 @@ STUDY.deepen("hooks", {
     levels: [
       {
         q: "useRef vs useState?",
-        mid: { en: "State re-renders the component when it changes; a ref doesn't.", ar: "الـ state بيعمل re-render لما يتغير؛ والـ ref لأ." },
+        mid: { en: "State re-renders the component when it changes; a ref doesn't.", ar: "الـ state بيعمل re-render لما يتغير، والـ ref لأ." },
         senior: {
           en: "State is a snapshot per render and changing it schedules a render; a ref is one mutable object for the component's lifetime, and changing it is invisible to React. So: anything that affects the output is state; anything used only by effects and handlers — timer ids, DOM nodes, the latest callback, the previous value — is a ref. I never read or write refs during render (except lazy init), because render can be replayed or thrown away.",
-          ar: "الـ state عبارة عن snapshot لكل render وتغييره بيجدول render؛ والـ ref عبارة عن object واحد بيتغير طول عمر الـ component، وتغييره React مش بيشوفه. فأي حاجة بتأثر على اللي بيظهر state؛ وأي حاجة بتستخدمها الـ effects والـ handlers بس — timer ids، و DOM nodes، وآخر callback، والقيمة اللي قبلها — ref. وعمري ما بقرا أو بكتب الـ refs وقت الـ render (ماعدا الـ lazy init)، لأن الـ render ممكن يتعاد أو يترمي."
+          ar: "الـ state عبارة عن snapshot لكل render، وتغييره بيجدول render. أما الـ ref فـ object واحد بيعيش طول عمر الـ component، و React مش بيشوف تغييره. يعني أي حاجة بتأثر على اللي بيظهر تبقى state. وأي حاجة الـ effects والـ handlers بس اللي بتستخدمها تبقى ref، زي timer ids و DOM nodes وآخر callback والقيمة اللي قبلها. وعمري ما بقرا أو بكتب الـ refs وقت الـ render (ماعدا الـ lazy init)، لأن الـ render ممكن يتعاد أو يترمي."
         }
       },
       {
@@ -212,7 +212,7 @@ STUDY.deepen("hooks", {
       }
     ],
     story: {
-      text: { en: "Smart FAQ row menu uses a latest ref so memoised menus always call the current handler; the AHS formula editor uses a textarea ref to insert text at the cursor and restore it.", ar: "الـ row menu في Smart FAQ بيستخدم latest ref علشان الـ menus المعمول لها memo تنادي الـ handler الحالي دايمًا؛ والـ formula editor في AHS بيستخدم ref للـ textarea علشان يحط نص مكان الـ cursor ويرجّعه." },
+      text: { en: "Smart FAQ row menu uses a latest ref so memoised menus always call the current handler; the AHS formula editor uses a textarea ref to insert text at the cursor and restore it.", ar: "الـ row menu في Smart FAQ بيستخدم latest ref، علشان الـ menus المعمول لها memo تنادي الـ handler الحالي دايمًا. والـ formula editor في AHS بيستخدم ref للـ textarea، علشان يحط نص مكان الـ cursor ويرجّعه." },
       p: "smartfaq", tab: "how", label: "Smart FAQ"
     },
     sources: [
@@ -233,7 +233,7 @@ STUDY.deepen("hooks", {
         title: { en: "Three tools, one idea: keep the same thing if inputs didn't change", ar: "تلات أدوات، وفكرة واحدة: احتفظ بنفس الحاجة لو المدخلات متغيرتش" },
         body: {
           en: "<code>useMemo(fn, deps)</code> keeps a computed value; <code>useCallback(fn, deps)</code> keeps a function (it's <code>useMemo(() =&gt; fn)</code>); <code>React.memo(Component)</code> skips rendering a component when every prop is <code>Object.is</code>-equal to last time.",
-          ar: "<code>useMemo(fn, deps)</code> بيحتفظ بقيمة محسوبة؛ و <code>useCallback(fn, deps)</code> بيحتفظ بـ function (هو نفسه <code>useMemo(() =&gt; fn)</code>)؛ و <code>React.memo(Component)</code> بيتخطى الـ render بتاع component لما كل prop تكون <code>Object.is</code>-equal للمرة اللي فاتت."
+          ar: "الـ <code>useMemo(fn, deps)</code> بيحتفظ بقيمة محسوبة. والـ <code>useCallback(fn, deps)</code> بيحتفظ بـ function، وهو نفسه <code>useMemo(() =&gt; fn)</code>. والـ <code>React.memo(Component)</code> بيتخطى الـ render بتاع component، لما كل prop تبقى <code>Object.is</code>-equal للمرة اللي فاتت."
         }
       },
       {
@@ -249,7 +249,7 @@ STUDY.deepen("hooks", {
         title: { en: "A cache, not a guarantee", ar: "cache، مش ضمان" },
         body: {
           en: "React may discard memoised values (and does in some cases, like a suspended first render). Code must still be correct if the function runs again — never use <code>useMemo</code> to keep a subscription, an instance that must be unique, or anything with side effects; use a ref or state for that.",
-          ar: "React ممكن يرمي القيم المعمول لها memo (وبيعمل كده في حالات، زي أول render عمل suspend). فالكود لازم يفضل صح لو الـ function اشتغلت تاني — عمرك ما تستخدم <code>useMemo</code> علشان تحتفظ بـ subscription، أو instance لازم يبقى واحد، أو أي حاجة فيها side effects؛ استخدم ref أو state لده."
+          ar: "React ممكن يرمي القيم المعمول لها memo، وبيعمل كده فعلًا في حالات زي أول render عمل suspend. فالكود لازم يفضل صح لو الـ function اشتغلت تاني. يعني عمرك ما تستخدم <code>useMemo</code> علشان تحتفظ بـ subscription، أو instance لازم يبقى واحد، أو أي حاجة فيها side effects. للحاجات دي استخدم ref أو state."
         }
       },
       {
@@ -275,7 +275,7 @@ STUDY.deepen("hooks", {
           en: "<code>&lt;Row style={{ padding: 8 }} /&gt;</code> or <code>actions={[edit, remove]}</code> creates a new object each render, so the memoised child always re-renders.",
           ar: "<code>&lt;Row style={{ padding: 8 }} /&gt;</code> أو <code>actions={[edit, remove]}</code> بيعمل object جديد كل render، فالـ child المعمول له memo دايمًا بيعمل re-render."
         },
-        fix: { en: "Hoist constants outside the component, memoise the object, or compare only the fields that matter with a custom <code>areEqual</code> — and keep handlers fresh with a latest ref so that comparison can't make them stale.", ar: "طلّع الثوابت برّه الـ component، أو اعمل memo للـ object، أو قارن الـ fields المهمة بس بـ <code>areEqual</code> بتاعتك — وخلي الـ handlers جديدة بـ latest ref علشان المقارنة دي متخليهاش قديمة." }
+        fix: { en: "Hoist constants outside the component, memoise the object, or compare only the fields that matter with a custom <code>areEqual</code> — and keep handlers fresh with a latest ref so that comparison can't make them stale.", ar: "طلّع الثوابت برّه الـ component، أو اعمل memo للـ object، أو قارن الـ fields المهمة بس بـ <code>areEqual</code> بتاعتك. ولو عملت كده، خلي الـ handlers جديدة بـ latest ref، علشان المقارنة دي متخليهاش قديمة." }
       },
       {
         title: { en: "A custom comparison that hides changes", ar: "مقارنة بتاعتك بتخبّي تغييرات" },
@@ -283,7 +283,7 @@ STUDY.deepen("hooks", {
           en: "An <code>areEqual</code> that ignores a prop also ignores its updates: the row keeps showing old text, or calls an old handler.",
           ar: "الـ <code>areEqual</code> اللي بيتجاهل prop بيتجاهل تحديثاتها كمان: الـ row يفضل يعرض نص قديم، أو ينادي handler قديم."
         },
-        fix: { en: "Compare every field the component renders; route callbacks through a latest ref; cover it with a test.", ar: "قارن كل field الـ component بيعرضه؛ وعدّي الـ callbacks على latest ref؛ واكتب test يغطيها." }
+        fix: { en: "Compare every field the component renders; route callbacks through a latest ref; cover it with a test.", ar: "قارن كل field الـ component بيعرضه. وعدّي الـ callbacks على latest ref. واكتب test يغطيها." }
       }
     ],
     levels: [
@@ -292,7 +292,7 @@ STUDY.deepen("hooks", {
         mid: { en: "To avoid recalculating values and recreating functions on every render, for performance.", ar: "علشان أتجنب إعادة حساب القيم وإعادة إنشاء الـ functions مع كل render، للأداء." },
         senior: {
           en: "Only where identity or cost matters: an expensive calculation I've measured, a prop for a <code>memo</code> child, or a dependency of another hook. Creating a function is cheap; what's expensive is the re-render of a subtree that a stable identity lets React skip. So I profile first, fix structure (state placement, children) second, and memoise the specific hot spot third. With React Compiler most of this becomes automatic, and I keep manual memo for third-party APIs or effect deps.",
-          ar: "بس في الأماكن اللي الـ identity أو التكلفة بتفرق فيها: حساب تقيل قسته، أو prop لـ child معمول له <code>memo</code>، أو dependency لـ hook تاني. إنشاء function رخيص؛ الغالي هو الـ re-render لشجرة كاملة، والـ identity الثابتة بتخلي React يتخطاها. فبعمل profile الأول، وأظبط الـ structure تاني (مكان الـ state، والـ children)، وأعمل memo للنقطة السخنة بالظبط تالت. ومع React Compiler أغلب ده بيبقى أوتوماتيك، وبسيب الـ memo اليدوي لـ APIs المكتبات التانية أو deps الـ effects."
+          ar: "بس في الأماكن اللي الـ identity أو التكلفة بتفرق فيها: حساب تقيل قسته، أو prop لـ child معمول له <code>memo</code>، أو dependency لـ hook تاني. إنك تعمل function ده رخيص. الغالي هو الـ re-render لشجرة كاملة، والـ identity الثابتة هي اللي بتخلي React يتخطاها. فالأول بعمل profile. وبعدين أظبط الـ structure (مكان الـ state، والـ children). وفي الآخر أعمل memo للنقطة السخنة بالظبط. ومع React Compiler أغلب ده بيبقى أوتوماتيك، وبسيب الـ memo اليدوي للـ APIs بتاعة المكتبات التانية، أو للـ deps بتاعة الـ effects."
         }
       },
       {
@@ -344,7 +344,7 @@ STUDY.deepen("hooks", {
         title: { en: "Context passes a value through the tree", ar: "الـ context بيعدّي قيمة في الشجرة" },
         body: {
           en: "A provider supplies a value; any descendant reads it with <code>useContext</code> (or <code>use</code>, which can be called conditionally). It solves prop drilling — it is not a state manager by itself: the state still lives in a component's <code>useState</code>/<code>useReducer</code>.",
-          ar: "الـ provider بيدي قيمة؛ وأي descendant بيقراها بـ <code>useContext</code> (أو <code>use</code>، اللي ينفع يتنادى بشرط). هو بيحل الـ prop drilling — ومش state manager لوحده: الـ state لسه عايش في <code>useState</code>/<code>useReducer</code> بتاع component."
+          ar: "الـ provider بيدي قيمة، وأي descendant بيقراها بـ <code>useContext</code>، أو بـ <code>use</code> اللي ينفع يتنادى جوه شرط. هو بيحل الـ prop drilling، بس مش state manager لوحده. الـ state نفسه لسه عايش في <code>useState</code> أو <code>useReducer</code> بتاع component."
         }
       },
       {
@@ -371,7 +371,7 @@ STUDY.deepen("hooks", {
           en: "User, theme, cart, filters and notifications in one value: a toast re-renders the whole app.",
           ar: "الـ user والـ theme والـ cart والـ filters والـ notifications في قيمة واحدة: toast واحد بيعمل re-render للـ app كله."
         },
-        fix: { en: "One context per concern; keep context for low-frequency data (auth, theme, locale, feature flags).", ar: "context لكل حاجة لوحدها؛ وخلي الـ context للداتا اللي مش بتتغير كتير (auth، theme، locale، feature flags)." }
+        fix: { en: "One context per concern; keep context for low-frequency data (auth, theme, locale, feature flags).", ar: "اعمل context لكل حاجة لوحدها. وخلي الـ context للداتا اللي مش بتتغير كتير، زي الـ auth والـ theme والـ locale والـ feature flags." }
       },
       {
         title: { en: "A new value object every render", ar: "value object جديد كل render" },
@@ -387,13 +387,13 @@ STUDY.deepen("hooks", {
           en: "Mouse position, a form being typed into, a live price feed: every update re-renders every consumer.",
           ar: "مكان الماوس، أو فورم بيتكتب فيه، أو أسعار لايف: كل تحديث بيعمل re-render لكل consumer."
         },
-        fix: { en: "Use a store with selectors (Zustand, Redux, or <code>useSyncExternalStore</code>) so each component re-renders only when its slice changes; or keep that state local.", ar: "استخدم store بـ selectors (Zustand، أو Redux، أو <code>useSyncExternalStore</code>) علشان كل component يعمل re-render بس لما الجزء بتاعه يتغير؛ أو خلي الـ state ده محلي." }
+        fix: { en: "Use a store with selectors (Zustand, Redux, or <code>useSyncExternalStore</code>) so each component re-renders only when its slice changes; or keep that state local.", ar: "استخدم store بـ selectors (Zustand، أو Redux، أو <code>useSyncExternalStore</code>)، علشان كل component يعمل re-render بس لما الجزء بتاعه يتغير. أو خلي الـ state ده محلي." }
       }
     ],
     levels: [
       {
         q: "Context or a state library?",
-        mid: { en: "Context for simple global state; Redux or Zustand for complex state.", ar: "Context للـ global state البسيط؛ و Redux أو Zustand للـ state المعقد." },
+        mid: { en: "Context for simple global state; Redux or Zustand for complex state.", ar: "الـ Context للـ global state البسيط، و Redux أو Zustand للـ state المعقد." },
         senior: {
           en: "Context is dependency injection, not a store: it re-renders every consumer on any change and has no selectors. I use it for low-frequency values — auth, theme, locale, a token for a socket — with memoised values and split contexts. For client state that changes often or is read in many places, a store with selectors (Zustand) re-renders only the components whose slice changed. And server data goes to TanStack Query, not either. In okoRent that's exactly the split: a small context passes the token to SignalR, Zustand holds the rest.",
           ar: "الـ Context عبارة عن dependency injection، مش store: بيعمل re-render لكل consumer مع أي تغيير ومفيهوش selectors. بستخدمه للقيم اللي مش بتتغير كتير — auth، و theme، و locale، و token لـ socket — مع values معمول لها memo و contexts متقسمة. وللـ client state اللي بيتغير كتير أو بيتقرا في أماكن كتير، store بـ selectors (Zustand) بيعمل re-render بس للـ components اللي الجزء بتاعها اتغير. وداتا السيرفر بتروح لـ TanStack Query، مش ده ولا ده. وفي okoRent ده التقسيم بالظبط: context صغير بيعدّي الـ token لـ SignalR، و Zustand شايل الباقي."
@@ -404,7 +404,7 @@ STUDY.deepen("hooks", {
         mid: { en: "Because the context value changes.", ar: "لأن قيمة الـ context بتتغير." },
         senior: {
           en: "Usually the value is a new object each render of the provider's parent — memoise it. If it really changes often, consumers that read one field still re-render because context has no selectors: split the context by how often parts change, separate actions from state, or move that state into a store with selectors. <code>memo</code> on consumers doesn't help — context updates go through it.",
-          ar: "غالبًا القيمة object جديد مع كل render للـ parent بتاع الـ provider — اعمل لها memo. ولو فعلًا بتتغير كتير، الـ consumers اللي بتقرا field واحد برضه بتعمل re-render لأن الـ context ملوش selectors: قسّم الـ context حسب الأجزاء بتتغير قد إيه، وافصل الأكشنز عن الـ state، أو انقل الـ state ده لـ store بـ selectors. و <code>memo</code> على الـ consumers مش بيفيد — تحديثات الـ context بتعدّي من خلاله."
+          ar: "غالبًا القيمة بتبقى object جديد مع كل render للـ parent بتاع الـ provider، فاعمل لها memo. ولو فعلًا بتتغير كتير، الـ consumers اللي بتقرا field واحد برضه بتعمل re-render، لأن الـ context ملوش selectors. والحل إنك تقسّم الـ context حسب كل جزء بيتغير قد إيه، وتفصل الأكشنز عن الـ state، أو تنقل الـ state ده لـ store بـ selectors. و <code>memo</code> على الـ consumers مش بيفيد، لأن تحديثات الـ context بتعدّي من خلاله."
         }
       }
     ],
@@ -419,7 +419,7 @@ STUDY.deepen("hooks", {
             follow: [
               {
                 q: "How does Zustand avoid the problem?",
-                a: { en: "Each component subscribes with a selector through <code>useSyncExternalStore</code>; on a change, Zustand compares that component's selected slice and re-renders only if it changed.", ar: "كل component بيعمل subscribe بـ selector عن طريق <code>useSyncExternalStore</code>؛ ومع أي تغيير، Zustand بيقارن الجزء اللي الـ component ده مختاره ويعمل re-render بس لو اتغير." }
+                a: { en: "Each component subscribes with a selector through <code>useSyncExternalStore</code>; on a change, Zustand compares that component's selected slice and re-renders only if it changed.", ar: "كل component بيعمل subscribe بـ selector عن طريق <code>useSyncExternalStore</code>. ومع أي تغيير، Zustand بيقارن الجزء اللي الـ component ده مختاره، ويعمل re-render بس لو اتغير." }
               }
             ]
           }
@@ -427,7 +427,7 @@ STUDY.deepen("hooks", {
       }
     ],
     story: {
-      text: { en: "Smart FAQ's UnsavedChangesProvider memoises { anyUnsaved, mark } with a stable mark callback; okoRent uses a small context only to pass the token to SignalR, with Zustand for the rest.", ar: "الـ UnsavedChangesProvider في Smart FAQ بيعمل memo لـ { anyUnsaved, mark } ومعاه callback ثابت لـ mark؛ و okoRent بيستخدم context صغير بس علشان يعدّي الـ token لـ SignalR، و Zustand للباقي." },
+      text: { en: "Smart FAQ's UnsavedChangesProvider memoises { anyUnsaved, mark } with a stable mark callback; okoRent uses a small context only to pass the token to SignalR, with Zustand for the rest.", ar: "في Smart FAQ، الـ UnsavedChangesProvider بيعمل memo لـ { anyUnsaved, mark }، والـ mark نفسها callback ثابت. و okoRent بيستخدم context صغير بس علشان يعدّي الـ token لـ SignalR، و Zustand للباقي." },
       p: "okorent", tab: "decisions", label: "okoRent"
     },
     sources: [
@@ -447,7 +447,7 @@ STUDY.deepen("hooks", {
         title: { en: "useTransition marks updates as non-urgent", ar: "الـ useTransition بيعلّم التحديثات إنها مش مستعجلة" },
         body: {
           en: "<code>const [isPending, startTransition] = useTransition()</code>. Updates inside <code>startTransition</code> render in the background and can be interrupted by urgent ones; <code>isPending</code> lets you dim the old UI. In React 19 the function can be async (an Action) and <code>isPending</code> stays true until it finishes.",
-          ar: "<code>const [isPending, startTransition] = useTransition()</code>. التحديثات جوه <code>startTransition</code> بتترسم في الخلفية وينفع تتقطع بالتحديثات المستعجلة؛ و <code>isPending</code> بيخليك تبهّت الـ UI القديم. وفي React 19 الـ function ينفع تبقى async (Action) و <code>isPending</code> يفضل true لحد ما تخلص."
+          ar: "بتكتب <code>const [isPending, startTransition] = useTransition()</code>. التحديثات اللي جوه <code>startTransition</code> بتترسم في الخلفية، والتحديثات المستعجلة تقدر تقطعها. و <code>isPending</code> بيخليك تبهّت الـ UI القديم. وفي React 19، الـ function دي ينفع تبقى async (اسمها Action)، و <code>isPending</code> بيفضل true لحد ما تخلص."
         },
         code: "const [isPending, startTransition] = useTransition();\nfunction selectTab(next) {\n  startTransition(() => setTab(next));   // old tab stays interactive while the new one renders\n}\nreturn <div style={{ opacity: isPending ? 0.6 : 1 }}>{tab === \"reports\" ? <Reports /> : <Overview />}</div>;",
         run: "browser"
@@ -465,7 +465,7 @@ STUDY.deepen("hooks", {
         title: { en: "Not a debounce", ar: "مش debounce" },
         body: {
           en: "A debounce waits a fixed time and still blocks when it fires. Deferred rendering has no fixed delay: on a fast device it's almost instant, on a slow one it waits, and typing interrupts it. Use debounce to reduce <b>network requests</b>; use deferred values or transitions to keep <b>rendering</b> from blocking input.",
-          ar: "الـ debounce بيستنى وقت ثابت وبرضه بيوقف الصفحة لما يشتغل. والـ deferred rendering ملوش وقت ثابت: على جهاز سريع تقريبًا فوري، وعلى جهاز بطيء بيستنى، والكتابة بتقطعه. استخدم الـ debounce علشان تقلل <b>الـ network requests</b>؛ واستخدم الـ deferred values أو الـ transitions علشان <b>الـ render</b> ميوقفش الـ input."
+          ar: "الـ debounce بيستنى وقت ثابت، وبرضه بيوقف الصفحة لما يشتغل. أما الـ deferred rendering فملوش وقت ثابت. على جهاز سريع بيبقى تقريبًا فوري، وعلى جهاز بطيء بيستنى، والكتابة بتقطعه. استخدم الـ debounce علشان تقلل <b>الـ network requests</b>. واستخدم الـ deferred values أو الـ transitions علشان <b>الـ render</b> ميوقفش الـ input."
         }
       }
     ],
@@ -498,10 +498,10 @@ STUDY.deepen("hooks", {
     levels: [
       {
         q: "useTransition vs useDeferredValue?",
-        mid: { en: "Both make updates lower priority; <code>useTransition</code> wraps the state update, <code>useDeferredValue</code> wraps a value.", ar: "الاتنين بيقللوا أولوية التحديثات؛ <code>useTransition</code> بيلف الـ state update، و <code>useDeferredValue</code> بيلف قيمة." },
+        mid: { en: "Both make updates lower priority; <code>useTransition</code> wraps the state update, <code>useDeferredValue</code> wraps a value.", ar: "الاتنين بيقللوا أولوية التحديثات. <code>useTransition</code> بيلف الـ state update، و <code>useDeferredValue</code> بيلف قيمة." },
         senior: {
           en: "Same mechanism, different access. If I own the update, <code>startTransition</code> marks it non-urgent and gives me <code>isPending</code>; in React 19 it can wrap an async action. If I only receive a value — a prop, a search string — <code>useDeferredValue</code> gives me a lagging copy to render the expensive part with, and a memoised child makes the urgent render cheap. Either way, urgent input stays responsive and the background render is interruptible.",
-          ar: "نفس الآلية، بس طريقة وصول مختلفة. لو التحديث بتاعي، <code>startTransition</code> بيعلّمه إنه مش مستعجل وبيديني <code>isPending</code>؛ وفي React 19 ينفع يلف async action. ولو أنا بستقبل قيمة بس — prop أو نص search — <code>useDeferredValue</code> بيديني نسخة متأخرة أرسم بيها الجزء الغالي، و child معمول له memo بيخلي الـ render المستعجل رخيص. وفي الحالتين، الـ input المستعجل بيفضل سريع، والـ render اللي في الخلفية ينفع يتقطع."
+          ar: "نفس الآلية، بس طريقة الوصول مختلفة. لو التحديث بتاعي، <code>startTransition</code> بيقول إنه مش مستعجل وبيديني <code>isPending</code>. وفي React 19 ينفع يلف async action. ولو أنا بستقبل قيمة بس، زي prop أو نص search، <code>useDeferredValue</code> بيديني نسخة متأخرة أرسم بيها الجزء الغالي. ومعاه child معمول له memo، فالـ render المستعجل يبقى رخيص. وفي الحالتين، الـ input المستعجل بيفضل سريع، والـ render اللي في الخلفية ينفع يتقطع."
         }
       }
     ],
@@ -516,7 +516,7 @@ STUDY.deepen("hooks", {
             follow: [
               {
                 q: "What does the user see while a transition renders?",
-                a: { en: "The previous UI, still interactive. Use <code>isPending</code> (or compare value vs deferred value) to dim it or show a small indicator; Suspense fallbacks don't replace content that's already visible.", ar: "الـ UI اللي قبله، ولسه ينفع يتفاعل معاه. استخدم <code>isPending</code> (أو قارن القيمة بالنسخة المتأخرة) علشان تبهّته أو تعرض مؤشر صغير؛ والـ Suspense fallbacks مش بتشيل المحتوى اللي ظاهر." }
+                a: { en: "The previous UI, still interactive. Use <code>isPending</code> (or compare value vs deferred value) to dim it or show a small indicator; Suspense fallbacks don't replace content that's already visible.", ar: "بيشوف الـ UI اللي قبله، ولسه يقدر يتفاعل معاه. استخدم <code>isPending</code> (أو قارن القيمة بالنسخة المتأخرة) علشان تبهّته أو تعرض مؤشر صغير. والـ Suspense fallbacks مش بتشيل المحتوى اللي ظاهر." }
               }
             ]
           }
@@ -533,14 +533,14 @@ STUDY.deepen("hooks", {
   "usesyncexternalstore-useid": {
     why: {
       en: "<code>useSyncExternalStore</code> shows you understand how state libraries plug into React safely; <code>useId</code> shows you care about accessibility and SSR. Both are small APIs with sharp edges.",
-      ar: "<code>useSyncExternalStore</code> بيبيّن إنك فاهم مكتبات الـ state بتتركب في React بأمان إزاي؛ و <code>useId</code> بيبيّن إنك مهتم بالـ accessibility والـ SSR. الاتنين APIs صغيرة بس ليها حواف حادة."
+      ar: "الـ <code>useSyncExternalStore</code> بيبيّن إنك فاهم مكتبات الـ state بتتركب في React بأمان إزاي. والـ <code>useId</code> بيبيّن إنك مهتم بالـ accessibility والـ SSR. الاتنين APIs صغيرة، بس فيهم تفاصيل سهل تغلط فيها."
     },
     how: [
       {
         title: { en: "subscribe + getSnapshot", ar: "subscribe + getSnapshot" },
         body: {
           en: "<code>useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot?)</code>: React calls <code>subscribe(callback)</code> once, calls <code>getSnapshot()</code> during render, and re-renders when the callback fires and the snapshot changed (<code>Object.is</code>). It's concurrent-safe: no tearing.",
-          ar: "<code>useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot?)</code>: React بينادي <code>subscribe(callback)</code> مرة، وبينادي <code>getSnapshot()</code> وقت الـ render، ويعمل re-render لما الـ callback يتنادى والـ snapshot يتغير (<code>Object.is</code>). وهو آمن مع الـ concurrent rendering: مفيش tearing."
+          ar: "بتكتب <code>useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot?)</code>. React بينادي <code>subscribe(callback)</code> مرة واحدة، وبينادي <code>getSnapshot()</code> وقت الـ render. ولما الـ callback يتنادى والـ snapshot يتغير (بـ <code>Object.is</code>)، بيعمل re-render. وهو آمن مع الـ concurrent rendering، يعني مفيش tearing."
         },
         code: "function subscribe(cb) {\n  window.addEventListener(\"online\", cb);\n  window.addEventListener(\"offline\", cb);\n  return () => { window.removeEventListener(\"online\", cb); window.removeEventListener(\"offline\", cb); };\n}\nexport function useOnline() {\n  return useSyncExternalStore(subscribe, () => navigator.onLine, () => true);\n}",
         run: "browser"
@@ -570,9 +570,9 @@ STUDY.deepen("hooks", {
         title: { en: "getSnapshot returns a new object every call", ar: "getSnapshot بيرجّع object جديد كل مرة" },
         body: {
           en: "<code>() =&gt; ({ ...store.state })</code> is never <code>Object.is</code>-equal, so React thinks the store keeps changing and re-renders forever (“The result of getSnapshot should be cached”).",
-          ar: "<code>() =&gt; ({ ...store.state })</code> عمره ما هيبقى <code>Object.is</code>-equal، فـ React بيفتكر إن الـ store بيتغير على طول ويعمل re-render للأبد («The result of getSnapshot should be cached»)."
+          ar: "الـ <code>() =&gt; ({ ...store.state })</code> عمره ما هيبقى <code>Object.is</code>-equal. فـ React بيفتكر إن الـ store بيتغير على طول، ويفضل يعمل re-render للأبد، ويطلع warning: «The result of getSnapshot should be cached»."
         },
-        fix: { en: "Return the stored immutable value itself, or a primitive; compute derived objects with a memoised selector.", ar: "رجّع القيمة الـ immutable المتخزنة نفسها، أو primitive؛ واحسب الـ objects المشتقة بـ selector معمول له memo." }
+        fix: { en: "Return the stored immutable value itself, or a primitive; compute derived objects with a memoised selector.", ar: "رجّع القيمة الـ immutable المتخزنة نفسها، أو primitive. والـ objects المشتقة احسبها بـ selector معمول له memo." }
       },
       {
         title: { en: "subscribe defined inside the component", ar: "subscribe متعرّف جوه الـ component" },
@@ -588,7 +588,7 @@ STUDY.deepen("hooks", {
           en: "<code>useId</code> identifies a component instance, not a data item, and keys must come from the data.",
           ar: "الـ <code>useId</code> بيعرّف instance لـ component، مش عنصر في الداتا، والـ keys لازم تيجي من الداتا."
         },
-        fix: { en: "Keys from data ids; <code>useId</code> only for DOM id attributes.", ar: "الـ keys من ids الداتا؛ و <code>useId</code> بس لـ attributes الـ id في الـ DOM." }
+        fix: { en: "Keys from data ids; <code>useId</code> only for DOM id attributes.", ar: "الـ keys خدها من ids الداتا. و <code>useId</code> بس للـ id attributes في الـ DOM." }
       }
     ],
     levels: [
@@ -597,7 +597,7 @@ STUDY.deepen("hooks", {
         mid: { en: "It's the official hook for subscribing to external stores.", ar: "هو الـ hook الرسمي للـ subscribe لـ external stores." },
         senior: {
           en: "The effect version subscribes after paint, so the first render can show a stale value and then flash; and during concurrent rendering, different components can read the store at different moments and tear. <code>useSyncExternalStore</code> reads during render, re-checks before commit, and forces a consistent synchronous update when the store changes — plus <code>getServerSnapshot</code> for SSR. Smart FAQ uses it six times (toasts, a session-expired flag, media queries) instead of adding a store library.",
-          ar: "النسخة بالـ effect بتعمل subscribe بعد الرسم، فأول render ممكن يعرض قيمة قديمة وبعدين تتغير فجأة؛ ومع الـ concurrent rendering، components مختلفة ممكن تقرا الـ store في لحظات مختلفة ويحصل tearing. لكن <code>useSyncExternalStore</code> بيقرا وقت الـ render، ويتأكد تاني قبل الـ commit، ويجبر تحديث متسق من غير توقف لما الـ store يتغير — وفيه كمان <code>getServerSnapshot</code> للـ SSR. و Smart FAQ بيستخدمه 6 مرات (toasts، و flag للـ session-expired، و media queries) بدل ما يضيف مكتبة store."
+          ar: "النسخة اللي بالـ effect بتعمل subscribe بعد الرسم. فأول render ممكن يعرض قيمة قديمة، وبعدين تتغير فجأة. ومع الـ concurrent rendering، components مختلفة ممكن تقرا الـ store في لحظات مختلفة، فيحصل tearing. لكن <code>useSyncExternalStore</code> بيقرا وقت الـ render، ويتأكد تاني قبل الـ commit. ولو الـ store اتغير، بيجبر تحديث واحد متسق. وفيه كمان <code>getServerSnapshot</code> للـ SSR. و Smart FAQ بيستخدمه 6 مرات (للـ toasts، و flag للـ session-expired، والـ media queries)، بدل ما يضيف مكتبة store."
         }
       }
     ],
@@ -608,11 +608,11 @@ STUDY.deepen("hooks", {
         follow: [
           {
             q: "What happens if it doesn't?",
-            a: { en: "React sees a “change” on every check and re-renders in a loop; in development it warns that the result should be cached.", ar: "React بيشوف «تغيير» مع كل check ويعمل re-render في loop؛ وفي الـ development بيحذّر إن النتيجة لازم تتعمل لها cache." },
+            a: { en: "React sees a “change” on every check and re-renders in a loop; in development it warns that the result should be cached.", ar: "React بيشوف «تغيير» مع كل check، ويفضل يعمل re-render في loop. وفي الـ development بيحذّرك إن النتيجة لازم تتعمل لها cache." },
             follow: [
               {
                 q: "And on the server?",
-                a: { en: "Provide <code>getServerSnapshot</code>; it's used for SSR and for hydration, so the first client render matches the HTML. Without it, the component can't render on the server.", ar: "ادي <code>getServerSnapshot</code>؛ وده بيتستخدم في الـ SSR والـ hydration، علشان أول render على الـ client يطابق الـ HTML. ومن غيره الـ component مش هيقدر يعمل render على السيرفر." }
+                a: { en: "Provide <code>getServerSnapshot</code>; it's used for SSR and for hydration, so the first client render matches the HTML. Without it, the component can't render on the server.", ar: "ادّيه <code>getServerSnapshot</code>. وده بيتستخدم في الـ SSR والـ hydration، علشان أول render على الـ client يطابق الـ HTML. ومن غيره، الـ component مش هيقدر يعمل render على السيرفر." }
               }
             ]
           }
@@ -657,7 +657,7 @@ STUDY.deepen("hooks", {
         title: { en: "A good hook API", ar: "API كويس للـ hook" },
         body: {
           en: "Name it <code>use…</code> (so the linter applies the rules), accept an options object, return the smallest useful API (a tuple for two values, an object for more), keep returned functions stable, clean up everything it starts, and keep it focused — <code>useUrlFilters</code>, not <code>usePage</code>.",
-          ar: "سمّيه <code>use…</code> (علشان الـ linter يطبّق القواعد)، وخليه ياخد options object، ويرجّع أصغر API مفيد (tuple لو قيمتين، و object لو أكتر)، ويخلي الـ functions اللي بيرجّعها ثابتة، ويعمل cleanup لكل حاجة بيبدأها، ويبقى مركّز — <code>useUrlFilters</code> مش <code>usePage</code>."
+          ar: "سمّيه <code>use…</code>، علشان الـ linter يطبّق عليه القواعد. وخليه ياخد options object. ويرجّع أصغر API مفيد: tuple لو قيمتين، و object لو أكتر. والـ functions اللي بيرجّعها تبقى ثابتة. ويعمل cleanup لكل حاجة بيبدأها. ويبقى مركّز على حاجة واحدة: <code>useUrlFilters</code> مش <code>usePage</code>."
         },
         code: "export function useDebouncedValue(value, delay = 300) {\n  const [debounced, setDebounced] = useState(value);\n  useEffect(() => {\n    const id = setTimeout(() => setDebounced(value), delay);\n    return () => clearTimeout(id);\n  }, [value, delay]);\n  return debounced;\n}",
         run: "browser"
@@ -687,15 +687,15 @@ STUDY.deepen("hooks", {
           en: "One <code>usePageLogic</code> with fetching, form state, URL sync and analytics: hard to test, re-renders everything that uses any part of it, and can't be reused.",
           ar: "<code>usePageLogic</code> واحد فيه fetching و form state و URL sync و analytics: صعب يتعمل له test، وبيعمل re-render لأي حاجة بتستخدم أي جزء منه، ومينفعش يتستخدم تاني."
         },
-        fix: { en: "Split by concern; compose small hooks in the component.", ar: "قسّمه حسب كل حاجة؛ وركّب hooks صغيرة جوه الـ component." }
+        fix: { en: "Split by concern; compose small hooks in the component.", ar: "قسّمه، hook لكل حاجة. وركّب الـ hooks الصغيرة دي جوه الـ component." }
       },
       {
         title: { en: "Effects hidden inside hooks without cleanup", ar: "effects مستخبية جوه hooks من غير cleanup" },
         body: {
           en: "A hook that adds a listener or timer looks harmless at the call site; if it doesn't clean up, every component using it leaks.",
-          ar: "الـ hook اللي بيضيف listener أو timer شكله بريء من مكان النداء؛ ولو مش بيعمل cleanup، كل component بيستخدمه بيعمل leak."
+          ar: "الـ hook اللي بيضيف listener أو timer شكله بريء من مكان النداء. بس لو مش بيعمل cleanup، كل component بيستخدمه هيعمل leak."
         },
-        fix: { en: "Every effect in a shared hook returns a cleanup; test mount/unmount.", ar: "كل effect في hook مشترك لازم يرجّع cleanup؛ واختبر الـ mount والـ unmount." }
+        fix: { en: "Every effect in a shared hook returns a cleanup; test mount/unmount.", ar: "كل effect في hook مشترك لازم يرجّع cleanup. واختبر الـ mount والـ unmount." }
       }
     ],
     levels: [
@@ -712,18 +712,18 @@ STUDY.deepen("hooks", {
         mid: { en: "It's reusable and starts with <code>use</code>.", ar: "بيتستخدم تاني وبيبدأ بـ <code>use</code>." },
         senior: {
           en: "One responsibility, a small stable API, options instead of many positional parameters, stable returned functions, cleanup for everything it starts, and tests for its contract. In Smart FAQ that's <code>useUrlFilters</code>, <code>useDebouncedValue</code> (with tests), <code>useSlashShortcut</code>, <code>useRetryAfter</code>; in AHS each domain module exposes query hooks like <code>useGetOrderDetails</code>, so components never see endpoints or cache keys.",
-          ar: "مسؤولية واحدة، و API صغير وثابت، و options بدل parameters كتير بالترتيب، و functions ثابتة بترجع، و cleanup لكل حاجة بيبدأها، و tests للاتفاق بتاعه. وفي Smart FAQ ده زي <code>useUrlFilters</code> و <code>useDebouncedValue</code> (بـ tests) و <code>useSlashShortcut</code> و <code>useRetryAfter</code>؛ وفي AHS كل domain module بيكشف query hooks زي <code>useGetOrderDetails</code>، فالـ components عمرها ما بتشوف endpoints أو cache keys."
+          ar: "مسؤولية واحدة، و API صغير وثابت، و options بدل parameters كتير بالترتيب. والـ functions اللي بيرجّعها ثابتة، وبيعمل cleanup لكل حاجة بيبدأها، وعليه tests للاتفاق بتاعه. وفي Smart FAQ، أمثلة ده <code>useUrlFilters</code> و <code>useDebouncedValue</code> (بـ tests) و <code>useSlashShortcut</code> و <code>useRetryAfter</code>. وفي AHS، كل domain module بيكشف query hooks زي <code>useGetOrderDetails</code>، فالـ components عمرها ما بتشوف endpoints أو cache keys."
         }
       }
     ],
     drill: [
       {
         q: "Do two components using the same custom hook share state?",
-        a: { en: "No. Each call has its own state and effects; only the logic is shared.", ar: "لأ. كل نداء ليه state و effects بتوعه؛ المنطق بس هو اللي مشترك." },
+        a: { en: "No. Each call has its own state and effects; only the logic is shared.", ar: "لأ. كل نداء ليه state و effects بتوعه، والمنطق بس هو اللي مشترك." },
         follow: [
           {
             q: "Then how would you share it?",
-            a: { en: "Lift state to a common parent, put it in context (low-frequency) or a store with selectors (high-frequency), or for server data use the query cache — two <code>useQuery</code> calls with the same key share one cache entry.", ar: "ارفع الـ state لـ parent مشترك، أو حطه في context (لو مش بيتغير كتير) أو store بـ selectors (لو بيتغير كتير)، ولو داتا سيرفر استخدم الـ query cache — اتنين <code>useQuery</code> بنفس الـ key بيشاركوا entry واحد في الـ cache." }
+            a: { en: "Lift state to a common parent, put it in context (low-frequency) or a store with selectors (high-frequency), or for server data use the query cache — two <code>useQuery</code> calls with the same key share one cache entry.", ar: "ارفع الـ state لـ parent مشترك. أو حطه في context لو مش بيتغير كتير، أو في store بـ selectors لو بيتغير كتير. ولو داتا سيرفر، استخدم الـ query cache: اتنين <code>useQuery</code> بنفس الـ key بيشاركوا entry واحد في الـ cache." }
           }
         ]
       }
@@ -742,7 +742,7 @@ STUDY.deepen("hooks", {
   "tanstack-hooks": {
     why: {
       en: "Most of his projects use TanStack Query, so expect deep follow-ups: cache keys, stale vs garbage-collected data, invalidation vs direct updates, optimistic updates and their rollback.",
-      ar: "أغلب مشاريعه بتستخدم TanStack Query، فاستنى أسئلة عميقة: الـ cache keys، والداتا الـ stale قصاد اللي اتمسحت من الـ cache، والـ invalidation قصاد التحديث المباشر، والـ optimistic updates والرجوع فيها."
+      ar: "أغلب مشاريعه بتستخدم TanStack Query، فاستنى أسئلة عميقة. هيسألوك عن الـ cache keys، والفرق بين الداتا الـ stale واللي اتمسحت من الـ cache، والـ invalidation قصاد التحديث المباشر، والـ optimistic updates وإزاي ترجع فيها."
     },
     how: [
       {
@@ -772,7 +772,7 @@ STUDY.deepen("hooks", {
         title: { en: "Cancellation and deduplication come built in", ar: "الإلغاء والـ dedup جاهزين" },
         body: {
           en: "The query function receives a <code>signal</code>; pass it to <code>fetch</code> and TanStack Query aborts requests nobody needs anymore. Identical keys requested at the same time share one in-flight request. Results use structural sharing, so unchanged parts keep their identity and memoised components don't re-render.",
-          ar: "الـ query function بتاخد <code>signal</code>؛ ابعته لـ <code>fetch</code> و TanStack Query بيعمل abort للـ requests اللي محدش بقى محتاجها. والـ keys المتطابقة اللي بتتطلب في نفس الوقت بتشارك request واحد شغال. والنتايج بتستخدم structural sharing، فالأجزاء اللي متغيرتش بتحافظ على الـ identity بتاعتها والـ components المعمول لها memo مش بتعمل re-render."
+          ar: "الـ query function بتاخد <code>signal</code>. ابعته لـ <code>fetch</code>، و TanStack Query هيعمل abort للـ requests اللي محدش بقى محتاجها. ولو نفس الـ key اتطلب من كذا مكان في نفس الوقت، بيشاركوا request واحد. والنتايج بتستخدم structural sharing. فالأجزاء اللي متغيرتش بتحافظ على الـ identity بتاعتها، والـ components المعمول لها memo مش بتعمل re-render."
         }
       }
     ],
@@ -783,7 +783,7 @@ STUDY.deepen("hooks", {
           en: "<code>queryKey: [\"orders\"]</code> with a <code>queryFn</code> that uses <code>status</code>: changing the filter shows the cached list for the old status, because as far as the cache knows it's the same data.",
           ar: "<code>queryKey: [\"orders\"]</code> و <code>queryFn</code> بيستخدم <code>status</code>: لما تغيّر الفلتر بتظهر الـ list المتخزنة بتاعة الـ status القديم، لأن بالنسبة للـ cache دي نفس الداتا."
         },
-        fix: { en: "Put every variable the fetch uses in the key; use query-key factories per domain and the ESLint plugin's exhaustive-deps rule for keys.", ar: "حط كل متغير الـ fetch بيستخدمه في الـ key؛ واستخدم query-key factories لكل domain وقاعدة exhaustive-deps للـ keys في الـ ESLint plugin." }
+        fix: { en: "Put every variable the fetch uses in the key; use query-key factories per domain and the ESLint plugin's exhaustive-deps rule for keys.", ar: "حط كل متغير الـ fetch بيستخدمه في الـ key. واستخدم query-key factories لكل domain، وقاعدة exhaustive-deps للـ keys من الـ ESLint plugin." }
       },
       {
         title: { en: "Copying query data into useState", ar: "نسخ داتا الـ query في useState" },
@@ -791,13 +791,13 @@ STUDY.deepen("hooks", {
           en: "<code>const [rows, setRows] = useState(data)</code> takes a snapshot that never updates after a refetch, and now there are two sources of truth.",
           ar: "<code>const [rows, setRows] = useState(data)</code> بياخد snapshot عمره ما بيتحدث بعد الـ refetch، وبقى فيه مصدرين للحقيقة."
         },
-        fix: { en: "Read from the query; derive with <code>select</code> or during render; keep only real UI state (selection, edits in progress) in local state.", ar: "اقرا من الـ query؛ واحسب بـ <code>select</code> أو وقت الـ render؛ وخلي الـ UI state الحقيقي بس (الاختيار، التعديلات اللي شغالة) في state محلي." }
+        fix: { en: "Read from the query; derive with <code>select</code> or during render; keep only real UI state (selection, edits in progress) in local state.", ar: "اقرا من الـ query مباشرة. واحسب اللي محتاجه بـ <code>select</code> أو وقت الـ render. وفي state محلي خلي الـ UI state الحقيقي بس، زي الاختيار والتعديلات اللي شغالة." }
       },
       {
         title: { en: "Reads wrapped as mutations", ar: "قراية ملفوفة كـ mutations" },
         body: {
           en: "Using <code>useMutation</code> to fetch data (because it's “on click” or because the endpoint is POST) loses caching, deduplication, background refetch and loading state on remount.",
-          ar: "إنك تستخدم <code>useMutation</code> علشان تجيب داتا (علشان هي «بعد ضغطة» أو علشان الـ endpoint بيبقى POST) بيضيّع الـ caching والـ dedup والـ refetch في الخلفية والـ loading state مع الـ remount."
+          ar: "ناس بتستخدم <code>useMutation</code> علشان تجيب داتا، لأنها «بعد ضغطة» أو لأن الـ endpoint بيبقى POST. وده بيضيّع الـ caching والـ dedup والـ refetch في الخلفية، والـ loading state مع الـ remount."
         },
         fix: { en: "Reads are queries — use <code>enabled</code> to fetch on demand, or <code>queryClient.fetchQuery</code> in a handler. Mutations are for changes.", ar: "القراية queries — استخدم <code>enabled</code> علشان تجيبها وقت الحاجة، أو <code>queryClient.fetchQuery</code> في handler. والـ mutations للتغييرات." }
       }
@@ -808,7 +808,7 @@ STUDY.deepen("hooks", {
         mid: { en: "It handles loading and error states, caching and refetching for you.", ar: "بيتعامل مع حالات الـ loading والـ error والـ caching والـ refetching بدالك." },
         senior: {
           en: "Because server data is a cache problem, not component state: shared entries by key, deduplicated requests, stale-while-revalidate with background refetch on focus and reconnect, cancellation through the signal, retries with backoff, pagination and infinite queries, and mutation tools for invalidation and optimistic updates. In an effect I'd rebuild each of these per component, with races. In Smart FAQ that meant 37 queries and 32 mutations with retries only for network errors, 5xx and 429.",
-          ar: "لأن داتا السيرفر مشكلة cache، مش state بتاع component: entries مشتركة بالـ key، و requests مش متكررة، و stale-while-revalidate مع refetch في الخلفية مع الـ focus والـ reconnect، وإلغاء عن طريق الـ signal، و retries مع backoff، و pagination و infinite queries، وأدوات mutations للـ invalidation والـ optimistic updates. ولو في effect كنت هعيد بناء كل ده لكل component، ومعاه races. وفي Smart FAQ ده كان 37 query و 32 mutation، والـ retries بس لأخطاء الشبكة والـ 5xx والـ 429."
+          ar: "لأن داتا السيرفر مشكلة cache، مش state بتاع component. المكتبة بتديني entries مشتركة بالـ key، و requests مش متكررة، و stale-while-revalidate مع refetch في الخلفية مع الـ focus والـ reconnect. وكمان إلغاء عن طريق الـ signal، و retries مع backoff، و pagination و infinite queries، وأدوات mutations للـ invalidation والـ optimistic updates. ولو عملتها في effect، كنت هعيد بناء كل ده لكل component، ومعاه races. وفي Smart FAQ كان فيه 37 query و 32 mutation، والـ retries بس لأخطاء الشبكة والـ 5xx والـ 429."
         }
       },
       {
@@ -816,7 +816,7 @@ STUDY.deepen("hooks", {
         mid: { en: "Invalidate after a mutation so the list refetches.", ar: "اعمل invalidate بعد الـ mutation علشان الـ list تعمل refetch." },
         senior: {
           en: "Invalidate by default — it's simple and always matches the server. <code>setQueryData</code> when the response already contains the updated entity, to save a round trip — e.g. updating one item in a list. Optimistic when the action is frequent and almost always succeeds (toggles, likes): cancel in-flight queries, snapshot, write, roll back on error, and invalidate on settle to re-sync. Then I check the edge cases: other lists that include the item, and pagination.",
-          ar: "الـ invalidate هو الأساس — بسيط ودايمًا مطابق للسيرفر. و <code>setQueryData</code> لما الـ response يكون فيه الـ entity المتحدث خلاص، علشان أوفر رحلة — زي تحديث عنصر واحد في list. والـ optimistic لما الأكشن بيتكرر كتير وتقريبًا دايمًا بينجح (toggles، likes): الغي الـ queries الشغالة، وخد snapshot، واكتب، وارجع لو حصل error، واعمل invalidate في الآخر علشان تتزامن تاني. وبعدين بشوف الحالات الطرفية: lists تانية فيها نفس العنصر، والـ pagination."
+          ar: "الـ invalidate هو الأساس، لأنه بسيط ودايمًا مطابق للسيرفر. والـ <code>setQueryData</code> لما الـ response يكون فيه الـ entity المتحدث خلاص، علشان أوفر request، زي تحديث عنصر واحد في list. والـ optimistic لما الأكشن بيتكرر كتير وتقريبًا دايمًا بينجح، زي الـ toggles والـ likes. وساعتها: ألغي الـ queries الشغالة، وآخد snapshot، وأكتب، وأرجع لو حصل error، وأعمل invalidate في الآخر علشان أتزامن تاني. وبعدين بشوف الحالات الطرفية: lists تانية فيها نفس العنصر، والـ pagination."
         }
       }
     ],
@@ -839,7 +839,7 @@ STUDY.deepen("hooks", {
       }
     ],
     story: {
-      text: { en: "Smart FAQ: 37 useQuery, 32 useMutation, 40 invalidateQueries, 18 setQueryData; retries only for network errors, 5xx and 429. AHS: 49 useQuery / 169 useMutation in the migration — some reads wrapped as mutations, a lesson to discuss honestly.", ar: "Smart FAQ: 37 useQuery و 32 useMutation و 40 invalidateQueries و 18 setQueryData؛ والـ retries بس لأخطاء الشبكة والـ 5xx والـ 429. و AHS: 49 useQuery و 169 useMutation في الـ migration — فيه قراية ملفوفة كـ mutations، ودرس تتكلم عنه بصراحة." },
+      text: { en: "Smart FAQ: 37 useQuery, 32 useMutation, 40 invalidateQueries, 18 setQueryData; retries only for network errors, 5xx and 429. AHS: 49 useQuery / 169 useMutation in the migration — some reads wrapped as mutations, a lesson to discuss honestly.", ar: "Smart FAQ: فيه 37 useQuery و 32 useMutation و 40 invalidateQueries و 18 setQueryData، والـ retries بس لأخطاء الشبكة والـ 5xx والـ 429. و AHS: فيه 49 useQuery و 169 useMutation في الـ migration. يعني فيه قراية ملفوفة كـ mutations، وده درس تتكلم عنه بصراحة." },
       p: "smartfaq", tab: "hooks", label: "Smart FAQ"
     },
     sources: [
