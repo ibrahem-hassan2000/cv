@@ -108,7 +108,7 @@ STUDY.fill("nextjs", {
           [{ en: "JS shipped", ar: "الـ JS المبعوت" }, { en: "Every component", ar: "كل component" }, { en: "Only client components", ar: "الـ client components بس" }],
           [{ en: "Mutations", ar: "الكتابة" }, { en: "API routes", ar: "API routes" }, { en: "Server Actions / route handlers", ar: "Server Actions و route handlers" }]
         ] },
-        { type: "projects", items: [{ text: { en: "Marina (Aquadic, 2023) used the Pages Router; Analytica and Find Help (Aquadic), okoRent, Spectra and Bites used the App Router.", ar: "Marina (Aquadic، 2023) كان Pages Router؛ و Analytica و Find Help (Aquadic) و okoRent و Spectra و Bites كانوا App Router." }, p: "aquadic", tab: "decisions", label: "Aquadic" }] }
+        { type: "projects", items: [{ text: { en: "Marina (Aquadic, 2023) used the Pages Router; Analytica (Aquadic), okoRent, Spectra and Bites used the App Router.", ar: "Marina (Aquadic، 2023) كان Pages Router؛ و Analytica (Aquadic) و okoRent و Spectra و Bites كانوا App Router." }, p: "aquadic", tab: "decisions", label: "Aquadic" }] }
       ],
       say: "I've shipped both routers; the App Router's server components and nested layouts reduce client JavaScript, and the two can coexist while migrating page by page.",
       interview: [{ q: "How would you migrate a Pages Router app?", a: { en: "Incrementally: add the app directory, move shared layouts first, then route by route, converting getServerSideProps into server-component fetches and API routes into actions/handlers where it helps.", ar: "بالتدريج: زود فولدر app، وانقل الـ layouts المشتركة الأول، وبعدين route ورا route، وحوّل getServerSideProps لـ fetch في server components، والـ API routes لـ actions أو handlers لما ده يفيد." } }],
