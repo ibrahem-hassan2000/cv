@@ -54,3 +54,8 @@ The Arabic text is for Ibrahem himself: Egyptian Arabic, written the way you'd e
 ## 7. Keep as is
 - Code, API names, numbers, links and `<code>`/`<b>` tags.
 - Meaning: rewriting the Arabic never changes the facts. If the English and Arabic disagree, the English is checked first.
+
+## Progress (2026-10-29)
+- Done: every deep-dive file (`deep-*.js`), and the basics for JavaScript, React, Hooks, JS output, live coding and system design.
+- Left: the other study-guide basics and the 10 project-guide files. See the count with `node study-guide/tools/ar-style.js stats` (it flags «؛» and sentences over ~170 characters).
+- How: `node study-guide/tools/ar-style.js list <file>` → write a fixes file (`[[old, new], …]` with `String.raw`) → `apply <file> <fixes.js>` → run the checkers → commit per batch.
