@@ -34,11 +34,11 @@ HANDBOOK.projects.push({
     ]},
     { title: { en: "Qur'an audio", ar: "صوت القرآن" }, items: [
       { en: "Reciters, surah ranges, lock-screen controls, background playback", ar: "القرّاء، نطاق السور، تحكم من شاشة القفل، تشغيل في الخلفية" },
-      { en: "Ayah tracking from timestamps; khatm progress counts unique ayahs", ar: "تتبع الآيات بالـ timestamps؛ والختمة بتعدّ الآيات المسموعة من غير تكرار" },
+      { en: "Ayah tracking from timestamps; khatm progress counts unique ayahs", ar: "تتبع الآيات بالـ timestamps. والختمة بتعدّ الآيات اللي اتسمعت، من غير تكرار" },
       { en: "Audio cached on the device for weak networks", ar: "الصوت بيتخزن على الموبايل للشبكة الضعيفة" }
     ]},
     { title: { en: "Account, community, integrations", ar: "الحساب، المجتمع، الربط" }, items: [
-      { en: "Firebase sign-in with Apple and Google; account deletion", ar: "تسجيل دخول Firebase بـ Apple و Google؛ حذف الحساب" },
+      { en: "Firebase sign-in with Apple and Google; account deletion", ar: "تسجيل دخول Firebase بـ Apple و Google. وحذف الحساب" },
       { en: "Community feed: share sessions and routes, reactions, duas, moderation", ar: "Community feed: مشاركة السيشنز والطرق، reactions، أدعية، moderation" },
       { en: "Strava connect (OAuth handled in Cloud Functions), push notifications, daily reminders", ar: "ربط Strava (الـ OAuth في Cloud Functions)، إشعارات push، تذكير يومي" }
     ]},
@@ -71,7 +71,7 @@ HANDBOOK.projects.push({
       chose: "1 Hz high-accuracy fixes + software filter", alts: ["OS distance filter (5–10 m) + Balanced accuracy", "native fitness APIs only"],
       why: { en: "The first builds asked the OS for <b>Balanced (~100 m) accuracy</b> in the background with a <b>10 m distance filter</b>, and the code also dropped steps under <b>8 m</b>. On a curve, skipping points cuts corners, so distance came out short (30 km → ~25 km). Now the OS delivers <b>every fix</b> (<code>distanceInterval: 0</code>, <code>Accuracy.Highest</code>, 1 s) and one software pipeline decides what counts.", ar: "أول نسخ كانت بتطلب من النظام دقة <b>Balanced (حوالي 100 متر)</b> في الخلفية، و<b>فلتر 10 متر</b>، والكود كمان كان بيرمي أي خطوة أقل من <b>8 متر</b>. في المنحنيات لما تفوّت نقط بتقطع الزوايا، فالمسافة بتطلع أقل (30 كم ← حوالي 25). دلوقتي النظام بيبعت <b>كل نقطة</b> (<code>distanceInterval: 0</code>، <code>Accuracy.Highest</code>، كل ثانية) وفلتر software واحد هو اللي يقرر إيه يتحسب." },
       both: { v: "no", en: "Filtering twice (OS + software) is what caused the under-count. Let the OS deliver everything and filter in one place.", ar: "الفلترة مرتين (النظام + الكود) هي اللي عملت النقص. خلي النظام يبعت كل حاجة وافلتر في مكان واحد." },
-      better: { en: "Same idea; next step would be smoothing (e.g. a Kalman filter) and a measured ground truth (a 400 m track) for every release.", ar: "نفس الفكرة؛ والخطوة الجاية smoothing (زي Kalman filter) ومسافة حقيقية معروفة (تراك 400 متر) نقيس عليها كل release." },
+      better: { en: "Same idea; next step would be smoothing (e.g. a Kalman filter) and a measured ground truth (a 400 m track) for every release.", ar: "نفس الفكرة. والخطوة الجاية smoothing (زي Kalman filter)، ومسافة حقيقية معروفة (تراك 400 متر) نقيس عليها كل release." },
       say: "We stopped filtering in the OS, took every 1 Hz fix at high accuracy, and moved all filtering into one tested software pipeline — that fixed the under-count."
     },
     {
@@ -85,15 +85,15 @@ HANDBOOK.projects.push({
     {
       title: { en: "Tracking with the screen off", ar: "التتبع والشاشة مقفولة" },
       chose: "Two modes: background task + foreground watcher", alts: ["foreground only", "background only"],
-      why: { en: "Background location needs the \"Always\" permission, which many users deny. <b>Mode A</b> (background task) is used when allowed; <b>Mode B</b> (foreground watcher) still tracks with the screen on, shows a clear banner, and <b>upgrades to Mode A mid-session</b> if the user grants it.", ar: "التتبع في الخلفية محتاج إذن \"Always\"، وناس كتير بترفضه. <b>Mode A</b> (background task) لما الإذن موجود؛ و<b>Mode B</b> (foreground watcher) بيكمّل يتتبع والشاشة مفتوحة، وبيظهر banner واضح، و<b>بيتحول لـ Mode A في نص السيشن</b> لو اليوزر وافق." },
+      why: { en: "Background location needs the \"Always\" permission, which many users deny. <b>Mode A</b> (background task) is used when allowed; <b>Mode B</b> (foreground watcher) still tracks with the screen on, shows a clear banner, and <b>upgrades to Mode A mid-session</b> if the user grants it.", ar: "التتبع في الخلفية محتاج إذن \"Always\"، وناس كتير بترفضه. <b>Mode A</b> (background task) لما الإذن موجود. و<b>Mode B</b> (foreground watcher) بيكمّل يتتبع والشاشة مفتوحة، وبيظهر banner واضح. ولو اليوزر وافق، <b>بيتحول لـ Mode A في نص الـ session</b>." },
       both: { v: "yes", en: "Both lanes share the same distance function and constants, so the result doesn't depend on the mode.", ar: "الوضعين بيستخدموا نفس دالة المسافة ونفس الأرقام، فالنتيجة ماتتغيرش حسب الوضع." },
-      better: { en: "Same design; keep both lanes on one shared pipeline (as here) so they never drift.", ar: "نفس التصميم؛ والمهم الوضعين يفضلوا على pipeline واحد (زي هنا) علشان مايبعدوش عن بعض." },
+      better: { en: "Same design; keep both lanes on one shared pipeline (as here) so they never drift.", ar: "نفس التصميم. والمهم إن الوضعين يفضلوا على pipeline واحد (زي هنا)، علشان مايبعدوش عن بعض." },
       say: "If the user denies background location we still track in the foreground and upgrade to background mode mid-run when they allow it."
     },
     {
       title: { en: "When GPS goes blind", ar: "لما الـ GPS يعمى" },
       chose: "pedometer as a second witness", alts: ["GPS only", "estimate from pace"],
-      why: { en: "Under bridges, in tunnels, or when the OS kills the app in a pocket, GPS records nothing. A field report had Apple Watch at 6.1 km vs our 4.4 km. The phone's motion co-processor keeps counting; for a time window, if GPS credited much less than the pedometer, the gap is filled.", ar: "تحت الكباري، في الأنفاق، أو لما النظام يقفل الأبلكيشن في الجيب، الـ GPS مش بيسجل حاجة. في تقرير ميداني الـ Apple Watch سجلت 6.1 كم وإحنا 4.4. معالج الحركة في الموبايل بيكمّل يعدّ؛ فلو في فترة الـ GPS حسب أقل بكتير من عدّاد الخطوات، الفرق بيتعوّض." },
+      why: { en: "Under bridges, in tunnels, or when the OS kills the app in a pocket, GPS records nothing. A field report had Apple Watch at 6.1 km vs our 4.4 km. The phone's motion co-processor keeps counting; for a time window, if GPS credited much less than the pedometer, the gap is filled.", ar: "تحت الكباري، وفي الأنفاق، أو لما النظام يقفل الـ app في الجيب، الـ GPS مش بيسجل حاجة. وفي تقرير ميداني، الـ Apple Watch سجلت 6.1 كم، وإحنا سجلنا 4.4. لكن معالج الحركة في الموبايل بيكمّل يعدّ. فلو في فترة الـ GPS حسب أقل بكتير من عدّاد الخطوات، الفرق بيتعوّض." },
       both: { v: "yes", en: "That's the point: GPS stays primary, the pedometer only fills gaps.", ar: "ده بالظبط الهدف: الـ GPS هو الأساس، وعدّاد الخطوات بيسد الفجوات بس." },
       better: { en: "This is how watches do it (motion + GPS fusion). Calibrate stride length per user over time.", ar: "ده اللي الساعات بتعمله (دمج الحركة مع الـ GPS). والأحسن نظبط طول الخطوة لكل يوزر مع الوقت." },
       say: "GPS is the primary source; the pedometer is a second witness that fills windows where GPS was blind."
@@ -109,8 +109,8 @@ HANDBOOK.projects.push({
     {
       title: { en: "Play per ayah or per surah", ar: "نشغّل آية آية ولا السورة كاملة" },
       chose: "whole-surah tracks + ayah timestamps", alts: ["one file per ayah"],
-      why: { en: "One file per ayah means hundreds of tiny tracks and a pause between each. Queuing <b>whole surahs</b> plays smoothly; a <b>timestamp manifest</b> tells us which ayah is playing (binary search on the position every 250 ms), so khatm counting still works per ayah.", ar: "ملف لكل آية يعني مئات التراكات الصغيرة ووقفة بين كل واحدة. لما نحط <b>السور كاملة</b> في الـ queue التشغيل بيبقى ناعم؛ و<b>manifest بالـ timestamps</b> بيقولنا أنهي آية شغالة (binary search على المكان كل 250ms)، فعدّ الختمة لسه آية آية." },
-      both: { v: "partly", en: "The app still caches per-ayah MP3s for some paths; playback itself is surah-based. Keep one model per feature.", ar: "الأبلكيشن لسه بيخزن MP3 لكل آية في بعض الأماكن؛ بس التشغيل نفسه بالسورة. خلي طريقة واحدة لكل فيتشر." },
+      why: { en: "One file per ayah means hundreds of tiny tracks and a pause between each. Queuing <b>whole surahs</b> plays smoothly; a <b>timestamp manifest</b> tells us which ayah is playing (binary search on the position every 250 ms), so khatm counting still works per ayah.", ar: "ملف لكل آية يعني مئات التراكات الصغيرة، ووقفة بين كل واحدة والتانية. لما نحط <b>السور كاملة</b> في الـ queue، التشغيل بيبقى ناعم. و<b>manifest بالـ timestamps</b> بيقولنا أنهي آية شغالة (binary search على المكان كل 250ms). فعدّ الختمة لسه آية آية." },
+      both: { v: "partly", en: "The app still caches per-ayah MP3s for some paths; playback itself is surah-based. Keep one model per feature.", ar: "الـ app لسه بيخزن MP3 لكل آية في بعض الأماكن، بس التشغيل نفسه بالسورة. خلي طريقة واحدة لكل feature." },
       better: { en: "Surah + timestamps is the better listening experience.", ar: "السورة + الـ timestamps تجربة سماع أحسن." },
       say: "We queue whole surahs for gapless playback and use a timestamp manifest to know the current ayah."
     },
@@ -128,7 +128,7 @@ HANDBOOK.projects.push({
       chose: "Firebase (Auth, Firestore, Cloud Functions)", alts: ["Express + Postgres API", "Supabase"],
       why: { en: "Fast to ship for a small team, offline cache in the SDK, security rules per user, and Cloud Functions to keep secrets (Strava, Apple) off the phone. 59 app files talk to Firestore.", ar: "سريع في التسليم لفريق صغير، فيه cache offline في الـ SDK، وsecurity rules لكل يوزر، و Cloud Functions علشان الأسرار (Strava، Apple) ماتبقاش على الموبايل. 59 ملف في الأبلكيشن بيكلموا Firestore." },
       both: { v: "no", en: "The repo also has an Express + Postgres + OpenAPI scaffold, but the app never calls it — two backends for one app is maintenance cost.", ar: "الريبو فيه كمان scaffold لـ Express + Postgres + OpenAPI، بس الأبلكيشن مش بيكلمه خالص — باك إندين لأبلكيشن واحد = تكلفة صيانة." },
-      better: { en: "Firebase is fine at this size; remove the unused server.", ar: "Firebase مناسب للحجم ده؛ والأحسن نشيل السيرفر اللي مش مستخدم." },
+      better: { en: "Firebase is fine at this size; remove the unused server.", ar: "الـ Firebase مناسب للحجم ده. والأحسن نشيل السيرفر اللي مش مستخدم." },
       say: "We used Firebase so a small team could ship fast, and kept third-party secrets in Cloud Functions."
     },
     {
@@ -145,7 +145,7 @@ HANDBOOK.projects.push({
       chose: "persistent outbox (AsyncStorage)", alts: ["Firestore's in-memory queue only"],
       why: { en: "Firestore retries unsent writes, but in React Native that queue lives <b>in memory</b>: kill the app offline and the change is gone. Pending profile writes and session drafts are saved locally and sent on the next launch.", ar: "Firestore بيعيد الكتابات اللي ماتبعتتش، بس في React Native الـ queue دي <b>في الميموري</b>: لو قفلت الأبلكيشن وانت offline التغيير بيضيع. الكتابات المعلقة ومسودات السيشن بتتحفظ على الموبايل وتتبعت أول ما يفتح تاني." },
       both: { v: "yes", en: "Keep the SDK's retry and add the outbox for anything you can't lose.", ar: "سيب الـ retry بتاع الـ SDK وزوّد الـ outbox لأي حاجة ماينفعش تضيع." },
-      better: { en: "Same; make every write idempotent so a retry can't duplicate it.", ar: "نفس الحاجة؛ وخلي كل كتابة idempotent علشان الإعادة ماتكررش." },
+      better: { en: "Same; make every write idempotent so a retry can't duplicate it.", ar: "نفس الحاجة. وخلي كل كتابة idempotent، علشان الإعادة ماتكررش." },
       say: "A finished run is saved locally first and synced later, so killing the app offline never loses it.",
       concept: "optimistic-ui"
     }
@@ -170,7 +170,7 @@ HANDBOOK.projects.push({
         ["Twin walk", { en: "iPhone + Android together, diagnostics on", ar: "آيفون وأندرويد مع بعض، والتشخيص شغال" }],
         ["Replay", { en: "recordings through the real filter, offline", ar: "التسجيلات بتتشغل على الفلتر الحقيقي offline" }],
         ["Cause", { en: "100 m accuracy, 10 m OS filter, 8 m floor", ar: "دقة 100 متر، فلتر 10 متر من النظام، وحد 8 متر" }],
-        ["Tune", { en: "every fix at 1 Hz; jitter factor 0.8 → 0.5", ar: "كل نقطة كل ثانية؛ معامل الرعشة 0.8 ← 0.5" }],
+        ["Tune", { en: "every fix at 1 Hz; jitter factor 0.8 → 0.5", ar: "نقطة كل ثانية. ومعامل الرعشة من 0.8 لـ 0.5" }],
         ["Re-test", { en: "against Strava and Apple Watch, then release", ar: "مقارنة بـ Strava و Apple Watch، وبعدين release" }]
       ]
     },
@@ -226,7 +226,7 @@ HANDBOOK.projects.push({
     { group: { en: "State and refs", ar: "الـ State والـ refs" }, items: [
       { name: "useRef", count: "×316", what: { en: "More refs than state: GPS callbacks, audio progress and timers read the latest value without re-rendering.", ar: "refs أكتر من الـ state: callbacks الـ GPS وprogress الصوت والتايمرز بيقروا آخر قيمة من غير re-render." }, remember: { en: "Fast-changing values that don't change the UI belong in refs.", ar: "القيم اللي بتتغير بسرعة ومش بتغير الـ UI مكانها ref." } },
       { name: "useState", count: "×275", what: { en: "What the screen actually shows.", ar: "اللي الشاشة بتعرضه فعلًا." } },
-      { name: "useEffect / useCallback", count: "×213 / ×191", what: { en: "Start/stop watchers and listeners; stable handlers passed to native callbacks.", ar: "تشغيل/إيقاف الـ watchers والـ listeners؛ handlers ثابتة للـ callbacks الـ native." }, remember: { en: "Every listener you add in an effect must be removed in its cleanup.", ar: "أي listener بتضيفه في effect لازم تشيله في الـ cleanup." } }
+      { name: "useEffect / useCallback", count: "×213 / ×191", what: { en: "Start/stop watchers and listeners; stable handlers passed to native callbacks.", ar: "تشغيل وإيقاف الـ watchers والـ listeners. و handlers ثابتة للـ callbacks الـ native." }, remember: { en: "Every listener you add in an effect must be removed in its cleanup.", ar: "أي listener بتضيفه في effect لازم تشيله في الـ cleanup." } }
     ]},
     { group: { en: "Mobile lifecycle and audio", ar: "دورة حياة الموبايل والصوت" }, items: [
       { name: "AppState listeners", count: "×20", what: { en: "React when the app goes to background or comes back: re-check GPS, flush data, resync the player.", ar: "بتتصرف لما الأبلكيشن يروح الخلفية أو يرجع: تتأكد من الـ GPS، تبعت الداتا، تزامن الـ player." } },
@@ -237,7 +237,7 @@ HANDBOOK.projects.push({
       { name: "useGpsTracking", what: { en: "Both GPS lanes, the filter config, mode switching.", ar: "طريقين الـ GPS، إعدادات الفلتر، تبديل الوضع." } },
       { name: "useSurahTimestampPlayer", what: { en: "Surah queue + ayah tracking from the manifest.", ar: "queue السور + تتبع الآيات من الـ manifest." } },
       { name: "useRouteTrack / useLowPowerMode / useBackendReachability", what: { en: "Live route, battery-saver warning, offline detection.", ar: "الطريق اللايف، تحذير توفير البطارية، معرفة لو مفيش نت." } },
-      { name: "useQuery / useInfiniteQuery", count: "×9 / ×3", what: { en: "Only for the community feed; most data goes straight to Firestore services.", ar: "للـ community feed بس؛ معظم الداتا رايحة لـ Firestore services على طول." } }
+      { name: "useQuery / useInfiniteQuery", count: "×9 / ×3", what: { en: "Only for the community feed; most data goes straight to Firestore services.", ar: "للـ community feed بس. ومعظم الداتا رايحة لـ Firestore services على طول." } }
     ]}
   ],
 
@@ -245,7 +245,7 @@ HANDBOOK.projects.push({
     {
       title: { en: "Runs were too short", ar: "الجري كان بيتحسب أقل" },
       problem: { en: "A client ran ~30 km and the app showed ~25 km (−17%). Later a track run showed 3.10 km vs Strava's 6.42 km.", ar: "عميل جري حوالي 30 كم والأبلكيشن عرض حوالي 25 (−17%). وبعدها جرية على تراك طلعت 3.10 كم و Strava 6.42." },
-      fix: { en: "Removed the OS distance filter, Highest accuracy at 1 Hz, one software filter for both modes, jitter factor tuned on recorded walks; tested with two phones against Strava and Apple Watch.", ar: "شلنا فلتر المسافة من النظام، أعلى دقة كل ثانية، فلتر software واحد للوضعين، ومعامل الرعشة اتظبط على مشيات متسجلة؛ واتجرب بموبايلين قدام Strava و Apple Watch." },
+      fix: { en: "Removed the OS distance filter, Highest accuracy at 1 Hz, one software filter for both modes, jitter factor tuned on recorded walks; tested with two phones against Strava and Apple Watch.", ar: "شلنا فلتر المسافة بتاع النظام. وخلينا أعلى دقة كل ثانية، وفلتر software واحد للوضعين. ومعامل الرعشة اتظبط على مشيات متسجلة. واتجرب بموبايلين قدام Strava و Apple Watch." },
       result: { en: "Field walks within ~2–6% of Strava on the same phones.", ar: "المشيات الميدانية بقت فرقها حوالي 2–6% عن Strava على نفس الموبايلات." },
       lesson: { en: "Measure, don't guess: replay real recordings through the real code.", ar: "قيس ماتخمنش: شغّل تسجيلات حقيقية على الكود الحقيقي." }
     },
@@ -258,7 +258,7 @@ HANDBOOK.projects.push({
     {
       title: { en: "Gaps between surahs", ar: "فواصل بين السور" },
       problem: { en: "When JS was suspended, the next surah didn't start until the app woke up.", ar: "لما الـ JS يقف، السورة الجاية ماكانتش بتبدأ غير لما الأبلكيشن يصحى." },
-      fix: { en: "Queue all surahs up front in the native player; track ayahs from timestamps.", ar: "كل السور تتحط في الـ queue من الأول في الـ player الـ native؛ والآيات تتتبع من الـ timestamps." },
+      fix: { en: "Queue all surahs up front in the native player; track ayahs from timestamps.", ar: "كل السور بتتحط في الـ queue من الأول، في الـ player الـ native. والآيات بتتتبع من الـ timestamps." },
       result: { en: "Gapless playback with the screen off.", ar: "تشغيل من غير فواصل والشاشة مقفولة." }
     },
     {
@@ -276,18 +276,18 @@ HANDBOOK.projects.push({
   ],
 
   star: {
-    s: { en: "A Qur'an-and-running app; runners reported that distance came out short.", ar: "أبلكيشن قرآن وجري؛ العدّائين قالوا إن المسافة بتطلع أقل." },
+    s: { en: "A Qur'an-and-running app; runners reported that distance came out short.", ar: "app للقرآن والجري. والعدّائين قالوا إن المسافة بتطلع أقل من الحقيقة." },
     t: { en: "As the lead, make distance trustworthy and ship to both stores.", ar: "كـ lead، أخلّي المسافة يُعتمد عليها وننزل على الستورين." },
     a: { en: "Found the metres-wide gate and coarse filters, set up two-phone field tests against Strava and Apple Watch, directed the filter changes, and tested every build.", ar: "لقيت الدايرة اللي بالأمتار والفلاتر التقيلة، وعملت تجارب بموبايلين قدام Strava و Apple Watch، ووجّهت تعديلات الفلتر، وجرّبت كل build." },
-    r: { en: "Live on Google Play (100+ downloads) and the App Store (Aug 2026); field walks within a few percent of Strava.", ar: "نازل على Google Play (فوق 100 تحميل) و App Store (أغسطس 2026)؛ والمشيات الميدانية فرقها كام في المية عن Strava." }
+    r: { en: "Live on Google Play (100+ downloads) and the App Store (Aug 2026); field walks within a few percent of Strava.", ar: "نازل على Google Play (أكتر من 100 تحميل)، وعلى App Store (أغسطس 2026). والمشيات الميدانية فرقها كام في المية بس عن Strava." }
   },
 
   qa: [
     { q: "Your name isn't on the commits. What exactly was your role?", a: { en: "I led product and technical direction: I planned features and UX, chose approaches like how to measure distance and how to play audio, and tested every build. A teammate wrote the code with AI from those plans, and the team pushed from one place.", ar: "كنت lead للمنتج والتقنية: خططت الفيتشرز والـ UX، واخترت الطرق زي إزاي نقيس المسافة وإزاي نشغّل الصوت، وجرّبت كل build. زميل كتب الكود بالـ AI من الخطط دي، والفريق كان بيرفع من مكان واحد." } },
-    { q: "How do you compute distance from GPS?", a: { en: "Haversine between consecutive accepted fixes. A fix is rejected if accuracy is too poor, the implied speed is impossible, or Doppler says you're standing; small moves below max(8 m, accuracy × 0.5) are treated as jitter.", ar: "Haversine بين كل نقطتين مقبولين ورا بعض. النقطة بتترفض لو الدقة وحشة، أو السرعة مستحيلة، أو الـ Doppler بيقول إنك واقف؛ والحركات الصغيرة تحت max(8 متر، الدقة × 0.5) بتتعامل كرعشة." } },
+    { q: "How do you compute distance from GPS?", a: { en: "Haversine between consecutive accepted fixes. A fix is rejected if accuracy is too poor, the implied speed is impossible, or Doppler says you're standing; small moves below max(8 m, accuracy × 0.5) are treated as jitter.", ar: "Haversine بين كل نقطتين مقبولين ورا بعض. والنقطة بتترفض لو الدقة وحشة، أو السرعة مستحيلة، أو الـ Doppler بيقول إنك واقف. والحركات الصغيرة تحت max(8 متر، الدقة × 0.5) بتتحسب رعشة." } },
     { q: "Why not just use the OS distance filter?", a: { en: "It drops points before you see them, so curves get cut and distance comes out short. We take every fix and filter in one place we can test.", ar: "بيرمي نقط قبل ما توصلك، فالمنحنيات بتتقطع والمسافة تطلع أقل. إحنا بناخد كل نقطة ونفلتر في مكان واحد نقدر نختبره." } },
-    { q: "How did you test GPS without running every time?", a: { en: "Diagnostics journals recorded real runs; we replayed them offline through the same filter code, and pinned the tuned constants with tests. Then confirmed on two phones in the field.", ar: "سجلات تشخيص بتسجل الجري الحقيقي؛ وكنا بنشغلها offline على نفس كود الفلتر، والأرقام المتظبطة عليها tests. وبعدين نتأكد بموبايلين في الحقيقة." } },
-    { q: "How does audio stay in sync with the current ayah?", a: { en: "Whole surahs are native tracks; a 250 ms poll reads the position into a ref and a binary search over the timestamp manifest finds the ayah.", ar: "السور كاملة تراكات native؛ وكل 250ms بنقرا المكان في ref، و binary search على الـ manifest بيلاقي الآية." } },
+    { q: "How did you test GPS without running every time?", a: { en: "Diagnostics journals recorded real runs; we replayed them offline through the same filter code, and pinned the tuned constants with tests. Then confirmed on two phones in the field.", ar: "فيه سجلات تشخيص بتسجل الجري الحقيقي. وكنا بنشغّلها offline على نفس كود الفلتر، والأرقام اللي اتظبطت عليها tests. وبعدين بنتأكد بموبايلين في الحقيقة." } },
+    { q: "How does audio stay in sync with the current ayah?", a: { en: "Whole surahs are native tracks; a 250 ms poll reads the position into a ref and a binary search over the timestamp manifest finds the ayah.", ar: "السور كاملة تراكات native. وكل 250ms بنقرا المكان في ref، و binary search على الـ manifest بيلاقي الآية." } },
     { q: "What would you do differently?", a: { en: "A measured ground truth (a 400 m track) for every release, remove the unused server scaffold, and ship the shake-to-feedback tool we prototyped.", ar: "مسافة حقيقية معروفة (تراك 400 متر) لكل release، نشيل السيرفر اللي مش مستخدم، ونكمّل أداة shake-to-feedback اللي عملنا لها prototype." } }
   ],
 

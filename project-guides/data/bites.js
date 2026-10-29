@@ -66,7 +66,7 @@ HANDBOOK.projects.push({
       title: { en: "Forms for money", ar: "فورمز الفلوس" },
       chose: "react-hook-form + zod", alts: ["Formik + yup", "useState per field"],
       why: { en: "An invoice has dozens of fields and dynamic rows. react-hook-form keeps inputs <b>uncontrolled</b>, so typing in one field doesn't re-render the whole form. zod gives one schema for validation <b>and</b> the TypeScript type (<code>z.infer</code>) — 67 forms use <code>zodResolver</code>.", ar: "الفاتورة فيها عشرات الحقول وصفوف بتتزود. react-hook-form بيخلي الـ inputs <b>uncontrolled</b>، فالكتابة في حقل مش بتعمل re-render للفورم كله. و zod بيديني schema واحدة للـ validation <b>وكمان</b> الـ TypeScript type (<code>z.infer</code>) — 67 فورم بيستخدموا <code>zodResolver</code>." },
-      both: { v: "no", en: "Formik and react-hook-form solve the same job; zod and yup too. Pick one of each.", ar: "Formik و react-hook-form بيعملوا نفس الشغلانة؛ و zod و yup كمان. اختار واحد من كل نوع." },
+      both: { v: "no", en: "Formik and react-hook-form solve the same job; zod and yup too. Pick one of each.", ar: "الـ Formik والـ react-hook-form بيعملوا نفس الشغلانة، وكمان zod و yup. اختار واحد من كل نوع." },
       better: { en: "This is still the standard pair. With a TypeScript backend you could share the same zod schemas on both sides.", ar: "ده لسه الـ standard. ولو الباك إند TypeScript ممكن تشارك نفس الـ zod schemas بين الاتنين." },
       say: "React Hook Form keeps big financial forms fast because inputs are uncontrolled, and zod gives me validation and types from one schema.",
       concept: "forms"
@@ -109,7 +109,7 @@ HANDBOOK.projects.push({
     {
       title: { en: "Search debounce", ar: "الـ debounce في البحث" },
       chose: "use-debounce", alts: ["react-use", "lodash.debounce", "useDeferredValue"],
-      why: { en: "Server search shouldn't fire on every key press; waiting 600 ms sends one request when the user stops typing.", ar: "البحث على السيرفر مايصحش يبعت مع كل حرف؛ استنى 600ms وابعت request واحد لما يبطل كتابة." },
+      why: { en: "Server search shouldn't fire on every key press; waiting 600 ms sends one request when the user stops typing.", ar: "البحث على السيرفر مايصحّش يبعت مع كل حرف. استنى 600ms، وابعت request واحد لما اليوزر يبطّل كتابة." },
       both: { v: "partly", en: "My code imported <code>useDebounce</code> from both <b>use-debounce</b> and <b>react-use</b>. It works, but it's two libraries for one job.", ar: "الكود بتاعي استورد <code>useDebounce</code> من <b>use-debounce</b> ومن <b>react-use</b>. شغال، بس مكتبتين لنفس الشغلانة." },
       better: { en: "Keep one. <code>useDeferredValue</code> helps heavy <b>client-side</b> filtering but does not reduce server requests — debounce still needed for API search.", ar: "خلي واحدة. <code>useDeferredValue</code> بيفيد في الفلترة التقيلة <b>على المتصفح</b> بس مش بيقلل الـ requests — الـ debounce لسه لازم لبحث الـ API." },
       say: "Debounce reduces requests; useDeferredValue only defers rendering — they solve different problems.",
@@ -126,9 +126,9 @@ HANDBOOK.projects.push({
     {
       title: { en: "UI kit", ar: "مكتبة الواجهة" },
       chose: "MUI 6 + Tailwind", alts: ["Mantine", "shadcn/ui"],
-      why: { en: "Project standard; MUI has solid dialogs, inputs and tables for data-heavy screens.", ar: "ده الـ standard في المشروع؛ MUI فيه dialogs و inputs وجداول قوية للشاشات المليانة داتا." },
+      why: { en: "Project standard; MUI has solid dialogs, inputs and tables for data-heavy screens.", ar: "ده الـ standard في المشروع. والـ MUI فيه dialogs و inputs وجداول قوية للشاشات المليانة داتا." },
       both: { v: "yes", en: "MUI + Tailwind work together, but agree on one way to style (sx vs classes) to avoid specificity fights.", ar: "MUI و Tailwind بيشتغلوا مع بعض، بس اتفقوا على طريقة واحدة للستايل (sx أو classes) علشان مايحصلش تعارض." },
-      better: { en: "For a new product, shadcn/ui + Tailwind gives more control; MUI is fine for a large team that already uses it.", ar: "لمنتج جديد، shadcn/ui مع Tailwind بيدي تحكم أكتر؛ و MUI كويس لفريق كبير متعود عليه." },
+      better: { en: "For a new product, shadcn/ui + Tailwind gives more control; MUI is fine for a large team that already uses it.", ar: "لمنتج جديد، shadcn/ui مع Tailwind بيدي تحكم أكتر. والـ MUI كويس لفريق كبير متعود عليه." },
       say: "We stayed with MUI because the whole team and the existing modules used it."
     }
   ],
@@ -159,7 +159,7 @@ HANDBOOK.projects.push({
       title: { en: "Theater OS booking", ar: "حجز في Theater OS" },
       steps: [
         ["Show", { en: "movie or event + time", ar: "فيلم أو إيفنت + ميعاد" }],
-        ["Seat map", { en: "from the hall template; booked seats disabled", ar: "من قالب القاعة؛ الكراسي المحجوزة مقفولة" }],
+        ["Seat map", { en: "from the hall template; booked seats disabled", ar: "من قالب القاعة، والكراسي المحجوزة مقفولة" }],
         ["Select", { en: "selected seats kept in state", ar: "الكراسي المختارة في state" }],
         ["Food", { en: "added to the same order", ar: "بيتضاف لنفس الأوردر" }],
         ["Checkout", { en: "tickets + food total", ar: "إجمالي التذاكر + الأكل" }],
@@ -171,12 +171,12 @@ HANDBOOK.projects.push({
   patterns: [
     {
       title: { en: "Field array + derived totals", ar: "Field array + إجمالي محسوب" },
-      body: { en: "Rows live in the form; the totals component subscribes with <code>useWatch</code> and computes — nothing is stored twice.", ar: "الصفوف جوه الفورم؛ و component الإجمالي بيشترك بـ <code>useWatch</code> ويحسب — مفيش حاجة متخزنة مرتين." },
+      body: { en: "Rows live in the form; the totals component subscribes with <code>useWatch</code> and computes — nothing is stored twice.", ar: "الصفوف جوه الفورم. والـ component بتاع الإجمالي بيتابعها بـ <code>useWatch</code> ويحسب. ومفيش حاجة متخزنة مرتين." },
       code: "const form = useForm<Invoice>({ resolver: zodResolver(invoiceSchema) });\nconst { fields, append, remove } = useFieldArray({ control: form.control, name: \"items\" });\n\nfunction Totals({ control }) {\n  const items = useWatch({ control, name: \"items\" }) ?? [];\n  const taxRate = useWatch({ control, name: \"taxRate\" }) ?? 0;\n  const subtotal = items.reduce(\n    (sum, i) => sum + i.qty * i.price * (1 - (i.discount ?? 0) / 100), 0);\n  const total = subtotal * (1 + taxRate / 100);\n  return <Summary subtotal={subtotal} total={total} />; // only this re-renders\n}"
     },
     {
       title: { en: "A multi-step dialog", ar: "dialog بخطوات" },
-      body: { en: "Each step waits for the API; an error keeps you on the same step with the server's message. My version used several boolean flags; one <code>step</code> value is cleaner.", ar: "كل خطوة بتستنى الـ API؛ والخطأ بيخليك في نفس الخطوة برسالة السيرفر. النسخة بتاعتي كانت بكذا boolean؛ قيمة <code>step</code> واحدة أنضف." },
+      body: { en: "Each step waits for the API; an error keeps you on the same step with the server's message. My version used several boolean flags; one <code>step</code> value is cleaner.", ar: "كل خطوة بتستنى الـ API. والخطأ بيخليك في نفس الخطوة، ومعاك رسالة السيرفر. النسخة بتاعتي كانت بكذا boolean، وقيمة <code>step</code> واحدة أنضف." },
       code: "type Step = \"contact\" | \"otp\" | \"terms\" | \"sign\";\nconst [step, setStep] = useState<Step>(\"contact\");\nconst [error, setError] = useState<string | null>(null);\n\nasync function verify(code: string) {\n  try {\n    await signatureApi.verifyOtp({ contractId, contact, otp: code });\n    setStep(\"terms\");\n  } catch (e) {\n    setError(e.response?.data?.message ?? \"Verification failed\"); // stay here\n  }\n}"
     },
     {
@@ -189,22 +189,22 @@ HANDBOOK.projects.push({
   hooks: [
     { group: { en: "Forms", ar: "الفورمز" }, items: [
       { name: "useForm + zodResolver", count: "×67", what: { en: "Every financial form has a zod schema.", ar: "كل فورم مالي ليه zod schema." }, remember: { en: "One schema = validation + TypeScript type.", ar: "schema واحدة = validation + TypeScript type." } },
-      { name: "useFieldArray", count: "×13", what: { en: "Item rows in invoices, bills, quotes; also contacts, accounts, options.", ar: "صفوف الـ items في الفواتير والـ bills والعروض؛ وكمان contacts و accounts و options." }, remember: { en: "Use <code>field.id</code> as the key, never the index.", ar: "استخدم <code>field.id</code> كـ key، مش الـ index." } },
+      { name: "useFieldArray", count: "×13", what: { en: "Item rows in invoices, bills, quotes; also contacts, accounts, options.", ar: "صفوف الـ items في الفواتير والـ bills والعروض. وكمان contacts و accounts و options." }, remember: { en: "Use <code>field.id</code> as the key, never the index.", ar: "استخدم <code>field.id</code> كـ key، مش الـ index." } },
       { name: "useWatch", count: "×10", what: { en: "Watches items, tax and invoice type to compute totals and switch fields.", ar: "بيراقب الصفوف والضريبة ونوع الفاتورة علشان يحسب ويغير الحقول." }, remember: { en: "Re-renders only the component that calls it.", ar: "بيعمل re-render للـ component اللي ناداه بس." } },
       { name: "reset", what: { en: "Inside <code>useEffect</code> when a dialog opens or in edit mode.", ar: "جوه <code>useEffect</code> لما الـ dialog يفتح أو في وضع التعديل." } }
     ]},
     { group: { en: "Server data", ar: "داتا السيرفر" }, items: [
-      { name: "useQuery", count: "×293", what: { en: "Lists, details, reports; keys include id and filters.", ar: "القوايم، التفاصيل، التقارير؛ الـ keys فيها الـ id والفلاتر." } },
+      { name: "useQuery", count: "×293", what: { en: "Lists, details, reports; keys include id and filters.", ar: "القوايم، والتفاصيل، والتقارير. والـ keys فيها الـ id والفلاتر." } },
       { name: "useMutation", count: "×96", what: { en: "Create/update invoice, pay, sign, credit note.", ar: "إنشاء/تعديل فاتورة، دفع، توقيع، credit note." } },
       { name: "invalidateQueries", count: "×157", what: { en: "Entity keys: <code>[\"invoice\", id]</code>, <code>[\"contract\", id]</code>.", ar: "keys بالـ entity: <code>[\"invoice\", id]</code>، <code>[\"contract\", id]</code>." } }
     ]},
     { group: { en: "UI and effects", ar: "الواجهة والـ effects" }, items: [
       { name: "useState", count: "×647", what: { en: "Dialog flags, OTP steps, selected seats.", ar: "حالة الـ dialogs، خطوات الـ OTP، الكراسي المختارة." } },
-      { name: "useEffect", count: "×175", what: { en: "Reset forms on open; scroll a list to the end after a refetch; click-outside.", ar: "reset للفورم لما يفتح؛ ينزل القايمة لآخرها بعد refetch؛ click-outside." }, remember: { en: "Effects are for syncing with something outside React — not for computing values.", ar: "الـ effects للمزامنة مع حاجة برا React — مش لحساب قيم." } },
-      { name: "useRef", count: "×15", what: { en: "List element for scrolling; previous refetch flag; click-outside container.", ar: "عنصر القايمة للـ scroll؛ قيمة الـ refetch اللي قبلها؛ حاوية الـ click-outside." } },
+      { name: "useEffect", count: "×175", what: { en: "Reset forms on open; scroll a list to the end after a refetch; click-outside.", ar: "reset للفورم لما يتفتح. وينزّل القايمة لآخرها بعد الـ refetch. و click-outside." }, remember: { en: "Effects are for syncing with something outside React — not for computing values.", ar: "الـ effects للمزامنة مع حاجة برا React — مش لحساب قيم." } },
+      { name: "useRef", count: "×15", what: { en: "List element for scrolling; previous refetch flag; click-outside container.", ar: "عنصر القايمة للـ scroll. وقيمة الـ refetch اللي قبلها. والـ container بتاع الـ click-outside." } },
       { name: "useMemo / useCallback", count: "×34 / ×14", what: { en: "Report values and stable row handlers.", ar: "قيم التقارير و handlers ثابتة للصفوف." } },
       { name: "useDebounce", count: "×5", what: { en: "Search waits 600 ms.", ar: "البحث بيستنى 600ms." } },
-      { name: "useSearchParams / useRouter", count: "×33 / ×83", what: { en: "Filters and pagination in the URL; navigation after save.", ar: "الفلاتر والـ pagination في الـ URL؛ التنقل بعد الحفظ." } }
+      { name: "useSearchParams / useRouter", count: "×33 / ×83", what: { en: "Filters and pagination in the URL; navigation after save.", ar: "الفلاتر والـ pagination في الـ URL. والتنقل بعد الحفظ." } }
     ]}
   ],
 
@@ -212,8 +212,8 @@ HANDBOOK.projects.push({
     {
       title: { en: "Invoice totals must always be right", ar: "إجمالي الفاتورة لازم يبقى صح دايمًا" },
       problem: { en: "Rows change, percentage discounts, tax, and two invoice types. A total kept in its own state drifts from the rows.", ar: "الصفوف بتتغير، وفي خصم بالنسبة وضريبة ونوعين فاتورة. لو الإجمالي متخزن لوحده بيبعد عن الصفوف." },
-      fix: { en: "useFieldArray for rows; useWatch derives subtotal → discount → tax → total; zod blocks invalid values.", ar: "useFieldArray للصفوف؛ useWatch بيحسب subtotal ← خصم ← ضريبة ← إجمالي؛ و zod بيمنع القيم الغلط." },
-      result: { en: "One source of truth (the rows); the total is never stale.", ar: "مصدر واحد للحقيقة (الصفوف)؛ والإجمالي عمره ما يبقى قديم." }
+      fix: { en: "useFieldArray for rows; useWatch derives subtotal → discount → tax → total; zod blocks invalid values.", ar: "useFieldArray للصفوف. و useWatch بيحسب بالترتيب: subtotal، وبعدين الخصم، وبعدين الضريبة، وبعدين الإجمالي. و zod بيمنع القيم الغلط." },
+      result: { en: "One source of truth (the rows); the total is never stale.", ar: "مصدر واحد للحقيقة، وهو الصفوف. والإجمالي عمره ما يبقى قديم." }
     },
     {
       title: { en: "A signature that proves who signed", ar: "توقيع يثبت مين اللي وقّع" },
@@ -225,9 +225,9 @@ HANDBOOK.projects.push({
     {
       title: { en: "Theater OS seat booking", ar: "حجز الكراسي في Theater OS" },
       problem: { en: "Visitors pick seats from a hall template, can't pick booked seats, and add food to the same order.", ar: "الزائر بيختار كراسي من قالب القاعة، ومينفعش يختار كرسي محجوز، ويضيف أكل لنفس الأوردر." },
-      fix: { en: "Seat templates from admin; <code>booked_seats</code> disabled; selection in state; total = tickets + food; ticket QR with a token.", ar: "قوالب الكراسي من الأدمن؛ <code>booked_seats</code> مقفولة؛ الاختيار في state؛ الإجمالي = تذاكر + أكل؛ و QR للتذكرة بـ token." },
+      fix: { en: "Seat templates from admin; <code>booked_seats</code> disabled; selection in state; total = tickets + food; ticket QR with a token.", ar: "قوالب الكراسي جاية من الأدمن. و <code>booked_seats</code> مقفولة. والاختيار في state. والإجمالي = تذاكر + أكل. و QR للتذكرة بـ token." },
       result: { en: "A full booking flow, co-built with a teammate.", ar: "flow حجز كامل، اتعمل بالمشاركة مع زميل." },
-      lesson: { en: "Prices were hard-coded in the first prototype; real prices must come from the API.", ar: "الأسعار كانت مكتوبة في الكود في أول نسخة؛ الأسعار الحقيقية لازم تيجي من الـ API." }
+      lesson: { en: "Prices were hard-coded in the first prototype; real prices must come from the API.", ar: "الأسعار كانت مكتوبة في الكود في أول نسخة. والأسعار الحقيقية لازم تيجي من الـ API." }
     },
     {
       title: { en: "Shipping in a busy 14-person repo", ar: "الشغل في repo مزحوم بـ 14 شخص" },
@@ -245,11 +245,11 @@ HANDBOOK.projects.push({
   },
 
   qa: [
-    { q: "Why useWatch and not watch() or useState for totals?", a: { en: "The total is derived from the rows. useWatch subscribes inside the totals component, so only it re-renders; watch() at the top re-renders the whole form, and useState would need syncing (a bug source).", ar: "الإجمالي محسوب من الصفوف. useWatch بيشترك جوه component الإجمالي فهو بس اللي بيتعمله re-render؛ watch() فوق بيعمل re-render للفورم كله، و useState محتاج مزامنة (مصدر bugs)." } },
-    { q: "Do you trust the total computed in the browser?", a: { en: "No. It is for display; the backend recomputes on save. Anything about money is validated on the server.", ar: "لأ. ده للعرض بس؛ والباك إند بيحسبه تاني وقت الحفظ. أي حاجة فيها فلوس بتتأكد على السيرفر." } },
+    { q: "Why useWatch and not watch() or useState for totals?", a: { en: "The total is derived from the rows. useWatch subscribes inside the totals component, so only it re-renders; watch() at the top re-renders the whole form, and useState would need syncing (a bug source).", ar: "الإجمالي محسوب من الصفوف. والـ useWatch بيتابع جوه component الإجمالي، فهو بس اللي بيتعمل له re-render. أما watch() فوق فبيعمل re-render للفورم كله. والـ useState محتاج مزامنة، ودي مصدر bugs." } },
+    { q: "Do you trust the total computed in the browser?", a: { en: "No. It is for display; the backend recomputes on save. Anything about money is validated on the server.", ar: "لأ. ده للعرض بس، والـ backend بيحسبه تاني وقت الحفظ. أي حاجة فيها فلوس بتتأكد على السيرفر." } },
     { q: "Walk me through the OTP signing flow.", a: { en: "requestOtp with the contract and contact → user enters 6 digits → verifyOtp → terms → draw → sign with the PNG and signer data. A failed step shows the API message and keeps the dialog open.", ar: "requestOtp بالعقد والـ contact ← المستخدم يدخل 6 أرقام ← verifyOtp ← الشروط ← الرسم ← sign بالصورة وبيانات الموقّع. لو خطوة فشلت بتظهر رسالة الـ API والـ dialog يفضل مفتوح." } },
     { q: "How did you avoid stale data after a payment?", a: { en: "Invalidate that invoice and its related lists (credit notes, the list) — not the whole cache.", ar: "invalidate للفاتورة دي وقوايمها المرتبطة (credit notes، القايمة) — مش الكاش كله." } },
-    { q: "What would you improve?", a: { en: "A query-key factory; a single step state for wizards; one debounce library; prices always from the API; react-hook-form's <code>values</code> instead of reset in an effect.", ar: "query-key factory؛ قيمة step واحدة للـ wizards؛ مكتبة debounce واحدة؛ الأسعار دايمًا من الـ API؛ و <code>values</code> في react-hook-form بدل reset في effect." } }
+    { q: "What would you improve?", a: { en: "A query-key factory; a single step state for wizards; one debounce library; prices always from the API; react-hook-form's <code>values</code> instead of reset in an effect.", ar: "query-key factory. وقيمة step واحدة للـ wizards. ومكتبة debounce واحدة. والأسعار دايمًا من الـ API. و <code>values</code> في react-hook-form، بدل reset في effect." } }
   ],
 
   terms: ["field array", "derived state", "uncontrolled inputs", "schema validation", "single source of truth", "server-side recalculation", "OTP verification", "entity query keys", "debounce", "feature branches"],

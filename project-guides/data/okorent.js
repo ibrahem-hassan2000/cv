@@ -53,7 +53,7 @@ HANDBOOK.projects.push({
   myRole: [
     { en: "Sole frontend developer — 336 of 364 commits. The other 28 are the backend lead's (.NET, tests, branch cleanup).", ar: "الفرونت إند الوحيد — 336 من 364 كوميت. الـ 28 الباقيين للـ backend lead (.NET، tests، تنظيف branches)." },
     { en: "Started the client app inside the .NET solution (Aug 2024) and moved it to a standalone Next.js app in Dec 2024.", ar: "بدأت الـ client app جوه الـ .NET solution (أغسطس 2024) ونقلته لـ Next.js app مستقل في ديسمبر 2024." },
-    { en: "Worked with the backend on API contracts and the SignalR hubs; the hubs themselves are backend work.", ar: "اشتغلت مع الباك إند على شكل الـ API والـ SignalR hubs؛ الـ hubs نفسها شغل الباك إند." }
+    { en: "Worked with the backend on API contracts and the SignalR hubs; the hubs themselves are backend work.", ar: "اشتغلت مع الـ backend على شكل الـ API والـ SignalR hubs. والـ hubs نفسها شغل الـ backend." }
   ],
 
   stack: [
@@ -73,7 +73,7 @@ HANDBOOK.projects.push({
       chose: "Next.js 14 App Router", alts: ["Vite + React SPA", "Next.js Pages Router"],
       why: { en: "The guest side is a marketplace that needs SEO-friendly pages. The app side needs a different layout per portal (route groups) and a <b>middleware</b> that checks the cookie before any page loads. Server actions let me set an httpOnly cookie without a separate API.", ar: "الموقع العام marketplace محتاج صفحات تظهر في جوجل (SEO). والتطبيق محتاج layout مختلف لكل بوابة (route groups) و <b>middleware</b> يشيك على الكوكي قبل ما أي صفحة تفتح. والـ server actions خلتني أحط httpOnly cookie من غير API منفصل." },
       both: { v: "partly", en: "App Router and Pages Router can live in one Next.js app — useful only while migrating. A new project should pick one.", ar: "App Router و Pages Router ينفعوا في نفس المشروع — بس ده مفيد وقت الـ migration بس. مشروع جديد يختار واحد." },
-      better: { en: "Still Next.js App Router (15 today). A Vite SPA would lose SEO and middleware; it fits internal dashboards better.", ar: "لسه Next.js App Router (النسخة 15 النهارده). الـ Vite SPA هيخسر الـ SEO والـ middleware؛ مناسب أكتر لداشبورد داخلي." },
+      better: { en: "Still Next.js App Router (15 today). A Vite SPA would lose SEO and middleware; it fits internal dashboards better.", ar: "لسه Next.js App Router (النسخة 15 النهارده). الـ Vite SPA هيخسّرني الـ SEO والـ middleware، وهو مناسب أكتر لداشبورد داخلي." },
       say: "The public marketplace needed SEO and every portal needed its own layout and edge auth checks, so the App Router fit both sides.",
       concept: "routers"
     },
@@ -117,7 +117,7 @@ HANDBOOK.projects.push({
       title: { en: "Long chat lists", ar: "قوايم الشات الطويلة" },
       chose: "react-virtuoso", alts: ["react-window", "TanStack Virtual", "render everything"],
       why: { en: "Messages have different heights and the chat scrolls <b>upwards</b> into history. Virtuoso measures heights by itself and has chat features built in (<code>firstItemIndex</code>, <code>startReached</code>, <code>followOutput</code>). react-window wants fixed heights.", ar: "الرسايل أطوالها مختلفة، والشات بيـ scroll <b>لفوق</b> للرسايل القديمة. Virtuoso بيقيس الأطوال لوحده وفيه حاجات الشات جاهزة (<code>firstItemIndex</code>، <code>startReached</code>، <code>followOutput</code>). react-window عايز أطوال ثابتة." },
-      both: { v: "no", en: "One virtualizer per list; two libraries for the same job only add bundle size.", ar: "مكتبة virtualization واحدة كفاية؛ اتنين لنفس الشغلانة بيكبّروا الـ bundle بس." },
+      both: { v: "no", en: "One virtualizer per list; two libraries for the same job only add bundle size.", ar: "مكتبة virtualization واحدة كفاية. واتنين لنفس الشغلانة بيكبّروا الـ bundle وخلاص." },
       better: { en: "TanStack Virtual is headless and more flexible, but for a chat Virtuoso saves real time. I'd keep it.", ar: "TanStack Virtual أمرن (headless)، بس للشات Virtuoso بيوفر وقت حقيقي. كنت هفضل عليه." },
       say: "I virtualized the chat with react-virtuoso because messages have variable heights and the list grows upwards.",
       concept: "virtualization"
@@ -135,16 +135,16 @@ HANDBOOK.projects.push({
       title: { en: "UI kit", ar: "مكتبة الواجهة" },
       chose: "Mantine + Tailwind", alts: ["MUI", "shadcn/ui"],
       why: { en: "An admin-heavy product needs modals, date pickers, dropzones and charts fast. Mantine has them plus useful hooks (<code>useDisclosure</code>, <code>useMediaQuery</code>). Tailwind handles layout and spacing.", ar: "منتج فيه أدمن كتير محتاج modals و date pickers و dropzone و charts بسرعة. Mantine فيه ده كله ومعاه hooks مفيدة (<code>useDisclosure</code>، <code>useMediaQuery</code>). و Tailwind للـ layout والمسافات." },
-      both: { v: "yes", en: "Mantine + Tailwind work together; watch CSS order so Tailwind's reset doesn't override Mantine styles.", ar: "Mantine و Tailwind بيشتغلوا مع بعض؛ بس خلي بالك من ترتيب الـ CSS علشان الـ reset بتاع Tailwind مايبوظش ستايل Mantine." },
-      better: { en: "shadcn/ui + Tailwind gives full control of the components; Mantine is faster for dense admin screens. Both are fine choices.", ar: "shadcn/ui مع Tailwind بيديك تحكم كامل في الـ components؛ Mantine أسرع للشاشات المليانة. الاتنين اختيارات كويسة." },
+      both: { v: "yes", en: "Mantine + Tailwind work together; watch CSS order so Tailwind's reset doesn't override Mantine styles.", ar: "الـ Mantine والـ Tailwind بيشتغلوا مع بعض. بس خلي بالك من ترتيب الـ CSS، علشان الـ reset بتاع Tailwind مايبوّظش ستايل Mantine." },
+      better: { en: "shadcn/ui + Tailwind gives full control of the components; Mantine is faster for dense admin screens. Both are fine choices.", ar: "الـ shadcn/ui مع Tailwind بيديك تحكم كامل في الـ components. والـ Mantine أسرع للشاشات المليانة. والاتنين اختيارات كويسة." },
       say: "Mantine gave us production-ready inputs, dates and modals for four portals; Tailwind kept layout consistent."
     },
     {
       title: { en: "Maps", ar: "الخرايط" },
       chose: "Google Maps", alts: ["OpenLayers", "Leaflet / MapLibre"],
-      why: { en: "Listing and stock locations need a familiar map and address search; most of the map work (27 of 29 commits) uses Google Maps.", ar: "أماكن الـ listings والمخزون محتاجة خريطة مألوفة وبحث عناوين؛ أغلب شغل الخرايط (27 من 29 كوميت) على Google Maps." },
+      why: { en: "Listing and stock locations need a familiar map and address search; most of the map work (27 of 29 commits) uses Google Maps.", ar: "أماكن الـ listings والمخزون محتاجة خريطة مألوفة وبحث عناوين. وأغلب شغل الخرايط (27 من 29 commit) على Google Maps." },
       both: { v: "partly", en: "The project also has OpenLayers (9 commits). Two map libraries for the same job means a bigger bundle and two APIs to learn.", ar: "المشروع فيه OpenLayers كمان (9 كوميت). مكتبتين خرايط لنفس الشغلانة = bundle أكبر واتنين API تتعلمهم." },
-      better: { en: "Pick one. Google Maps if you need Places search; MapLibre / Leaflet if cost matters.", ar: "اختار واحدة. Google Maps لو محتاج بحث الأماكن؛ MapLibre / Leaflet لو التكلفة مهمة." },
+      better: { en: "Pick one. Google Maps if you need Places search; MapLibre / Leaflet if cost matters.", ar: "اختار واحدة. Google Maps لو محتاج بحث الأماكن. و MapLibre أو Leaflet لو التكلفة مهمة." },
       say: "One lesson from okoRent: keep one library per job — we ended up with two map libraries, which cost bundle size.",
       concept: "one-tool"
     }
@@ -158,7 +158,7 @@ HANDBOOK.projects.push({
         ["Server action", { en: "stores the JWT in an httpOnly cookie", ar: "بيخزن الـ JWT في httpOnly cookie" }],
         ["middleware.ts", { en: "every request: locale + cookie check, redirect by role", ar: "كل request: اللغة + الكوكي، و redirect حسب الـ role" }],
         ["axios interceptor", { en: "adds Authorization: Bearer", ar: "بيضيف Authorization: Bearer" }],
-        ["QueryWrapper", { en: "401 → clear token; 403/404/500 → error page", ar: "401 ← يمسح التوكن؛ 403/404/500 ← صفحة خطأ" }]
+        ["QueryWrapper", { en: "401 → clear token; 403/404/500 → error page", ar: "الـ 401 بيمسح الـ token. والـ 403/404/500 بيعرضوا صفحة خطأ" }]
       ]
     },
     {
@@ -168,7 +168,7 @@ HANDBOOK.projects.push({
         ["POST /chat", { en: "the API saves it", ar: "الـ API بيحفظها" }],
         ["SignalR hub", { en: "server pushes OnNewMessage to the room", ar: "السيرفر بيبعت OnNewMessage للغرفة" }],
         ["setQueriesData", { en: "message written into page 1 of the cache", ar: "الرسالة بتتكتب في أول صفحة في الكاش" }],
-        ["Virtuoso", { en: "renders it; scrolls down only if you were at the bottom", ar: "بيعرضها؛ وينزل لتحت بس لو انت كنت تحت" }]
+        ["Virtuoso", { en: "renders it; scrolls down only if you were at the bottom", ar: "بيعرضها، وينزل لتحت بس لو إنت كنت تحت" }]
       ]
     },
     {
@@ -196,7 +196,7 @@ HANDBOOK.projects.push({
     },
     {
       title: { en: "Real-time message straight into the cache", ar: "رسالة الـ real-time على الكاش مباشرة" },
-      body: { en: "The connection lives in <code>useEffect</code> with the token as a dependency; the cleanup stops it. New messages are written into the cached first page instead of refetching.", ar: "الاتصال جوه <code>useEffect</code> والتوكن في الـ dependencies؛ والـ cleanup بيقفله. الرسايل الجديدة بتتكتب في أول صفحة في الكاش بدل refetch." },
+      body: { en: "The connection lives in <code>useEffect</code> with the token as a dependency; the cleanup stops it. New messages are written into the cached first page instead of refetching.", ar: "الاتصال جوه <code>useEffect</code>، والـ token في الـ dependencies، والـ cleanup بيقفله. والرسايل الجديدة بتتكتب في أول صفحة في الكاش، بدل الـ refetch." },
       code: "useEffect(() => {\n  if (!token) return;\n  const conn = new HubConnectionBuilder()\n    .withUrl(HUB_URL, { accessTokenFactory: () => token })\n    .build();\n\n  conn.on(\"OnNewMessage\", (msg) => {\n    qc.setQueriesData({ queryKey: chatKeys.room(msg.roomId) }, (old) => {\n      if (!old) return old;\n      const [first, ...rest] = old.pages;\n      return { ...old, pages: [{ ...first, items: [msg, ...first.items] }, ...rest] };\n    });\n  });\n\n  conn.start();\n  return () => { conn.stop(); }; // unmount or token change\n}, [token]);"
     },
     {
@@ -215,11 +215,11 @@ HANDBOOK.projects.push({
       { name: "placeholderData", what: { en: "Keeps the previous page visible while the next one loads.", ar: "بيسيب الصفحة القديمة ظاهرة لحد ما الجديدة تحمل." }, remember: { en: "v5 replacement for <code>keepPreviousData</code>.", ar: "البديل في v5 لـ <code>keepPreviousData</code>." } }
     ]},
     { group: { en: "Effects and real-time", ar: "الـ Effects والـ real-time" }, items: [
-      { name: "useEffect", what: { en: "Open the SignalR connection when a token exists; <code>stop()</code> in cleanup.", ar: "يفتح اتصال SignalR لما يبقى في توكن؛ و <code>stop()</code> في الـ cleanup." }, remember: { en: "Token in the dependency array → new token = reconnect.", ar: "التوكن في الـ dependencies ← توكن جديد = اتصال جديد." } },
+      { name: "useEffect", what: { en: "Open the SignalR connection when a token exists; <code>stop()</code> in cleanup.", ar: "بيفتح اتصال SignalR لما يبقى فيه token، و <code>stop()</code> في الـ cleanup." }, remember: { en: "Token in the dependency array → new token = reconnect.", ar: "التوكن في الـ dependencies ← توكن جديد = اتصال جديد." } },
       { name: "useCallback", what: { en: "Stable <code>addMessage</code> handler passed to the hub.", ar: "handler ثابت <code>addMessage</code> بيتبعت للـ hub." }, remember: { en: "Without it the effect would reconnect on every render.", ar: "من غيره الـ effect كان هيعيد الاتصال مع كل render." } }
     ]},
     { group: { en: "State and URL", ar: "الـ State والـ URL" }, items: [
-      { name: "create (Zustand)", what: { en: "<code>useSwitchRent</code>, <code>useSwitchBilling</code>; <code>useUserStore</code> with <code>persist</code> keeps sign-up data after refresh.", ar: "<code>useSwitchRent</code>، <code>useSwitchBilling</code>؛ و <code>useUserStore</code> بـ <code>persist</code> بيحافظ على بيانات التسجيل بعد الـ refresh." } },
+      { name: "create (Zustand)", what: { en: "<code>useSwitchRent</code>, <code>useSwitchBilling</code>; <code>useUserStore</code> with <code>persist</code> keeps sign-up data after refresh.", ar: "<code>useSwitchRent</code> و <code>useSwitchBilling</code>. و <code>useUserStore</code> بـ <code>persist</code> بيحافظ على بيانات التسجيل بعد الـ refresh." } },
       { name: "useToken", what: { en: "Custom context that gives client components the token (for SignalR).", ar: "context مخصوص بيدي الـ components التوكن (علشان SignalR)." } },
       { name: "useQueryState", count: "11 files", what: { en: "nuqs: billing filters and the calendar date in the URL.", ar: "nuqs: فلاتر الفواتير وتاريخ التقويم في الـ URL." } },
       { name: "useQueryParams", what: { en: "Custom hook: <code>page</code>, <code>search</code>, <code>filter</code> from the URL with defaults.", ar: "hook مخصوص: <code>page</code> و <code>search</code> و <code>filter</code> من الـ URL بقيم default." } },
@@ -230,7 +230,7 @@ HANDBOOK.projects.push({
       { name: "useCreateOrder", what: { en: "Wraps the mutation, modal, toast and rent mode — the page only calls <code>onSubmit</code>.", ar: "بيلم الـ mutation والـ modal والـ toast ووضع الإيجار — الصفحة بتنادي <code>onSubmit</code> بس." } },
       { name: "useAddMessageLocally", what: { en: "Writes an optimistic or incoming message into the cache.", ar: "بيكتب رسالة optimistic أو جاية من السيرفر في الكاش." } },
       { name: "useForm + yupResolver", count: "3 files", what: { en: "Auth forms with a schema.", ar: "فورمز الـ auth بـ schema." } },
-      { name: "useMemo / memo", what: { en: "Memoized loader and error components; chat <code>firstItemIndex</code>.", ar: "components الـ loading والأخطاء متعملها memo؛ و <code>firstItemIndex</code> بتاع الشات." } }
+      { name: "useMemo / memo", what: { en: "Memoized loader and error components; chat <code>firstItemIndex</code>.", ar: "الـ components بتاعة الـ loading والأخطاء متعمل لها memo. و <code>firstItemIndex</code> بتاع الشات." } }
     ]}
   ],
 
@@ -244,19 +244,19 @@ HANDBOOK.projects.push({
     {
       title: { en: "Real-time messages would have caused constant refetches", ar: "رسايل الـ real-time كانت هتعمل refetch كل شوية" },
       problem: { en: "Invalidating on every SignalR event reloads the whole chat each time.", ar: "لو كل event من SignalR يعمل invalidate، الشات كله يتحمل تاني كل مرة." },
-      fix: { en: "<code>setQueriesData</code> inserts the message into page 1 of the cache; my own message appears instantly as “pending”.", ar: "<code>setQueriesData</code> بيضيف الرسالة في أول صفحة في الكاش؛ ورسالتي بتظهر فورًا كـ «pending»." },
+      fix: { en: "<code>setQueriesData</code> inserts the message into page 1 of the cache; my own message appears instantly as “pending”.", ar: "الـ <code>setQueriesData</code> بيضيف الرسالة في أول صفحة في الكاش. ورسالتي بتظهر على طول كـ «pending»." },
       result: { en: "The chat feels instant with no extra requests.", ar: "الشات بيحس إنه فوري ومن غير requests زيادة." }
     },
     {
       title: { en: "110 pages, each handling errors its own way", ar: "110 صفحة وكل واحدة بتتعامل مع الأخطاء بطريقتها" },
-      problem: { en: "Loading, empty and error states were repeated and inconsistent; an expired session wasn't handled.", ar: "حالات الـ loading والـ empty والأخطاء متكررة ومختلفة؛ وانتهاء الـ session مكانش متعامل معاه." },
-      fix: { en: "One <code>QueryWrapper</code> derives the state from the query; a 401 clears the token.", ar: "<code>QueryWrapper</code> واحد بيستنتج الحالة من الـ query؛ و 401 بيمسح التوكن." },
-      result: { en: "Every page behaves the same; new pages only write the happy path.", ar: "كل الصفحات بتتصرف بنفس الشكل؛ والصفحة الجديدة بتكتب الحالة الطبيعية بس." }
+      problem: { en: "Loading, empty and error states were repeated and inconsistent; an expired session wasn't handled.", ar: "حالات الـ loading والـ empty والأخطاء كانت متكررة ومختلفة من صفحة للتانية. وانتهاء الـ session مكانش متعامل معاه." },
+      fix: { en: "One <code>QueryWrapper</code> derives the state from the query; a 401 clears the token.", ar: "<code>QueryWrapper</code> واحد بيعرف الحالة من الـ query. والـ 401 بيمسح الـ token." },
+      result: { en: "Every page behaves the same; new pages only write the happy path.", ar: "كل الصفحات بقت بتتصرف بنفس الشكل. والصفحة الجديدة بتكتب الحالة الطبيعية بس." }
     },
     {
       title: { en: "Upgrading to React Query v5", ar: "الترقية لـ React Query v5" },
       problem: { en: "v5 renamed APIs (<code>isLoading</code> → <code>isPending</code>, <code>keepPreviousData</code> → <code>placeholderData</code>).", ar: "v5 غيّر أسامي (<code>isLoading</code> ← <code>isPending</code>، <code>keepPreviousData</code> ← <code>placeholderData</code>)." },
-      fix: { en: "Upgraded and updated the hooks; the wrapper checks both flags.", ar: "رقّيت وعدلت الـ hooks؛ والـ wrapper بيشيك على الاتنين." },
+      fix: { en: "Upgraded and updated the hooks; the wrapper checks both flags.", ar: "رقّيت المكتبة وعدّلت الـ hooks. والـ wrapper بيتعامل مع الاتنين." },
       result: { en: "Done in one pass in Feb 2025.", ar: "خلصت مرة واحدة في فبراير 2025." }
     },
     {
@@ -279,14 +279,14 @@ HANDBOOK.projects.push({
     { q: "How did you keep the cache in sync after a mutation?", a: { en: "Every domain has a base key. After a mutation I invalidate only the affected list and detail. For chat I don't invalidate — I write into the cache with setQueriesData.", ar: "كل domain ليه key أساسي. بعد أي تعديل بعمل invalidate للقايمة والتفاصيل اللي اتأثروا بس. في الشات مابعملش invalidate — بكتب في الكاش بـ setQueriesData." } },
     { q: "What happens to the SignalR connection on logout?", a: { en: "It lives in a useEffect with the token as a dependency. Logout or unmount runs the cleanup (stop()); with no token it never connects.", ar: "الاتصال جوه useEffect والتوكن في الـ dependencies. الـ logout أو الـ unmount بيشغل الـ cleanup (stop())، ومن غير توكن مش بيتصل أصلًا." } },
     { q: "Why is a filter in the URL instead of state?", a: { en: "Refresh, Back and sharing must keep it, and the query key is built from it, so each filter has its own cache entry.", ar: "علشان الـ refresh والـ Back واللينك يحافظوا عليه، والـ query key متبني منه فكل فلتر ليه كاش لوحده." } },
-    { q: "Why virtualize the chat?", a: { en: "Long chats would mount thousands of DOM nodes. Virtualization renders only what is on screen; Virtuoso also handles variable heights and reverse scrolling.", ar: "الشات الطويل هيعمل آلاف الـ DOM nodes. الـ virtualization بيرسم اللي على الشاشة بس؛ و Virtuoso كمان بيتعامل مع الأطوال المختلفة والـ scroll العكسي." } },
+    { q: "Why virtualize the chat?", a: { en: "Long chats would mount thousands of DOM nodes. Virtualization renders only what is on screen; Virtuoso also handles variable heights and reverse scrolling.", ar: "الشات الطويل هيعمل آلاف الـ DOM nodes. والـ virtualization بيرسم اللي على الشاشة بس. و Virtuoso كمان بيتعامل مع الأطوال المختلفة، والـ scroll اللي بالعكس." } },
     { q: "What would you do differently today?", a: { en: "(1) Real translations with next-intl, not only locale routing. (2) Tests for the chat and order hooks. (3) SignalR auto-reconnect. (4) Typed API responses instead of <code>any</code>. (5) One map library.", ar: "(1) ترجمة حقيقية بـ next-intl مش routing بس. (2) tests لـ hooks الشات والأوردر. (3) auto-reconnect لـ SignalR. (4) types للـ API بدل <code>any</code>. (5) مكتبة خرايط واحدة." } }
   ],
 
   terms: ["server state vs client state", "query key", "targeted invalidation", "optimistic update", "httpOnly cookie", "SameSite", "role-based redirect", "render prop", "virtualization", "reverse infinite scroll", "URL as state", "SignalR hub", "transport fallback"],
 
   dont: [
-    { en: "Don't call the UI <b>bilingual</b> — only the routing has <code>/ar</code> and <code>/en</code>; the translation files were copied from another project.", ar: "ماتقولش إن الـ UI <b>مترجم</b> — الـ routing بس هو اللي فيه <code>/ar</code> و <code>/en</code>؛ ملفات الترجمة متنقولة من مشروع تاني." },
+    { en: "Don't call the UI <b>bilingual</b> — only the routing has <code>/ar</code> and <code>/en</code>; the translation files were copied from another project.", ar: "ماتقولش إن الـ UI <b>مترجم</b>. الـ routing بس هو اللي فيه <code>/ar</code> و <code>/en</code>، وملفات الترجمة منقولة من مشروع تاني." },
     { en: "Don't claim the backend or the SignalR hubs — you built the client side.", ar: "ماتقولش إنك عملت الباك إند أو الـ hubs — إنت عملت الـ client side." },
     { en: "No user or booking numbers. No frontend tests.", ar: "مفيش أرقام مستخدمين أو حجوزات. ومفيش tests في الفرونت." },
     { en: "No link on the CV (your choice).", ar: "مفيش لينك على الـ CV (اختيارك)." }
