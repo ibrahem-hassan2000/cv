@@ -32,4 +32,4 @@
 - **No screenshots.** Logos from the repos only.
 - Every claim has evidence (code, git, or the user's words). If research shows a CV bullet is wrong, fix `cv/master-cv.md` and the evidence file, and log it in `CV_MASTER_PLAN.md` §10.
 - Arabic in simple Egyptian Arabic; technical terms in English.
-- After adding a project: add its `<script>` line in `index.html`, remove it from `todo` in `data/handbook.js`, update the STATUS row in `CV_MASTER_PLAN.md`.
+- After adding a project: add its `<script>` line in `index.html` and its import (and logo) in `site/src/data.ts`, remove it from `todo` in `data/handbook.js`, update the STATUS row in `CV_MASTER_PLAN.md`.

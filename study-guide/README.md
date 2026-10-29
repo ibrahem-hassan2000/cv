@@ -11,6 +11,7 @@
 
 ## Structure
 - `index.html` — loads `../project-guides/assets/guide.css` (shared look), `assets/study.css`, the data files, then `assets/study.js`.
+- The React site (`site/`) imports these same files; a new section file needs an import line in `site/src/data.ts` too.
 - `data/registry.js` — every section in order (planned ones too) + `STUDY.fill(id, data)`.
 - `data/<section>.js` — one file per section: `STUDY.fill("<id>", { intro, topics: [...] })`. The output section uses `{ intro, groups: [...] }`.
 - `tools/check-data.js` — validates every data file (fields, block types, links into the Handbook).
