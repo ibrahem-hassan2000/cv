@@ -1,6 +1,6 @@
 // Behavioral & interview strategy — written 2026-10-29. Stories point to real events in the evidence base; never invent.
 STUDY.fill("behavioral", {
-  intro: { en: "The non-technical half that decides offers: the STAR method, your 90-second introduction, why you're moving, conflict, mistakes, leadership and mentoring, questions to ask, salary talk, and the interview day itself.", ar: "النص اللي مش تقني واللي بيحسم العروض: طريقة STAR، والتعريف بنفسك في 90 ثانية، وليه بتغير، والخلافات، والأخطاء، والقيادة والـ mentoring، والأسئلة اللي تسألها، والكلام عن المرتب، ويوم الإنترفيو نفسه." },
+  intro: { en: "The non-technical half that decides offers: the STAR method, your 90-second introduction, why you're moving, conflict, mistakes, leadership and mentoring, questions to ask, salary talk, and the interview day itself.", ar: "النص اللي مش تقني، وهو اللي بيحسم العروض. طريقة STAR، والتعريف بنفسك في 90 ثانية، وليه بتغيّر شغلك. والخلافات، والأخطاء، والقيادة والـ mentoring. والأسئلة اللي تسألها، والكلام عن المرتب، ويوم الإنترفيو نفسه." },
   topics: [
     {
       id: "star",
@@ -11,10 +11,10 @@ STUDY.fill("behavioral", {
           [{ en: "Biggest achievement / ownership", ar: "أكبر إنجاز / مسؤولية" }, { en: "Smart FAQ from first commit: 27 screens, 3 roles + MFA, 551 tests, ~3 weeks", ar: "Smart FAQ من أول commit: 27 شاشة، 3 roles و MFA، 551 test، حوالي 3 أسابيع" }],
           [{ en: "Hard technical problem", ar: "مشكلة تقنية صعبة" }, { en: "ONE14 GPS under-count (−17% on 30 km) → 1 Hz + software filter", ar: "ONE14 الـ GPS بيعد أقل (‎-17% على 30 كم) ← 1 Hz وفلتر software" }],
           [{ en: "Performance", ar: "الأداء" }, { en: "Smart FAQ admin table: ~20 ms → ~2 ms per re-render", ar: "جدول أدمن Smart FAQ: من 20ms لـ 2ms لكل re-render" }],
-          [{ en: "Mistake / lesson", ar: "غلطة / درس" }, { en: "AHS TanStack migration on one long-lived branch → rolled out slower; now merges per domain", ar: "migration الـ TanStack في AHS على branch واحد طويل ← نزل أبطأ؛ دلوقتي بعمل merge لكل domain" }],
+          [{ en: "Mistake / lesson", ar: "غلطة / درس" }, { en: "AHS TanStack migration on one long-lived branch → rolled out slower; now merges per domain", ar: "الـ migration لـ TanStack في AHS كان على branch واحد طويل، فنزل أبطأ. دلوقتي بعمل merge لكل domain لوحده" }],
           [{ en: "Working alone, big scope", ar: "شغل لوحدك ونطاق كبير" }, { en: "okoRent: sole frontend dev, 110 pages, four portals, SignalR chat", ar: "okoRent: الفرونت الوحيد، 110 صفحة، 4 بوابات، شات بـ SignalR" }],
-          [{ en: "Leadership without title", ar: "قيادة من غير لقب" }, { en: "ONE14: led direction, technical calls and QA; mentored 2 teammates at nWeave", ar: "ONE14: قاد الاتجاه والقرارات التقنية والـ QA؛ و mentoring لاتنين في nWeave" }],
-          [{ en: "Client / stakeholder", ar: "عميل / أصحاب مصلحة" }, { en: "Osloop website: two feedback rounds (26+ items) handled with the client; FAQ AI POC to show the client the idea", ar: "موقع Osloop: جولتين feedback (26+ ملاحظة) مع العميل؛ و FAQ AI POC علشان يوري العميل الفكرة" }],
+          [{ en: "Leadership without title", ar: "قيادة من غير لقب" }, { en: "ONE14: led direction, technical calls and QA; mentored 2 teammates at nWeave", ar: "ONE14: قاد الاتجاه والقرارات التقنية والـ QA. وعمل mentoring لاتنين في nWeave" }],
+          [{ en: "Client / stakeholder", ar: "عميل / أصحاب مصلحة" }, { en: "Osloop website: two feedback rounds (26+ items) handled with the client; FAQ AI POC to show the client the idea", ar: "موقع Osloop: جولتين feedback مع العميل (أكتر من 26 ملاحظة). و FAQ AI POC علشان يوري العميل الفكرة" }],
           [{ en: "Working with backend / other teams", ar: "الشغل مع الباك إند أو تيمز تانية" }, { en: "Smart FAQ: built on mocks, then OpenAPI contract, sent backend requests per unit, removed mocks", ar: "Smart FAQ: بنى على mocks، وبعدين OpenAPI contract، وبعت طلبات للباك إند لكل unit، وشال الـ mocks" }]
         ] },
         { type: "projects", items: [{ text: { en: "Every handbook project has a STAR block — rehearse them out loud.", ar: "كل مشروع في الـ handbook فيه STAR — اتمرن عليهم بصوت عالي." }, p: "smartfaq", tab: "interview", label: "Smart FAQ" }] }
@@ -22,7 +22,7 @@ STUDY.fill("behavioral", {
       say: "Let me give you the situation briefly, then focus on what I did and the result.",
       interview: [{ q: "Tell me about a challenging project.", a: { en: "Pick ONE14 GPS or Smart FAQ. S: the problem in one line. T: your responsibility. A: 3–4 concrete steps you took (how you found the cause, the options, why you chose one). R: the number + what you'd do differently.", ar: "اختار GPS في ONE14 أو Smart FAQ. S: المشكلة في سطر. T: مسؤوليتك. A: 3–4 خطوات محددة عملتها (لقيت السبب إزاي، الاختيارات، ليه اخترت واحد). R: الرقم + كنت هتعمل إيه مختلف." } }],
       quiz: [{ q: { en: "Which STAR part should be the longest?", ar: "أنهي جزء في STAR المفروض يبقى الأطول؟" }, a: { en: "Action.", ar: "الـ Action." } }],
-      quick: [{ en: "S·T short, A long (your actions), R with numbers + lesson; 60–120 s; “I” for your part.", ar: "S و T قصيرين، و A طويل (اللي انت عملته)، و R بأرقام ودرس؛ 60–120 ثانية؛ «أنا» للجزء بتاعك." }]
+      quick: [{ en: "S·T short, A long (your actions), R with numbers + lesson; 60–120 s; “I” for your part.", ar: "الـ S والـ T قصيرين، والـ A طويل (اللي إنت عملته)، والـ R فيه أرقام ودرس. والقصة من 60 لـ 120 ثانية. وقول «أنا» للجزء بتاعك." }]
     },
     {
       id: "intro",
@@ -35,7 +35,7 @@ STUDY.fill("behavioral", {
       say: "I'm a frontend engineer who likes owning a product area end to end — data layer, design system and tests — and I can show it in what I shipped this year.",
       interview: [{ q: "Walk me through your CV.", a: { en: "Same structure: current role and proof, the path (each job in one line with its highlight), and why this role is the next step.", ar: "نفس الهيكل: الوظيفة الحالية والدليل، والمسار (كل شغلانة في سطر بأهم حاجة فيها)، وليه الوظيفة دي هي الخطوة الجاية." } }],
       quiz: [{ q: { en: "Order of the intro?", ar: "ترتيب التعريف؟" }, a: { en: "Present → past → why this role.", ar: "الحاضر ← الماضي ← ليه الوظيفة دي." } }],
-      quick: [{ en: "Present (proof) → past (one line each) → why them; 90 s; tailor the middle.", ar: "الحاضر (دليل) ← الماضي (سطر لكل واحدة) ← ليه همّا؛ 90 ثانية؛ غيّر النص." }]
+      quick: [{ en: "Present (proof) → past (one line each) → why them; 90 s; tailor the middle.", ar: "ابدأ بالحاضر ومعاه دليل، وبعدين الماضي (سطر لكل حاجة)، وبعدين ليه الشركة دي بالذات. في 90 ثانية، وغيّر الكلام لكل شركة." }]
     },
     {
       id: "why",
@@ -43,15 +43,15 @@ STUDY.fill("behavioral", {
       tldr: { en: "Always forward-looking and positive: you want bigger products, deeper engineering practice, a strong team, a domain you care about. Never criticise your current employer. “Why us” must mention something specific (their product, stack, engineering blog, mission).", ar: "دايمًا بصّ لقدام وبإيجابية: عايز منتجات أكبر، وممارسة هندسية أعمق، وتيم قوي، ومجال بيهمك. وعمرك ما تنتقد شغلك الحالي. و«ليه إحنا» لازم يبقى فيها حاجة محددة (المنتج بتاعهم، الـ stack، الـ engineering blog، الرسالة)." },
       blocks: [
         { type: "list", items: [
-          { en: "<b>Leaving:</b> “I've grown a lot at nWeave across many client projects; I want to go deep on one product at scale with a strong engineering culture.”", ar: "<b>ليه بتمشي:</b> «اتعلمت كتير في nWeave في مشاريع عملاء كتير؛ وعايز أتعمق في منتج واحد كبير مع ثقافة هندسية قوية.»" },
+          { en: "<b>Leaving:</b> “I've grown a lot at nWeave across many client projects; I want to go deep on one product at scale with a strong engineering culture.”", ar: "<b>ليه بتمشي:</b> «اتعلمت كتير في nWeave من مشاريع عملاء كتير. ودلوقتي عايز أتعمق في منتج واحد كبير، مع ثقافة هندسية قوية.»" },
           { en: "<b>Why us:</b> one product reason + one engineering reason + one personal reason (fintech → money flows you've built at Bites and AHS billing).", ar: "<b>ليه إحنا:</b> سبب عن المنتج + سبب هندسي + سبب شخصي (fintech ← فلوس اشتغلت عليها في Bites والفواتير في AHS)." },
           { en: "<b>5 years:</b> “Senior → leading the frontend of a product area, mentoring, shaping architecture and the design system.”", ar: "<b>5 سنين:</b> «Senior ← أقود فرونت جزء من المنتج، وأعمل mentoring، وأشكل الـ architecture والـ design system.»" }
         ] }
       ],
       say: "I'm looking for depth: one product at scale, a strong engineering culture, and a team I can grow into a lead role with.",
-      interview: [{ q: "Why do you have overlapping jobs (part-time + full-time)?", a: { en: "Be direct: “Bites was a part-time remote role alongside nWeave from 09/2025 to 04/2026; I managed both, and it's where I built the finance modules.” Don't be defensive.", ar: "خليك مباشر: «Bites كانت شغلانة part-time remote جنب nWeave من 09/2025 لـ 04/2026؛ كنت ماسك الاتنين، وهناك بنيت الـ finance modules.» ومتدافعش عن نفسك." } }],
+      interview: [{ q: "Why do you have overlapping jobs (part-time + full-time)?", a: { en: "Be direct: “Bites was a part-time remote role alongside nWeave from 09/2025 to 04/2026; I managed both, and it's where I built the finance modules.” Don't be defensive.", ar: "خليك مباشر: «Bites كانت شغلانة part-time remote جنب nWeave، من 09/2025 لـ 04/2026. كنت ماسك الاتنين، وهناك بنيت الـ finance modules.» ومتدافعش عن نفسك." } }],
       quiz: [{ q: { en: "Rule for talking about your current employer?", ar: "القاعدة وانت بتتكلم عن شغلك الحالي؟" }, a: { en: "Positive or neutral — never criticise.", ar: "إيجابي أو محايد — عمرك ما تنتقد." } }],
-      quick: [{ en: "Forward-looking reasons; specific “why us”; growth path to lead; explain overlaps calmly.", ar: "أسباب لقدام؛ «ليه إحنا» محددة؛ طريق للقيادة؛ اشرح التداخل بهدوء." }]
+      quick: [{ en: "Forward-looking reasons; specific “why us”; growth path to lead; explain overlaps calmly.", ar: "أسبابك تبص لقدام. و«ليه إحنا» تبقى محددة. وفيه طريق للقيادة. واشرح التداخل بهدوء." }]
     },
     {
       id: "conflict",
@@ -64,12 +64,12 @@ STUDY.fill("behavioral", {
           { en: "Sending backend requests per unit on Smart FAQ when the contract didn't fit the screens.", ar: "طلبات للباك إند لكل unit في Smart FAQ لما الـ contract مكانش مناسب للشاشات." },
           { en: "ONE14 technical calls (audio per ayah vs per surah) — options, trade-offs, decision.", ar: "قرارات ONE14 التقنية (الصوت لكل آية ولا لكل سورة) — الاختيارات والـ trade-offs والقرار." }
         ] },
-        { type: "pitfalls", items: [{ en: "Stories where you were simply right and the other person wrong; or no resolution.", ar: "قصص انت فيها كنت صح وخلاص والتاني غلط؛ أو من غير نهاية." }] }
+        { type: "pitfalls", items: [{ en: "Stories where you were simply right and the other person wrong; or no resolution.", ar: "قصص إنت فيها كنت صح وخلاص والتاني غلط، أو قصص ملهاش نهاية." }] }
       ],
       say: "When I disagree, I bring evidence, make sure I understand the other side, and once we decide, I fully commit to the decision.",
       interview: [{ q: "Tell me about a time you disagreed with a teammate or lead.", a: { en: "Use one real case. Show: you listened, you proposed a small experiment or brought data, the team decided, and the outcome — even if your idea wasn't chosen.", ar: "استخدم حالة حقيقية. ورّي: إنك سمعت، واقترحت تجربة صغيرة أو جبت داتا، والتيم قرر، والنتيجة — حتى لو فكرتك ماتاخدتش." } }],
       quiz: [{ q: { en: "What must every conflict story end with?", ar: "كل قصة خلاف لازم تنتهي بإيه؟" }, a: { en: "A resolution and a good working relationship (plus a lesson).", ar: "حل وعلاقة شغل كويسة (ومعاها درس)." } }],
-      quick: [{ en: "Disagree with evidence; understand them; decide together; commit; relationship intact.", ar: "اعترض بالدليل؛ افهمهم؛ قرروا مع بعض؛ التزم؛ والعلاقة سليمة." }]
+      quick: [{ en: "Disagree with evidence; understand them; decide together; commit; relationship intact.", ar: "اعترض بالدليل، وافهمهم. وقرروا مع بعض، والتزم بالقرار. والعلاقة تفضل سليمة." }]
     },
     {
       id: "mistakes",
@@ -77,7 +77,7 @@ STUDY.fill("behavioral", {
       tldr: { en: "Pick a real, moderate mistake you own, show how you fixed it and what you changed so it doesn't happen again. For weaknesses: a real one you're actively improving, with the steps you're taking.", ar: "اختار غلطة حقيقية ومتوسطة انت مسؤول عنها، وورّي صلحتها إزاي وغيرت إيه علشان متتكررش. ولنقط الضعف: واحدة حقيقية انت شغال على تحسينها، والخطوات اللي بتعملها." },
       blocks: [
         { type: "list", items: [
-          { en: "<b>Mistake:</b> AHS migration kept on one long-lived branch → most screens didn't ship together; lesson: merge per domain, smaller PRs.", ar: "<b>غلطة:</b> migration الـ AHS فضل على branch واحد طويل ← معظم الشاشات ماتعملهاش merge مع بعض؛ الدرس: merge لكل domain و PRs أصغر." },
+          { en: "<b>Mistake:</b> AHS migration kept on one long-lived branch → most screens didn't ship together; lesson: merge per domain, smaller PRs.", ar: "<b>غلطة:</b> الـ migration في AHS فضل على branch واحد طويل، فمعظم الشاشات متعملهاش merge مع بعض. والدرس: merge لكل domain، و PRs أصغر." },
           { en: "<b>Weakness (honest + improving):</b> GraphQL and formal E2E suites weren't part of my production work — I'm building a small GraphQL project and adding Playwright E2E to a public repo.", ar: "<b>نقطة ضعف (صادقة وبتتحسن):</b> GraphQL و E2E suites رسمية مكانوش في شغلي في الـ production — بعمل مشروع GraphQL صغير وبزود E2E بـ Playwright على repo public." },
           { en: "<b>Weakness (style):</b> taking on too much myself (sole frontend on big projects) — now I write context docs and guides so others can pick work up.", ar: "<b>نقطة ضعف (أسلوب):</b> إني أشيل كتير لوحدي (الفرونت الوحيد في مشاريع كبيرة) — دلوقتي بكتب context docs و guides علشان غيري يقدر يمسك الشغل." }
         ] }
@@ -85,23 +85,23 @@ STUDY.fill("behavioral", {
       say: "The mistake that taught me most was keeping a big migration on one long-lived branch; now I ship large changes in small, mergeable steps.",
       interview: [{ q: "What's your biggest weakness?", a: { en: "Name a real gap, show the plan and progress. Avoid fake weaknesses (“I work too hard”).", ar: "سمّي فجوة حقيقية، وورّي الخطة والتقدم. وابعد عن نقط الضعف المزيفة («بشتغل زيادة»)." } }],
       quiz: [{ q: { en: "Three parts of a good mistake story?", ar: "التلات أجزاء لقصة غلطة كويسة؟" }, a: { en: "What happened (owned) → how you fixed it → what you changed for the future.", ar: "اللي حصل (وانت مسؤول) ← صلحته إزاي ← غيرت إيه للمستقبل." } }],
-      quick: [{ en: "Own it → fix → prevent; real weakness + active plan (GraphQL, E2E); no fake weaknesses.", ar: "اعترف ← صلّح ← امنع التكرار؛ نقطة ضعف حقيقية وخطة شغالة (GraphQL، E2E)؛ من غير ضعف مزيف." }]
+      quick: [{ en: "Own it → fix → prevent; real weakness + active plan (GraphQL, E2E); no fake weaknesses.", ar: "اعترف، وبعدين صلّح، وبعدين امنع التكرار. وقول نقطة ضعف حقيقية وخطة شغال عليها (GraphQL و E2E). ومن غير نقطة ضعف مزيفة." }]
     },
     {
       id: "leadership",
       title: { en: "Leadership, mentoring and ownership", ar: "القيادة والـ mentoring والمسؤولية" },
-      tldr: { en: "Senior roles look for influence without authority: you raised the bar (guides, standards, tests), helped others grow (mentoring two teammates), drove decisions (ONE14 technical calls), and owned outcomes end to end (Smart FAQ, okoRent).", ar: "الوظايف الـ Senior بتدور على تأثير من غير سلطة: رفعت المستوى (guides، قواعد، tests)، وساعدت غيرك يكبر (mentoring لاتنين)، وقُدت قرارات (قرارات ONE14 التقنية)، وكنت مسؤول عن النتيجة من أولها لآخرها (Smart FAQ، okoRent)." },
+      tldr: { en: "Senior roles look for influence without authority: you raised the bar (guides, standards, tests), helped others grow (mentoring two teammates), drove decisions (ONE14 technical calls), and owned outcomes end to end (Smart FAQ, okoRent).", ar: "الوظايف الـ Senior بتدوّر على تأثير من غير سلطة. يعني رفعت المستوى (guides وقواعد و tests). وساعدت غيرك يكبر (mentoring لاتنين). وقُدت قرارات (القرارات التقنية في ONE14). وكنت مسؤول عن النتيجة من أولها لآخرها (Smart FAQ و okoRent)." },
       blocks: [
         { type: "list", items: [
           { en: "Mentoring 2 teammates: code reviews and pairing — have one concrete example of something you taught and how they improved.", ar: "Mentoring لاتنين: code reviews و pairing — خلي عندك مثال محدد لحاجة علمتها وإزاي اتحسنوا." },
           { en: "Raising standards: React Query guide (AHS), context docs and code standards (Smart FAQ), tests on every feature.", ar: "رفع المستوى: guide لـ React Query (AHS)، و context docs وقواعد كود (Smart FAQ)، و tests مع كل feature." },
-          { en: "Driving decisions: ONE14 audio and GPS approaches; Smart FAQ architecture.", ar: "قيادة القرارات: طريقة الصوت والـ GPS في ONE14؛ و architecture Smart FAQ." }
+          { en: "Driving decisions: ONE14 audio and GPS approaches; Smart FAQ architecture.", ar: "قيادة القرارات: طريقة الصوت والـ GPS في ONE14، والـ architecture بتاع Smart FAQ." }
         ] }
       ],
       say: "I lead by raising the bar for everyone — guides, standards and tests — and by mentoring; I've mentored two teammates and led the technical direction of a mobile app.",
       interview: [{ q: "How do you mentor someone?", a: { en: "Start from their goal, pair on real tasks, review with questions rather than fixes, give them ownership of a piece, and check progress regularly.", ar: "ابدأ من هدفهم، واشتغل معاهم على مهام حقيقية، وراجع بأسئلة مش بحلول جاهزة، واديهم مسؤولية جزء، وتابع التقدم بانتظام." } }],
       quiz: [{ q: { en: "“Influence without authority” examples from your work?", ar: "أمثلة «تأثير من غير سلطة» من شغلك؟" }, a: { en: "The React Query guide, introducing TanStack Query, Smart FAQ context docs, ONE14 technical decisions.", ar: "الـ guide بتاع React Query، وإدخال TanStack Query، و context docs في Smart FAQ، وقرارات ONE14 التقنية." } }],
-      quick: [{ en: "Influence: guides, standards, tests; mentoring 2 with a concrete example; decisions you drove; end-to-end ownership.", ar: "التأثير: guides وقواعد و tests؛ mentoring لاتنين بمثال محدد؛ قرارات قُدتها؛ مسؤولية من الأول للآخر." }]
+      quick: [{ en: "Influence: guides, standards, tests; mentoring 2 with a concrete example; decisions you drove; end-to-end ownership.", ar: "التأثير: guides وقواعد و tests. و mentoring لاتنين، بمثال محدد. وقرارات قُدتها. ومسؤولية من الأول للآخر." }]
     },
     {
       id: "closing",
@@ -115,16 +115,16 @@ STUDY.fill("behavioral", {
           { en: "“How do frontend engineers grow here — what does the path to lead look like?”", ar: "«مهندس الفرونت بيكبر هنا إزاي — الطريق للـ lead شكله إيه؟»" }
         ] },
         { type: "list", title: { en: "Egypt-specific notes", ar: "ملاحظات خاصة بمصر" }, items: [
-          { en: "Military status: Exempted — say it clearly; many companies ask.", ar: "الموقف من التجنيد: معفي — قوله بوضوح؛ شركات كتير بتسأل." },
+          { en: "Military status: Exempted — say it clearly; many companies ask.", ar: "الموقف من التجنيد: معفي. قوله بوضوح، لأن شركات كتير بتسأل." },
           { en: "Notice period at nWeave and start date — know them before the offer stage.", ar: "فترة الإخطار في nWeave وميعاد البداية — اعرفهم قبل مرحلة العرض." },
           { en: "Social insurance history may be checked — dates on your CV should match reality.", ar: "تاريخ التأمينات ممكن يتشاف — التواريخ في الـ CV لازم تطابق الحقيقة." },
-          { en: "Salary benchmarks: see <code>market/companies.md</code> (Levels.fyi Cairo ranges); product/fintech usually pay more than agencies.", ar: "أرقام المرتبات: شوف <code>market/companies.md</code> (رينجات Levels.fyi في القاهرة)؛ والـ product والـ fintech غالبًا بيدفعوا أكتر من الـ agencies." }
+          { en: "Salary benchmarks: see <code>market/companies.md</code> (Levels.fyi Cairo ranges); product/fintech usually pay more than agencies.", ar: "أرقام المرتبات: شوف <code>market/companies.md</code> (رينجات Levels.fyi في القاهرة). وشركات الـ product والـ fintech غالبًا بتدفع أكتر من الـ agencies." }
         ] }
       ],
       say: "Before we wrap up, I'd love to ask: what does a great first six months look like for this role?",
-      interview: [{ q: "What are your salary expectations?", a: { en: "“Based on the role's scope and market data for senior frontend roles in Cairo, I'm looking at a range of X–Y, depending on the full package.” Give a researched range, not one number, and be ready to justify it with your scope.", ar: "«حسب مسؤوليات الوظيفة وداتا السوق لوظايف Senior Frontend في القاهرة، أنا بفكر في رينج من X لـ Y، حسب الباكدج كلها.» ادي رينج مبني على بحث مش رقم واحد، وكن جاهز تبرره بحجم شغلك." } }],
+      interview: [{ q: "What are your salary expectations?", a: { en: "“Based on the role's scope and market data for senior frontend roles in Cairo, I'm looking at a range of X–Y, depending on the full package.” Give a researched range, not one number, and be ready to justify it with your scope.", ar: "«حسب مسؤوليات الوظيفة وداتا السوق لوظايف Senior Frontend في القاهرة، أنا بفكر في رينج من X لـ Y، حسب الباكدج كلها.» ادّي رينج مبني على بحث، مش رقم واحد. وخليك جاهز تبرره بحجم شغلك." } }],
       quiz: [{ q: { en: "How many questions should you ask at the end?", ar: "تسأل كام سؤال في الآخر؟" }, a: { en: "2–3 real ones.", ar: "2–3 حقيقيين." } }],
-      quick: [{ en: "Ask 2–3 real questions; researched salary range; know notice period; dates match insurance; thank-you note.", ar: "اسأل 2–3 أسئلة حقيقية؛ رينج مرتب مبني على بحث؛ اعرف فترة الإخطار؛ التواريخ تطابق التأمينات؛ رسالة شكر." }]
+      quick: [{ en: "Ask 2–3 real questions; researched salary range; know notice period; dates match insurance; thank-you note.", ar: "اسأل 2–3 أسئلة حقيقية. وقول رينج مرتب مبني على بحث. واعرف فترة الإخطار بتاعتك. واتأكد إن التواريخ تطابق التأمينات. وابعت رسالة شكر." }]
     }
   ]
 });
