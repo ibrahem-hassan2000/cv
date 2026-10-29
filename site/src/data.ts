@@ -32,6 +32,10 @@ import "../../study-guide/data/behavioral.js";
 import "../../study-guide/data/deep-javascript.js";
 import "../../study-guide/data/deep-react.js";
 import "../../study-guide/data/deep-hooks.js";
+import "../../study-guide/data/deep-performance.js";
+import "../../study-guide/data/deep-state.js";
+import "../../study-guide/data/deep-nextjs.js";
+import "../../study-guide/data/deep-system-design.js";
 
 import "../../project-guides/data/handbook.js";
 import "../../project-guides/data/smartfaq.js";

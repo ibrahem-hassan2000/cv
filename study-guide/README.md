@@ -58,7 +58,7 @@ STUDY.deepen("<section>", {
 });
 ```
 Code examples need `run: "node"` (with the exact `out`; executed by `tools/verify-deep.js`) or `run: "browser"` (shown as "runs in a browser").
-Order: JavaScript core first, then React rendering and hooks, performance and Next.js, system design. Done: all 12 JavaScript topics, 6 React fundamentals, 8 Hooks (2026-10-29). Next: performance, Next.js, system design.
+Order: JavaScript core first, then React rendering and hooks, performance and Next.js, system design. Done (2026-10-29): 38 topics — JavaScript 12, React 6, Hooks 8, Performance 3, State 2, Next.js 4, System design 3. Files: `data/deep-<section>.js`. More can be added the same way when a weak spot shows up.
 
 ## Rules for writing
 - Correct before clever: every code answer must be checked (output questions by the verifier; other snippets by running them).
