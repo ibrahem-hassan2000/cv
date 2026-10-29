@@ -30,6 +30,8 @@ import "../../study-guide/data/system-design.js";
 import "../../study-guide/data/ai.js";
 import "../../study-guide/data/behavioral.js";
 import "../../study-guide/data/deep-javascript.js";
+import "../../study-guide/data/deep-react.js";
+import "../../study-guide/data/deep-hooks.js";
 
 import "../../project-guides/data/handbook.js";
 import "../../project-guides/data/smartfaq.js";
