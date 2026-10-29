@@ -21,33 +21,33 @@
     --study: #a78bfa; --study-soft: #2a2140; --projects: #5cc4a6; --projects-soft: #1b3830; color-scheme: dark;
   }
   body {
-    background: var(--bg); color: var(--text); font-family: var(--font-ar); font-size: 16px; line-height: 1.7;
+    background: var(--bg); color: var(--text); font-family: var(--font-ar); font-size: 16px; line-height: 1.78;
     padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
   }
   .wrap { max-width: 860px; margin: 0 auto; padding-block: 40px 56px; display: flex; flex-direction: column; gap: 28px; }
   header { display: flex; align-items: center; gap: 14px; }
   .mark { flex: none; width: 46px; height: 46px; border-radius: 13px; background: var(--text); color: var(--bg); display: grid; place-items: center; font: 700 17px var(--font-en); }
-  h1 { margin: 0; font-size: 28px; line-height: 1.25; text-wrap: balance; }
-  header p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
-  .doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  h1 { margin: 0; font-size: 28px; line-height: 1.45; text-wrap: balance; }
+  header p { margin: 3px 0 0; color: var(--muted); font-size: 15.5px; }
+  .doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
   a.door {
-    display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: inherit; min-width: 0;
-    background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px;
-    border-top: 5px solid var(--tone); transition: transform .12s ease;
+    display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: inherit; min-width: 0;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px;
+    border-top: 5px solid var(--tone); transition: transform .12s ease, box-shadow .12s ease;
   }
-  a.door:hover { transform: translateY(-2px); }
+  a.door:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,.06); }
   a.door:focus-visible { outline: 3px solid var(--tone); outline-offset: 3px; }
-  .door .icon { width: 44px; height: 44px; border-radius: 12px; background: var(--tone-soft); color: var(--tone); display: grid; place-items: center; font: 800 18px var(--font-en); }
-  .door h2 { margin: 0; font-size: 21px; }
-  .door p { margin: 0; color: var(--muted); font-size: 15px; }
-  .facts { display: flex; flex-wrap: wrap; gap: 6px; }
-  .facts span { font: 600 12.5px var(--font-en); padding: 3px 10px; border-radius: 999px; background: var(--tone-soft); color: var(--tone); direction: ltr; unicode-bidi: isolate; }
-  .go { margin-top: auto; font-weight: 700; color: var(--tone); }
+  .door .icon { width: 46px; height: 46px; border-radius: 12px; background: var(--tone-soft); color: var(--tone); display: grid; place-items: center; font: 800 18px var(--font-en); }
+  .door h2 { margin: 0; font-size: 22px; line-height: 1.35; }
+  .door p { margin: 0; color: var(--muted); font-size: 15.5px; line-height: 1.7; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .facts span { font: 600 13px var(--font-en); padding: 4px 12px; border-radius: 999px; background: var(--tone-soft); color: var(--tone); direction: ltr; unicode-bidi: isolate; }
+  .go { margin-top: auto; font-weight: 700; color: var(--tone); font-size: 15.5px; }
   .study { --tone: var(--study); --tone-soft: var(--study-soft); }
   .projects { --tone: var(--projects); --tone-soft: var(--projects-soft); }
-  .howto { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
-  .howto h3 { margin: 0 0 8px; font-size: 17px; }
-  .howto ol { margin: 0; padding-inline-start: 22px; display: flex; flex-direction: column; gap: 4px; }
+  .howto { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; box-shadow: var(--shadow); }
+  .howto h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.4; }
+  .howto ol { margin: 0; padding-inline-start: 22px; display: flex; flex-direction: column; gap: 8px; line-height: 1.7; }
   .howto code { font: 13px "JetBrains Mono", Consolas, monospace; background: var(--bg); border: 1px solid var(--line); padding: 1px 6px; border-radius: 6px; direction: ltr; unicode-bidi: isolate; }
   footer { color: var(--muted); font-size: 13px; }
   @media (prefers-reduced-motion: reduce) { a.door { transition: none; } }

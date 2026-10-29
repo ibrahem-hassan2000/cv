@@ -1,7 +1,7 @@
 /* Shared ATS-friendly CV style: one column, real text, standard headings. */
 @page { size: A4; margin: 13mm 14mm; }
 * { box-sizing: border-box; }
-body { font-family: "Segoe UI", Calibri, Arial, sans-serif; font-size: 10pt; line-height: 1.38; color: #1a1a1a; margin: 0; }
+body { font-family: "Segoe UI", Calibri, Arial, sans-serif; font-size: 10pt; line-height: 1.44; color: #1a1a1a; margin: 0; }
 h1 { font-size: 21pt; margin: 0; letter-spacing: .5px; }
 .headline { font-size: 11.5pt; color: #1d4ed8; font-weight: 600; margin: 2px 0 4px; }
 .contact { font-size: 9.2pt; color: #333; }
@@ -11,14 +11,15 @@ h2 { font-size: 10.5pt; text-transform: uppercase; letter-spacing: 1px; border-b
 .role { font-weight: 700; }
 .role span { font-weight: 400; color: #1d4ed8; }
 .date { font-size: 9.2pt; color: #444; white-space: nowrap; }
-.meta { font-size: 9.2pt; color: #555; font-style: italic; margin: 0 0 2px; }
-.sub { font-weight: 600; margin: 5px 0 1px; font-size: 9.8pt; }
+.meta { font-size: 9.2pt; color: #4b5563; font-style: normal; margin: 0 0 2px; }
+.sub { font-weight: 700; margin: 6px 0 2px; font-size: 9.8pt; color: #0f172a; }
 .sub em { font-weight: 400; color: #555; font-style: normal; }
-ul { margin: 1px 0 3px; padding-left: 15px; }
-li { margin: 1.5px 0; }
-.skills p { margin: 1.5px 0; display: grid; grid-template-columns: 124px 1fr; }
+ul { margin: 2px 0 4px; padding-left: 17px; }
+li { margin: 2.5px 0; }
+.skills p { margin: 2.5px 0; display: grid; grid-template-columns: 135px 1fr; align-items: baseline; }
+.skills b { color: #1e3a8a; font-weight: 700; }
 .contact a { white-space: nowrap; }
-.job { margin-bottom: 4px; }
+.job { margin-bottom: 9px; }
 /* Keep headings with their first lines and bullets whole, but let a long job flow across pages. */
 h2, .row, .meta, .sub { break-after: avoid; page-break-after: avoid; }
 li { break-inside: avoid; page-break-inside: avoid; }

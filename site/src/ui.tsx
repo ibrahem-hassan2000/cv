@@ -3,22 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 import { T, useLang, type Lang } from "./i18n";
 import type { Bi } from "./data";
 
-/** Code sample: escaped by React, with `// comments` dimmed (same rule as the static dashboards). */
+import "../../project-guides/assets/highlight.js";   // defines window.highlightCode (shared with the static guides)
+
+declare global { interface Window { highlightCode: (code: string) => string } }
+
+/** Code sample with syntax colours; the input is escaped by highlightCode before it becomes HTML. */
 export function Code({ code }: { code: string }) {
-  const lines = code.split("\n");
-  return (
-    <pre className="code">
-      {lines.map((line, i) => {
-        const at = line.indexOf("//");
-        return (
-          <span key={i}>
-            {at >= 0 ? <>{line.slice(0, at)}<span className="c">{line.slice(at)}</span></> : line}
-            {i < lines.length - 1 ? "\n" : ""}
-          </span>
-        );
-      })}
-    </pre>
-  );
+  return <pre className="code" dangerouslySetInnerHTML={{ __html: window.highlightCode(code) }} />;
 }
 
 export function List({ items }: { items?: Bi[] }) {

@@ -17,8 +17,8 @@ const LangContext = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({ 
 export function LangProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(readLang);
   useEffect(() => {
-    document.documentElement.lang = lang === "ar" ? "ar" : "en";
-    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.documentElement.lang = lang === "en" ? "en" : "ar";   // "both" is laid out RTL, Arabic first
+    document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
   }, [lang]);
   const setLang = (l: Lang) => {
     setLangState(l);
@@ -33,7 +33,7 @@ export const useLang = () => useContext(LangContext);
 export function tr(x: Bi | undefined, lang: Lang): string {
   if (x == null) return "";
   if (typeof x === "string") return x;
-  if (lang === "both") return `<span class="bi-ar">${x.ar ?? ""}</span><span class="bi-en">${x.en ?? ""}</span>`;
+  if (lang === "both") return `<span class="bi-ar" lang="ar">${x.ar ?? ""}</span><span class="bi-en" lang="en">${x.en ?? ""}</span>`;
   return (lang === "ar" ? x.ar : x.en) ?? x.en ?? "";
 }
 

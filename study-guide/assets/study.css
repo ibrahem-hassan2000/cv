@@ -34,23 +34,27 @@ html[dir="rtl"] .lbl { text-transform: none; letter-spacing: 0; font-size: 13px;
 .st-tldr { font-size: 17.5px; }
 .st-text p:last-child { margin-bottom: 0; }
 .st-note { font-size: 14px; color: var(--muted); margin-top: 6px; }
-.st-say { background: var(--accent-soft); border-color: transparent; }
-.st-say q, .st-q { font-style: italic; direction: ltr; unicode-bidi: isolate; display: block; quotes: "“" "”"; }
+.st-say { background: var(--accent-soft); border-inline-start: 4px solid var(--brand); }
+.st-say q, .st-q { font-style: normal; font-weight: 500; line-height: 1.65; direction: ltr; unicode-bidi: isolate; display: block; quotes: "“" "”"; }
+/* The sentence to say is English, so it stays LTR (and left-aligned) even on an Arabic page. */
+html[dir="rtl"] .st-say q, html[dir="rtl"] .st-q { text-align: left; }
 .st-q { color: var(--muted); font-size: 14.5px; margin-top: 6px; }
 
-.st-table-wrap { overflow-x: auto; }
-.st-compare table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
-.st-compare th, .st-compare td { text-align: start; vertical-align: top; padding: 8px 10px; border-top: 1px solid var(--line); }
-.st-compare thead th { border-top: 0; font-size: 13px; color: var(--muted); font-weight: 600; background: var(--surface-2); }
+.st-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+.st-compare table { width: 100%; border-collapse: collapse; font-size: 14.5px; line-height: 1.6; }
+.st-compare th, .st-compare td { text-align: start; vertical-align: top; padding: 12px 14px; border-top: 1px solid var(--line); }
+.st-compare thead th { border-top: 0; font-size: 13px; color: var(--muted); font-weight: 700; background: var(--surface-2); }
 .st-compare tbody th { font-weight: 600; white-space: nowrap; }
+.st-compare tbody tr:nth-child(even) td, .st-compare tbody tr:nth-child(even) th { background: color-mix(in srgb, var(--surface-2) 45%, transparent); }
+.st-compare tbody tr:hover td, .st-compare tbody tr:hover th { background: color-mix(in srgb, var(--accent-soft) 40%, transparent); }
 
 .st-when { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
 .st-when .card { margin: 0; }
 .st-when-title { grid-column: 1 / -1; font-size: 17px; }
 .st-use { border-top: 4px solid var(--yes); }
-.st-use .lbl { color: var(--yes); }
+.st-use .lbl { background: var(--yes-soft); color: var(--yes); }
 .st-avoid { border-top: 4px solid var(--no); }
-.st-avoid .lbl { color: var(--no); }
+.st-avoid .lbl { background: var(--no-soft); color: var(--no); }
 @media (max-width: 700px) { .st-when { grid-template-columns: 1fr; } }
 .st-pitfalls { background: var(--part-soft); border-color: transparent; }
 .st-pitfalls h3 { color: var(--part); }
@@ -75,8 +79,9 @@ html[dir="rtl"] .st-quiz summary { text-align: right; }
 .st-reveal summary { cursor: pointer; font-weight: 600; color: var(--brand); margin-top: 6px; }
 .st-answer { margin-top: 10px; }
 .st-console {
-  direction: ltr; text-align: left; font-family: var(--font-mono); font-size: 13.5px; margin: 0 0 10px;
-  background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; white-space: pre-wrap;
+  direction: ltr; text-align: left; font-family: var(--font-mono); font-size: 13.5px; line-height: 1.6; margin: 0 0 10px;
+  background: #111210; color: #a3e635; border: 1px solid #27272a; border-radius: 10px; padding: 12px 16px; white-space: pre-wrap;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.3);
 }
 .st-rules { background: var(--accent-soft); border-color: transparent; }
 .st-src { display: inline-block; font-size: 12.5px; font-weight: 600; text-decoration: none; margin-inline-end: 8px; margin-bottom: 6px; }
@@ -105,7 +110,8 @@ a.st-hit b { font-size: 16px; }
 .st-levels > div { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); min-width: 0; }
 .st-levels .st-mid { background: var(--surface-2); }
 .st-levels .st-senior { background: var(--accent-soft); border-color: transparent; }
-.st-levels .lbl { display: block; margin-bottom: 4px; }
+.st-levels .st-mid .lbl { background: var(--surface); color: var(--muted); border: 1px solid var(--line); }
+.st-levels .st-senior .lbl { background: var(--brand); color: #fff; }
 @media (max-width: 700px) { .st-levels { grid-template-columns: 1fr; } }
 .st-drill details.qa { margin-inline-start: 0; }
 .st-drill .st-follow details.qa { margin-inline-start: 4px; }

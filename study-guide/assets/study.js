@@ -55,12 +55,13 @@
   function T(x) {
     if (x == null) return "";
     if (typeof x === "string") return x;
-    if (lang === "both") return '<span class="bi-ar">' + (x.ar || "") + '</span><span class="bi-en">' + (x.en || "") + "</span>";
+    if (lang === "both") return '<span class="bi-ar" lang="ar">' + (x.ar || "") + '</span><span class="bi-en" lang="en">' + (x.en || "") + "</span>";
     return x[lang] != null ? x[lang] : x.en;
   }
   function plain(x) { return typeof x === "string" ? x : x ? (x.en || "") + " " + (x.ar || "") : ""; }
   function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
-  function code(s) { return '<pre class="code">' + esc(s).replace(/(\/\/.*)$/gm, '<span class="c">$1</span>') + "</pre>"; }
+  // Syntax colours come from assets/highlight.js (shared with the React site).
+  function code(s) { return '<pre class="code">' + window.highlightCode(s) + "</pre>"; }
   function LIST(arr) { return "<ul>" + (arr || []).map(function (i) { return "<li>" + T(i) + "</li>"; }).join("") + "</ul>"; }
   function arrow() { return lang === "ar" ? "←" : "→"; }
 
@@ -373,8 +374,8 @@
   function render() {
     var r = route();
     var root = document.documentElement;
-    root.lang = lang === "ar" ? "ar" : "en";
-    root.dir = lang === "ar" ? "rtl" : "ltr";
+    root.lang = lang === "en" ? "en" : "ar";
+    root.dir = lang === "en" ? "ltr" : "rtl";
     var main, title;
     switch (r.view) {
       case "section": main = sectionView(r.sec); title = T(r.sec.name); break;

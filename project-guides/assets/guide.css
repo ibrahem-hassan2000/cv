@@ -46,18 +46,19 @@ body {
   font-family: var(--font-en); font-size: 16.5px; line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
-html[dir="rtl"] body { font-family: var(--font-ar); }
-.bi-ar { display: block; direction: rtl; text-align: right; font-family: var(--font-ar); }
-.bi-en { display: block; color: var(--muted); font-size: .94em; margin-top: 4px; }
-h1, h2, h3, h4 { line-height: 1.3; margin: 0; }
-p { margin: 0 0 8px; }
-ul, ol { margin: 4px 0 8px; padding-inline-start: 22px; }
+html[dir="rtl"] body { font-family: var(--font-ar); line-height: 1.78; }
+.bi-ar { display: block; direction: rtl; font-family: var(--font-ar); line-height: 1.75; }
+.bi-en { display: block; direction: ltr; color: var(--muted); font-size: .92em; line-height: 1.55; margin-top: 4px; font-family: var(--font-en); }
+h1, h2, h3, h4 { line-height: 1.35; margin: 0; }
+html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] h4 { line-height: 1.48; }
+p { margin: 0 0 8px; max-width: 75ch; }
+ul, ol { margin: 4px 0 8px; padding-inline-start: 22px; max-width: 75ch; }
 li { margin: 4px 0; }
 a { color: var(--brand); }
 code {
-  font-family: var(--font-mono); font-size: .86em; background: var(--surface-2);
-  border: 1px solid var(--line); padding: 1px 6px; border-radius: 6px;
-  direction: ltr; unicode-bidi: isolate; white-space: nowrap;
+  font-family: var(--font-mono); font-size: .88em; background: var(--surface-2);
+  border: 1px solid var(--line); padding: 1.5px 6px; border-radius: 6px;
+  direction: ltr; unicode-bidi: isolate; word-break: break-word;
 }
 .muted { color: var(--muted); }
 .ltr { direction: ltr; unicode-bidi: isolate; }
@@ -190,16 +191,23 @@ main { min-width: 0; padding: 28px 40px 80px; }
 .d-cell { padding: 14px 20px; border-top: 1px solid var(--line); }
 .d-cell:nth-child(-n+2) { border-top: 0; }
 .d-cell:nth-child(odd) { border-inline-end: 1px solid var(--line); }
-.d-cell .lbl { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 4px; display: flex; gap: 8px; align-items: center; }
-html[dir="rtl"] .d-cell .lbl { text-transform: none; letter-spacing: 0; font-size: 13px; }
+.lbl {
+  font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--brand); display: inline-flex; align-items: center; gap: 6px; margin-bottom: 6px;
+  background: var(--accent-soft); padding: 2px 8px; border-radius: 6px;
+}
+html[dir="rtl"] .lbl { text-transform: none; letter-spacing: 0; font-size: 12.5px; }
+.d-cell .lbl { font-size: 12px; margin-bottom: 6px; display: inline-flex; gap: 8px; align-items: center; }
 .d-cell.wide { grid-column: 1 / -1; border-inline-end: 0; }
 @media (max-width: 700px) { .d-body { grid-template-columns: 1fr; } .d-cell { border-inline-end: 0 !important; border-top: 1px solid var(--line) !important; } .d-cell:first-child { border-top: 0 !important; } }
 .verdict { font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 999px; text-transform: none; letter-spacing: 0; }
 .verdict.yes { background: var(--yes-soft); color: var(--yes); }
 .verdict.no { background: var(--no-soft); color: var(--no); }
 .verdict.partly { background: var(--part-soft); color: var(--part); }
-.say { background: var(--accent-soft); }
-.say q { font-style: italic; direction: ltr; unicode-bidi: isolate; display: block; quotes: "“" "”"; }
+.say { background: var(--accent-soft); border-inline-start: 4px solid var(--brand); border-start-start-radius: 0; border-end-start-radius: 0; border-start-end-radius: 10px; border-end-end-radius: 10px; }
+.say q { font-style: normal; font-weight: 500; line-height: 1.65; direction: ltr; unicode-bidi: isolate; display: block; quotes: "“" "”"; }
+/* The sentence to say is English, so it stays LTR (and left-aligned) even on an Arabic page. */
+html[dir="rtl"] .say q { text-align: left; }
 .concept-link { font-size: 13.5px; text-decoration: none; font-weight: 600; }
 
 /* Flows (diagrams) */
@@ -231,11 +239,15 @@ html[dir="rtl"] .flow li b { text-align: right; }
 /* Code sketches */
 pre.code {
   direction: ltr; text-align: left; background: var(--code-bg); color: var(--code-text);
-  font-family: var(--font-mono); font-size: 13px; line-height: 1.6; border-radius: 10px;
-  padding: 14px 16px; overflow-x: auto; margin: 10px 0 4px;
+  font-family: var(--font-mono); font-size: 13.5px; line-height: 1.65; border-radius: 10px;
+  padding: 14px 18px; overflow-x: auto; margin: 10px 0 6px; border: 1px solid var(--line);
 }
-pre.code .c { color: #8f9b86; }
-.sketch-note { font-size: 12px; color: var(--muted); }
+pre.code .c { color: #8f9b86; font-style: italic; }
+pre.code .k { color: #f472b6; font-weight: 600; }
+pre.code .s { color: #fde047; }
+pre.code .f { color: #60a5fa; font-weight: 500; }
+pre.code .n { color: #fb923c; }
+.sketch-note { font-size: 12.5px; color: var(--muted); }
 
 /* Hooks */
 .hook { display: grid; grid-template-columns: 210px 1fr; gap: 6px 16px; padding: 12px 0; border-top: 1px solid var(--line); }
@@ -251,23 +263,25 @@ html[dir="rtl"] .hook .name { text-align: right; }
 .story { position: relative; padding-inline-start: 22px; }
 .story::before { content: ""; position: absolute; inset-inline-start: 0; top: 18px; bottom: 18px; width: 4px; border-radius: 4px; background: var(--brand); opacity: .55; }
 .story h3 { font-size: 18px; margin-bottom: 10px; }
-.steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.steps3 > div { background: var(--surface-2); border-radius: 10px; padding: 10px 12px; font-size: 15px; }
-.steps3 .lbl { display: block; font-size: 12px; font-weight: 700; color: var(--brand); margin-bottom: 2px; }
-.lesson { margin-top: 10px; font-size: 15px; background: var(--part-soft); border-radius: 10px; padding: 8px 12px; }
+.steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.steps3 > div { background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; font-size: 15px; line-height: 1.6; }
+.steps3 .lbl { display: inline-flex; font-size: 11.5px; font-weight: 700; color: var(--brand); margin-bottom: 6px; background: var(--surface); padding: 2px 8px; border-radius: 6px; }
+.lesson { margin-top: 12px; font-size: 15px; line-height: 1.6; background: var(--part-soft); border-radius: 10px; padding: 10px 14px; }
 .lesson b { color: var(--part); }
-@media (max-width: 760px) { .steps3 { grid-template-columns: 1fr; } }
+@media (max-width: 780px) { .steps3 { grid-template-columns: 1fr; } }
 
 /* Interview */
-.star { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-.star > div { background: var(--surface-2); border-radius: 10px; padding: 10px 12px; font-size: 15px; }
-.star .letter { font-size: 22px; font-weight: 800; color: var(--brand); line-height: 1; display: block; margin-bottom: 4px; }
-@media (max-width: 760px) { .star { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 460px) { .star { grid-template-columns: 1fr; } }
-details.qa { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 12px 16px; margin-bottom: 8px; }
-details.qa summary { cursor: pointer; font-weight: 600; direction: ltr; text-align: start; list-style-position: inside; }
+.star { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.star > div { background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; font-size: 15px; line-height: 1.65; }
+.star .letter { font-size: 24px; font-weight: 800; color: var(--brand); line-height: 1; display: block; margin-bottom: 6px; }
+@media (max-width: 600px) { .star { grid-template-columns: 1fr; } }
+details.qa { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; transition: border-color .15s ease, box-shadow .15s ease; }
+details.qa:hover { border-color: color-mix(in srgb, var(--brand) 30%, var(--line)); }
+details.qa[open] { border-color: color-mix(in srgb, var(--brand) 45%, var(--line)); box-shadow: var(--shadow); }
+details.qa summary { cursor: pointer; font-weight: 600; font-size: 16px; line-height: 1.45; direction: ltr; text-align: start; list-style-position: inside; user-select: none; }
 html[dir="rtl"] details.qa summary { text-align: right; }
-details.qa[open] summary { margin-bottom: 8px; }
+details.qa[open] summary { margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
+details.qa > *:not(summary) { line-height: 1.7; }
 .dont { border-color: color-mix(in srgb, var(--no) 35%, var(--line)); background: var(--no-soft); }
 .dont h3 { color: var(--no); }
 .terms .chip { font-size: 13.5px; }
