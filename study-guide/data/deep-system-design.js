@@ -10,28 +10,28 @@ STUDY.deepen("system-design", {
         title: { en: "R — Requirements (≈ 5–8 min)", ar: "R — Requirements (≈ 5–8 دقايق)" },
         body: {
           en: "Ask before designing. Functional: the core flows, what's out of scope. Non-functional: scale (items, users, update rate), devices and network, performance targets, accessibility, i18n/RTL, offline, security. Write the agreed list down; it's what you'll check your design against.",
-          ar: "اسأل قبل ما تصمم. الـ functional: الـ flows الأساسية، وإيه اللي برّه الـ scope. والـ non-functional: الحجم (عدد العناصر، اليوزرز، معدل التحديث)، والأجهزة والشبكة، وأهداف الأداء، والـ accessibility، والـ i18n/RTL، والـ offline، والأمان. اكتب الليستة اللي اتفقتوا عليها؛ هي اللي هتقارن التصميم بيها."
+          ar: "اسأل قبل ما تصمم. الـ functional: إيه الـ flows الأساسية، وإيه اللي برّه الـ scope. والـ non-functional: الحجم (عدد العناصر، واليوزرز، ومعدل التحديث)، والأجهزة والشبكة، وأهداف الأداء، والـ accessibility، والـ i18n/RTL، والـ offline، والأمان. واكتب الليستة اللي اتفقتوا عليها، لأنها اللي هتقارن التصميم بيها في الآخر."
         }
       },
       {
         title: { en: "A — Architecture (≈ 10 min)", ar: "A — Architecture (≈ 10 دقايق)" },
         body: {
           en: "Draw the main pieces and how data flows: server/API, a data layer (query cache, store), the main UI components, and where rendering happens (SPA vs server-rendered). Name the responsibility of each box.",
-          ar: "ارسم الأجزاء الأساسية والداتا بتمشي إزاي: السيرفر/الـ API، وطبقة الداتا (query cache، store)، والـ UI components الأساسية، والـ rendering بيحصل فين (SPA ولا server-rendered). وقول مسؤولية كل box."
+          ar: "ارسم الأجزاء الأساسية والداتا بتمشي بينهم إزاي. يعني السيرفر والـ API، وطبقة الداتا (query cache أو store)، والـ UI components الأساسية، والـ rendering بيحصل فين (SPA ولا server-rendered). وقول كل box مسؤول عن إيه."
         }
       },
       {
         title: { en: "D — Data model, I — Interface (≈ 10 min)", ar: "D — Data model، و I — Interface (≈ 10 دقايق)" },
         body: {
           en: "Data: server entities, client-only state, normalisation (by id) and what is cached where. Interface: the API between client and server (REST/GraphQL, pagination style, real-time channel, error shapes) and the public API of the main components (props, events).",
-          ar: "الداتا: الـ entities بتاعة السيرفر، والـ state اللي على الـ client بس، والـ normalisation (بالـ id)، وإيه اللي متعمل له cache فين. والـ Interface: الـ API بين الـ client والسيرفر (REST/GraphQL، نوع الـ pagination، قناة الـ real-time، شكل الـ errors) والـ API العام للـ components الأساسية (props، events)."
+          ar: "في الداتا: الـ entities بتاعة السيرفر، والـ state اللي على الـ client بس، والـ normalisation بالـ id، وإيه اللي متعمل له cache وفين. وفي الـ Interface: الـ API بين الـ client والسيرفر (REST ولا GraphQL، ونوع الـ pagination، وقناة الـ real-time، وشكل الـ errors). وكمان الـ API العام بتاع الـ components الأساسية (الـ props والـ events)."
         }
       },
       {
         title: { en: "O — Optimisations and deep dives (the rest)", ar: "O — Optimisations والتعمق (الباقي)" },
         body: {
           en: "Pick the 2–3 that matter for <b>this</b> product and go deep: performance (virtualisation, code splitting, caching), network (debounce, cancellation, retries), accessibility, i18n/RTL, offline, security (XSS, auth), observability. State the trade-off of each choice.",
-          ar: "اختار الـ 2–3 المهمين للمنتج <b>ده</b> واتعمق فيهم: الأداء (virtualisation، code splitting، caching)، والشبكة (debounce، الإلغاء، retries)، والـ accessibility، والـ i18n/RTL، والـ offline، والأمان (XSS، auth)، والـ observability. وقول الـ trade-off بتاع كل اختيار."
+          ar: "اختار أهم 2 أو 3 للمنتج <b>ده</b>، واتعمق فيهم. الاختيارات: الأداء (virtualisation و code splitting و caching)، والشبكة (debounce والإلغاء والـ retries). وكمان الـ accessibility، والـ i18n/RTL، والـ offline، والأمان (XSS والـ auth)، والـ observability. وقول الـ trade-off بتاع كل اختيار."
         }
       }
     ],
@@ -67,14 +67,14 @@ STUDY.deepen("system-design", {
         mid: { en: "I break the UI into components, choose a state library and describe the API calls.", ar: "بقسّم الـ UI لـ components، وأختار مكتبة state، وأوصف نداءات الـ API." },
         senior: {
           en: "I lead the conversation with a structure: requirements first — functional and non-functional, written down — then a high-level architecture with data flow, then the data model and interfaces (API shape, pagination, real-time, component APIs), and I spend the remaining time on the two or three deep dives that matter most for this product, each with a decision and its trade-off. I check time as I go and summarise at the end against the requirements.",
-          ar: "بقود الكلام بترتيب: الـ requirements الأول — functional و non-functional، ومكتوبين — وبعدين architecture عامة ومعاها مسار الداتا، وبعدين الـ data model والـ interfaces (شكل الـ API، والـ pagination، والـ real-time، و APIs الـ components)، وباقي الوقت بصرفه في أهم 2 أو 3 نقط تعمق للمنتج ده، وكل واحدة بقرار والـ trade-off بتاعه. وبراقب الوقت وأنا ماشي، وفي الآخر بلخّص وأقارن بالـ requirements."
+          ar: "أنا اللي بقود الكلام، وبترتيب. الأول الـ requirements، functional و non-functional، ومكتوبين. وبعدين architecture عامة، ومعاها الداتا بتمشي إزاي. وبعدين الـ data model والـ interfaces: شكل الـ API، والـ pagination، والـ real-time، والـ API بتاع كل component. وباقي الوقت بصرفه في أهم 2 أو 3 نقط للمنتج ده، وكل نقطة فيها قرار والـ trade-off بتاعه. وبراقب الوقت وأنا ماشي. وفي الآخر بلخّص، وبقارن بالـ requirements."
         }
       }
     ],
     drill: [
       {
         q: "What would you ask first for “design a news feed”?",
-        a: { en: "Who uses it and on what devices; post types (text, images, video); how fresh it must be (real-time or on refresh); scale (posts per page, total); interactions (like, comment, share); offline; accessibility and languages.", ar: "مين بيستخدمه وعلى أنهي أجهزة؛ أنواع البوستات (نص، صور، فيديو)؛ لازم يبقى جديد قد إيه (real-time ولا مع الـ refresh)؛ الحجم (بوستات في الصفحة، والإجمالي)؛ التفاعلات (like، comment، share)؛ الـ offline؛ والـ accessibility واللغات." },
+        a: { en: "Who uses it and on what devices; post types (text, images, video); how fresh it must be (real-time or on refresh); scale (posts per page, total); interactions (like, comment, share); offline; accessibility and languages.", ar: "مين بيستخدمه، وعلى أنهي أجهزة؟ أنواع البوستات إيه (نص، صور، فيديو)؟ لازم يبقى جديد قد إيه (real-time ولا مع الـ refresh)؟ الحجم قد إيه (بوستات في الصفحة، والإجمالي)؟ التفاعلات إيه (like، comment، share)؟ محتاج offline؟ وإيه المطلوب في الـ accessibility واللغات؟" },
         follow: [
           {
             q: "The interviewer says “you decide”. Now what?",
@@ -107,14 +107,14 @@ STUDY.deepen("system-design", {
         title: { en: "Cache results per query", ar: "Cache للنتايج لكل query" },
         body: {
           en: "Keep a bounded cache (LRU) keyed by the normalised query so backspacing is instant; a query library does this with the query as part of the key. Optionally filter the cached results of a shorter prefix while the new request is in flight.",
-          ar: "خلي cache ليه حد (LRU) الـ key بتاعه الـ query بعد normalisation، علشان الـ backspace يبقى فوري؛ ومكتبة queries بتعمل ده لما الـ query يبقى جزء من الـ key. وممكن تفلتر نتايج prefix أقصر متخزنة لحد ما الـ request الجديد يرجع."
+          ar: "اعمل cache ليه حد (LRU)، والـ key بتاعه الـ query بعد normalisation، علشان الـ backspace يبقى فوري. ومكتبة الـ queries بتعمل ده لوحدها لما الـ query يبقى جزء من الـ key. وممكن كمان تفلتر النتايج المتخزنة لـ prefix أقصر، لحد ما الـ request الجديد يرجع."
         }
       },
       {
         title: { en: "The ARIA combobox pattern", ar: "pattern الـ ARIA combobox" },
         body: {
           en: "The input has <code>role=\"combobox\"</code>, <code>aria-expanded</code>, <code>aria-controls</code> pointing to the <code>role=\"listbox\"</code>, and <code>aria-activedescendant</code> for the highlighted <code>role=\"option\"</code> — focus stays in the input. Arrow keys move, Enter selects, Escape closes; announce the result count in a polite live region.",
-          ar: "الـ input عليه <code>role=\"combobox\"</code>، و <code>aria-expanded</code>، و <code>aria-controls</code> بيشاور على الـ <code>role=\"listbox\"</code>، و <code>aria-activedescendant</code> للـ <code>role=\"option\"</code> اللي عليه الاختيار — والـ focus بيفضل في الـ input. والأسهم بتتحرك، و Enter بيختار، و Escape بيقفل؛ وأعلن عدد النتايج في live region مؤدب (polite)."
+          ar: "الـ input عليه <code>role=\"combobox\"</code> و <code>aria-expanded</code>. و <code>aria-controls</code> بيشاور على الـ <code>role=\"listbox\"</code>. و <code>aria-activedescendant</code> بيشاور على الـ <code>role=\"option\"</code> اللي عليه الاختيار، والـ focus بيفضل في الـ input. والأسهم بتتحرك، و Enter بيختار، و Escape بيقفل. واعلن عدد النتايج في polite live region."
         },
         code: "<input role=\"combobox\" aria-expanded={open} aria-controls=\"results\" aria-autocomplete=\"list\"\n       aria-activedescendant={active != null ? `opt-${active}` : undefined} />\n<ul id=\"results\" role=\"listbox\">\n  {items.map((it, i) => <li key={it.id} id={`opt-${i}`} role=\"option\" aria-selected={i === active}>{it.label}</li>)}\n</ul>",
         run: "browser"
@@ -152,7 +152,7 @@ STUDY.deepen("system-design", {
           en: "<code>dangerouslySetInnerHTML</code> with <code>label.replace(query, \"&lt;b&gt;$&amp;&lt;/b&gt;\")</code> lets a crafted label or query inject script.",
           ar: "<code>dangerouslySetInnerHTML</code> مع <code>label.replace(query, \"&lt;b&gt;$&amp;&lt;/b&gt;\")</code> بيخلي label أو query متعمل بقصد يحقن script."
         },
-        fix: { en: "Render parts as React text and elements; if the server sends highlight ranges, map them to elements too.", ar: "اعرض الأجزاء كنص و elements في React؛ ولو السيرفر بيبعت أماكن الـ highlight، حوّلها لـ elements برضه." }
+        fix: { en: "Render parts as React text and elements; if the server sends highlight ranges, map them to elements too.", ar: "اعرض الأجزاء كنص و elements في React. ولو السيرفر بيبعت أماكن الـ highlight، حوّلها لـ elements برضه." }
       }
     ],
     levels: [
@@ -161,14 +161,14 @@ STUDY.deepen("system-design", {
         mid: { en: "An input with debounce that calls the API and shows results in a dropdown.", ar: "input عليه debounce بينادي الـ API ويعرض النتايج في dropdown." },
         senior: {
           en: "Requirements first: data size and where search runs (server, with typo tolerance and synonyms), latency target, keyboard and screen-reader support, languages. Client: debounce plus minimum length, cancel or key requests to avoid races, a bounded cache per query, loading/empty/error states inside the listbox, the APG combobox pattern with <code>aria-activedescendant</code>, safe highlighting, and mobile behaviour. Decide whether the query belongs in the URL. In Smart FAQ search showed highlighted matches and a multi-department filter, synonyms and typo handling lived in the backend, and the search text was kept out of the URL.",
-          ar: "الـ requirements الأول: حجم الداتا والبحث بيحصل فين (على السيرفر، مع تحمّل الأخطاء والمرادفات)، وهدف الوقت، ودعم الكيبورد والـ screen reader، واللغات. وعلى الـ client: debounce وحد أدنى للطول، وإلغاء أو ربط الـ requests علشان أتجنب الـ races، و cache ليه حد لكل query، وحالات loading وفاضي و error جوه الـ listbox، و pattern الـ combobox بتاع الـ APG مع <code>aria-activedescendant</code>، و highlighting آمن، وسلوك الموبايل. وأقرر الـ query مكانه الـ URL ولا لأ. وفي Smart FAQ البحث كان بيعرض التطابقات متعلّم عليها وفيه فلتر لكذا قسم، والمرادفات وتحمّل الأخطاء كانوا في الـ backend، ونص البحث كان برّه الـ URL."
+          ar: "الـ requirements الأول: حجم الداتا، والبحث بيحصل فين (على السيرفر، مع تحمّل الأخطاء والمرادفات)، والوقت المطلوب، ودعم الكيبورد والـ screen reader، واللغات. وعلى الـ client عندي: debounce وحد أدنى للطول. وإلغاء الـ requests القديمة أو ربطها بالـ query، علشان أتجنب الـ races. و cache ليه حد لكل query. وحالات loading وفاضي و error جوه الـ listbox. و pattern الـ combobox بتاع الـ APG مع <code>aria-activedescendant</code>. و highlighting آمن. وسلوك الموبايل. وبقرر الـ query مكانه الـ URL ولا لأ. وفي Smart FAQ، البحث كان بيعرض التطابقات متعلّم عليها، وفيه فلتر لكذا قسم. والمرادفات وتحمّل الأخطاء كانوا في الـ backend، ونص البحث كان برّه الـ URL."
         }
       }
     ],
     drill: [
       {
         q: "Why aria-activedescendant instead of moving focus to the options?",
-        a: { en: "Focus stays in the input so the user can keep typing; the attribute tells assistive tech which option is active.", ar: "الـ focus بيفضل في الـ input علشان اليوزر يقدر يكمل كتابة؛ والـ attribute بيقول للتكنولوجيا المساعدة أنهي option هو الحالي." },
+        a: { en: "Focus stays in the input so the user can keep typing; the attribute tells assistive tech which option is active.", ar: "علشان الـ focus يفضل في الـ input، واليوزر يقدر يكمل كتابة. والـ attribute ده بيقول للـ screen reader أنهي option هو الحالي." },
         follow: [
           {
             q: "How do screen-reader users learn how many results there are?",
@@ -178,7 +178,7 @@ STUDY.deepen("system-design", {
       }
     ],
     story: {
-      text: { en: "Smart FAQ search: highlighted matches, a multi-department filter, synonyms and typo handling in the backend, search text kept out of the URL; the FAQ AI POC did intent-based matching in Arabic, Franco and English.", ar: "البحث في Smart FAQ: تطابقات متعلّم عليها، وفلتر لكذا قسم، والمرادفات وتحمّل الأخطاء في الـ backend، ونص البحث برّه الـ URL؛ والـ FAQ AI POC كان بيطابق بالنية بالعربي والفرانكو والإنجليزي." },
+      text: { en: "Smart FAQ search: highlighted matches, a multi-department filter, synonyms and typo handling in the backend, search text kept out of the URL; the FAQ AI POC did intent-based matching in Arabic, Franco and English.", ar: "البحث في Smart FAQ فيه تطابقات متعلّم عليها، وفلتر لكذا قسم. والمرادفات وتحمّل الأخطاء في الـ backend، ونص البحث برّه الـ URL. والـ FAQ AI POC كان بيطابق بالنية، بالعربي والفرانكو والإنجليزي." },
       p: "smartfaq", tab: "decisions", label: "Smart FAQ"
     },
     sources: [
@@ -205,7 +205,7 @@ STUDY.deepen("system-design", {
         title: { en: "Server-side paging, sorting and filtering", ar: "الـ paging والترتيب والفلترة على السيرفر" },
         body: {
           en: "With thousands of rows the server pages, sorts and filters; the client keeps the previous page visible while the next loads (<code>keepPreviousData</code>) and prefetches the next page. Choose offset pagination for “jump to page 7” and cursor pagination for data that changes underneath you.",
-          ar: "مع آلاف الـ rows السيرفر هو اللي بيعمل paging وترتيب وفلترة؛ والـ client بيسيب الصفحة اللي قبلها ظاهرة لحد ما اللي بعدها تحمّل (<code>keepPreviousData</code>) وبيعمل prefetch للصفحة الجاية. اختار offset pagination لـ «روح للصفحة 7»، و cursor pagination للداتا اللي بتتغير تحت إيدك."
+          ar: "مع آلاف الـ rows، السيرفر هو اللي بيعمل paging وترتيب وفلترة. والـ client بيسيب الصفحة اللي قبلها ظاهرة لحد ما اللي بعدها تحمّل (<code>keepPreviousData</code>)، وبيعمل prefetch للصفحة الجاية. واختار offset pagination لو محتاج «روح للصفحة 7»، و cursor pagination للداتا اللي بتتغير تحت إيدك."
         },
         code: "// Plain-JS model: someone deletes item 1 while you are on page 1\nconst rows = Array.from({ length: 10 }, (_, i) => i + 1);\nconst page = (data, offset) => data.slice(offset, offset + 3).join();\nconst p1 = page(rows, 0);\nrows.splice(0, 1);\nconsole.log(p1, \"|\", page(rows, 3));            // offset: item 4 is skipped\nconst after = (data, cursor) => data.filter((id) => id > cursor).slice(0, 3).join();\nconsole.log(after(rows, 3));                      // cursor: continues after the last seen id",
         out: "1,2,3 | 5,6,7\n4,5,6",
@@ -215,7 +215,7 @@ STUDY.deepen("system-design", {
         title: { en: "Editing: optimistic where safe, invalidate always", ar: "التعديل: optimistic لما يبقى آمن، و invalidate دايمًا" },
         body: {
           en: "Inline toggles can be optimistic with rollback; destructive or validated edits wait for the server. After any mutation, invalidate the list queries (all pages and filters of that entity) so counts and order stay right. Bulk actions report per-item results (<code>allSettled</code>-style).",
-          ar: "الـ toggles اللي في الـ table ينفع تبقى optimistic مع رجوع؛ والتعديلات اللي بتمسح أو محتاجة validation بتستنى السيرفر. وبعد أي mutation، اعمل invalidate لـ queries الـ list (كل الصفحات والفلاتر بتاعة الـ entity ده) علشان الأعداد والترتيب يفضلوا صح. والأكشنز الجماعية بتبلّغ بنتيجة كل عنصر (بأسلوب <code>allSettled</code>)."
+          ar: "الـ toggles اللي في الـ table ينفع تبقى optimistic، ومعاها رجوع لو فشلت. والتعديلات اللي بتمسح أو محتاجة validation بتستنى السيرفر. وبعد أي mutation، اعمل invalidate للـ queries بتاعة الـ list، يعني كل الصفحات والفلاتر بتاعة الـ entity ده، علشان الأعداد والترتيب يفضلوا صح. والأكشنز الجماعية بتقول نتيجة كل عنصر لوحده، بأسلوب <code>allSettled</code>."
         }
       },
       {
@@ -233,7 +233,7 @@ STUDY.deepen("system-design", {
           en: "Downloading 20,000 rows to filter in the browser is slow on load, heavy in memory, and leaks data the user may not be allowed to see.",
           ar: "إنك تحمّل 20,000 row علشان تفلترهم في المتصفح بطيء في التحميل، وتقيل على الذاكرة، وبيسرّب داتا ممكن اليوزر ميكونش مسموحله يشوفها."
         },
-        fix: { en: "Server-side filtering and pagination; client-side only for small, fully authorised lists.", ar: "فلترة و pagination على السيرفر؛ والـ client بس للـ lists الصغيرة اللي اليوزر مسموحله بيها كلها." }
+        fix: { en: "Server-side filtering and pagination; client-side only for small, fully authorised lists.", ar: "الفلترة والـ pagination تبقى على السيرفر. والـ client بس للـ lists الصغيرة اللي اليوزر مسموحله يشوفها كلها." }
       },
       {
         title: { en: "Offset drift after deletes", ar: "الـ offset بيتزحلق بعد المسح" },
@@ -258,14 +258,14 @@ STUDY.deepen("system-design", {
         mid: { en: "Fetch the data with React Query, use a table library, keep filters in state and paginate.", ar: "أجيب الداتا بـ React Query، وأستخدم مكتبة table، وأحفظ الفلاتر في state، وأعمل pagination." },
         senior: {
           en: "Requirements: data size, update rate, roles, required actions, exports, accessibility. Architecture: URL as the source of truth for filters/sort/page; query keys built from it; server-side paging, sorting and filtering, with cursor pagination if data changes often; <code>keepPreviousData</code> plus next-page prefetch. Edits: optimistic toggles with rollback, server-confirmed edits for anything validated, invalidation of all list queries after mutations, per-item results for bulk actions. UI: a headless table (TanStack Table) with proper table semantics, sticky header, virtualisation only if rows are in the thousands, and designed loading/empty/error states. Permissions enforced on the server. That's the shape of Smart FAQ's admin screens (articles, users, audit log, review queue).",
-          ar: "الـ Requirements: حجم الداتا، ومعدل التحديث، والـ roles، والأكشنز المطلوبة، والتصدير، والـ accessibility. والـ Architecture: الـ URL مصدر الحقيقة للفلاتر والترتيب والصفحة؛ والـ query keys بتتبني منه؛ و paging وترتيب وفلترة على السيرفر، و cursor pagination لو الداتا بتتغير كتير؛ و <code>keepPreviousData</code> مع prefetch للصفحة الجاية. والتعديلات: toggles بـ optimistic ورجوع، وتعديلات بتستنى تأكيد السيرفر لأي حاجة فيها validation، و invalidation لكل queries الـ list بعد الـ mutations، ونتيجة لكل عنصر في الأكشنز الجماعية. والـ UI: headless table (TanStack Table) بـ semantics الـ table الصح، و header ثابت، و virtualisation بس لو الـ rows بالآلاف، وحالات loading وفاضي و error متصممة. والصلاحيات بتتلزم على السيرفر. وده شكل شاشات الـ admin في Smart FAQ (المقالات، اليوزرز، الـ audit log، طابور المراجعة)."
+          ar: "الـ requirements: حجم الداتا، ومعدل التحديث، والـ roles، والأكشنز المطلوبة، والتصدير، والـ accessibility. والـ architecture: الـ URL هو مصدر الحقيقة للفلاتر والترتيب والصفحة، والـ query keys بتتبني منه. والـ paging والترتيب والفلترة على السيرفر، و cursor pagination لو الداتا بتتغير كتير. ومعاها <code>keepPreviousData</code> و prefetch للصفحة الجاية. والتعديلات: الـ toggles optimistic ومعاها رجوع. وأي حاجة فيها validation بتستنى تأكيد السيرفر. وبعد الـ mutations بعمل invalidation لكل queries الـ list. والأكشنز الجماعية بتقول نتيجة كل عنصر. والـ UI: headless table (TanStack Table) بالـ semantics الصح، و header ثابت، و virtualisation بس لو الـ rows بالآلاف، وحالات loading وفاضي و error متصممة. والصلاحيات بتتلزم على السيرفر. وده شكل شاشات الـ admin في Smart FAQ: المقالات، واليوزرز، والـ audit log، وطابور المراجعة."
         }
       }
     ],
     drill: [
       {
         q: "Offset or cursor pagination?",
-        a: { en: "Offset when users jump to page numbers and data is fairly stable; cursor when data changes often or is endless (feeds, logs), because it doesn't skip or repeat rows.", ar: "Offset لما اليوزرز بينطوا لأرقام صفحات والداتا ثابتة نسبيًا؛ و cursor لما الداتا بتتغير كتير أو مالهاش آخر (feeds، logs)، لأنه مش بيتخطى rows ولا بيكررها." },
+        a: { en: "Offset when users jump to page numbers and data is fairly stable; cursor when data changes often or is endless (feeds, logs), because it doesn't skip or repeat rows.", ar: "الـ offset لما اليوزرز بينطوا لأرقام صفحات، والداتا ثابتة نسبيًا. والـ cursor لما الداتا بتتغير كتير أو مالهاش آخر (زي الـ feeds والـ logs)، لأنه مش بيتخطى rows ولا بيكررها." },
         follow: [
           {
             q: "How do you keep the total count accurate after a delete?",

@@ -35,7 +35,7 @@ STUDY.deepen("state", {
           en: "A Redux slice filled in an effect: no refetch on focus, manual loading flags in every slice, stale data after another tab edits it, and hand-written invalidation everywhere.",
           ar: "Redux slice بيتملا في effect: مفيش refetch مع الـ focus، و loading flags بإيدك في كل slice، وداتا قديمة بعد ما tab تانية تعدّلها، و invalidation مكتوب بالإيد في كل حتة."
         },
-        fix: { en: "Use a query library (or RTK Query if you're already on Redux) for server state; keep the store for real client state.", ar: "استخدم مكتبة queries (أو RTK Query لو إنت أصلًا على Redux) للـ server state؛ وخلي الـ store للـ client state الحقيقي." }
+        fix: { en: "Use a query library (or RTK Query if you're already on Redux) for server state; keep the store for real client state.", ar: "للـ server state استخدم مكتبة queries، أو RTK Query لو إنت أصلًا على Redux. وخلي الـ store للـ client state الحقيقي." }
       },
       {
         title: { en: "Filters in useState", ar: "الفلاتر في useState" },
@@ -60,7 +60,7 @@ STUDY.deepen("state", {
         mid: { en: "Local state with <code>useState</code>, global state with Redux or Zustand, and React Query for API data.", ar: "local state بـ <code>useState</code>، و global state بـ Redux أو Zustand، و React Query لداتا الـ API." },
         senior: {
           en: "I classify before choosing tools. Server state goes to a query cache; URL state to search params; form state to a form library; local UI state stays in components; and only what's left — usually small — needs context or a store. That keeps the global store tiny or absent. Smart FAQ had no global store at all: queries, URL filters, forms and a few <code>useSyncExternalStore</code> stores. okoRent used TanStack Query for server data, nuqs for filters, and Zustand only for small cross-page UI state.",
-          ar: "بصنّف قبل ما أختار أدوات. الـ server state بيروح لـ query cache؛ والـ URL state للـ search params؛ والـ form state لمكتبة فورم؛ والـ local UI state بيفضل في الـ components؛ واللي يفضل بس — وغالبًا صغير — هو اللي محتاج context أو store. وده بيخلي الـ global store صغير جدًا أو مش موجود. Smart FAQ مكانش فيه global store خالص: queries، وفلاتر في الـ URL، وفورمز، وكام store بـ <code>useSyncExternalStore</code>. و okoRent استخدم TanStack Query لداتا السيرفر، و nuqs للفلاتر، و Zustand بس للـ UI state الصغير اللي بين الصفحات."
+          ar: "بصنّف قبل ما أختار أدوات. الـ server state بيروح لـ query cache. والـ URL state للـ search params. والـ form state لمكتبة فورم. والـ local UI state بيفضل في الـ components. واللي يفضل بعد كده، وغالبًا صغير، هو بس اللي محتاج context أو store. وده بيخلي الـ global store صغير جدًا أو مش موجود أصلًا. Smart FAQ مكانش فيه global store خالص: queries، وفلاتر في الـ URL، وفورمز، وكام store بـ <code>useSyncExternalStore</code>. و okoRent استخدم TanStack Query لداتا السيرفر، و nuqs للفلاتر، و Zustand بس للـ UI state الصغير اللي بين الصفحات."
         }
       }
     ],
@@ -97,7 +97,7 @@ STUDY.deepen("state", {
         title: { en: "Zustand: a tiny store you subscribe to with selectors", ar: "Zustand: store صغير بتعمل له subscribe بـ selectors" },
         body: {
           en: "<code>create()</code> returns a hook; components call it with a selector and re-render only when that slice changes (it uses <code>useSyncExternalStore</code>). No provider, little boilerplate, middleware for persist and devtools. Great for small to medium shared client state.",
-          ar: "<code>create()</code> بيرجّع hook؛ والـ components بتناديه بـ selector وبتعمل re-render بس لما الجزء ده يتغير (بيستخدم <code>useSyncExternalStore</code>). مفيش provider، و boilerplate قليل، و middleware للـ persist والـ devtools. ممتاز للـ shared client state الصغير لحد المتوسط."
+          ar: "الـ <code>create()</code> بيرجّع hook. والـ components بتناديه بـ selector، وبتعمل re-render بس لما الجزء ده يتغير (وهو بيستخدم <code>useSyncExternalStore</code>). مفيش provider، والـ boilerplate قليل، وفيه middleware للـ persist والـ devtools. ممتاز للـ shared client state الصغير لحد المتوسط."
         },
         code: "const useCart = create((set) => ({\n  items: [],\n  add: (p) => set((s) => ({ items: [...s.items, p] })),\n}));\nconst count = useCart((s) => s.items.length);   // re-renders only when the count changes\nconst add = useCart((s) => s.add);",
         run: "browser"
@@ -106,14 +106,14 @@ STUDY.deepen("state", {
         title: { en: "Redux Toolkit: one store with conventions", ar: "Redux Toolkit: store واحد بقواعد ثابتة" },
         body: {
           en: "Slices with reducers (Immer lets you write “mutating” code safely), actions as plain objects, middleware, time-travel devtools, and RTK Query for server data. The value is predictability and shared conventions in large teams; the cost is more structure for small apps.",
-          ar: "Slices فيها reducers (و Immer بيخليك تكتب كود «بيعدّل» بأمان)، وأكشنز كـ objects عادية، و middleware، و devtools فيها time-travel، و RTK Query لداتا السيرفر. والقيمة هي إن كل حاجة متوقعة وفيه قواعد مشتركة في الفرق الكبيرة؛ والتمن structure أكتر للـ apps الصغيرة."
+          ar: "فيه slices فيها reducers، و Immer بيخليك تكتب كود «بيعدّل» بأمان. والأكشنز objects عادية، وفيه middleware، و devtools فيها time-travel، و RTK Query لداتا السيرفر. وقيمته إن كل حاجة متوقعة، وفيه قواعد مشتركة في الفرق الكبيرة. وتمنه structure أكتر للـ apps الصغيرة."
         }
       },
       {
         title: { en: "Context: injection, not subscription", ar: "الـ Context: حقن قيمة، مش subscription" },
         body: {
           en: "Context passes a value; every consumer re-renders when it changes, with no selectors. Right for low-frequency values (auth, theme, locale); wrong for state that changes often and is read widely.",
-          ar: "الـ Context بيعدّي قيمة؛ وكل consumer بيعمل re-render لما تتغير، من غير selectors. صح للقيم اللي مش بتتغير كتير (auth، theme، locale)؛ وغلط للـ state اللي بيتغير كتير وبيتقرا في أماكن كتير."
+          ar: "الـ Context بيعدّي قيمة، وكل consumer بيعمل re-render لما تتغير، ومفيش selectors. مناسب للقيم اللي مش بتتغير كتير، زي الـ auth والـ theme والـ locale. ومش مناسب للـ state اللي بيتغير كتير وبيتقرا في أماكن كتير."
         }
       }
     ],
@@ -149,17 +149,17 @@ STUDY.deepen("state", {
     levels: [
       {
         q: "Zustand vs Redux Toolkit?",
-        mid: { en: "Zustand is simpler with less boilerplate; Redux is better for big apps.", ar: "Zustand أبسط و boilerplate أقل؛ و Redux أحسن للـ apps الكبيرة." },
+        mid: { en: "Zustand is simpler with less boilerplate; Redux is better for big apps.", ar: "Zustand أبسط والـ boilerplate فيه أقل، و Redux أحسن للـ apps الكبيرة." },
         senior: {
           en: "Both are external stores with selector subscriptions, so re-render behaviour is similar. Zustand: minimal API, no provider, ideal when client state is small — which it usually is once server state lives in a query cache. Redux Toolkit: stronger conventions, middleware, time-travel debugging and RTK Query — valuable for large teams or complex client-side workflows. I've used Zustand in okoRent and Spectra for small shared state, kept AHS's existing Zustand store, and used Redux Toolkit in anyShop and two take-home tasks where it was expected.",
-          ar: "الاتنين external stores بـ subscriptions بالـ selectors، فسلوك الـ re-render شبه بعض. Zustand: API صغير، ومن غير provider، ومثالي لما الـ client state يبقى صغير — وده اللي غالبًا بيحصل لما الـ server state يبقى في query cache. و Redux Toolkit: قواعد أقوى، و middleware، و time-travel debugging، و RTK Query — مفيد للفرق الكبيرة أو الـ workflows المعقدة على الـ client. استخدمت Zustand في okoRent و Spectra للـ shared state الصغير، وسبت الـ Zustand store اللي كان موجود في AHS، واستخدمت Redux Toolkit في anyShop وفي اتنين take-home tasks كان متوقع فيهم."
+          ar: "الاتنين external stores بيعملوا subscribe بالـ selectors، فسلوك الـ re-render شبه بعض. Zustand الـ API بتاعه صغير، ومن غير provider، ومثالي لما الـ client state يبقى صغير. وده اللي غالبًا بيحصل لما الـ server state يبقى في query cache. أما Redux Toolkit فقواعده أقوى، وفيه middleware و time-travel debugging و RTK Query. وده مفيد للفرق الكبيرة، أو للـ workflows المعقدة على الـ client. استخدمت Zustand في okoRent و Spectra للـ shared state الصغير، وسبت الـ Zustand store اللي كان موجود في AHS. واستخدمت Redux Toolkit في anyShop، وفي اتنين take-home tasks كان متوقع فيهم."
         }
       }
     ],
     drill: [
       {
         q: "How does Zustand decide whether a component re-renders?",
-        a: { en: "It runs the component's selector on the new state and compares the result with the previous one using <code>Object.is</code>; equal means no re-render.", ar: "بيشغّل الـ selector بتاع الـ component على الـ state الجديد ويقارن النتيجة باللي قبلها بـ <code>Object.is</code>؛ ولو متساويين مفيش re-render." },
+        a: { en: "It runs the component's selector on the new state and compares the result with the previous one using <code>Object.is</code>; equal means no re-render.", ar: "بيشغّل الـ selector بتاع الـ component على الـ state الجديد، ويقارن النتيجة باللي قبلها بـ <code>Object.is</code>. ولو متساويين، مفيش re-render." },
         follow: [
           {
             q: "So what goes wrong with (s) => ({ a: s.a, b: s.b })?",
@@ -169,7 +169,7 @@ STUDY.deepen("state", {
       }
     ],
     story: {
-      text: { en: "okoRent and Spectra used Zustand for small shared state; AHS kept its existing Zustand store; anyShop and two 2025 take-home tasks used Redux Toolkit.", ar: "okoRent و Spectra استخدموا Zustand للـ shared state الصغير؛ و AHS حافظ على الـ Zustand store اللي كان موجود؛ و anyShop واتنين take-home tasks في 2025 استخدموا Redux Toolkit." },
+      text: { en: "okoRent and Spectra used Zustand for small shared state; AHS kept its existing Zustand store; anyShop and two 2025 take-home tasks used Redux Toolkit.", ar: "okoRent و Spectra استخدموا Zustand للـ shared state الصغير. و AHS حافظ على الـ Zustand store اللي كان موجود. و anyShop واتنين take-home tasks في 2025 استخدموا Redux Toolkit." },
       p: "okorent", tab: "decisions", label: "okoRent"
     },
     sources: [

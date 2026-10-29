@@ -5,7 +5,7 @@ STUDY.deepen("nextjs", {
   rendering: {
     why: {
       en: "“SSR or SSG or CSR?” is the opener; the depth is in what makes a route dynamic, what hydration costs, and how Partial Prerendering removed the either/or choice.",
-      ar: "«SSR ولا SSG ولا CSR؟» دي البداية؛ والعمق في إيه اللي بيخلي الـ route dynamic، والـ hydration تمنه إيه، وإزاي الـ Partial Prerendering شال الاختيار بين ده وده."
+      ar: "سؤال «SSR ولا SSG ولا CSR؟» ده البداية بس. العمق في إيه اللي بيخلي الـ route dynamic، والـ hydration تمنه إيه، وإزاي الـ Partial Prerendering خلاك متختارش بين ده وده."
     },
     how: [
       {
@@ -26,7 +26,7 @@ STUDY.deepen("nextjs", {
         title: { en: "Partial Prerendering: a static shell with dynamic holes", ar: "الـ Partial Prerendering: shell ثابت فيه فتحات dynamic" },
         body: {
           en: "Before PPR a whole URL was either static or dynamic. With Cache Components (Next.js 16), the static parts and cached parts become a shell served from the CDN, and anything that reads request data streams into its <code>&lt;Suspense&gt;</code> boundary at request time. Reading <code>cookies()</code> no longer makes the whole route dynamic.",
-          ar: "قبل الـ PPR الـ URL كله كان يا static يا dynamic. ومع الـ Cache Components (Next.js 16)، الأجزاء الثابتة والأجزاء المتعمل لها cache بتبقى shell بيتبعت من الـ CDN، وأي حاجة بتقرا داتا الـ request بتعمل stream جوه الـ <code>&lt;Suspense&gt;</code> بتاعها وقت الـ request. وقراية <code>cookies()</code> مبقتش بتخلي الـ route كله dynamic."
+          ar: "قبل الـ PPR، الـ URL كله كان يا static يا dynamic. ومع الـ Cache Components (Next.js 16)، الأجزاء الثابتة والأجزاء المتعمل لها cache بتبقى shell بيتبعت من الـ CDN. وأي حاجة بتقرا داتا الـ request بتعمل stream جوه الـ <code>&lt;Suspense&gt;</code> بتاعها وقت الـ request. يعني قراية <code>cookies()</code> مبقتش بتخلي الـ route كله dynamic."
         },
         code: "export default function Page() {\n  return (\n    <>\n      <ProductInfo />                       {/* 'use cache' → part of the static shell */}\n      <Suspense fallback={<CartSkeleton />}>\n        <Cart />                            {/* reads cookies() → streams per request */}\n      </Suspense>\n    </>\n  );\n}",
         run: "browser"
@@ -35,7 +35,7 @@ STUDY.deepen("nextjs", {
         title: { en: "Hydration: HTML first, interactivity after", ar: "الـ Hydration: الـ HTML الأول، والتفاعل بعده" },
         body: {
           en: "Server HTML is visible early, but buttons work only after the client JS loads and React hydrates — attaching handlers to the existing DOM, which must match what the client renders. Server Components reduce this cost because their code never ships to the browser.",
-          ar: "الـ HTML اللي جاي من السيرفر بيظهر بدري، بس الزراير بتشتغل بس بعد ما الـ JS بتاع الـ client يتحمّل و React يعمل hydrate — يركّب الـ handlers على الـ DOM الموجود، اللي لازم يطابق اللي الـ client بيرسمه. والـ Server Components بتقلل التمن ده لأن الكود بتاعها عمره ما بيوصل للمتصفح."
+          ar: "الـ HTML اللي جاي من السيرفر بيظهر بدري. بس الزراير مش بتشتغل غير بعد ما الـ JS يتحمّل و React يعمل hydrate. والـ hydrate معناه إن React بيركّب الـ handlers على الـ DOM الموجود، واللي لازم يطابق اللي الـ client بيرسمه. والـ Server Components بتقلل التمن ده، لأن الكود بتاعها عمره ما بيوصل للمتصفح."
         }
       }
     ],
@@ -46,13 +46,13 @@ STUDY.deepen("nextjs", {
           en: "In the older model (Next 14/15 without Cache Components), reading request data in a root layout made every route under it dynamic — no static pages left.",
           ar: "في الموديل القديم (Next 14/15 من غير Cache Components)، قراية داتا الـ request في الـ root layout كانت بتخلي كل route تحته dynamic — ومفيش صفحات static خالص."
         },
-        fix: { en: "Read request data as deep as possible, inside a <code>&lt;Suspense&gt;</code> boundary around the small part that needs it; with Cache Components that keeps the rest in the static shell.", ar: "اقرا داتا الـ request في أعمق مكان ممكن، جوه <code>&lt;Suspense&gt;</code> حوالين الجزء الصغير اللي محتاجها؛ ومع الـ Cache Components ده بيخلي الباقي في الـ static shell." }
+        fix: { en: "Read request data as deep as possible, inside a <code>&lt;Suspense&gt;</code> boundary around the small part that needs it; with Cache Components that keeps the rest in the static shell.", ar: "اقرا داتا الـ request في أعمق مكان ممكن، جوه <code>&lt;Suspense&gt;</code> حوالين الجزء الصغير اللي محتاجها بس. ومع الـ Cache Components، ده بيخلي الباقي كله في الـ static shell." }
       },
       {
         title: { en: "Hydration mismatch", ar: "الـ Hydration mismatch" },
         body: {
           en: "Rendering <code>Date.now()</code>, random ids, the user's locale or <code>typeof window</code> branches in render produces different HTML on server and client, so React warns and re-renders the subtree on the client.",
-          ar: "إنك ترسم <code>Date.now()</code>، أو ids عشوائية، أو الـ locale بتاع اليوزر، أو تفرّع بـ <code>typeof window</code> وقت الـ render بيطلّع HTML مختلف على السيرفر والـ client، فـ React بيحذّر ويعيد رسم الجزء ده على الـ client."
+          ar: "لو رسمت <code>Date.now()</code>، أو ids عشوائية، أو الـ locale بتاع اليوزر، أو عملت شرط على <code>typeof window</code> وقت الـ render، الـ HTML هيطلع مختلف على السيرفر والـ client. فـ React بيحذّر، ويعيد رسم الجزء ده على الـ client."
         },
         fix: { en: "Pass the same data to both sides, use <code>useId</code> for ids, format dates with an explicit locale and time zone, and put browser-only values in an effect or a client-only component.", ar: "ابعت نفس الداتا للجهتين، واستخدم <code>useId</code> للـ ids، واعمل format للتواريخ بـ locale و time zone صريحين، وحط القيم اللي للمتصفح بس في effect أو component للـ client بس." }
       },
@@ -62,7 +62,7 @@ STUDY.deepen("nextjs", {
           en: "An invitation-only admin tool gains little from SEO or first-paint HTML, but pays for a server, caching rules and hydration.",
           ar: "أداة admin بالدعوة بس مش هتستفيد كتير من الـ SEO أو الـ HTML في أول رسم، بس هتدفع تمن سيرفر وقواعد caching و hydration."
         },
-        fix: { en: "Choose by needs: public, SEO-sensitive pages → server rendering; logged-in internal tools → a SPA is a valid choice.", ar: "اختار حسب الاحتياج: صفحات عامة والـ SEO مهم فيها ← server rendering؛ وأدوات داخلية بعد تسجيل الدخول ← الـ SPA اختيار صح." }
+        fix: { en: "Choose by needs: public, SEO-sensitive pages → server rendering; logged-in internal tools → a SPA is a valid choice.", ar: "اختار حسب الاحتياج. الصفحات العامة اللي الـ SEO مهم فيها تبقى server rendering. والأدوات الداخلية اللي بعد تسجيل الدخول، الـ SPA فيها اختيار صح." }
       }
     ],
     levels: [
@@ -71,7 +71,7 @@ STUDY.deepen("nextjs", {
         mid: { en: "SSG for static content, SSR for dynamic or personalised pages, ISR for content that changes sometimes, CSR for dashboards.", ar: "SSG للمحتوى الثابت، و SSR للصفحات الـ dynamic أو المخصصة، و ISR للمحتوى اللي بيتغير أحيانًا، و CSR للـ dashboards." },
         senior: {
           en: "Per part of the page, not per app. Content that's the same for everyone is prerendered or cached; personalised or per-request parts stream behind Suspense; highly interactive widgets are client components. In Next.js 16 that's literally one route — a static shell with dynamic holes. I also weigh product needs: okoRent's public marketplace needed SEO-friendly server-rendered pages, so App Router; Smart FAQ is an invitation-only tool, so a Vite SPA with CSR was the simpler, correct choice.",
-          ar: "لكل جزء في الصفحة، مش لكل app. المحتوى اللي هو هو للكل بيتعمل له prerender أو cache؛ والأجزاء المخصصة أو اللي لكل request بتعمل stream ورا Suspense؛ والـ widgets التفاعلية جدًا client components. وفي Next.js 16 ده بالحرف route واحد — static shell فيه فتحات dynamic. وكمان بوزن احتياج المنتج: الـ marketplace العام في okoRent كان محتاج صفحات server-rendered مناسبة للـ SEO، فاخترنا App Router؛ و Smart FAQ أداة بالدعوة بس، فـ Vite SPA بـ CSR كان الاختيار الأبسط والصح."
+          ar: "بختار لكل جزء في الصفحة، مش للـ app كله. المحتوى اللي هو هو للكل بيتعمل له prerender أو cache. والأجزاء المخصصة، أو اللي بتتغير مع كل request، بتعمل stream ورا Suspense. والـ widgets التفاعلية جدًا بتبقى client components. وفي Next.js 16 ده كله route واحد: static shell فيه فتحات dynamic. وكمان بوزن احتياج المنتج. الـ marketplace العام في okoRent كان محتاج صفحات server-rendered مناسبة للـ SEO، فاخترنا App Router. أما Smart FAQ فأداة بالدعوة بس، فـ Vite SPA بـ CSR كان الاختيار الأبسط والصح."
         }
       },
       {
@@ -79,7 +79,7 @@ STUDY.deepen("nextjs", {
         mid: { en: "React attaches event handlers to server-rendered HTML. Mismatches cause errors.", ar: "React بيركّب الـ event handlers على الـ HTML اللي جاي من السيرفر. ولو فيه اختلاف بيطلع errors." },
         senior: {
           en: "The server sends HTML; the client downloads the JS, renders the same tree and attaches to the existing DOM instead of recreating it. Two costs: until it finishes, the page looks ready but isn't (bad INP on early clicks), and the client must render exactly what the server did — time, locale, randomness and window checks cause mismatches. Fixes: less client JS (Server Components), streaming with selective hydration, and deterministic render output.",
-          ar: "السيرفر بيبعت HTML؛ والـ client بيحمّل الـ JS، ويرسم نفس الشجرة، ويتركب على الـ DOM الموجود بدل ما يعمله من جديد. وفيه تمنين: لحد ما يخلص الصفحة شكلها جاهزة بس مش جاهزة (INP وحش للضغطات البدري)، والـ client لازم يرسم بالظبط اللي السيرفر رسمه — الوقت، والـ locale، والعشوائية، و checks الـ window بتعمل mismatches. والحلول: JS أقل على الـ client (Server Components)، و streaming مع selective hydration، و render نتيجته ثابتة."
+          ar: "السيرفر بيبعت HTML. والـ client بيحمّل الـ JS، ويرسم نفس الشجرة، ويتركب على الـ DOM الموجود بدل ما يعمله من جديد. وليه تمنين. الأول: لحد ما يخلص، الصفحة شكلها جاهزة بس مش جاهزة، فالضغطات البدري بيبقى الـ INP بتاعها وحش. التاني: الـ client لازم يرسم بالظبط اللي السيرفر رسمه، والوقت والـ locale والعشوائية و checks الـ window بيعملوا mismatches. والحلول: JS أقل على الـ client (Server Components)، و streaming مع selective hydration، و render نتيجته ثابتة."
         }
       }
     ],
@@ -96,7 +96,7 @@ STUDY.deepen("nextjs", {
       }
     ],
     story: {
-      text: { en: "okoRent's public marketplace needed SEO-friendly pages (App Router); Smart FAQ, an invitation-only tool, is a Vite SPA — CSR was enough.", ar: "الـ marketplace العام في okoRent كان محتاج صفحات مناسبة للـ SEO (App Router)؛ و Smart FAQ، أداة بالدعوة بس، Vite SPA — والـ CSR كان كفاية." },
+      text: { en: "okoRent's public marketplace needed SEO-friendly pages (App Router); Smart FAQ, an invitation-only tool, is a Vite SPA — CSR was enough.", ar: "الـ marketplace العام في okoRent كان محتاج صفحات مناسبة للـ SEO، فكان App Router. أما Smart FAQ فأداة بالدعوة بس، فبقى Vite SPA، والـ CSR كان كفاية." },
       p: "okorent", tab: "decisions", label: "okoRent"
     },
     sources: [
@@ -123,7 +123,7 @@ STUDY.deepen("nextjs", {
         title: { en: "\"use client\" marks a boundary, not a single component", ar: "الـ \"use client\" بيعلّم حد، مش component واحد" },
         body: {
           en: "The file with <code>\"use client\"</code> and everything it imports become client code. Client components are still rendered to HTML on the server; “client” means their JS is shipped and they hydrate, so they can use state, effects and browser APIs.",
-          ar: "الملف اللي فيه <code>\"use client\"</code> وكل اللي بيعمله import بيبقوا كود client. والـ client components برضه بتترسم HTML على السيرفر؛ و«client» معناها إن الـ JS بتاعها بيتبعت وبتعمل hydrate، فتقدر تستخدم state و effects و browser APIs."
+          ar: "الملف اللي فيه <code>\"use client\"</code>، وكل اللي بيعمله import، بيبقوا كود client. والـ client components برضه بتترسم HTML على السيرفر. وكلمة «client» معناها إن الـ JS بتاعها بيتبعت للمتصفح وبتعمل hydrate، فتقدر تستخدم state و effects و browser APIs."
         }
       },
       {
@@ -158,7 +158,7 @@ STUDY.deepen("nextjs", {
           en: "An <code>onClick</code> function, a Date-heavy class instance or a Map from a Server Component to a client component fails, or arrives as something else.",
           ar: "function <code>onClick</code>، أو instance من class، أو Map من Server Component لـ client component بيفشل، أو بيوصل حاجة تانية."
         },
-        fix: { en: "Pass plain data; define handlers inside the client component; use a Server Action for server work triggered from the client.", ar: "ابعت داتا عادية؛ وعرّف الـ handlers جوه الـ client component؛ واستخدم Server Action للشغل اللي على السيرفر وبيتنادى من الـ client." }
+        fix: { en: "Pass plain data; define handlers inside the client component; use a Server Action for server work triggered from the client.", ar: "ابعت داتا عادية. وعرّف الـ handlers جوه الـ client component. والشغل اللي على السيرفر وبيتنادى من الـ client، اعمله Server Action." }
       },
       {
         title: { en: "Leaking server code into the client", ar: "تسريب كود السيرفر للـ client" },
@@ -172,10 +172,10 @@ STUDY.deepen("nextjs", {
     levels: [
       {
         q: "Server Components vs Client Components?",
-        mid: { en: "Server Components render on the server and can fetch data; Client Components run in the browser and can use hooks.", ar: "الـ Server Components بتترسم على السيرفر وتقدر تجيب داتا؛ والـ Client Components بتشتغل في المتصفح وتقدر تستخدم hooks." },
+        mid: { en: "Server Components render on the server and can fetch data; Client Components run in the browser and can use hooks.", ar: "الـ Server Components بتترسم على السيرفر وتقدر تجيب داتا. والـ Client Components بتشتغل في المتصفح وتقدر تستخدم hooks." },
         senior: {
           en: "Server Components run only on the server and ship no JS — data access, secrets and heavy rendering libraries stay there. Client Components are also server-rendered to HTML, but their code ships and hydrates, so they handle state, effects and events. Default to server; add <code>\"use client\"</code> at the smallest interactive leaf; compose by passing server output as children; keep props serialisable; guard server modules with <code>server-only</code>. The result is less client JS and simpler data fetching, at the cost of thinking about the boundary.",
-          ar: "الـ Server Components بتشتغل على السيرفر بس ومش بتبعت JS — الوصول للداتا، والـ secrets، ومكتبات الرسم التقيلة بيفضلوا هناك. والـ Client Components برضه بتترسم HTML على السيرفر، بس الكود بتاعها بيتبعت وبتعمل hydrate، فبتتعامل مع الـ state والـ effects والـ events. الأساس server؛ وبضيف <code>\"use client\"</code> عند أصغر طرف تفاعلي؛ وبركّب عن طريق إني أبعت نتيجة السيرفر كـ children؛ وبخلي الـ props serialisable؛ وبحمي modules السيرفر بـ <code>server-only</code>. والنتيجة JS أقل على الـ client و data fetching أبسط، والتمن إنك تفكر في الحد ده."
+          ar: "الـ Server Components بتشتغل على السيرفر بس، ومش بتبعت JS. فالوصول للداتا، والـ secrets، ومكتبات الرسم التقيلة بيفضلوا هناك. والـ Client Components برضه بتترسم HTML على السيرفر، بس الكود بتاعها بيتبعت وبتعمل hydrate، فبتتعامل مع الـ state والـ effects والـ events. الأساس عندي server. وبضيف <code>\"use client\"</code> عند أصغر جزء تفاعلي. وبركّب عن طريق إني أبعت نتيجة السيرفر كـ children. وبخلي الـ props serialisable. وبحمي الـ modules بتاعة السيرفر بـ <code>server-only</code>. والنتيجة: JS أقل على الـ client، و data fetching أبسط. والتمن إنك لازم تفكر في الحد ده."
         }
       }
     ],
@@ -186,11 +186,11 @@ STUDY.deepen("nextjs", {
         follow: [
           {
             q: "Then why call it “client”?",
-            a: { en: "Because its code ships to the browser and runs there too; Server Components' code never does.", ar: "لأن الكود بتاعه بيتبعت للمتصفح وبيشتغل هناك كمان؛ والـ Server Components الكود بتاعها عمره ما بيتبعت." },
+            a: { en: "Because its code ships to the browser and runs there too; Server Components' code never does.", ar: "لأن الكود بتاعه بيتبعت للمتصفح وبيشتغل هناك كمان. أما الـ Server Components فالكود بتاعها عمره ما بيتبعت." },
             follow: [
               {
                 q: "How would you keep a 200 KB syntax highlighter off the client?",
-                a: { en: "Highlight in a Server Component and send the resulting HTML; only the copy button (a tiny client component) ships JS.", ar: "اعمل الـ highlight في Server Component وابعت الـ HTML الناتج؛ وزرار النسخ بس (client component صغير) هو اللي بيبعت JS." }
+                a: { en: "Highlight in a Server Component and send the resulting HTML; only the copy button (a tiny client component) ships JS.", ar: "اعمل الـ highlight في Server Component، وابعت الـ HTML الناتج. وزرار النسخ بس هو اللي يبقى client component صغير ويبعت JS." }
               }
             ]
           }
@@ -214,7 +214,7 @@ STUDY.deepen("nextjs", {
         title: { en: "How the defaults changed", ar: "الـ defaults اتغيرت إزاي" },
         body: {
           en: "<b>Next 14</b>: <code>fetch</code> results were cached by default, routes were static unless forced dynamic. <b>Next 15</b>: <code>fetch</code> and GET route handlers are no longer cached by default; you opt in. <b>Next 16</b>: Cache Components — caching is explicit with the <code>\"use cache\"</code> directive on functions, components or pages, with <code>cacheLife</code> for lifetime and <code>cacheTag</code> for invalidation; everything else runs at request time.",
-          ar: "<b>Next 14</b>: نتايج الـ <code>fetch</code> كانت بتتعمل لها cache افتراضيًا، والـ routes static إلا لو اتجبرت dynamic. <b>Next 15</b>: الـ <code>fetch</code> والـ GET route handlers مبقاش ليهم cache افتراضيًا؛ إنت اللي بتختار. <b>Next 16</b>: الـ Cache Components — الـ caching صريح بالـ directive <code>\"use cache\"</code> على functions أو components أو pages، و <code>cacheLife</code> للمدة و <code>cacheTag</code> للـ invalidation؛ وأي حاجة تانية بتشتغل وقت الـ request."
+          ar: "في <b>Next 14</b>: نتايج الـ <code>fetch</code> كان ليها cache افتراضيًا، والـ routes static إلا لو أجبرتها تبقى dynamic. وفي <b>Next 15</b>: الـ <code>fetch</code> والـ GET route handlers مبقاش ليهم cache افتراضيًا، وإنت اللي بتختار. وفي <b>Next 16</b> جت الـ Cache Components: الـ caching بقى صريح بالـ directive <code>\"use cache\"</code> على functions أو components أو pages. ومعاه <code>cacheLife</code> للمدة، و <code>cacheTag</code> للـ invalidation. وأي حاجة تانية بتشتغل وقت الـ request."
         },
         code: "import { cacheLife, cacheTag } from \"next/cache\";\n\nexport async function getProducts() {\n  \"use cache\";\n  cacheLife(\"hours\");\n  cacheTag(\"products\");\n  return db.products.findMany();\n}",
         run: "browser"
@@ -230,7 +230,7 @@ STUDY.deepen("nextjs", {
         title: { en: "Revalidation after a change", ar: "الـ Revalidation بعد أي تغيير" },
         body: {
           en: "Time-based through <code>cacheLife</code>; on demand from a Server Action or route handler: <code>updateTag(tag)</code> (Server Actions only, read-your-writes: the user sees the change in the same response), <code>revalidateTag(tag, \"max\")</code> (stale-while-revalidate: next visitors get fresh data), <code>revalidatePath(path)</code>, and <code>refresh()</code> for uncached data shown elsewhere.",
-          ar: "بالوقت عن طريق <code>cacheLife</code>؛ وعند الطلب من Server Action أو route handler: <code>updateTag(tag)</code> (في الـ Server Actions بس، read-your-writes: اليوزر بيشوف التغيير في نفس الـ response)، و <code>revalidateTag(tag, \"max\")</code> (stale-while-revalidate: الزوار الجايين بياخدوا داتا جديدة)، و <code>revalidatePath(path)</code>، و <code>refresh()</code> للداتا اللي مش متعمل لها cache ومعروضة في حتة تانية."
+          ar: "فيه طريقتين. بالوقت، عن طريق <code>cacheLife</code>. أو عند الطلب، من Server Action أو route handler. والأدوات هنا 4. <code>updateTag(tag)</code>، وده في الـ Server Actions بس، واليوزر بيشوف التغيير في نفس الـ response (read-your-writes). و <code>revalidateTag(tag, \"max\")</code>، وده stale-while-revalidate، يعني الزوار الجايين بياخدوا داتا جديدة. و <code>revalidatePath(path)</code>. و <code>refresh()</code> للداتا اللي مش متعمل لها cache ومعروضة في حتة تانية."
         },
         code: "\"use server\";\nimport { updateTag } from \"next/cache\";\n\nexport async function renameProduct(id, name) {\n  await assertCanEdit(id);\n  await db.products.update({ where: { id }, data: { name } });\n  updateTag(\"products\");   // the editor sees the new name immediately\n}",
         run: "browser"
@@ -258,7 +258,7 @@ STUDY.deepen("nextjs", {
           en: "A cached function that reads the current user internally, or a shared cache keyed without the user id, can serve one user's data to another.",
           ar: "function متعمل لها cache بتقرا اليوزر الحالي من جوه، أو cache مشترك الـ key بتاعه مفيهوش الـ user id، ممكن تعرض داتا يوزر ليوزر تاني."
         },
-        fix: { en: "Read cookies/headers outside the cached function and pass the user id as an argument (it becomes part of the key), or use <code>\"use cache: private\"</code>; never put session-specific data in a shared entry.", ar: "اقرا الـ cookies/headers برّه الـ function المتعمل لها cache وابعت الـ user id كـ argument (بيبقى جزء من الـ key)، أو استخدم <code>\"use cache: private\"</code>؛ وعمرك ما تحط داتا خاصة بـ session في entry مشترك." }
+        fix: { en: "Read cookies/headers outside the cached function and pass the user id as an argument (it becomes part of the key), or use <code>\"use cache: private\"</code>; never put session-specific data in a shared entry.", ar: "اقرا الـ cookies والـ headers برّه الـ function المتعمل لها cache، وابعت الـ user id كـ argument، فيبقى جزء من الـ key. أو استخدم <code>\"use cache: private\"</code>. وعمرك ما تحط داتا خاصة بـ session في entry مشترك." }
       },
       {
         title: { en: "Sequential awaits on the server", ar: "awaits ورا بعض على السيرفر" },
@@ -272,10 +272,10 @@ STUDY.deepen("nextjs", {
     levels: [
       {
         q: "Explain caching in the Next.js App Router.",
-        mid: { en: "Next caches fetch requests and pages; you can use <code>revalidate</code> to refresh them.", ar: "Next بيعمل cache للـ fetch requests والصفحات؛ وتقدر تستخدم <code>revalidate</code> علشان تحدّثهم." },
+        mid: { en: "Next caches fetch requests and pages; you can use <code>revalidate</code> to refresh them.", ar: "Next بيعمل cache للـ fetch requests والصفحات، وتقدر تستخدم <code>revalidate</code> علشان تحدّثهم." },
         senior: {
           en: "It depends on the version, and I say which one. In Next 14, which my App Router projects used, <code>fetch</code> was cached by default and many routes were static. Next 15 removed those defaults. Next 16's Cache Components make caching explicit: <code>\"use cache\"</code> on data functions or components, <code>cacheLife</code> for freshness, <code>cacheTag</code> plus <code>updateTag</code>/<code>revalidateTag</code> after mutations; cached and static parts form a prerendered shell and request-time parts stream behind Suspense. Separately, <code>React.cache</code> dedupes within a request, and the client router keeps recent payloads for fast navigation.",
-          ar: "ده بيعتمد على الـ version، وبقول أنهي واحدة. في Next 14، اللي مشاريعي على الـ App Router كانت عليه، الـ <code>fetch</code> كان ليه cache افتراضيًا وroutes كتير كانت static. و Next 15 شال الـ defaults دي. والـ Cache Components في Next 16 خلت الـ caching صريح: <code>\"use cache\"</code> على functions الداتا أو الـ components، و <code>cacheLife</code> للـ freshness، و <code>cacheTag</code> مع <code>updateTag</code>/<code>revalidateTag</code> بعد الـ mutations؛ والأجزاء المتعمل لها cache والثابتة بتعمل shell متعمل له prerender، والأجزاء اللي وقت الـ request بتعمل stream ورا Suspense. ولوحده، <code>React.cache</code> بيعمل dedup جوه الـ request، والـ router على الـ client بيحتفظ بالـ payloads الأخيرة علشان التنقل يبقى سريع."
+          ar: "ده بيعتمد على الـ version، وأنا بقول أنهي واحدة. مشاريعي على الـ App Router كانت Next 14، وفيه الـ <code>fetch</code> كان ليه cache افتراضيًا، و routes كتير كانت static. و Next 15 شال الـ defaults دي. وفي Next 16 الـ Cache Components خلت الـ caching صريح. بتحط <code>\"use cache\"</code> على functions الداتا أو الـ components، و <code>cacheLife</code> للمدة، و <code>cacheTag</code> مع <code>updateTag</code> أو <code>revalidateTag</code> بعد الـ mutations. والأجزاء الثابتة والمتعمل لها cache بتعمل shell متعمل له prerender. والأجزاء اللي محتاجة الـ request بتعمل stream ورا Suspense. وغير ده، <code>React.cache</code> بيعمل dedup جوه الـ request الواحد. والـ router على الـ client بيحتفظ بآخر payloads، علشان التنقل يبقى سريع."
         }
       },
       {
@@ -283,14 +283,14 @@ STUDY.deepen("nextjs", {
         mid: { en: "Add <code>revalidatePath</code> or disable caching for that page.", ar: "أضيف <code>revalidatePath</code> أو أقفل الـ caching للصفحة دي." },
         senior: {
           en: "I find which layer served the old data: the server cache (is the function or fetch cached, with which tag and lifetime?), the client router cache (does a hard reload fix it?), or something outside Next (a CDN or the API's own cache). Then fix at that layer: invalidate the right tag in the action — <code>updateTag</code> when the editor must see it immediately — or <code>router.refresh()</code> on the client. I avoid “disable all caching”, which trades a bug for a slow site.",
-          ar: "بلاقي أنهي طبقة عرضت الداتا القديمة: الـ cache على السيرفر (الـ function أو الـ fetch عليه cache، بأنهي tag ومدة قد إيه؟)، ولا الـ router cache على الـ client (الـ hard reload بيصلّحها؟)، ولا حاجة برّه Next (CDN أو cache الـ API نفسه). وبعدين أصلّح في الطبقة دي: أعمل invalidate للـ tag الصح في الـ action — <code>updateTag</code> لما اللي بيعدّل لازم يشوف التغيير على طول — أو <code>router.refresh()</code> على الـ client. وبتجنب «اقفل كل الـ caching»، لأنه بيبدّل bug بموقع بطيء."
+          ar: "الأول بلاقي أنهي طبقة عرضت الداتا القديمة. هل هو الـ cache على السيرفر؟ (الـ function أو الـ fetch عليه cache؟ بأنهي tag؟ ومدته قد إيه؟) ولا الـ router cache على الـ client؟ (الـ hard reload بيصلّحها؟) ولا حاجة برّه Next، زي CDN أو cache الـ API نفسه؟ وبعدين بصلّح في الطبقة دي بالظبط. يا أعمل invalidate للـ tag الصح في الـ action، وأستخدم <code>updateTag</code> لو اللي بيعدّل لازم يشوف التغيير على طول. يا أعمل <code>router.refresh()</code> على الـ client. وبتجنب «اقفل كل الـ caching»، لأنه بيبدّل bug بموقع بطيء."
         }
       }
     ],
     drill: [
       {
         q: "Request memoisation vs the persistent cache?",
-        a: { en: "Memoisation dedupes identical calls within one render of one request; the persistent cache (<code>\"use cache\"</code>) reuses results across requests until revalidated.", ar: "الـ memoisation بيعمل dedup للنداءات المتطابقة جوه render واحد لـ request واحد؛ والـ cache الدايم (<code>\"use cache\"</code>) بيستخدم النتايج بين الـ requests لحد ما يتعمل revalidate." },
+        a: { en: "Memoisation dedupes identical calls within one render of one request; the persistent cache (<code>\"use cache\"</code>) reuses results across requests until revalidated.", ar: "الـ memoisation بيعمل dedup للنداءات المتطابقة جوه render واحد لـ request واحد. أما الـ cache الدايم (<code>\"use cache\"</code>) فبيستخدم النتايج بين الـ requests، لحد ما يتعمل revalidate." },
         follow: [
           {
             q: "When do you need React.cache?",
@@ -298,7 +298,7 @@ STUDY.deepen("nextjs", {
             follow: [
               {
                 q: "updateTag or revalidateTag after a save?",
-                a: { en: "<code>updateTag</code> in a Server Action when the person who saved must see the change in the response (read-your-writes); <code>revalidateTag(tag, \"max\")</code> when eventual freshness for other visitors is fine.", ar: "<code>updateTag</code> في Server Action لما الشخص اللي حفظ لازم يشوف التغيير في الـ response (read-your-writes)؛ و <code>revalidateTag(tag, \"max\")</code> لما يكفي إن الزوار التانيين ياخدوا الجديد بعد شوية." }
+                a: { en: "<code>updateTag</code> in a Server Action when the person who saved must see the change in the response (read-your-writes); <code>revalidateTag(tag, \"max\")</code> when eventual freshness for other visitors is fine.", ar: "استخدم <code>updateTag</code> في Server Action لما الشخص اللي حفظ لازم يشوف التغيير في الـ response (read-your-writes). واستخدم <code>revalidateTag(tag, \"max\")</code> لما يكفي إن الزوار التانيين ياخدوا الجديد بعد شوية." }
               }
             ]
           }
@@ -340,14 +340,14 @@ STUDY.deepen("nextjs", {
         title: { en: "The React 19 hooks around actions", ar: "الـ hooks بتاعة React 19 حوالين الـ actions" },
         body: {
           en: "<code>useActionState(action, initial)</code> gives the last result and a pending flag; <code>useFormStatus()</code> lets a submit button inside the form know it's pending; <code>useOptimistic</code> shows the expected result immediately and reverts if the action fails.",
-          ar: "<code>useActionState(action, initial)</code> بيديك آخر نتيجة و flag للـ pending؛ و <code>useFormStatus()</code> بيخلي زرار الـ submit جوه الفورم يعرف إنه pending؛ و <code>useOptimistic</code> بيعرض النتيجة المتوقعة على طول ويرجع فيها لو الـ action فشل."
+          ar: "الـ <code>useActionState(action, initial)</code> بيديك آخر نتيجة، و flag للـ pending. والـ <code>useFormStatus()</code> بيخلي زرار الـ submit اللي جوه الفورم يعرف إنه pending. والـ <code>useOptimistic</code> بيعرض النتيجة المتوقعة على طول، ويرجع فيها لو الـ action فشل."
         }
       },
       {
         title: { en: "Cookies and redirects belong here", ar: "الـ cookies والـ redirects مكانها هنا" },
         body: {
           en: "Actions run on the server with the request context, so they can set httpOnly cookies (<code>(await cookies()).set(...)</code>) and <code>redirect()</code> — the token never touches client-side JavaScript.",
-          ar: "الـ actions بتشتغل على السيرفر ومعاها context الـ request، فتقدر تحط httpOnly cookies (<code>(await cookies()).set(...)</code>) وتعمل <code>redirect()</code> — والـ token عمره ما بيلمس JavaScript على الـ client."
+          ar: "الـ actions بتشتغل على السيرفر ومعاها الـ context بتاع الـ request. فتقدر تحط httpOnly cookies (<code>(await cookies()).set(...)</code>)، وتعمل <code>redirect()</code>. والـ token عمره ما بيلمس JavaScript على الـ client."
         }
       }
     ],
@@ -366,7 +366,7 @@ STUDY.deepen("nextjs", {
           en: "Actions are POSTs that run one at a time from the client and aren't cached, so using them for reads makes slow, uncacheable waterfalls.",
           ar: "الـ actions عبارة عن POSTs بتشتغل واحدة واحدة من الـ client ومش بيتعمل لها cache، فاستخدامها للقراية بيعمل waterfalls بطيئة ومينفعش يتعمل لها cache."
         },
-        fix: { en: "Read in Server Components (or a query library on the client); use actions for mutations.", ar: "اقرا في الـ Server Components (أو مكتبة queries على الـ client)؛ واستخدم الـ actions للـ mutations." }
+        fix: { en: "Read in Server Components (or a query library on the client); use actions for mutations.", ar: "اقرا الداتا في الـ Server Components، أو بمكتبة queries على الـ client. واستخدم الـ actions للـ mutations بس." }
       },
       {
         title: { en: "Returning too much", ar: "إنك ترجّع حاجات كتير" },
@@ -380,10 +380,10 @@ STUDY.deepen("nextjs", {
     levels: [
       {
         q: "What are Server Actions, and are they secure?",
-        mid: { en: "Functions that run on the server that you can call from forms; they're secure because they run on the server.", ar: "functions بتشتغل على السيرفر وتقدر تناديها من الفورمز؛ وهي آمنة لأنها بتشتغل على السيرفر." },
+        mid: { en: "Functions that run on the server that you can call from forms; they're secure because they run on the server.", ar: "functions بتشتغل على السيرفر، وتقدر تناديها من الفورمز. وهي آمنة لأنها بتشتغل على السيرفر." },
         senior: {
           en: "They're RPC: a <code>\"use server\"</code> function becomes a POST endpoint, and the client calls it by id with serialised arguments. Running on the server doesn't make them safe — each one is a public endpoint, so I authenticate, authorise per resource and validate input inside every action, return minimal data, and refresh caches (<code>updateTag</code>/<code>revalidateTag</code>) or redirect. They shine for forms (progressive enhancement, <code>useActionState</code>, <code>useOptimistic</code>) and for things that must stay server-side — in okoRent, a server action sets the httpOnly auth cookie after login, so the token never touches client JS storage.",
-          ar: "هي RPC: الـ function اللي عليها <code>\"use server\"</code> بتبقى POST endpoint، والـ client بيناديها بالـ id ومعاها arguments متعمل لها serialise. وإنها بتشتغل على السيرفر مش بيخليها آمنة — كل واحدة endpoint عام، فبعمل authenticate، و authorise لكل resource، و validate للـ input جوه كل action، وبرجّع أقل داتا، وبحدّث الـ caches (<code>updateTag</code>/<code>revalidateTag</code>) أو بعمل redirect. وهي ممتازة للفورمز (progressive enhancement، و <code>useActionState</code>، و <code>useOptimistic</code>) وللحاجات اللي لازم تفضل على السيرفر — في okoRent، server action بيحط الـ httpOnly auth cookie بعد الـ login، فالـ token عمره ما بيلمس تخزين JS على الـ client."
+          ar: "هي RPC. الـ function اللي عليها <code>\"use server\"</code> بتبقى POST endpoint، والـ client بيناديها بالـ id ومعاها arguments متعمل لها serialise. وإنها بتشتغل على السيرفر مش معناه إنها آمنة، لأن كل واحدة endpoint عام. فجوه كل action بعمل authenticate، و authorise لكل resource، و validate للـ input. وبرجّع أقل داتا ممكنة. وبحدّث الـ caches (<code>updateTag</code>/<code>revalidateTag</code>) أو بعمل redirect. وهي ممتازة للفورمز (progressive enhancement، و <code>useActionState</code>، و <code>useOptimistic</code>). وممتازة كمان للحاجات اللي لازم تفضل على السيرفر. مثلًا في okoRent، server action بيحط الـ httpOnly auth cookie بعد الـ login، فالـ token عمره ما بيلمس تخزين JS على الـ client."
         }
       },
       {
@@ -398,7 +398,7 @@ STUDY.deepen("nextjs", {
     drill: [
       {
         q: "How is a Server Action called under the hood?",
-        a: { en: "A POST request to the page's route with the action's id; the arguments are serialised in the body, and the response carries the result plus any updated RSC payload.", ar: "POST request على الـ route بتاع الصفحة ومعاه الـ id بتاع الـ action؛ والـ arguments متعمل لها serialise في الـ body، والـ response فيه النتيجة ومعاها أي RSC payload اتحدث." },
+        a: { en: "A POST request to the page's route with the action's id; the arguments are serialised in the body, and the response carries the result plus any updated RSC payload.", ar: "بيبقى POST request على الـ route بتاع الصفحة، ومعاه الـ id بتاع الـ action. والـ arguments بتبقى متعمل لها serialise في الـ body. والـ response فيه النتيجة، ومعاها أي RSC payload اتحدث." },
         follow: [
           {
             q: "So what does that mean for security?",

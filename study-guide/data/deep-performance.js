@@ -17,7 +17,7 @@ STUDY.deepen("performance", {
         title: { en: "LCP has four parts — fix the biggest", ar: "الـ LCP ليه 4 أجزاء — صلّح أكبرهم" },
         body: {
           en: "Time to first byte → resource load delay (how late the browser discovers the LCP image) → resource load duration → element render delay. Typical fixes: put the LCP image in the HTML (not injected by JS), give it <code>fetchpriority=\"high\"</code>, never lazy-load it, serve the right size and format, and avoid render-blocking CSS/JS before it.",
-          ar: "الوقت لأول byte ← تأخير اكتشاف الـ resource (المتصفح عرف صورة الـ LCP متأخر قد إيه) ← مدة تحميل الـ resource ← تأخير رسم الـ element. والحلول المعتادة: حط صورة الـ LCP في الـ HTML (مش الـ JS هو اللي يضيفها)، وادّيها <code>fetchpriority=\"high\"</code>، وعمرك ما تعملها lazy-load، وابعتها بالحجم والـ format الصح، وشيل أي CSS/JS بيوقف الرسم قبلها."
+          ar: "الأجزاء الـ 4 بالترتيب: الوقت لأول byte، وبعدين تأخير اكتشاف الصورة (المتصفح عرف صورة الـ LCP متأخر قد إيه)، وبعدين مدة تحميلها، وبعدين تأخير رسم الـ element. والحلول المعتادة: حط صورة الـ LCP في الـ HTML نفسه، مش الـ JS هو اللي يضيفها. وادّيها <code>fetchpriority=\"high\"</code>، وعمرك ما تعملها lazy-load. وابعتها بالحجم والـ format الصح. وشيل أي CSS أو JS بيوقف الرسم قبلها."
         },
         code: "<img src=\"/hero-1200.avif\" srcset=\"/hero-800.avif 800w, /hero-1200.avif 1200w\" sizes=\"100vw\"\n     width=\"1200\" height=\"600\" fetchpriority=\"high\" alt=\"…\">   <!-- no loading=\"lazy\" on the LCP image -->",
         run: "browser"
@@ -44,7 +44,7 @@ STUDY.deepen("performance", {
           en: "A blanket “lazy-load all images” rule delays the LCP element until layout decides it's visible.",
           ar: "قاعدة «اعمل lazy-load لكل الصور» بتأخر عنصر الـ LCP لحد ما الـ layout يقرر إنه ظاهر."
         },
-        fix: { en: "Eager + <code>fetchpriority=\"high\"</code> for the LCP image; lazy only below the fold.", ar: "eager + <code>fetchpriority=\"high\"</code> لصورة الـ LCP؛ والـ lazy للي تحت بس." }
+        fix: { en: "Eager + <code>fetchpriority=\"high\"</code> for the LCP image; lazy only below the fold.", ar: "صورة الـ LCP تبقى eager ومعاها <code>fetchpriority=\"high\"</code>. والـ lazy للصور اللي تحت بس." }
       },
       {
         title: { en: "Content rendered only by client JS", ar: "محتوى بيترسم بالـ JS على الـ client بس" },
@@ -52,7 +52,7 @@ STUDY.deepen("performance", {
           en: "In a client-rendered SPA the LCP element exists only after the bundle downloads, runs and fetches data — LCP includes all of that.",
           ar: "في SPA بيترسم على الـ client، عنصر الـ LCP مش بيبقى موجود غير بعد ما الـ bundle يتحمّل ويشتغل ويجيب الداتا — والـ LCP بيحسب ده كله."
         },
-        fix: { en: "Server-render or prerender public pages; for SPAs, shrink the critical bundle and start the data request early (preload or parallel with the JS).", ar: "اعمل server-render أو prerender للصفحات العامة؛ وفي الـ SPAs صغّر الـ bundle الأساسي وابدأ request الداتا بدري (preload أو بالتوازي مع الـ JS)." }
+        fix: { en: "Server-render or prerender public pages; for SPAs, shrink the critical bundle and start the data request early (preload or parallel with the JS).", ar: "اعمل server-render أو prerender للصفحات العامة. وفي الـ SPAs، صغّر الـ bundle الأساسي، وابدأ الـ request بتاع الداتا بدري (preload، أو بالتوازي مع الـ JS)." }
       },
       {
         title: { en: "Trusting only Lighthouse", ar: "إنك تثق في Lighthouse بس" },
@@ -69,12 +69,12 @@ STUDY.deepen("performance", {
         mid: { en: "Compress and lazy-load images, use a CDN, and reduce JavaScript.", ar: "أضغط الصور وأعملها lazy-load، وأستخدم CDN، وأقلل الـ JavaScript." },
         senior: {
           en: "First find which element is the LCP and which of its four parts dominates — TTFB, load delay, load duration, render delay. Then fix that part: a slow server or missing CDN cache for TTFB; for load delay, make the image discoverable in the HTML with <code>fetchpriority=\"high\"</code> and never lazy; for duration, size and format (AVIF/WebP, <code>srcset</code>); for render delay, remove render-blocking CSS/JS and client-only rendering. Then confirm in field data at p75, not just Lighthouse.",
-          ar: "الأول ألاقي أنهي element هو الـ LCP وأنهي جزء من الـ 4 هو الكبير — TTFB، أو تأخير الاكتشاف، أو مدة التحميل، أو تأخير الرسم. وبعدين أصلّح الجزء ده: سيرفر بطيء أو CDN cache ناقص للـ TTFB؛ وللتأخير في الاكتشاف، أخلي الصورة باينة في الـ HTML مع <code>fetchpriority=\"high\"</code> ومن غير lazy؛ وللمدة، الحجم والـ format (AVIF/WebP، <code>srcset</code>)؛ ولتأخير الرسم، أشيل الـ CSS/JS اللي بيوقف الرسم والرسم على الـ client بس. وبعدين أتأكد من الـ field data عند الـ p75، مش من Lighthouse بس."
+          ar: "الأول بلاقي أنهي element هو الـ LCP، وأنهي جزء من الـ 4 هو الكبير: الـ TTFB، ولا تأخير الاكتشاف، ولا مدة التحميل، ولا تأخير الرسم. وبعدين بصلّح الجزء ده بالظبط. لو الـ TTFB، يبقى سيرفر بطيء أو CDN cache ناقص. لو تأخير الاكتشاف، بخلي الصورة باينة في الـ HTML مع <code>fetchpriority=\"high\"</code> ومن غير lazy. لو مدة التحميل، بظبط الحجم والـ format (AVIF/WebP و <code>srcset</code>). ولو تأخير الرسم، بشيل الـ CSS/JS اللي بيوقف الرسم، والرسم اللي على الـ client بس. وفي الآخر بتأكد من الـ field data عند الـ p75، مش من Lighthouse بس."
         }
       },
       {
         q: "Lab data vs field data?",
-        mid: { en: "Lab is Lighthouse; field is real users.", ar: "الـ lab هو Lighthouse؛ والـ field هو اليوزرز الحقيقيين." },
+        mid: { en: "Lab is Lighthouse; field is real users.", ar: "الـ lab هو Lighthouse، والـ field هو اليوزرز الحقيقيين." },
         senior: {
           en: "Field data (RUM, CrUX) is what users experience and what Google evaluates — real devices, networks and interactions, at p75. Lab data is a controlled, repeatable run — great for debugging and catching regressions in CI, but it has no real interactions, so no real INP. I use field data to decide what to fix, and the lab to reproduce it and prove the fix.",
           ar: "الـ field data (RUM، CrUX) هي اللي اليوزرز بيعيشوها وهي اللي Google بيقيّم بيها — أجهزة وشبكات وتفاعلات حقيقية، عند الـ p75. والـ lab data تشغيل متحكَّم فيه وبيتكرر — ممتاز للـ debugging ولمسك التراجعات في الـ CI، بس مفيهوش تفاعلات حقيقية، فمفيش INP حقيقي. بستخدم الـ field data علشان أقرر أصلّح إيه، والـ lab علشان أعيد المشكلة وأثبت الحل."
@@ -88,7 +88,7 @@ STUDY.deepen("performance", {
         follow: [
           {
             q: "How do you find which interaction is slow in production?",
-            a: { en: "The <code>web-vitals</code> attribution build reports the target element, the event type and the three INP parts; the Long Animation Frames API names the scripts that ran. Send that to analytics, group by element, and fix the worst.", ar: "نسخة الـ attribution من <code>web-vitals</code> بتبلّغ عن الـ element والـ event type والـ 3 أجزاء بتوع الـ INP؛ والـ Long Animation Frames API بيقول أنهي scripts اشتغلت. ابعت ده للـ analytics، وجمّع حسب الـ element، وصلّح الأوحش." },
+            a: { en: "The <code>web-vitals</code> attribution build reports the target element, the event type and the three INP parts; the Long Animation Frames API names the scripts that ran. Send that to analytics, group by element, and fix the worst.", ar: "نسخة الـ attribution من <code>web-vitals</code> بتقولك الـ element، ونوع الـ event، والـ 3 أجزاء بتوع الـ INP. والـ Long Animation Frames API بيقولك أنهي scripts اشتغلت. ابعت ده للـ analytics، وجمّعه حسب الـ element، وصلّح الأوحش." },
             follow: [
               {
                 q: "And if processing time dominates?",
@@ -137,14 +137,14 @@ STUDY.deepen("performance", {
         title: { en: "Split where users would wait for code they don't need", ar: "قسّم في الأماكن اللي اليوزر هيستنى فيها كود مش محتاجه" },
         body: {
           en: "Routes first (frameworks do it), then heavy, rarely used components: editors, charts, maps, animation libraries used in one place. Prefetch the next likely chunk on hover or in idle time; don't split into dozens of tiny chunks that load as a waterfall.",
-          ar: "الـ routes الأول (والـ frameworks بتعمل كده)، وبعدين الـ components التقيلة اللي نادرًا ما بتتستخدم: editors، و charts، و maps، ومكتبات animation مستخدمة في مكان واحد. واعمل prefetch للـ chunk اللي غالبًا جاي لما الماوس يقف أو في وقت الفراغ؛ ومتقسمش لعشرات الـ chunks الصغيرة اللي بتتحمّل ورا بعض."
+          ar: "قسّم الـ routes الأول، والـ frameworks أصلًا بتعمل كده. وبعدين الـ components التقيلة اللي نادرًا ما بتتستخدم: editors، و charts، و maps، ومكتبات animation مستخدمة في مكان واحد. واعمل prefetch للـ chunk اللي غالبًا جاي، لما الماوس يقف عليه أو في وقت الفراغ. ومتقسمش لعشرات الـ chunks الصغيرة اللي بتتحمّل ورا بعض."
         }
       },
       {
         title: { en: "Measure and set a budget", ar: "قيس وحط حد" },
         body: {
           en: "A bundle analyzer (rollup-plugin-visualizer, <code>@next/bundle-analyzer</code>) shows what's inside; the DevTools Coverage tab shows how much of it runs on load; a size budget in CI (e.g. size-limit) fails the build when a dependency adds 80 KB by accident.",
-          ar: "الـ bundle analyzer (rollup-plugin-visualizer، <code>@next/bundle-analyzer</code>) بيوريك إيه اللي جوه؛ وتاب الـ Coverage في DevTools بيوريك قد إيه منه بيشتغل وقت التحميل؛ وحد للحجم في الـ CI (زي size-limit) بيوقّع الـ build لما dependency تزوّد 80KB من غير قصد."
+          ar: "الـ bundle analyzer (زي rollup-plugin-visualizer أو <code>@next/bundle-analyzer</code>) بيوريك إيه اللي جوه. وتاب الـ Coverage في DevTools بيوريك قد إيه منه بيشتغل وقت التحميل. وحد للحجم في الـ CI (زي size-limit) بيوقّع الـ build لو dependency زوّدت 80KB من غير قصد."
         }
       }
     ],
@@ -180,14 +180,14 @@ STUDY.deepen("performance", {
         mid: { en: "Code splitting with lazy loading, tree-shaking and removing unused libraries.", ar: "code splitting مع lazy loading، و tree-shaking، وإني أشيل المكتبات اللي مش مستخدمة." },
         senior: {
           en: "Measure first: an analyzer for what's inside, Coverage for what runs at load, field metrics for whether it matters. Then: replace or slim heavy dependencies, make sure tree-shaking works (ESM, <code>sideEffects</code>, no CJS where it matters, no barrels), split routes and heavy rare components with sensible prefetching, and trim polyfills to real targets. Finally, a size budget in CI so it doesn't creep back — that last part is what keeps it fixed.",
-          ar: "أقيس الأول: analyzer علشان أعرف إيه اللي جوه، و Coverage علشان أعرف إيه اللي بيشتغل وقت التحميل، ومقاييس الـ field علشان أعرف ده فارق ولا لأ. وبعدين: أبدّل أو أخفف الـ dependencies التقيلة، وأتأكد إن الـ tree-shaking شغال (ESM، و <code>sideEffects</code>، ومفيش CJS في الأماكن المهمة، ومفيش barrels)، وأقسّم الـ routes والـ components التقيلة النادرة مع prefetch منطقي، وأقلل الـ polyfills للمتصفحات الحقيقية. وفي الآخر حد للحجم في الـ CI علشان ميرجعش يزيد — والجزء ده هو اللي بيخلي الحل يفضل."
+          ar: "أقيس الأول. analyzer علشان أعرف إيه اللي جوه، و Coverage علشان أعرف إيه اللي بيشتغل وقت التحميل، ومقاييس الـ field علشان أعرف ده فارق ولا لأ. وبعدين أبدّل أو أخفف الـ dependencies التقيلة. وأتأكد إن الـ tree-shaking شغال: ESM، و <code>sideEffects</code>، ومفيش CJS في الأماكن المهمة، ومفيش barrels. وأقسّم الـ routes والـ components التقيلة النادرة، مع prefetch منطقي. وأقلل الـ polyfills للمتصفحات اللي اليوزرز فعلًا بيستخدموها. وفي الآخر أحط حد للحجم في الـ CI علشان ميرجعش يزيد، والجزء ده هو اللي بيخلي الحل يفضل."
         }
       }
     ],
     drill: [
       {
         q: "Why is a KB of JavaScript more expensive than a KB of image?",
-        a: { en: "Images decode off the main thread; JavaScript must be parsed, compiled and executed on it, and executing it often triggers more work (rendering, data requests).", ar: "الصور بتتفك برّه الـ main thread؛ لكن الـ JavaScript لازم يتعمل له parse و compile ويشتغل عليه، وتشغيله غالبًا بيعمل شغل زيادة (render، و data requests)." },
+        a: { en: "Images decode off the main thread; JavaScript must be parsed, compiled and executed on it, and executing it often triggers more work (rendering, data requests).", ar: "الصور بتتفك برّه الـ main thread. لكن الـ JavaScript لازم يتعمل له parse و compile ويشتغل عليه. وتشغيله غالبًا بيعمل شغل زيادة، زي render و data requests." },
         follow: [
           {
             q: "Doesn't Brotli solve it?",
@@ -217,7 +217,7 @@ STUDY.deepen("performance", {
         title: { en: "Measure: Profiler first", ar: "قيس: الـ Profiler الأول" },
         body: {
           en: "React DevTools Profiler shows each commit, which components rendered, how long they took and <b>why</b> (“props changed: onSelect”). The browser Performance panel shows whether the cost is React rendering, layout, or something else; React 19.2 adds React tracks to it.",
-          ar: "الـ React DevTools Profiler بيوريك كل commit، وأنهي components عملت render، وأخدت قد إيه، و<b>ليه</b> («props changed: onSelect»). والـ Performance panel في المتصفح بيوريك التمن ده render بتاع React ولا layout ولا حاجة تانية؛ و React 19.2 ضاف له tracks خاصة بـ React."
+          ar: "الـ React DevTools Profiler بيوريك كل commit، وأنهي components عملت render، وأخدت قد إيه، و<b>ليه</b> («props changed: onSelect»). والـ Performance panel في المتصفح بيوريك الوقت راح في render بتاع React، ولا layout، ولا حاجة تانية. و React 19.2 ضاف له tracks خاصة بـ React."
         }
       },
       {
@@ -231,7 +231,7 @@ STUDY.deepen("performance", {
         title: { en: "Virtualisation and its trade-offs", ar: "الـ Virtualisation وعيوبها" },
         body: {
           en: "Render only the rows in view (TanStack Virtual, react-virtuoso). It turns 10,000 DOM rows into ~30. The costs: browser find-in-page can't see off-screen rows, screen readers need correct row counts (<code>aria-rowcount</code>, <code>aria-rowindex</code>), variable heights need measuring, and scroll restoration needs care.",
-          ar: "ارسم الـ rows اللي ظاهرة بس (TanStack Virtual، react-virtuoso). وده بيحوّل 10,000 row في الـ DOM لحوالي 30. والتمن: البحث في الصفحة بتاع المتصفح مش بيشوف الـ rows اللي برّه الشاشة، والـ screen readers محتاجة عدد الـ rows الصح (<code>aria-rowcount</code>، <code>aria-rowindex</code>)، والارتفاعات المختلفة محتاجة قياس، ورجوع الـ scroll محتاج اهتمام."
+          ar: "ارسم الـ rows اللي ظاهرة بس، بـ TanStack Virtual أو react-virtuoso. وده بيحوّل 10,000 row في الـ DOM لحوالي 30. وليه تمن. البحث في الصفحة بتاع المتصفح مش بيشوف الـ rows اللي برّه الشاشة. والـ screen readers محتاجة عدد الـ rows الصح (<code>aria-rowcount</code> و <code>aria-rowindex</code>). والارتفاعات المختلفة محتاجة قياس. ورجوع الـ scroll محتاج اهتمام."
         }
       }
     ],
@@ -256,9 +256,9 @@ STUDY.deepen("performance", {
         title: { en: "Virtualising everything", ar: "Virtualisation لكل حاجة" },
         body: {
           en: "A 40-row table doesn't need virtualisation; you pay in complexity, accessibility and find-in-page for nothing.",
-          ar: "table فيه 40 row مش محتاج virtualisation؛ هتدفع تمنه في التعقيد والـ accessibility والبحث في الصفحة من غير فايدة."
+          ar: "table فيه 40 row مش محتاج virtualisation. هتدفع تمنه في التعقيد والـ accessibility والبحث في الصفحة، من غير فايدة."
         },
-        fix: { en: "Virtualise when the Profiler or DOM size says so (hundreds to thousands of complex rows); otherwise paginate.", ar: "اعمل virtualisation لما الـ Profiler أو حجم الـ DOM يقولوا كده (مئات لآلاف الـ rows المعقدة)؛ وإلا اعمل pagination." }
+        fix: { en: "Virtualise when the Profiler or DOM size says so (hundreds to thousands of complex rows); otherwise paginate.", ar: "اعمل virtualisation لما الـ Profiler أو حجم الـ DOM يقولوا كده، يعني مئات لآلاف الـ rows المعقدة. وإلا اعمل pagination." }
       }
     ],
     levels: [
@@ -267,7 +267,7 @@ STUDY.deepen("performance", {
         mid: { en: "Add <code>React.memo</code>, <code>useMemo</code> and <code>useCallback</code>, and maybe pagination.", ar: "أضيف <code>React.memo</code> و <code>useMemo</code> و <code>useCallback</code>، وممكن pagination." },
         senior: {
           en: "I reproduce it and record with the Profiler to see what renders on the slow interaction and why. In Smart FAQ the answer was that every row menu re-rendered because its actions array was new each render. The fix was structural and targeted: one layout per screen size, menus mounted only when opened, and memoised row menus and badges comparing only what they show, with latest-ref handlers. Re-renders went from about 20 ms to about 2 ms. If rows had been in the thousands, I'd add virtualisation; if the filter itself were slow, a deferred value.",
-          ar: "بعيد المشكلة وبسجّل بالـ Profiler علشان أشوف إيه اللي بيعمل render في التفاعل البطيء وليه. وفي Smart FAQ كانت الإجابة إن كل row menu بيعمل re-render لأن الـ actions array بتاعه جديد كل render. والحل كان في الـ structure ومحدد: layout واحد لكل مقاس شاشة، والـ menus بتتعمل لها mount بس لما تتفتح، و row menus و badges معمول لها memo بتقارن اللي بتعرضه بس، ومعاها handlers بـ latest ref. والـ re-renders نزلت من حوالي 20ms لحوالي 2ms. ولو الـ rows كانت بالآلاف كنت هضيف virtualisation؛ ولو الفلتر نفسه بطيء، deferred value."
+          ar: "بعيد المشكلة، وبسجّل بالـ Profiler علشان أشوف إيه اللي بيعمل render في التفاعل البطيء وليه. وفي Smart FAQ، الإجابة كانت إن كل row menu بيعمل re-render، لأن الـ actions array بتاعه جديد في كل render. والحل كان في الـ structure ومحدد. layout واحد لكل مقاس شاشة. والـ menus بتتعمل لها mount بس لما تتفتح. والـ row menus والـ badges معمول لها memo، بتقارن اللي بتعرضه بس، ومعاها handlers بـ latest ref. والـ re-renders نزلت من حوالي 20ms لحوالي 2ms. ولو الـ rows كانت بالآلاف، كنت هضيف virtualisation. ولو الفلتر نفسه بطيء، كنت هستخدم deferred value."
         }
       },
       {
@@ -275,7 +275,7 @@ STUDY.deepen("performance", {
         mid: { en: "When the list is very long.", ar: "لما الـ list تبقى طويلة أوي." },
         senior: {
           en: "When the DOM size or the Profiler shows that rendering the rows is the bottleneck — usually hundreds to thousands of non-trivial rows, or an endless feed or chat. I pick a library that handles variable heights when needed (okoRent's chat grows upwards with variable-height messages, so react-virtuoso), and I keep accessibility: row counts, keyboard navigation, and an alternative to find-in-page like a search box.",
-          ar: "لما حجم الـ DOM أو الـ Profiler يبيّنوا إن رسم الـ rows هو عنق الزجاجة — غالبًا مئات لآلاف الـ rows اللي مش بسيطة، أو feed أو chat مالوش آخر. وبختار مكتبة بتتعامل مع الارتفاعات المختلفة لما أحتاج (الشات في okoRent بيكبر لفوق ورسايله ارتفاعاتها مختلفة، فاستخدمنا react-virtuoso)، وبحافظ على الـ accessibility: عدد الـ rows، والتنقل بالكيبورد، وبديل للبحث في الصفحة زي search box."
+          ar: "لما حجم الـ DOM أو الـ Profiler يبيّنوا إن رسم الـ rows هو اللي مبطّأ الدنيا. وده غالبًا مع مئات لآلاف الـ rows اللي مش بسيطة، أو feed أو chat مالوش آخر. وبختار مكتبة بتتعامل مع الارتفاعات المختلفة لما أحتاج. مثلًا الشات في okoRent بيكبر لفوق، ورسايله ارتفاعاتها مختلفة، فاستخدمنا react-virtuoso. وبحافظ على الـ accessibility: عدد الـ rows، والتنقل بالكيبورد، وبديل للبحث في الصفحة زي search box."
         }
       }
     ],
@@ -292,7 +292,7 @@ STUDY.deepen("performance", {
       }
     ],
     story: {
-      text: { en: "Smart FAQ: one layout per screen size, memoised row menus and badges, and lazily mounted menus took a table re-render from ~20 ms to ~2 ms; okoRent uses react-virtuoso for a chat that grows upwards with variable-height messages.", ar: "Smart FAQ: layout واحد لكل مقاس شاشة، و row menus و badges معمول لها memo، و menus بتتعمل لها mount وقت الحاجة نزّلوا الـ re-render بتاع الـ table من ~20ms لـ ~2ms؛ و okoRent بيستخدم react-virtuoso لشات بيكبر لفوق ورسايله ارتفاعاتها مختلفة." },
+      text: { en: "Smart FAQ: one layout per screen size, memoised row menus and badges, and lazily mounted menus took a table re-render from ~20 ms to ~2 ms; okoRent uses react-virtuoso for a chat that grows upwards with variable-height messages.", ar: "Smart FAQ: 3 حاجات نزّلوا الـ re-render بتاع الـ table من ~20ms لـ ~2ms. layout واحد لكل مقاس شاشة، و row menus و badges معمول لها memo، و menus بتتعمل لها mount وقت الحاجة بس. و okoRent بيستخدم react-virtuoso لشات بيكبر لفوق، ورسايله ارتفاعاتها مختلفة." },
       p: "smartfaq", tab: "problems", label: "Smart FAQ"
     },
     sources: [
