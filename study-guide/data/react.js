@@ -1,6 +1,6 @@
 // React fundamentals — written 2026-10-29. Every hook has its own page in data/hooks.js.
 STUDY.fill("react", {
-  intro: { en: "How React really works: elements and components, rendering and reconciliation, keys, state snapshots and batching, effects as synchronisation, Strict Mode, and the concurrent features of React 18–19.", ar: "React شغال إزاي فعلًا: الـ elements والـ components، الـ rendering والـ reconciliation، الـ keys، الـ state كـ snapshot والـ batching، الـ effects كمزامنة، الـ Strict Mode، والـ concurrent features في React 18 و 19." },
+  intro: { en: "How React really works: elements and components, rendering and reconciliation, keys, state snapshots and batching, effects as synchronisation, Strict Mode, and the concurrent features of React 18–19.", ar: "React شغال إزاي فعلًا. الـ elements والـ components، والـ rendering والـ reconciliation، والـ keys. وكمان الـ state كـ snapshot والـ batching، والـ effects كمزامنة، والـ Strict Mode، والـ concurrent features في React 18 و 19." },
   topics: [
     {
       id: "mental-model",
@@ -30,7 +30,7 @@ STUDY.fill("react", {
     {
       id: "reconciliation",
       title: { en: "Reconciliation and keys", ar: "الـ Reconciliation والـ Keys" },
-      tldr: { en: "React compares trees by position and type: same type at the same place → update it and keep its state; different type → unmount and mount fresh. In lists, <code>key</code> is the identity — stable ids keep the right state with the right item.", ar: "React بيقارن الشجر بالمكان والنوع: نفس النوع في نفس المكان ← يحدّثه ويحافظ على الـ state؛ نوع مختلف ← unmount و mount من جديد. وفي القوايم، الـ <code>key</code> هو الهوية — IDs ثابتة بتخلي الـ state الصح مع العنصر الصح." },
+      tldr: { en: "React compares trees by position and type: same type at the same place → update it and keep its state; different type → unmount and mount fresh. In lists, <code>key</code> is the identity — stable ids keep the right state with the right item.", ar: "React بيقارن الشجر بالمكان والنوع. لو نفس النوع في نفس المكان، بيحدّثه ويحافظ على الـ state. ولو النوع مختلف، بيعمل unmount و mount من جديد. وفي القوايم، الـ <code>key</code> هو الهوية. والـ IDs الثابتة بتخلي الـ state الصح يفضل مع العنصر الصح." },
       blocks: [
         { type: "code", code: "{items.map((item, i) => <Row key={i} item={item} />)}      // ✗ index: state moves when items reorder/insert\n{items.map((item) => <Row key={item.id} item={item} />)}   // ✓ stable id\n\n// reset a component's state on purpose: change its key\n<ProfileForm key={userId} user={user} />                   // new user → fresh form state" },
         { type: "when", title: { en: "Is the index OK as a key?", ar: "الـ index ينفع كـ key؟" }, use: [{ en: "Static lists that never reorder, insert or delete, and rows have no state.", ar: "قوايم ثابتة مش بتترتب ولا يتضاف فيها ولا يتمسح، والصفوف ملهاش state." }], avoid: [{ en: "Sortable/filterable lists, lists with inputs, checkboxes, animations.", ar: "قوايم بتترتب أو تتفلتر، أو فيها inputs أو checkboxes أو أنيميشن." }] },
@@ -38,13 +38,13 @@ STUDY.fill("react", {
           { en: "Defining a component inside another component creates a new type every render → its subtree remounts and loses state.", ar: "لو عرّفت component جوه component تاني بيبقى type جديد كل render ← اللي تحته بيعمل remount ويخسر الـ state." },
           { en: "<code>key={Math.random()}</code> remounts every render.", ar: "<code>key={Math.random()}</code> بيعمل remount كل render." }
         ] },
-        { type: "projects", items: [{ text: { en: "Smart FAQ's taxonomy tree (dnd-kit sortable) keys rows by node id so drag and drop keeps the right state; Trackoo: a missing key in a FlatList was one of his fixes.", ar: "شجرة الـ taxonomy في Smart FAQ (dnd-kit sortable) بتستخدم id الـ node كـ key علشان الـ drag and drop يحافظ على الـ state الصح؛ وفي Trackoo: key ناقص في FlatList كان من الـ fixes بتاعته." }, p: "smartfaq", tab: "overview", label: "Smart FAQ" }] }
+        { type: "projects", items: [{ text: { en: "Smart FAQ's taxonomy tree (dnd-kit sortable) keys rows by node id so drag and drop keeps the right state; Trackoo: a missing key in a FlatList was one of his fixes.", ar: "في Smart FAQ، شجرة الـ taxonomy (dnd-kit sortable) بتستخدم الـ id بتاع الـ node كـ key، علشان الـ drag and drop يحافظ على الـ state الصح. وفي Trackoo، كان من الحاجات اللي صلحها key ناقص في FlatList." }, p: "smartfaq", tab: "overview", label: "Smart FAQ" }] }
       ],
       say: "Keys are identity, not just a warning fix — stable ids keep each row's state attached to the right item, and changing a key is the clean way to reset a component.",
       interview: [{ q: "Why is the index a bad key for a sortable list?", a: { en: "After sorting, index 0 points to a different item but React keeps the old row's state (input text, checkbox) at index 0 — state ends up on the wrong item.", ar: "بعد الترتيب، index 0 بيشاور على عنصر مختلف بس React بيحافظ على state الصف القديم (نص الـ input، الـ checkbox) في index 0 — فالـ state بيروح للعنصر الغلط." },
         follow: [{ q: "How do you reset a form when the selected user changes?", a: { en: "Give the form <code>key={userId}</code>, so React mounts a fresh instance — simpler and safer than syncing state in an effect.", ar: "اديله <code>key={userId}</code>، فـ React يعمل instance جديد — أبسط وأأمن من مزامنة الـ state في effect." } }] }],
       quiz: [{ q: { en: "Same position, &lt;div&gt; becomes &lt;section&gt; — what happens to children's state?", ar: "نفس المكان، &lt;div&gt; بقى &lt;section&gt; — الـ state بتاع الأولاد إيه؟" }, a: { en: "Lost — a different type remounts the subtree.", ar: "بيضيع — النوع المختلف بيعمل remount للي تحته." } }],
-      quick: [{ en: "Same type + same place = keep state; key = identity; change key to reset; never define components inside components.", ar: "نفس النوع ونفس المكان = الـ state بيفضل؛ الـ key = هوية؛ غيّر الـ key علشان تعمل reset؛ متعرّفش component جوه component." }]
+      quick: [{ en: "Same type + same place = keep state; key = identity; change key to reset; never define components inside components.", ar: "نفس النوع في نفس المكان يعني الـ state بيفضل. والـ key هو الهوية. غيّر الـ key علشان تعمل reset. ومتعرّفش component جوه component." }]
     },
     {
       id: "state-snapshots",
@@ -62,7 +62,7 @@ STUDY.fill("react", {
       interview: [{ q: "Why does console.log right after setState show the old value?", a: { en: "Because the variable belongs to the current render's snapshot. setState schedules a re-render where the component function runs again with the new value.", ar: "علشان المتغير تبع snapshot الـ render الحالي. و setState بيجدول re-render والـ function بتشتغل تاني بالقيمة الجديدة." },
         follow: [{ q: "What changed about batching in React 18?", a: { en: "Automatic batching everywhere: updates in timeouts, promises and native handlers are batched too, not only in React event handlers.", ar: "Batching أوتوماتيك في كل حتة: التحديثات في الـ timeouts والـ promises والـ native handlers بتتجمع كمان، مش بس في event handlers بتاعة React." } }] }],
       quiz: [{ q: { en: "Three <code>setCount(count + 1)</code> in one click from 0 → ?", ar: "تلاتة <code>setCount(count + 1)</code> في ضغطة واحدة من 0 ← ؟" }, a: { en: "1.", ar: "1." } }],
-      quick: [{ en: "State = snapshot; setter schedules; updater fn for dependent updates; batching everywhere since 18.", ar: "الـ State = snapshot؛ الـ setter بيجدول؛ updater function للتحديثات المعتمدة؛ batching في كل حتة من 18." }]
+      quick: [{ en: "State = snapshot; setter schedules; updater fn for dependent updates; batching everywhere since 18.", ar: "الـ state عبارة عن snapshot. والـ setter بيجدول تحديث. واستخدم updater function للتحديثات المعتمدة على اللي قبلها. والـ batching في كل حتة من React 18." }]
     },
     {
       id: "effects-model",
@@ -83,7 +83,7 @@ STUDY.fill("react", {
       interview: [{ q: "Why is fetching in useEffect discouraged?", a: { en: "You must handle race conditions, cancellation, caching, deduping, retries, loading/error states and Strict Mode's double run yourself. A data library or framework loader already does it.", ar: "لازم تتعامل بنفسك مع الـ race conditions والإلغاء والكاش ومنع التكرار والـ retry وحالات الـ loading والـ error وتشغيل Strict Mode مرتين. ومكتبة داتا أو loader بتاع framework بيعملوا ده جاهز." },
         follow: [{ q: "If you must fetch in an effect, how do you avoid a race?", a: { en: "Use an <code>ignore</code> flag set in cleanup, or AbortController, so a stale response doesn't overwrite a newer one.", ar: "استخدم flag <code>ignore</code> بيتعمل في الـ cleanup، أو AbortController، علشان رد قديم ميغطيش على رد أحدث." } }] }],
       quiz: [{ q: { en: "When does the cleanup function run?", ar: "الـ cleanup بيشتغل إمتى؟" }, a: { en: "Before the effect re-runs (deps changed) and on unmount.", ar: "قبل ما الـ effect يتعاد (الـ deps اتغيرت) ومع الـ unmount." } }],
-      quick: [{ en: "Effects = sync with external systems; derive in render; fetch with a data lib; events in handlers; cleanup always.", ar: "الـ Effects = مزامنة مع الخارج؛ اشتق في الـ render؛ الـ fetch بمكتبة داتا؛ الأحداث في الـ handlers؛ cleanup دايمًا." }]
+      quick: [{ en: "Effects = sync with external systems; derive in render; fetch with a data lib; events in handlers; cleanup always.", ar: "الـ effects للمزامنة مع حاجة برّه React. واحسب الداتا المشتقة في الـ render. والـ fetch بمكتبة داتا. والأكشنز في الـ handlers. والـ cleanup دايمًا." }]
     },
     {
       id: "strict-mode",
@@ -95,12 +95,12 @@ STUDY.fill("react", {
       say: "Strict Mode double-invokes renders and effects in development so missing cleanups show up before production — I fix the cleanup rather than turning it off.",
       interview: [{ q: "My effect runs twice in development. Bug?", a: { en: "Expected with Strict Mode: React mounts, unmounts and re-mounts to test your cleanup. If the double run causes a visible problem (two connections, two analytics events), the effect is missing cleanup or doesn't belong in an effect.", ar: "متوقع مع Strict Mode: React بيعمل mount و unmount و mount تاني علشان يجرب الـ cleanup. ولو التشغيل المزدوج عمل مشكلة ظاهرة (اتصالين، اتنين analytics)، يبقى الـ effect ناقصه cleanup أو مكانه مش في effect." } }],
       quiz: [{ q: { en: "Parent and child both log in useEffect on mount — order?", ar: "الأب والابن بيطبعوا في useEffect مع الـ mount — الترتيب؟" }, a: { en: "Child first, then parent.", ar: "الابن الأول، وبعدين الأب." } }],
-      quick: [{ en: "Strict Mode dev-only double render/effect; effects run child → parent.", ar: "Strict Mode بيكرر الـ render والـ effect في التطوير بس؛ الـ effects من الابن للأب." }]
+      quick: [{ en: "Strict Mode dev-only double render/effect; effects run child → parent.", ar: "الـ Strict Mode بيكرر الـ render والـ effect في الـ development بس. والـ effects بتشتغل من الـ child للـ parent." }]
     },
     {
       id: "concurrent",
       title: { en: "Concurrent React, Suspense and React 19", ar: "Concurrent React والـ Suspense و React 19" },
-      tldr: { en: "React 18 can interrupt rendering: urgent updates (typing) go first, transitions (filtering a big list) can wait. Suspense shows a fallback while something loads. React 19 adds Actions (async functions in transitions and forms), <code>use()</code>, <code>useOptimistic</code>, <code>useActionState</code>, refs as props, and the React Compiler that memoizes automatically.", ar: "React 18 يقدر يقطع الـ rendering: التحديثات المستعجلة (الكتابة) الأول، والـ transitions (فلترة قايمة كبيرة) تستنى. و Suspense بيعرض fallback وحاجة بتتحمل. و React 19 زود Actions (async functions في الـ transitions والفورمز)، و <code>use()</code>، و <code>useOptimistic</code>، و <code>useActionState</code>، والـ ref كـ prop، و React Compiler اللي بيعمل memo لوحده." },
+      tldr: { en: "React 18 can interrupt rendering: urgent updates (typing) go first, transitions (filtering a big list) can wait. Suspense shows a fallback while something loads. React 19 adds Actions (async functions in transitions and forms), <code>use()</code>, <code>useOptimistic</code>, <code>useActionState</code>, refs as props, and the React Compiler that memoizes automatically.", ar: "React 18 يقدر يقطع الـ rendering. التحديثات المستعجلة (زي الكتابة) بتتعمل الأول، والـ transitions (زي فلترة قايمة كبيرة) بتستنى. و Suspense بيعرض fallback وفيه حاجة بتتحمّل. و React 19 زوّد الـ Actions، وهي async functions في الـ transitions والفورمز. وزوّد كمان <code>use()</code> و <code>useOptimistic</code> و <code>useActionState</code>، والـ ref كـ prop، و React Compiler اللي بيعمل memo لوحده." },
       blocks: [
         { type: "code", code: "<Suspense fallback={<Skeleton />}>\n  <Orders />                    {/* suspends while its data/code loads */}\n</Suspense>\n\nconst [isPending, startTransition] = useTransition();\nstartTransition(() => setFilter(next));   // keep the input responsive, render the list when possible\n\n// React 19 Action in a form\nconst [state, formAction, pending] = useActionState(saveProfile, null);\n<form action={formAction}>…<button disabled={pending}>Save</button></form>" },
         { type: "compare", cols: [{ en: "Feature", ar: "الميزة" }, { en: "Solves", ar: "بيحل" }], rows: [
@@ -113,9 +113,9 @@ STUDY.fill("react", {
       ],
       say: "Transitions let me keep typing responsive while expensive renders wait, and Suspense gives clean loading boundaries; with React 19 Actions, forms handle pending and errors with much less code.",
       interview: [{ q: "What does “concurrent rendering” actually mean?", a: { en: "Rendering can be paused, interrupted and resumed, so React can handle an urgent update (a keystroke) before finishing a non-urgent one. It's not multi-threading — it's interruptible work on one thread.", ar: "الـ rendering ممكن يتوقف ويتقطع ويكمل، فـ React يقدر يتعامل مع تحديث مستعجل (ضغطة زرار) قبل ما يخلص واحد مش مستعجل. ده مش multi-threading — ده شغل يتقطع على thread واحد." },
-        follow: [{ q: "What will the React Compiler change for you?", a: { en: "It memoizes components and values at build time when it can prove it's safe, so most manual useMemo/useCallback/memo becomes unnecessary — as long as components follow the rules (pure render, no mutation).", ar: "بيعمل memo للـ components والقيم وقت الـ build لما يتأكد إنه آمن، فمعظم الـ useMemo و useCallback و memo اليدوي ملوش لازمة — طالما الـ components ماشية على القواعد (render pure ومن غير تعديل)." } }] }],
+        follow: [{ q: "What will the React Compiler change for you?", a: { en: "It memoizes components and values at build time when it can prove it's safe, so most manual useMemo/useCallback/memo becomes unnecessary — as long as components follow the rules (pure render, no mutation).", ar: "بيعمل memo للـ components والقيم وقت الـ build، لما يتأكد إن ده آمن. فمعظم الـ useMemo والـ useCallback والـ memo اليدوي بيبقى ملوش لازمة. بس ده بشرط إن الـ components ماشية على القواعد: render pure، ومن غير تعديل." } }] }],
       quiz: [{ q: { en: "Does startTransition make code run in another thread?", ar: "startTransition بيشغل الكود في thread تاني؟" }, a: { en: "No — it marks the update as interruptible.", ar: "لأ — بيعلّم التحديث إنه يتقطع." } }],
-      quick: [{ en: "Transitions = non-urgent; Suspense = loading boundaries; React 19: Actions, use(), useOptimistic, Compiler.", ar: "Transitions = مش مستعجل؛ Suspense = حدود loading؛ React 19: Actions و use() و useOptimistic و Compiler." }]
+      quick: [{ en: "Transitions = non-urgent; Suspense = loading boundaries; React 19: Actions, use(), useOptimistic, Compiler.", ar: "الـ transitions معناها «مش مستعجل». والـ Suspense حدود للـ loading. و React 19 جاب Actions و use() و useOptimistic والـ Compiler." }]
     },
     {
       id: "react-output",
@@ -134,7 +134,7 @@ STUDY.fill("react", {
         { q: { en: "Example 1: what if all three were updater functions?", ar: "مثال 1: لو التلاتة updater functions؟" }, a: { en: "n = 3 in one render.", ar: "n = 3 في render واحد." } },
         { q: { en: "Example 3: one-line fix?", ar: "مثال 3: الحل في سطر؟" }, a: { en: "Hoist the style object outside the component (or useMemo it).", ar: "طلّع الـ style object برا الـ component (أو useMemo)." } }
       ],
-      quick: [{ en: "Queued updates apply in order; intervals need updater fns; memo fails on new object props; children passed as props don't re-render.", ar: "التحديثات بتتطبق بالترتيب؛ الـ intervals محتاجة updater؛ الـ memo بيفشل مع props objects جديدة؛ الـ children المبعوتة كـ props مش بتعمل re-render." }]
+      quick: [{ en: "Queued updates apply in order; intervals need updater fns; memo fails on new object props; children passed as props don't re-render.", ar: "التحديثات بتتطبق بالترتيب. والـ intervals محتاجة updater. والـ memo بيفشل مع props بتبقى objects جديدة. والـ children اللي بتتبعت كـ props مش بتعمل re-render." }]
     }
   ]
 });
