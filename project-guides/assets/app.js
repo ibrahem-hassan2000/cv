@@ -23,7 +23,7 @@
       howtoSteps: ["Pick the 3–4 projects on the CV you are sending.", "Read “My role” and “Don't say” first.", "Go through Decisions — be ready for “why X and not Y?”.", "Say the STAR story out loud, then answer the questions without opening them."],
       conceptsIntro: "The ideas behind the decisions. Each card: what it is, when it matters, and a question you may get.",
       what: "What it is", when: "When it matters", pitfall: "Watch out", usedIn: "Used in",
-      readyCount: "ready", menu: "Menu", notHere: "The code is on another laptop. Open the repo there and say “continue the project guides”."
+      readyCount: "ready", menu: "Menu", study: "Study guide", notHere: "The code is on another laptop. Open the repo there and say “continue the project guides”."
     },
     ar: {
       title: "دليل الإنترفيو", sub: "إبراهيم حسن · Frontend", home: "الرئيسية", concepts: "المفاهيم",
@@ -41,7 +41,7 @@
       howtoSteps: ["اختار الـ 3–4 مشاريع اللي في الـ CV اللي هتبعته.", "اقرا «دوري» و«متقولش» الأول.", "عدّي على «القرارات التقنية» — استعد لسؤال «ليه X مش Y؟».", "قول قصة الـ STAR بصوت عالي، وبعدين جاوب الأسئلة من غير ما تفتحها."],
       conceptsIntro: "الأفكار اللي ورا القرارات. كل كارت: المفهوم إيه، يهم إمتى، وسؤال ممكن يتسأل.",
       what: "هو إيه", when: "يهم إمتى", pitfall: "خلي بالك", usedIn: "اتستخدم في",
-      readyCount: "جاهز", menu: "القايمة", notHere: "الكود على لاب تاني. افتح الـ repo هناك وقول «كمّل الـ project guides»."
+      readyCount: "جاهز", menu: "القايمة", study: "دليل المذاكرة", notHere: "الكود على لاب تاني. افتح الـ repo هناك وقول «كمّل الـ project guides»."
     }
   };
   var TABS = ["overview", "decisions", "how", "hooks", "problems", "interview"];
@@ -86,7 +86,8 @@
       }).join("") + "</div>";
     s += '<nav class="nav">' +
       '<a href="#/" class="' + (r.view === "home" ? "active" : "") + '"><div class="logo-tile mono" style="--tile:#2b2b28">⌂</div><b>' + U("home") + "</b></a>" +
-      '<a href="#/concepts" class="' + (r.view === "concepts" ? "active" : "") + '"><div class="logo-tile mono" style="--tile:#5b4fd6">◆</div><b>' + U("concepts") + "</b></a></nav>";
+      '<a href="#/concepts" class="' + (r.view === "concepts" ? "active" : "") + '"><div class="logo-tile mono" style="--tile:#5b4fd6">◆</div><b>' + U("concepts") + "</b></a>" +
+      '<a href="../study-guide/index.html" style="border:1px dashed var(--line)"><div class="logo-tile mono" style="--tile:#7c3aed">⇆</div><b>' + U("study") + "</b></a></nav>";
     s += '<div class="nav-label">' + U("projects") + "</div><nav class=\"nav\">" + H.projects.map(function (p) {
       return '<a href="#/' + p.id + '" class="' + (r.p && r.p.id === p.id ? "active" : "") + '">' + logo(p) +
         "<div><b>" + p.name + '</b><span class="meta">' + p.company + " · " + p.years + "</span></div></a>";
