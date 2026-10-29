@@ -4,56 +4,56 @@ STUDY.deepen("javascript", {
   "event-loop": {
     why: {
       en: "Interviewers use the event loop to tell people who memorised “microtasks before macrotasks” from people who can explain a frozen page, a flaky test or a bad INP score. Expect them to keep asking “why?” until you reach the spec or a real bug.",
-      ar: "الإنترفيورز بيستخدموا الـ event loop علشان يفرّقوا بين اللي حافظ «الـ microtasks قبل الـ macrotasks» واللي يقدر يشرح صفحة مهنّجة، أو test بيقع ساعات، أو INP وحش. استنى إنهم يفضلوا يسألوا «ليه؟» لحد ما توصل للـ spec أو لـ bug حقيقي."
+      ar: "الإنترفيورز بيسألوا عن الـ event loop علشان يعرفوا مين حافظ «الـ microtasks قبل الـ macrotasks» ومين فاهم بجد. اللي فاهم يقدر يشرح ليه صفحة هنّجت، أو ليه test بيقع ساعات وساعات لأ، أو ليه الـ INP وحش. واستنى إنهم يفضلوا يسألوا «ليه؟» لحد ما توصل للـ spec أو لـ bug حقيقي."
     },
     how: [
       {
-        title: { en: "The engine doesn't have an event loop — the host does", ar: "الـ engine مفيهوش event loop — الـ host هو اللي فيه" },
+        title: { en: "The engine doesn't have an event loop — the host does", ar: "الـ event loop مش جوه الـ engine — هو جوه الـ host" },
         body: {
           en: "V8 only gives you a call stack and a heap. The event loop, timers, <code>fetch</code> and the DOM belong to the <b>host</b>: the browser (defined in the HTML spec) or Node (built on libuv). ECMAScript itself only defines <i>jobs</i> for promise reactions and leaves “when” to the host; browsers run them as <b>microtasks</b>. That is why <code>setTimeout</code> is not part of the JavaScript language.",
-          ar: "الـ V8 بيديك call stack و heap بس. الـ event loop والـ timers و <code>fetch</code> والـ DOM بتاعة الـ <b>host</b>: المتصفح (متعرّفة في الـ HTML spec) أو Node (مبني على libuv). الـ ECMAScript نفسه بيعرّف <i>jobs</i> لردود الـ promises بس، وسايب «إمتى» للـ host؛ والمتصفحات بتشغلها كـ <b>microtasks</b>. وعلشان كده <code>setTimeout</code> مش جزء من لغة JavaScript."
+          ar: "الـ V8 فيه حاجتين بس: call stack و heap. أما الـ event loop والـ timers و <code>fetch</code> والـ DOM، فدول بتوع الـ <b>host</b>. والـ host ده يا المتصفح (والـ HTML spec هو اللي بيوصفه)، يا Node (ومبني على libuv). لغة JavaScript نفسها بتعرّف حاجة اسمها <i>jobs</i> لردود الـ promises، وسايبة للـ host يقرر يشغّلها إمتى. والمتصفح بيشغّلها كـ <b>microtasks</b>. علشان كده <code>setTimeout</code> مش جزء من اللغة نفسها."
         }
       },
       {
-        title: { en: "Many task queues, and the browser picks one task per turn", ar: "طوابير tasks كتير، والمتصفح بيختار task واحدة كل لفة" },
+        title: { en: "Many task queues, and the browser picks one task per turn", ar: "فيه أكتر من طابور tasks، والمتصفح بياخد task واحدة كل لفة" },
         body: {
           en: "Every task comes from a <b>task source</b>: timers, user interaction, networking, <code>postMessage</code>… A browser can keep separate queues and prefer some (Chrome gives user input priority). Order is only guaranteed <b>inside one source</b>. So “a due timer or a click — which runs first?” has no guaranteed answer, while two timers with the same delay do run in order.",
-          ar: "كل task جاية من <b>task source</b>: timers، تفاعل اليوزر، الشبكة، <code>postMessage</code>… والمتصفح ممكن يعمل طابور لكل واحد ويفضّل بعضهم (Chrome بيدي أولوية لـ input اليوزر). الترتيب مضمون <b>جوه نفس الـ source بس</b>. يعني «timer معاده جه ولا click — مين الأول؟» ملوش إجابة مضمونة، لكن اتنين timers بنفس الـ delay بيشتغلوا بالترتيب."
+          ar: "كل task جاية من مصدر (<b>task source</b>): timers، أو ضغطات اليوزر، أو الشبكة، أو <code>postMessage</code>. والمتصفح ممكن يعمل طابور لكل مصدر، ويقدّم واحد على التاني (Chrome مثلًا بيقدّم ضغطات اليوزر). الترتيب مضمون <b>جوه نفس المصدر بس</b>. يعني لو timer معاده جه واليوزر داس في نفس الوقت، مفيش ضمان مين يشتغل الأول. لكن اتنين timers بنفس الـ delay هيشتغلوا بالترتيب."
         }
       },
       {
-        title: { en: "The microtask checkpoint runs whenever the stack empties — not only after a task", ar: "الـ microtasks بتتفضّى كل ما الـ stack يفضى — مش بعد الـ task بس" },
+        title: { en: "The microtask checkpoint runs whenever the stack empties — not only after a task", ar: "الـ microtasks بتشتغل كل ما الـ stack يفضى، مش بعد الـ task بس" },
         body: {
           en: "After any callback finishes and the stack is empty, the browser drains <b>all</b> microtasks, including ones added while draining. That makes a real click and <code>el.click()</code> behave differently: with a real click each listener is called by the browser, so microtasks run between listeners. With <code>el.click()</code> your script is still on the stack, so they wait until it returns. Tests that call <code>click()</code> can pass while real users see a different order.",
-          ar: "بعد أي callback ما يخلص والـ stack يفضى، المتصفح بيشغّل <b>كل</b> الـ microtasks، حتى اللي اتضافت وهو بيفضّي. وده بيخلي click حقيقي غير <code>el.click()</code>: في الـ click الحقيقي المتصفح بينادي كل listener لوحده، فالـ microtasks بتشتغل بين الـ listeners. لكن مع <code>el.click()</code> الـ script بتاعك لسه على الـ stack، فبتستنى لحد ما يرجع. فممكن test بيستخدم <code>click()</code> ينجح، واليوزر الحقيقي يشوف ترتيب تاني."
+          ar: "أي callback يخلص والـ stack يفضى، المتصفح بيشغّل <b>كل</b> الـ microtasks اللي مستنية، حتى اللي اتضافت وهو بيشغّلهم. وده بيعمل فرق بين ضغطة حقيقية و <code>el.click()</code>. في الضغطة الحقيقية، المتصفح بينادي كل listener لوحده، فالـ microtasks بتشتغل بين الـ listeners. لكن في <code>el.click()</code> الكود بتاعك لسه على الـ stack، فالـ microtasks بتستنى لحد ما يخلص. يعني ممكن test بيستخدم <code>click()</code> ينجح، واليوزر الحقيقي يشوف ترتيب تاني."
         },
         code: "btn.addEventListener(\"click\", () => {\n  Promise.resolve().then(() => console.log(\"micro 1\"));\n  console.log(\"listener 1\");\n});\nbtn.addEventListener(\"click\", () => {\n  Promise.resolve().then(() => console.log(\"micro 2\"));\n  console.log(\"listener 2\");\n});\n// A user clicks:      listener 1, micro 1, listener 2, micro 2\n// btn.click() in JS:  listener 1, listener 2, micro 1, micro 2",
         run: "browser"
       },
       {
-        title: { en: "Rendering is a step of the loop, about once per frame", ar: "الرسم خطوة من خطوات الـ loop، تقريبًا مرة كل frame" },
+        title: { en: "Rendering is a step of the loop, about once per frame", ar: "الرسم خطوة جوه الـ loop، وبيحصل تقريبًا مرة كل frame" },
         body: {
           en: "The browser does not paint after every task. At a <b>rendering opportunity</b> (about every 16.7 ms on a 60 Hz screen, only if something changed and the tab is visible) it runs: <code>requestAnimationFrame</code> callbacks → style → layout → paint (resize and intersection observers run in these steps too). Microtasks also run after each rAF callback. So two style changes inside one task never show the in-between state — which is why a CSS transition sometimes “doesn't start”.",
-          ar: "المتصفح مش بيرسم بعد كل task. لما ييجي <b>وقت الرسم</b> (تقريبًا كل 16.7ms على شاشة 60Hz، ولو في حاجة اتغيرت والتاب ظاهرة) بيشغّل: callbacks الـ <code>requestAnimationFrame</code> ← style ← layout ← paint (والـ resize و intersection observers بيشتغلوا في الخطوات دي برضه). والـ microtasks بتشتغل بعد كل rAF callback. فلو غيّرت الـ style مرتين في نفس الـ task، الحالة اللي في النص عمرها ما هتتشاف — وده سبب إن الـ CSS transition ساعات «مش بيبدأ»."
+          ar: "المتصفح مش بيرسم بعد كل task. بيرسم لما ييجي <b>وقت الرسم</b>: تقريبًا كل 16.7ms على شاشة 60Hz، وبشرط إن فيه حاجة اتغيرت والتاب ظاهرة. وساعتها بيمشي بالترتيب ده: الـ callbacks بتاعة <code>requestAnimationFrame</code>، وبعدين الـ style، وبعدين الـ layout، وبعدين الـ paint. (والـ resize و intersection observers بيشتغلوا في الخطوات دي برضه.) والـ microtasks بتشتغل بعد كل rAF callback. يعني لو غيّرت الـ style مرتين في نفس الـ task، الشكل اللي في النص عمره ما هيظهر. وده سبب إن الـ CSS transition ساعات «مش بيشتغل»."
         },
         code: "box.style.transform = \"translateX(300px)\";   // start position\nbox.style.transition = \"transform 300ms\";\nbox.style.transform = \"translateX(0)\";       // same task → never painted at 300px → no animation\n\n// Fix: let the browser apply the start position first\nbox.style.transform = \"translateX(300px)\";\nbox.getBoundingClientRect();                  // forces style + layout now\nbox.style.transition = \"transform 300ms\";\nbox.style.transform = \"translateX(0)\";       // now it animates",
         run: "browser"
       },
       {
-        title: { en: "await is promise sugar — and the number of ticks is visible", ar: "الـ await مجرد promise بشكل أسهل — وعدد الـ ticks بيبان" },
+        title: { en: "await is promise sugar — and the number of ticks is visible", ar: "الـ await ده promise مكتوب بشكل أسهل، وعدد الـ ticks بيفرق" },
         body: {
           en: "Code after <code>await</code> continues in a microtask. Awaiting a native promise costs one tick (since the ES2019 change V8 shipped as “faster async functions”). But an <code>async</code> function that <b>returns</b> a promise has to adopt it, which costs two more ticks. That's also why ESLint deprecated <code>no-return-await</code>: <code>return await</code> is not slower, keeps the function in async stack traces, and is <b>required</b> inside <code>try/catch</code> if you want the catch to see the rejection.",
-          ar: "الكود اللي بعد <code>await</code> بيكمل في microtask. الـ await على promise عادي بياخد tick واحد (من تعديل ES2019 اللي V8 نزّله باسم «faster async functions»). لكن الـ <code>async</code> function اللي <b>بترجّع</b> promise لازم «تتبنّاه»، وده بياخد tickين زيادة. وده كمان سبب إن ESLint لغى قاعدة <code>no-return-await</code>: الـ <code>return await</code> مش أبطأ، وبيخلي الـ function تظهر في الـ async stack trace، وهو <b>لازم</b> جوه <code>try/catch</code> لو عايز الـ catch يمسك الـ rejection."
+          ar: "الكود اللي بعد <code>await</code> بيكمل في microtask. لو عملت await على promise عادي، ده بياخد tick واحد (من ساعة تعديل ES2019 اللي V8 نزّله باسم «faster async functions»). لكن لو الـ <code>async</code> function <b>رجّعت</b> promise، لازم تستنى الـ promise ده يخلص، وده بياخد tickين زيادة. وعلشان كده ESLint لغى قاعدة <code>no-return-await</code>. الـ <code>return await</code> مش أبطأ، وبيخلي الـ function تظهر في الـ async stack trace. وجوه <code>try/catch</code> هو <b>لازم</b>، وإلا الـ catch مش هيمسك الـ rejection."
         },
         code: "const p = Promise.resolve();\nasync function a() { return p; }         // adopts a promise → 2 extra ticks\nasync function b() { return await p; }   // awaits it → 1 tick\na().then(() => console.log(\"a\"));\nb().then(() => console.log(\"b\"));\nPromise.resolve()\n  .then(() => console.log(\"t1\"))\n  .then(() => console.log(\"t2\"))\n  .then(() => console.log(\"t3\"));",
         out: "t1\nb\nt2\na\nt3",
         run: "node"
       },
       {
-        title: { en: "Node: the same idea, with phases and nextTick", ar: "Node: نفس الفكرة، بس بـ phases و nextTick" },
+        title: { en: "Node: the same idea, with phases and nextTick", ar: "Node: نفس الفكرة، بس فيها phases و nextTick" },
         body: {
           en: "libuv runs phases in a cycle: <b>timers</b> → pending callbacks → <b>poll</b> (I/O) → <b>check</b> (<code>setImmediate</code>) → close callbacks. <code>process.nextTick</code> has its own queue that drains <b>before</b> promise microtasks. Since Node 11, microtasks run after every single timer or immediate callback, like browsers. At the top level of the main script, <code>setTimeout(0)</code> vs <code>setImmediate</code> order is not deterministic; inside an I/O or timer callback, <code>setImmediate</code> runs first.",
-          ar: "الـ libuv بيلف على phases: <b>timers</b> ← pending callbacks ← <b>poll</b> (I/O) ← <b>check</b> (<code>setImmediate</code>) ← close callbacks. والـ <code>process.nextTick</code> ليه طابور لوحده بيتفضّى <b>قبل</b> الـ promise microtasks. ومن Node 11، الـ microtasks بتشتغل بعد كل timer أو immediate لوحده، زي المتصفحات. وفي أول مستوى في الـ main script، ترتيب <code>setTimeout(0)</code> و <code>setImmediate</code> مش مضمون؛ لكن جوه callback بتاع I/O أو timer، الـ <code>setImmediate</code> بيشتغل الأول."
+          ar: "الـ libuv بيلف على phases بالترتيب: <b>timers</b>، وبعدين pending callbacks، وبعدين <b>poll</b> (الـ I/O)، وبعدين <b>check</b> (الـ <code>setImmediate</code>)، وبعدين close callbacks. والـ <code>process.nextTick</code> ليه طابور لوحده، وبيخلص <b>قبل</b> الـ promise microtasks. ومن Node 11، الـ microtasks بتشتغل بعد كل timer أو immediate لوحده، زي المتصفحات بالظبط. ولو كتبت <code>setTimeout(0)</code> و <code>setImmediate</code> في أول الـ script، مفيش ضمان مين الأول. لكن جوه callback بتاع I/O أو timer، الـ <code>setImmediate</code> هو اللي بيشتغل الأول."
         },
         code: "setTimeout(() => {\n  process.nextTick(() => console.log(\"nextTick\"));\n  Promise.resolve().then(() => console.log(\"promise\"));\n  setImmediate(() => console.log(\"immediate\"));\n  setTimeout(() => console.log(\"timeout\"), 0);\n}, 0);",
         out: "nextTick\npromise\nimmediate\ntimeout",
@@ -78,20 +78,20 @@ STUDY.deepen("javascript", {
         title: { en: "Long tasks and INP — and the “yield” that doesn't yield", ar: "الـ Long tasks والـ INP — والـ «yield» اللي مش بيعمل yield" },
         body: {
           en: "Any task over <b>50 ms</b> is a long task; input that arrives during it waits. That delay is what <b>INP</b> (a Core Web Vital since March 2024, good ≤ 200 ms) measures. A common mistake: <code>await Promise.resolve()</code> inside a loop to “let the UI breathe”. It's a microtask, so the browser still can't render or handle input until the whole loop ends. You need a real task.",
-          ar: "أي task أطول من <b>50ms</b> اسمها long task؛ وأي input ييجي وهي شغالة بيستنى. والتأخير ده هو اللي الـ <b>INP</b> بيقيسه (Core Web Vital من مارس 2024، والكويس ≤ 200ms). غلطة شائعة: <code>await Promise.resolve()</code> جوه loop علشان «الـ UI يتنفس». دي microtask، فالمتصفح برضه مش هيقدر يرسم أو يستقبل input لحد ما الـ loop كله يخلص. محتاج task حقيقية."
+          ar: "أي task أطول من <b>50ms</b> اسمها long task. وأي input ييجي وهي شغالة لازم يستنى. والتأخير ده هو اللي الـ <b>INP</b> بيقيسه (Core Web Vital من مارس 2024، والكويس ≤ 200ms). وفيه غلطة مشهورة: إنك تحط <code>await Promise.resolve()</code> جوه loop علشان «الـ UI يتنفس». دي microtask، يعني المتصفح برضه مش هيقدر يرسم أو يستقبل input لحد ما الـ loop كله يخلص. إنت محتاج task حقيقية."
         },
         code: "async function processAll(rows) {\n  for (let i = 0; i < rows.length; i++) {\n    handle(rows[i]);\n    if (i % 500 === 0) await yieldToMain();   // let input and paint in\n  }\n}\nfunction yieldToMain() {\n  if (globalThis.scheduler?.yield) return scheduler.yield(); // keeps priority\n  return new Promise((resolve) => setTimeout(resolve, 0));   // a real task\n}",
         run: "browser",
         fix: {
           en: "Measure first (Performance panel: tasks with a red corner). Then: do less (virtualize, paginate), chunk and yield with a task, move pure CPU work to a Web Worker, or in React mark the slow update as non-urgent with <code>startTransition</code> / <code>useDeferredValue</code>.",
-          ar: "قيس الأول (Performance panel: الـ tasks اللي في ركنها أحمر). وبعدين: قلّل الشغل (virtualize، pagination)، قسّمه واعمل yield بـ task، انقل الحسابات التقيلة لـ Web Worker، أو في React علّم التحديث البطيء إنه مش مستعجل بـ <code>startTransition</code> / <code>useDeferredValue</code>."
+          ar: "قيس الأول: في الـ Performance panel، دوّر على الـ tasks اللي في ركنها أحمر. وبعدين اختار حل: قلّل الشغل (virtualize أو pagination)، أو قسّمه واعمل yield بـ task، أو انقل الحسابات التقيلة لـ Web Worker. ولو في React، قول إن التحديث البطيء مش مستعجل بـ <code>startTransition</code> أو <code>useDeferredValue</code>."
         }
       },
       {
         title: { en: "Timers lie about time", ar: "الـ timers مش بتقول الوقت الصح" },
         body: {
           en: "<code>setTimeout(fn, 0)</code> is clamped to ≥ 4 ms after 5 nested levels, throttled to ≥ 1 s in background tabs, and Chrome can batch chained timers to once a minute in tabs hidden for 5+ minutes. A countdown that does <code>seconds--</code> every 1000 ms drifts and jumps.",
-          ar: "الـ <code>setTimeout(fn, 0)</code> بيتحط له حد أدنى ≥ 4ms بعد 5 مستويات متداخلة، وبيتبطّأ لـ ≥ 1 ثانية في التابات اللي في الخلفية، و Chrome ممكن يجمّع الـ timers المتسلسلة لمرة كل دقيقة في تاب مستخبية بقالها 5 دقايق أو أكتر. فالـ countdown اللي بيعمل <code>seconds--</code> كل 1000ms بيتأخر ويقفز."
+          ar: "الـ <code>setTimeout(fn, 0)</code> ليه حد أدنى 4ms لو اتداخل 5 مرات أو أكتر. وفي التابات اللي في الخلفية، بيتبطّأ لثانية على الأقل. وكمان Chrome ممكن يشغّل الـ timers المتسلسلة مرة واحدة كل دقيقة، لو التاب مستخبية بقالها 5 دقايق. فالـ countdown اللي بيعمل <code>seconds--</code> كل 1000ms هيتأخر ويقفز."
         },
         code: "// Wrong: counts ticks\nsetInterval(() => setLeft((s) => s - 1), 1000);\n\n// Right: derives from the clock\nconst end = Date.now() + 60_000;\nsetInterval(() => setLeft(Math.max(0, Math.round((end - Date.now()) / 1000))), 250);",
         run: "browser",
@@ -135,7 +135,7 @@ STUDY.deepen("javascript", {
         },
         senior: {
           en: "Not before the current task and all its microtasks. Then it's a task from the timer source, so it can still wait behind input, other tasks and a render. It's clamped to 4 ms when nested and throttled in hidden tabs, so I never count timer ticks to measure time — I derive it from <code>performance.now()</code> — and for “after the next paint” I use rAF followed by a task, not a 0 ms timer.",
-          ar: "مش قبل ما الـ task الحالية وكل الـ microtasks بتاعتها يخلصوا. وبعدين هو task من الـ timer source، فممكن يستنى ورا input أو tasks تانية أو رسم. وليه حد أدنى 4ms لما يتداخل، وبيتبطّأ في التابات المستخبية، فعمري ما بعدّ ticks الـ timer علشان أقيس وقت — بحسبه من <code>performance.now()</code> — ولو عايز «بعد الرسم الجاي» بستخدم rAF وبعده task، مش timer بـ 0ms."
+          ar: "مش هيشتغل قبل ما الـ task الحالية وكل الـ microtasks بتاعتها يخلصوا. وبعدها هو task جاي من الـ timers، فممكن يستنى ورا input أو tasks تانية أو رسم. وليه حد أدنى 4ms لما يتداخل، وبيتبطّأ في التابات المستخبية. علشان كده عمري ما بعدّ مرات الـ timer علشان أقيس وقت، بحسبه من <code>performance.now()</code>. ولو عايز حاجة تشتغل «بعد الرسم الجاي»، بستخدم rAF وبعده task، مش timer بـ 0ms."
         }
       },
       {
@@ -146,7 +146,7 @@ STUDY.deepen("javascript", {
         },
         senior: {
           en: "Measure first: is the long task the filter (JS) or rendering thousands of DOM nodes? Usually it's rendering, so I virtualize the list. If the filter itself is slow, I keep typing urgent and the results non-urgent (<code>useDeferredValue</code> / <code>startTransition</code>), chunk with <code>scheduler.yield</code>, or move it to a worker — keeping the data inside the worker so I don't pay structured-clone cost on every keystroke. Then I confirm with the Performance panel and INP from real users.",
-          ar: "أقيس الأول: الـ long task دي هي الـ filter (JS) ولا رسم آلاف الـ DOM nodes؟ غالبًا الرسم، فبعمل virtualization للـ list. ولو الـ filter نفسه بطيء، بخلي الكتابة urgent والنتايج مش مستعجلة (<code>useDeferredValue</code> / <code>startTransition</code>)، أو أقسمه بـ <code>scheduler.yield</code>، أو أنقله لـ worker — والداتا تفضل جوه الـ worker علشان مدفعش تمن الـ structured clone مع كل حرف. وبعدين أتأكد بالـ Performance panel وبالـ INP من اليوزرز الحقيقيين."
+          ar: "أقيس الأول: الـ long task دي جاية من الـ filter نفسه (JS)، ولا من رسم آلاف الـ DOM nodes؟ غالبًا الرسم، فبعمل virtualization للـ list. ولو الـ filter نفسه بطيء، عندي 3 حلول. أخلي الكتابة مستعجلة والنتايج تستنى (<code>useDeferredValue</code> أو <code>startTransition</code>). أو أقسم الشغل بـ <code>scheduler.yield</code>. أو أنقله لـ worker، والداتا تفضل جوه الـ worker علشان مدفعش تمن الـ structured clone مع كل حرف. وفي الآخر بتأكد بالـ Performance panel وبالـ INP من اليوزرز الحقيقيين."
         }
       }
     ],
@@ -157,7 +157,7 @@ STUDY.deepen("javascript", {
         follow: [
           {
             q: "Why do microtasks get that priority?",
-            a: { en: "Promise reactions must run as soon as the current JS finishes, so the program's state is consistent before anything else — a render, an input handler — can observe it. Tasks are “later”; microtasks are “right after this”.", ar: "ردود الـ promises لازم تشتغل أول ما الـ JS الحالي يخلص، علشان حالة البرنامج تبقى مظبوطة قبل ما أي حاجة تانية — رسم أو input handler — تشوفها. الـ tasks معناها «بعدين»؛ والـ microtasks معناها «بعد ده على طول»." },
+            a: { en: "Promise reactions must run as soon as the current JS finishes, so the program's state is consistent before anything else — a render, an input handler — can observe it. Tasks are “later”; microtasks are “right after this”.", ar: "ردود الـ promises لازم تشتغل أول ما الـ JS الحالي يخلص. كده حالة البرنامج تبقى مظبوطة قبل ما أي حاجة تانية تشوفها، زي الرسم أو input handler. يعني الـ tasks معناها «بعدين»، والـ microtasks معناها «بعد ده على طول»." },
             follow: [
               {
                 q: "Then what if a microtask keeps adding microtasks?",
@@ -175,7 +175,7 @@ STUDY.deepen("javascript", {
       },
       {
         q: "Does await block the thread?",
-        a: { en: "No. It suspends only that async function; the caller keeps running, and the rest of the function resumes later as a microtask.", ar: "لأ. بيوقف الـ async function دي بس؛ واللي نادى عليها بيكمل، وباقي الـ function بيرجع يكمل بعدين كـ microtask." },
+        a: { en: "No. It suspends only that async function; the caller keeps running, and the rest of the function resumes later as a microtask.", ar: "لأ. بيوقف الـ async function دي بس. اللي نادى عليها بيكمل شغله عادي، وباقي الـ function بيرجع يكمل بعدين كـ microtask." },
         follow: [
           {
             q: "So is await Promise.resolve() a good way to let the UI breathe?",
@@ -193,7 +193,7 @@ STUDY.deepen("javascript", {
     story: {
       text: {
         en: "AHS formula editor: clicking a variable inserts it at the cursor of a controlled textarea. The new value reaches the DOM only after React re-renders, so restoring the cursor has to be scheduled after that commit — the handbook's sketch does it in the next frame with <code>requestAnimationFrame</code>.",
-        ar: "الـ formula editor في AHS: لما تدوس على متغير بيتحط مكان الـ cursor في textarea متحكَّم فيها. القيمة الجديدة مش بتوصل للـ DOM غير بعد ما React يعمل re-render، فرجوع الـ cursor لازم يتعمل بعد الـ commit ده — والـ sketch في دليل المشاريع بيعمله في الـ frame اللي بعده بـ <code>requestAnimationFrame</code>."
+        ar: "الـ formula editor في AHS: لما تدوس على متغير، بيتحط مكان الـ cursor في textarea متحكَّم فيها. القيمة الجديدة مش بتوصل للـ DOM غير بعد ما React يعمل re-render. فرجوع الـ cursor لازم يحصل بعد الـ commit ده. والـ sketch اللي في دليل المشاريع بيعمله في الـ frame اللي بعده بـ <code>requestAnimationFrame</code>."
       },
       p: "ahs", tab: "how", label: "AHS"
     },
@@ -217,7 +217,7 @@ STUDY.deepen("javascript", {
         title: { en: "Seven primitives, one object type — and typeof's old bugs", ar: "سبع primitives ونوع object واحد — وأخطاء typeof القديمة" },
         body: {
           en: "Primitives: string, number, bigint, boolean, undefined, symbol, null. Everything else is an object (arrays and functions too). <code>typeof null</code> is <code>\"object\"</code> because of how the first engine tagged values; fixing it would break the web. <code>typeof</code> on an undeclared name returns <code>\"undefined\"</code> instead of throwing.",
-          ar: "الـ primitives: string و number و bigint و boolean و undefined و symbol و null. وأي حاجة تانية object (حتى الـ arrays والـ functions). <code>typeof null</code> بيرجع <code>\"object\"</code> بسبب طريقة أول engine في تعليم القيم؛ ولو اتصلح هيكسر مواقع كتير. و <code>typeof</code> على اسم مش متعرّف بيرجع <code>\"undefined\"</code> بدل ما يرمي error."
+          ar: "الـ primitives سبعة: string و number و bigint و boolean و undefined و symbol و null. وأي حاجة تانية object، حتى الـ arrays والـ functions. و <code>typeof null</code> بيرجع <code>\"object\"</code> بسبب طريقة أول engine في تعليم القيم، ولو اتصلح هيكسر مواقع كتير. وكمان <code>typeof</code> على اسم مش متعرّف بيرجع <code>\"undefined\"</code> بدل ما يرمي error."
         },
         code: "console.log(typeof null, typeof (() => {}), typeof notDeclared, typeof 10n, typeof Symbol());",
         out: "object function undefined bigint symbol",
@@ -227,7 +227,7 @@ STUDY.deepen("javascript", {
         title: { en: "Objects become primitives through ToPrimitive", ar: "الـ objects بتتحول لـ primitives عن طريق ToPrimitive" },
         body: {
           en: "When an operator needs a primitive, the engine calls <code>[Symbol.toPrimitive]</code> if it exists, otherwise <code>valueOf</code> then <code>toString</code> (for the “number”/“default” hint) or <code>toString</code> first (for the “string” hint, e.g. template literals). Arrays' <code>valueOf</code> returns the array itself, so they fall through to <code>toString</code> — that's where <code>[] + {}</code> comes from.",
-          ar: "لما operator يحتاج primitive، الـ engine بينادي <code>[Symbol.toPrimitive]</code> لو موجود، وإلا <code>valueOf</code> وبعدين <code>toString</code> (للـ hint «number» أو «default») أو <code>toString</code> الأول (للـ hint «string»، زي الـ template literals). والـ <code>valueOf</code> بتاع الـ array بيرجّع الـ array نفسه، فبيكمل لـ <code>toString</code> — ومن هنا بييجي <code>[] + {}</code>."
+          ar: "لما operator يحتاج primitive، الـ engine بينادي <code>[Symbol.toPrimitive]</code> لو موجود. ولو مش موجود، بيبص على الـ hint. لو «number» أو «default»، بينادي <code>valueOf</code> وبعدين <code>toString</code>. ولو «string» (زي الـ template literals)، بينادي <code>toString</code> الأول. والـ <code>valueOf</code> بتاع الـ array بيرجّع الـ array نفسه، فبيكمل لـ <code>toString</code>. ومن هنا بييجي <code>[] + {}</code>."
         },
         code: "const price = { valueOf() { return 42; }, toString() { return \"price\"; } };\nconsole.log(price + 1);      // \"default\" hint → valueOf first\nconsole.log(`${price}`);     // \"string\" hint → toString first\nconsole.log([] + {});\nconsole.log([1, 2] + [3]);",
         out: "43\nprice\n[object Object]\n1,23",
@@ -266,7 +266,7 @@ STUDY.deepen("javascript", {
         run: "node",
         fix: {
           en: "Store and compute money in minor units (integers) or as decimal strings with a decimal library; round <b>once</b>, at the end, with a stated business rule; format for display with <code>Intl.NumberFormat</code>.",
-          ar: "خزّن واحسب الفلوس بأصغر وحدة (أعداد صحيحة) أو كـ decimal strings بمكتبة decimal؛ وقرّب <b>مرة واحدة</b> في الآخر بقاعدة business واضحة؛ واعرضها بـ <code>Intl.NumberFormat</code>."
+          ar: "خزّن واحسب الفلوس بأصغر وحدة (أعداد صحيحة)، أو كـ decimal strings بمكتبة decimal. وقرّب <b>مرة واحدة</b> في الآخر، بقاعدة business واضحة. واعرضها بـ <code>Intl.NumberFormat</code>."
         }
       },
       {
@@ -280,7 +280,7 @@ STUDY.deepen("javascript", {
         run: "node",
         fix: {
           en: "Parse at the boundary with a schema (e.g. zod) that turns strings back into Dates and rejects bad shapes; keep 64-bit IDs as strings; use <code>structuredClone</code> for in-memory copies.",
-          ar: "اعمل parse عند الحدود بـ schema (زي zod) ترجّع الـ strings لـ Dates وترفض الأشكال الغلط؛ وخلي الـ IDs اللي بـ 64 bit strings؛ واستخدم <code>structuredClone</code> للنسخ جوه الذاكرة."
+          ar: "اعمل parse للداتا أول ما تدخل، بـ schema زي zod، ترجّع الـ strings لـ Dates وترفض أي شكل غلط. وخلي الـ IDs اللي بـ 64 bit strings. وللنسخ جوه الذاكرة استخدم <code>structuredClone</code>."
         }
       },
       {
@@ -315,7 +315,7 @@ STUDY.deepen("javascript", {
     levels: [
       {
         q: "== vs ===?",
-        mid: { en: "<code>===</code> compares without converting types; <code>==</code> converts first, so I always use <code>===</code>.", ar: "الـ <code>===</code> بيقارن من غير تحويل؛ والـ <code>==</code> بيحوّل الأول، فأنا دايمًا بستخدم <code>===</code>." },
+        mid: { en: "<code>===</code> compares without converting types; <code>==</code> converts first, so I always use <code>===</code>.", ar: "الـ <code>===</code> بيقارن من غير تحويل، والـ <code>==</code> بيحوّل الأول. علشان كده أنا دايمًا بستخدم <code>===</code>." },
         senior: {
           en: "<code>===</code> is strict equality: no conversion, NaN isn't equal to itself, +0 equals −0. <code>==</code> runs the loose-equality algorithm: null and undefined only match each other, booleans become numbers first, objects go through ToPrimitive. I default to <code>===</code> and allow one idiom, <code>x == null</code>, to catch both null and undefined. And I remember there are two more comparisons: <code>Object.is</code> (React's state, props and deps) and SameValueZero (<code>Map</code> keys, <code>includes</code>) — they differ on NaN and −0.",
           ar: "الـ <code>===</code> مساواة strict: من غير تحويل، والـ NaN مش بيساوي نفسه، و +0 بيساوي −0. الـ <code>==</code> بيشغّل algorithm الـ loose equality: الـ null والـ undefined بيساووا بعض بس، والـ booleans بتبقى أرقام الأول، والـ objects بتعدي على ToPrimitive. أنا بستخدم <code>===</code> دايمًا ماعدا حالة واحدة، <code>x == null</code>، علشان تمسك الـ null والـ undefined مع بعض. وفاكر إن فيه مقارنتين كمان: <code>Object.is</code> (اللي React بيستخدمها للـ state والـ props والـ deps) و SameValueZero (keys الـ <code>Map</code> و <code>includes</code>) — والفرق بينهم في الـ NaN والـ −0."
@@ -337,11 +337,11 @@ STUDY.deepen("javascript", {
         follow: [
           {
             q: "Why?",
-            a: { en: "The first implementation stored a type tag with each value; objects had tag 0, and null was the null pointer — all zeros — so it read as an object. Changing it later would break existing sites.", ar: "أول implementation كان بيخزن type tag مع كل قيمة؛ الـ objects كان الـ tag بتاعها 0، والـ null كان الـ null pointer — كله أصفار — فاتقرا كأنه object. وتغييره بعد كده كان هيكسر مواقع موجودة." },
+            a: { en: "The first implementation stored a type tag with each value; objects had tag 0, and null was the null pointer — all zeros — so it read as an object. Changing it later would break existing sites.", ar: "أول implementation كان بيخزن type tag مع كل قيمة. الـ objects كان الـ tag بتاعها 0، والـ null كان الـ null pointer، يعني كله أصفار. فاتقرا كأنه object. ولو اتغير بعد كده كان هيكسر مواقع موجودة." },
             follow: [
               {
                 q: "So how do you check for a plain object safely?",
-                a: { en: "<code>x !== null &amp;&amp; typeof x === \"object\" &amp;&amp; !Array.isArray(x)</code>; for “plain” specifically, check that <code>Object.getPrototypeOf(x)</code> is <code>Object.prototype</code> or <code>null</code>. Better: validate the shape with a schema at the boundary.", ar: "<code>x !== null &amp;&amp; typeof x === \"object\" &amp;&amp; !Array.isArray(x)</code>؛ ولو عايز «plain» بالظبط، اتأكد إن <code>Object.getPrototypeOf(x)</code> هو <code>Object.prototype</code> أو <code>null</code>. والأحسن: اعمل validate للشكل بـ schema عند الحدود." }
+                a: { en: "<code>x !== null &amp;&amp; typeof x === \"object\" &amp;&amp; !Array.isArray(x)</code>; for “plain” specifically, check that <code>Object.getPrototypeOf(x)</code> is <code>Object.prototype</code> or <code>null</code>. Better: validate the shape with a schema at the boundary.", ar: "استخدم <code>x !== null &amp;&amp; typeof x === \"object\" &amp;&amp; !Array.isArray(x)</code>. ولو عايز «plain» بالظبط، اتأكد إن <code>Object.getPrototypeOf(x)</code> هو <code>Object.prototype</code> أو <code>null</code>. والأحسن من ده كله: اعمل validate للشكل بـ schema أول ما الداتا تدخل." }
               }
             ]
           }
@@ -427,7 +427,7 @@ STUDY.deepen("javascript", {
         code: "var user = \"global\";\nfunction show() {\n  console.log(user);\n  if (false) { var user = \"local\"; }\n}\nshow();",
         out: "undefined",
         run: "node",
-        fix: { en: "Use <code>let</code>/<code>const</code> and the <code>no-var</code> lint rule; keep declarations at the top of their block.", ar: "استخدم <code>let</code>/<code>const</code> وقاعدة الـ lint <code>no-var</code>؛ وخلي التعريفات في أول الـ block بتاعها." }
+        fix: { en: "Use <code>let</code>/<code>const</code> and the <code>no-var</code> lint rule; keep declarations at the top of their block.", ar: "استخدم <code>let</code>/<code>const</code> وقاعدة الـ lint <code>no-var</code>. وخلي التعريفات في أول الـ block بتاعها." }
       },
       {
         title: { en: "typeof is not safe inside the TDZ", ar: "الـ typeof مش آمن جوه الـ TDZ" },
@@ -452,10 +452,10 @@ STUDY.deepen("javascript", {
     levels: [
       {
         q: "What is hoisting?",
-        mid: { en: "Declarations are moved to the top. <code>var</code> is <code>undefined</code> before its line; <code>let</code> and <code>const</code> can't be used before their declaration (TDZ).", ar: "التعريفات بتتنقل لفوق. الـ <code>var</code> بيبقى <code>undefined</code> قبل سطره؛ و <code>let</code> و <code>const</code> مينفعش يتستخدموا قبل تعريفهم (TDZ)." },
+        mid: { en: "Declarations are moved to the top. <code>var</code> is <code>undefined</code> before its line; <code>let</code> and <code>const</code> can't be used before their declaration (TDZ).", ar: "التعريفات بتتنقل لفوق. الـ <code>var</code> بيبقى <code>undefined</code> قبل سطره، و <code>let</code> و <code>const</code> مينفعش يتستخدموا قبل تعريفهم (TDZ)." },
         senior: {
           en: "Nothing moves. Before a scope runs, the engine creates its bindings: <code>var</code> initialised to <code>undefined</code>, function declarations to the function, <code>let</code>/<code>const</code>/<code>class</code> left uninitialised until their line executes — the TDZ. The TDZ is about time, so a function that reads a later <code>let</code> works if it's called after it. Where I've seen it bite: circular ES module imports, because imports are live bindings to consts that may not be initialised yet.",
-          ar: "مفيش حاجة بتتنقل. قبل ما الـ scope يشتغل، الـ engine بيعمل الـ bindings: الـ <code>var</code> بقيمة <code>undefined</code>، والـ function declarations بالـ function، و <code>let</code>/<code>const</code>/<code>class</code> من غير قيمة لحد ما سطرهم يتنفذ — ودي الـ TDZ. والـ TDZ متعلقة بالوقت، فالـ function اللي بتقرا <code>let</code> متعرّف بعدها بتشتغل لو اتنادت بعده. وفين بتعمل مشاكل: الـ circular imports في الـ ES modules، لأن الـ imports live bindings لـ consts ممكن تكون لسه متعرفتش."
+          ar: "مفيش حاجة بتتنقل. قبل ما الـ scope يشتغل، الـ engine بيعمل كل الـ bindings. الـ <code>var</code> بياخد <code>undefined</code>، والـ function declarations بتاخد الـ function كلها، و <code>let</code>/<code>const</code>/<code>class</code> بيفضلوا من غير قيمة لحد ما سطرهم يتنفذ. والفترة دي اسمها الـ TDZ، وهي متعلقة بالوقت مش بمكان السطر. يعني الـ function اللي بتقرا <code>let</code> متعرّف تحتها هتشتغل عادي لو اتنادت بعد سطره. وشفت ده بيعمل مشاكل في الـ circular imports، لأن الـ imports عبارة عن live bindings لـ consts ممكن تكون لسه متعرفتش."
         }
       },
       {
@@ -463,7 +463,7 @@ STUDY.deepen("javascript", {
         mid: { en: "Block scope, and you can't redeclare them.", ar: "نطاقهم الـ block، ومينفعش تعرّفهم تاني." },
         senior: {
           en: "Block scope; a fresh binding per loop iteration, so closures in loops behave; the TDZ turns use-before-init into a loud error instead of a silent <code>undefined</code>; top-level <code>let</code>/<code>const</code> don't become properties of <code>window</code>; and <code>const</code> tells the reader the binding never changes — not that the object is immutable.",
-          ar: "نطاقهم الـ block؛ وفيه binding جديد كل لفة في الـ loop، فالـ closures جوه الـ loops بتشتغل صح؛ والـ TDZ بتحوّل الاستخدام قبل التعريف لـ error واضح بدل <code>undefined</code> ساكت؛ والـ <code>let</code>/<code>const</code> في أول مستوى مش بيبقوا properties على <code>window</code>؛ والـ <code>const</code> بيقول للي بيقرا إن الـ binding مش هيتغير — مش إن الـ object مش هيتغير."
+          ar: "عندهم كذا ميزة. نطاقهم الـ block. وفيه binding جديد في كل لفة من الـ loop، فالـ closures اللي جوه الـ loops بتشتغل صح. والـ TDZ بتحوّل الاستخدام قبل التعريف لـ error واضح، بدل <code>undefined</code> ساكت. والـ <code>let</code>/<code>const</code> اللي في أول مستوى مش بيبقوا properties على <code>window</code>. والـ <code>const</code> بيقول للي بيقرا إن الـ binding مش هيتغير، مش إن الـ object نفسه مش هيتغير."
         }
       }
     ],
@@ -547,14 +547,14 @@ STUDY.deepen("javascript", {
         run: "browser",
         fix: {
           en: "Pick by intent: a functional updater (no need to read the value); add the value to deps (re-subscribe each change); or a latest-value ref / <code>useEffectEvent</code> (keep one subscription, read fresh values).",
-          ar: "اختار حسب اللي عايزه: functional updater (مش محتاج تقرا القيمة)؛ أو حط القيمة في الـ deps (يعمل subscribe من جديد مع كل تغيير)؛ أو ref بآخر قيمة / <code>useEffectEvent</code> (subscription واحد ويقرا القيم الجديدة)."
+          ar: "اختار حسب اللي عايزه. لو مش محتاج تقرا القيمة أصلًا، استخدم functional updater. ولو مفيش مشكلة إنه يعمل subscribe من جديد مع كل تغيير، حط القيمة في الـ deps. ولو عايز subscription واحد بيقرا القيم الجديدة، استخدم ref بآخر قيمة أو <code>useEffectEvent</code>."
         }
       },
       {
         title: { en: "A debounce recreated on every render", ar: "debounce بيتعمل من جديد مع كل render" },
         body: {
           en: "<code>const onChange = debounce(save, 300)</code> in a component body makes a new debounced function — with its own timer — every render, so typing never debounces, or calls pile up.",
-          ar: "لو كتبت <code>const onChange = debounce(save, 300)</code> جوه الـ component، كل render بيعمل debounced function جديدة — بـ timer لوحدها — فالكتابة عمرها ما بتتعمل لها debounce، أو النداءات بتتراكم."
+          ar: "لو كتبت <code>const onChange = debounce(save, 300)</code> جوه الـ component، كل render هيعمل debounced function جديدة، وكل واحدة ليها timer لوحدها. فالـ debounce مش هيشتغل خالص، أو النداءات هتتراكم."
         },
         code: "// Wrong: new timer every render\nconst onChange = debounce(save, 300);\n\n// Right: one instance, cancelled on unmount\nconst onChange = useMemo(() => debounce(save, 300), [save]);\nuseEffect(() => () => onChange.cancel(), [onChange]);",
         run: "browser",
@@ -575,7 +575,7 @@ STUDY.deepen("javascript", {
         mid: { en: "A function that remembers the variables of its outer scope, even after the outer function has returned.", ar: "function فاكرة متغيرات الـ scope اللي برّاها، حتى بعد ما الـ function اللي برّه خلصت." },
         senior: {
           en: "Every function keeps a reference to the environment it was created in; that's the closure. It captures bindings, not snapshots — so it sees later updates to a <code>let</code>, while a React handler sees the state of the render that created it, because each render makes new bindings. I use closures for privacy, factories, memoisation and debounce. The costs: memory (V8 shares one context per scope across its closures) and stale values in long-lived callbacks.",
-          ar: "كل function بتحتفظ بـ reference للـ environment اللي اتعملت فيه؛ وده الـ closure. وهو بيمسك bindings مش نسخة من القيم — فبيشوف أي تحديث لـ <code>let</code>، لكن الـ handler في React بيشوف state الـ render اللي عمله، لأن كل render بيعمل bindings جديدة. بستخدم الـ closures للـ privacy والـ factories والـ memoisation والـ debounce. والتمن: الذاكرة (الـ V8 بيشارك context واحد لكل scope بين الـ closures بتاعته)، والقيم القديمة في الـ callbacks اللي عمرها طويل."
+          ar: "كل function بتحتفظ بـ reference للـ environment اللي اتعملت فيه، وده هو الـ closure. وهو بيمسك الـ bindings نفسها، مش نسخة من القيم. علشان كده بيشوف أي تحديث لـ <code>let</code>. لكن الـ handler في React بيشوف state الـ render اللي عمله، لأن كل render بيعمل bindings جديدة. بستخدم الـ closures للـ privacy والـ factories والـ memoisation والـ debounce. وليهم تمن: الذاكرة (الـ V8 بيخلي كل الـ closures اللي في scope واحد يشاركوا context واحد)، والقيم القديمة في الـ callbacks اللي عمرها طويل."
         }
       },
       {
@@ -583,7 +583,7 @@ STUDY.deepen("javascript", {
         mid: { en: "The callback uses an old state value. Add the value to the dependency array.", ar: "الـ callback بيستخدم قيمة state قديمة. حط القيمة في الـ dependency array." },
         senior: {
           en: "A callback created in one render outlives it — a timer, a subscription, a memoised handler — and keeps reading that render's values. Three fixes, chosen by intent: a functional updater when I only need the previous state; adding the value to deps when re-subscribing is fine; a latest-value ref (or <code>useEffectEvent</code>) when the subscription must stay but must read fresh values. In Smart FAQ the row menu reads handlers from a ref at click time for exactly that reason.",
-          ar: "callback اتعمل في render وعاش بعده — timer أو subscription أو handler معمول له memo — وفضل يقرا قيم الـ render ده. فيه 3 حلول وبختار حسب الهدف: functional updater لو محتاج الـ state اللي قبلها بس؛ أو أحط القيمة في الـ deps لو مفيش مشكلة إنه يعمل subscribe تاني؛ أو ref بآخر قيمة (أو <code>useEffectEvent</code>) لو الـ subscription لازم يفضل بس يقرا قيم جديدة. وفي Smart FAQ الـ row menu بيقرا الـ handlers من ref وقت الضغط للسبب ده بالظبط."
+          ar: "ده callback اتعمل في render وعاش بعده، زي timer أو subscription أو handler معمول له memo. فبيفضل يقرا قيم الـ render ده. فيه 3 حلول، وبختار حسب الهدف. لو محتاج الـ state اللي قبلها بس، functional updater. ولو مفيش مشكلة إنه يعمل subscribe تاني، أحط القيمة في الـ deps. ولو الـ subscription لازم يفضل بس يقرا قيم جديدة، ref بآخر قيمة أو <code>useEffectEvent</code>. وفي Smart FAQ، الـ row menu بيقرا الـ handlers من ref وقت الضغط للسبب ده بالظبط."
         }
       }
     ],
@@ -594,7 +594,7 @@ STUDY.deepen("javascript", {
         follow: [
           {
             q: "Then why does a React handler show old state?",
-            a: { en: "State isn't one variable that changes. Each render calls the component again and creates new <code>const</code> bindings; the old handler still points to the old render's binding.", ar: "الـ state مش متغير واحد بيتغير. كل render بينادي الـ component تاني ويعمل bindings <code>const</code> جديدة؛ والـ handler القديم لسه بيشاور على binding الـ render القديم." },
+            a: { en: "State isn't one variable that changes. Each render calls the component again and creates new <code>const</code> bindings; the old handler still points to the old render's binding.", ar: "الـ state مش متغير واحد بيتغير. كل render بينادي الـ component تاني، ويعمل bindings <code>const</code> جديدة. والـ handler القديم لسه بيشاور على الـ binding بتاع الـ render القديم." },
             follow: [
               {
                 q: "How does useRef escape that?",
@@ -647,7 +647,7 @@ STUDY.deepen("javascript", {
         title: { en: "Arrows have no this of their own", ar: "الـ arrows ملهاش this بتاعها" },
         body: {
           en: "An arrow function takes <code>this</code> from the scope where it was written, and <code>call</code>/<code>bind</code> can't change it. In a class, an arrow <b>field</b> is created per instance (not on the prototype): it can be passed around safely, but costs memory per instance and can't be reached with <code>super.method()</code>. A normal method lives once on the prototype; class bodies are strict, so a detached method gets <code>undefined</code>.",
-          ar: "الـ arrow function بتاخد <code>this</code> من الـ scope اللي اتكتبت فيه، و <code>call</code>/<code>bind</code> مش بيغيروه. وفي الـ class، الـ arrow <b>field</b> بيتعمل لكل instance (مش على الـ prototype): ينفع تبعته في أي حتة بأمان، بس بياخد ذاكرة مع كل instance ومينفعش توصله بـ <code>super.method()</code>. والـ method العادية موجودة مرة واحدة على الـ prototype؛ والـ class body بيبقى strict، فالـ method لو اتفصلت بتاخد <code>undefined</code>."
+          ar: "الـ arrow function بتاخد <code>this</code> من الـ scope اللي اتكتبت فيه، و <code>call</code>/<code>bind</code> مش بيغيروه. وفي الـ class، الـ arrow <b>field</b> بيتعمل لكل instance، مش على الـ prototype. ينفع تبعته في أي حتة بأمان، بس بياخد ذاكرة مع كل instance، ومينفعش توصله بـ <code>super.method()</code>. أما الـ method العادية فموجودة مرة واحدة على الـ prototype. والـ class body بيبقى strict، فلو الـ method اتفصلت عن الـ object بتاخد <code>undefined</code>."
         },
         code: "class Timer {\n  constructor() { this.ticks = 0; }\n  method() { return this?.ticks; }\n  arrow = () => this.ticks;\n}\nconst t = new Timer();\nconst { method, arrow } = t;\nconsole.log(method(), arrow(), \"arrow\" in Timer.prototype);",
         out: "undefined 0 false",
@@ -657,7 +657,7 @@ STUDY.deepen("javascript", {
         title: { en: "Hosts choose this for callbacks", ar: "الـ host هو اللي بيختار this للـ callbacks" },
         body: {
           en: "A normal function given to <code>addEventListener</code> gets the element as <code>this</code> (the <code>currentTarget</code>). A browser timer calls it with <code>window</code>; Node's timer calls it with its <code>Timeout</code> object. React calls your handlers as plain functions — use <code>event.currentTarget</code>, not <code>this</code>.",
-          ar: "الـ function العادية اللي بتديها لـ <code>addEventListener</code> بتاخد الـ element كـ <code>this</code> (الـ <code>currentTarget</code>). والـ timer في المتصفح بيناديها بـ <code>window</code>؛ وفي Node بيناديها بالـ <code>Timeout</code> object بتاعه. و React بينادي الـ handlers بتاعتك كـ functions عادية — استخدم <code>event.currentTarget</code> مش <code>this</code>."
+          ar: "الـ function العادية اللي بتديها لـ <code>addEventListener</code> بتاخد الـ element كـ <code>this</code> (يعني الـ <code>currentTarget</code>). والـ timer في المتصفح بيناديها بـ <code>window</code>، وفي Node بيناديها بالـ <code>Timeout</code> object بتاعه. أما React فبينادي الـ handlers بتاعتك كـ functions عادية، فاستخدم <code>event.currentTarget</code> مش <code>this</code>."
         },
         code: "setTimeout(function () { console.log(this.constructor.name); }, 0);",
         out: "Timeout",
@@ -669,7 +669,7 @@ STUDY.deepen("javascript", {
         title: { en: "Passing a method loses this", ar: "لما تبعت method كـ callback الـ this بيضيع" },
         body: {
           en: "<code>arr.map(store.count)</code>, <code>promise.then(api.load)</code> or <code>el.addEventListener(\"click\", this.handle)</code> pass the function alone; the object is gone.",
-          ar: "<code>arr.map(store.count)</code> أو <code>promise.then(api.load)</code> أو <code>el.addEventListener(\"click\", this.handle)</code> بيبعتوا الـ function لوحدها؛ والـ object بيضيع."
+          ar: "لما تكتب <code>arr.map(store.count)</code> أو <code>promise.then(api.load)</code> أو <code>el.addEventListener(\"click\", this.handle)</code>، إنت بتبعت الـ function لوحدها، والـ object بيضيع."
         },
         code: "\"use strict\";\nconst store = { items: [1, 2], count() { return this.items.length; } };\ntry { [0].map(store.count); } catch (e) { console.log(e.constructor.name); }\nconsole.log([0].map(store.count, store)[0], [0].map(() => store.count())[0]);",
         out: "TypeError\n2 2",
@@ -694,15 +694,15 @@ STUDY.deepen("javascript", {
         mid: { en: "It's the object before the dot. Arrow functions take <code>this</code> from outside.", ar: "هو الـ object اللي قبل النقطة. والـ arrow functions بتاخد <code>this</code> من برّه." },
         senior: {
           en: "By the call site, with a priority: <code>new</code>, then explicit <code>call</code>/<code>apply</code>/<code>bind</code>, then the method call's object, then the default — <code>undefined</code> in strict code and modules. Arrows don't have their own <code>this</code> and can't be rebound; <code>bind</code> is permanent except under <code>new</code>. The bug I watch for is passing methods as callbacks. Fixes: an arrow wrapper, binding once, an arrow class field (a per-instance cost), or not using <code>this</code> at all — which is where hooks and plain modules took React.",
-          ar: "بمكان النداء، بالأولوية دي: <code>new</code>، وبعدين <code>call</code>/<code>apply</code>/<code>bind</code> الصريحة، وبعدين الـ object بتاع نداء الـ method، وبعدين الـ default — <code>undefined</code> في الكود الـ strict والـ modules. الـ arrows ملهاش <code>this</code> بتاعها ومينفعش تتربط تاني؛ والـ <code>bind</code> ثابت ماعدا مع <code>new</code>. والـ bug اللي باخد بالي منه: إنك تبعت methods كـ callbacks. والحلول: arrow تلفها، أو bind مرة واحدة، أو arrow class field (تمنه ذاكرة لكل instance)، أو متستخدمش <code>this</code> أصلًا — وده اللي الـ hooks والـ modules العادية عملوه في React."
+          ar: "بيتحدد بمكان النداء، وفيه أولوية. <code>new</code> الأول، وبعدين <code>call</code>/<code>apply</code>/<code>bind</code>، وبعدين الـ object اللي قبل النقطة. ولو مفيش حاجة من دول، بياخد الـ default، وده <code>undefined</code> في الكود الـ strict والـ modules. والـ arrows ملهاش <code>this</code> بتاعها، ومينفعش تتربط تاني. والـ <code>bind</code> ثابت، إلا مع <code>new</code>. والـ bug اللي باخد بالي منه إنك تبعت methods كـ callbacks. والحلول: تلفها في arrow، أو تعمل bind مرة واحدة، أو arrow class field (وتمنه ذاكرة لكل instance)، أو متستخدمش <code>this</code> أصلًا. والأخير ده اللي الـ hooks والـ modules العادية عملوه في React."
         }
       },
       {
         q: "When should you not use an arrow function?",
-        mid: { en: "For object methods; arrows are for callbacks.", ar: "في الـ methods بتاعة الـ objects؛ الـ arrows للـ callbacks." },
+        mid: { en: "For object methods; arrows are for callbacks.", ar: "في الـ methods بتاعة الـ objects. الـ arrows مكانها الـ callbacks." },
         senior: {
           en: "Arrows have no own <code>this</code>, <code>arguments</code>, <code>prototype</code> or <code>new</code>. So not for object or prototype methods that need the object, not for DOM handlers that rely on <code>this</code> being the element, not as constructors, not for generators. And arrow class fields are per-instance: fine for a few components, wasteful for thousands of objects, and invisible to <code>super</code> and to prototype spies in tests.",
-          ar: "الـ arrows ملهاش <code>this</code> ولا <code>arguments</code> ولا <code>prototype</code> بتوعها، ومينفعش معاها <code>new</code>. فمش للـ methods اللي محتاجة الـ object، ولا للـ DOM handlers اللي معتمدة إن <code>this</code> هو الـ element، ولا كـ constructors، ولا للـ generators. والـ arrow class fields بتتعمل لكل instance: مفيش مشكلة مع components قليلة، لكن تبذير مع آلاف الـ objects، ومش باينة لـ <code>super</code> ولا للـ spies على الـ prototype في الـ tests."
+          ar: "الـ arrows ملهاش <code>this</code> ولا <code>arguments</code> ولا <code>prototype</code> بتوعها، ومينفعش معاها <code>new</code>. يعني متستخدمهاش في الـ methods اللي محتاجة الـ object، ولا في الـ DOM handlers اللي معتمدة إن <code>this</code> هو الـ element، ولا كـ constructors، ولا للـ generators. وكمان الـ arrow class fields بتتعمل لكل instance. مع components قليلة مفيش مشكلة، لكن مع آلاف الـ objects تبقى تبذير. ومش باينة لـ <code>super</code>، ولا للـ spies اللي على الـ prototype في الـ tests."
         }
       }
     ],
@@ -734,11 +734,11 @@ STUDY.deepen("javascript", {
   prototypes: {
     why: {
       en: "Few frontend jobs need hand-written inheritance, so the question is really: do you understand what <code>class</code> compiles to, and can you spot prototype pollution or the shared-array bug in a review?",
-      ar: "شغل الـ frontend قليل لما يحتاج inheritance مكتوب بالإيد، فالسؤال في الحقيقة: فاهم الـ <code>class</code> بيتحول لإيه، وتقدر تلاقي الـ prototype pollution أو bug الـ array المشترك في code review؟"
+      ar: "شغل الـ frontend نادرًا ما بيحتاج inheritance تكتبه بإيدك. فالسؤال في الحقيقة: إنت فاهم الـ <code>class</code> بيتحول لإيه؟ وتقدر تلاقي الـ prototype pollution أو bug الـ array المشترك وإنت بتعمل code review؟"
     },
     how: [
       {
-        title: { en: "Reads walk the chain; writes stay on the object", ar: "القراية بتمشي على السلسلة؛ والكتابة بتفضل على الـ object" },
+        title: { en: "Reads walk the chain; writes stay on the object", ar: "القراية بتمشي على السلسلة، والكتابة بتفضل على الـ object" },
         body: {
           en: "Every object has a hidden <code>[[Prototype]]</code> link. Reading a property checks the object, then its prototype, and so on up to <code>null</code>. Assigning creates an own property that shadows the inherited one.",
           ar: "كل object ليه لينك مستخبي <code>[[Prototype]]</code>. لما تقرا property بيدوّر في الـ object، وبعدين الـ prototype بتاعه، وهكذا لحد <code>null</code>. ولما تكتب، بيتعمل property خاصة بالـ object تغطي اللي موروثة."
@@ -761,7 +761,7 @@ STUDY.deepen("javascript", {
         title: { en: "class is more than sugar", ar: "الـ class أكتر من مجرد شكل أسهل" },
         body: {
           en: "Same prototype model, plus: the body is strict, methods are non-enumerable, calling a class without <code>new</code> throws, class declarations have a TDZ, <code>extends</code> links two chains (instances <b>and</b> the constructors, so statics inherit), and <code>#private</code> fields are real privacy — not on the prototype at all, checkable with <code>#x in obj</code>.",
-          ar: "نفس فكرة الـ prototype، وزيادة: الـ body بيبقى strict، والـ methods مش enumerable، ونداء class من غير <code>new</code> بيرمي error، وتعريف الـ class ليه TDZ، و <code>extends</code> بيربط سلسلتين (الـ instances <b>و</b> الـ constructors، فالـ statics بتتورث)، والـ <code>#private</code> fields خصوصية بجد — مش على الـ prototype خالص، وتقدر تتأكد منها بـ <code>#x in obj</code>."
+          ar: "نفس فكرة الـ prototype، بس فيه زيادات. الـ body بيبقى strict، والـ methods مش enumerable، ولو ناديت class من غير <code>new</code> بيرمي error. وتعريف الـ class ليه TDZ. و <code>extends</code> بيربط سلسلتين: الـ instances <b>و</b> الـ constructors، فالـ statics كمان بتتورث. والـ <code>#private</code> fields خصوصية بجد، مش موجودة على الـ prototype خالص، وتقدر تتأكد منها بـ <code>#x in obj</code>."
         },
         code: "class A { static make() { return \"static\"; } #secret = 1; hasSecret(o) { return #secret in o; } }\nclass B extends A {}\nconsole.log(B.make(), Object.getPrototypeOf(B) === A, new B().hasSecret(new B()), new B().hasSecret({}));\ntry { A(); } catch (e) { console.log(e.name); }",
         out: "static true true false\nTypeError",
@@ -787,13 +787,13 @@ STUDY.deepen("javascript", {
         code: "function merge(target, src) {\n  for (const k in src) {\n    if (typeof src[k] === \"object\") merge(target[k] ??= {}, src[k]);\n    else target[k] = src[k];\n  }\n  return target;\n}\nmerge({}, JSON.parse('{\"__proto__\": {\"isAdmin\": true}}'));\nconsole.log({}.isAdmin);",
         out: "true",
         run: "node",
-        fix: { en: "Skip <code>__proto__</code>, <code>constructor</code> and <code>prototype</code> keys; validate input with a schema; use <code>Map</code> or <code>Object.create(null)</code> for dictionaries; keep merge libraries up to date.", ar: "اتجاهل الـ keys <code>__proto__</code> و <code>constructor</code> و <code>prototype</code>؛ واعمل validate للـ input بـ schema؛ واستخدم <code>Map</code> أو <code>Object.create(null)</code> للـ dictionaries؛ وحدّث مكتبات الـ merge." }
+        fix: { en: "Skip <code>__proto__</code>, <code>constructor</code> and <code>prototype</code> keys; validate input with a schema; use <code>Map</code> or <code>Object.create(null)</code> for dictionaries; keep merge libraries up to date.", ar: "اتجاهل الـ keys دي: <code>__proto__</code> و <code>constructor</code> و <code>prototype</code>. واعمل validate للـ input بـ schema. وللـ dictionaries استخدم <code>Map</code> أو <code>Object.create(null)</code>. وحدّث مكتبات الـ merge." }
       },
       {
         title: { en: "Mutable state on the prototype is shared", ar: "الـ state اللي بيتغير على الـ prototype بيبقى مشترك" },
         body: {
           en: "Methods belong on the prototype; arrays and objects don't. <code>push</code> doesn't assign, so it mutates the one shared array.",
-          ar: "الـ methods مكانها الـ prototype؛ لكن الـ arrays والـ objects لأ. والـ <code>push</code> مش بيعمل assignment، فبيعدّل الـ array الوحيد المشترك."
+          ar: "الـ methods مكانها الـ prototype، لكن الـ arrays والـ objects لأ. والـ <code>push</code> مش بيعمل assignment، فبيعدّل الـ array الوحيد اللي الكل بيشاركه."
         },
         code: "function Team() {}\nTeam.prototype.members = [];\nconst a = new Team(), b = new Team();\na.members.push(\"x\");\nconsole.log(b.members.length);",
         out: "1",
@@ -804,10 +804,10 @@ STUDY.deepen("javascript", {
     levels: [
       {
         q: "Explain prototypal inheritance.",
-        mid: { en: "Objects inherit from other objects through the prototype chain; <code>class</code> is syntax on top of it.", ar: "الـ objects بتورث من objects تانية عن طريق الـ prototype chain؛ والـ <code>class</code> شكل مكتوب فوقها." },
+        mid: { en: "Objects inherit from other objects through the prototype chain; <code>class</code> is syntax on top of it.", ar: "الـ objects بتورث من objects تانية عن طريق الـ prototype chain. والـ <code>class</code> مجرد طريقة كتابة فوقها." },
         senior: {
           en: "Property reads walk <code>[[Prototype]]</code> links; writes create own properties that shadow. <code>new</code> links the instance to <code>F.prototype</code>. <code>class</code> adds strict mode, non-enumerable methods, two parallel chains (instances and statics), <code>super</code>, and <code>#private</code> fields that aren't on the chain at all. In practice: share methods on the prototype, keep state per instance, never extend built-in prototypes in app code, and treat deep merges of untrusted input as a prototype-pollution risk.",
-          ar: "قراية أي property بتمشي على لينكات الـ <code>[[Prototype]]</code>؛ والكتابة بتعمل properties خاصة تغطي الموروثة. الـ <code>new</code> بيربط الـ instance بـ <code>F.prototype</code>. والـ <code>class</code> بيزوّد strict mode، و methods مش enumerable، وسلسلتين جنب بعض (الـ instances والـ statics)، و <code>super</code>، و <code>#private</code> fields مش على السلسلة أصلًا. وعمليًا: الـ methods على الـ prototype، والـ state لكل instance، ومتعدّلش prototypes الـ built-ins في كود الـ app، وأي deep merge لـ input مش مضمون اعتبره خطر prototype pollution."
+          ar: "لما تقرا أي property، الـ engine بيمشي على لينكات الـ <code>[[Prototype]]</code>. ولما تكتب، بيعمل property خاصة بالـ object تغطي اللي موروثة. والـ <code>new</code> بيربط الـ instance بـ <code>F.prototype</code>. والـ <code>class</code> بيزوّد strict mode، و methods مش enumerable، وسلسلتين جنب بعض (للـ instances وللـ statics)، و <code>super</code>، و <code>#private</code> fields مش على السلسلة أصلًا. وعمليًا: الـ methods على الـ prototype، والـ state لكل instance. ومتعدّلش الـ prototypes بتاعة الـ built-ins في كود الـ app. وأي deep merge لـ input مش مضمون، اعتبره خطر prototype pollution."
         }
       },
       {
@@ -847,14 +847,14 @@ STUDY.deepen("javascript", {
   promises: {
     why: {
       en: "Async questions separate people who chain <code>.then</code> from people who have shipped data fetching: error propagation, cancellation, race conditions between responses, and what happens to the promises you didn't wait for.",
-      ar: "أسئلة الـ async بتفرّق بين اللي بيكتب <code>.then</code> ورا بعض واللي عمل data fetching في production فعلًا: الـ errors بتمشي إزاي، والإلغاء، والـ race conditions بين الـ responses، وإيه اللي بيحصل للـ promises اللي مستنيتهاش."
+      ar: "أسئلة الـ async بتفرّق بين اللي بيكتب <code>.then</code> ورا بعض، واللي عمل data fetching في production فعلًا. هيسألوك: الـ errors بتمشي إزاي؟ وبتلغي إزاي؟ وإيه الـ race conditions بين الـ responses؟ وإيه اللي بيحصل للـ promises اللي مستنيتهاش؟"
     },
     how: [
       {
-        title: { en: "The executor runs now; settling happens once", ar: "الـ executor بيشتغل فورًا؛ والـ promise بيخلص مرة واحدة بس" },
+        title: { en: "The executor runs now; settling happens once", ar: "الـ executor بيشتغل فورًا، والـ promise بيخلص مرة واحدة بس" },
         body: {
           en: "<code>new Promise(executor)</code> runs the executor synchronously. The first <code>resolve</code>/<code>reject</code> wins; later calls are ignored. A <code>throw</code> inside the executor becomes a rejection. Resolving with another promise (a thenable) makes this one follow it.",
-          ar: "الـ <code>new Promise(executor)</code> بيشغّل الـ executor sync على طول. وأول <code>resolve</code>/<code>reject</code> هو اللي بيكسب؛ وأي نداء بعده بيتجاهل. وأي <code>throw</code> جوه الـ executor بيبقى rejection. ولو عملت resolve بـ promise تاني (thenable)، الـ promise ده بيمشي وراه."
+          ar: "أول ما تكتب <code>new Promise(executor)</code>، الـ executor بيشتغل على طول (sync). وأول <code>resolve</code> أو <code>reject</code> هو اللي بيكسب، وأي نداء بعده بيتجاهل. وأي <code>throw</code> جوه الـ executor بيبقى rejection. ولو عملت resolve بـ promise تاني (thenable)، الـ promise بتاعك هيمشي وراه."
         },
         code: "const p = new Promise((resolve) => { console.log(\"executor runs now\"); resolve(1); resolve(2); });\np.then((v) => console.log(\"value\", v));\nconsole.log(\"after constructor\");",
         out: "executor runs now\nafter constructor\nvalue 1",
@@ -864,7 +864,7 @@ STUDY.deepen("javascript", {
         title: { en: "then returns a new promise — errors skip to the next catch", ar: "الـ then بيرجّع promise جديد — والـ errors بتنط لأقرب catch" },
         body: {
           en: "What a handler returns fulfils the next promise; what it throws rejects it; a promise it returns is adopted. A rejection skips every <code>then</code> until a <code>catch</code>, and the <code>catch</code>'s return value makes the chain fulfilled again — so a catch in the middle silently “recovers”.",
-          ar: "اللي الـ handler بيرجّعه بيبقى قيمة الـ promise اللي بعده؛ واللي بيرميه بيبقى rejection؛ ولو رجّع promise بيتبنّاه. والـ rejection بينط من فوق كل <code>then</code> لحد <code>catch</code>، واللي الـ <code>catch</code> بيرجّعه بيرجّع السلسلة لحالة النجاح — فالـ catch اللي في النص بيعمل «recover» من غير ما حد ياخد باله."
+          ar: "اللي الـ handler بيرجّعه بيبقى قيمة الـ promise اللي بعده. واللي بيرميه بيبقى rejection. ولو رجّع promise، السلسلة بتستناه. والـ rejection بينط من فوق كل <code>then</code> لحد ما يلاقي <code>catch</code>. واللي الـ <code>catch</code> بيرجّعه بيرجّع السلسلة لحالة النجاح. يعني الـ catch اللي في النص بيعمل «recover» من غير ما حد ياخد باله."
         },
         code: "Promise.resolve(1)\n  .then((v) => { throw new Error(\"boom \" + v); })\n  .then(() => console.log(\"skipped\"))\n  .catch((e) => { console.log(\"caught\", e.message); return \"recovered\"; })\n  .then((v) => console.log(v));",
         out: "caught boom 1\nrecovered",
@@ -884,7 +884,7 @@ STUDY.deepen("javascript", {
         title: { en: "You can't cancel a promise — you cancel the work", ar: "مينفعش تلغي promise — بتلغي الشغل نفسه" },
         body: {
           en: "A promise is just the result. <code>AbortController</code> gives you a <code>signal</code> to pass to the work (<code>fetch</code>, your own functions, event listeners); aborting stops the work and rejects with an <code>AbortError</code>. <code>AbortSignal.timeout(ms)</code> makes deadlines, <code>AbortSignal.any([...])</code> combines signals.",
-          ar: "الـ promise مجرد النتيجة. الـ <code>AbortController</code> بيديك <code>signal</code> تبعته للشغل نفسه (<code>fetch</code>، أو functions بتاعتك، أو event listeners)؛ ولما تعمل abort الشغل بيقف والـ promise بيعمل reject بـ <code>AbortError</code>. و <code>AbortSignal.timeout(ms)</code> للمهلة، و <code>AbortSignal.any([...])</code> بيجمع signals."
+          ar: "الـ promise مجرد النتيجة. الـ <code>AbortController</code> بيديك <code>signal</code>، وإنت بتبعته للشغل نفسه: <code>fetch</code>، أو functions بتاعتك، أو event listeners. ولما تعمل abort، الشغل بيقف والـ promise بيعمل reject بـ <code>AbortError</code>. و <code>AbortSignal.timeout(ms)</code> للمهلة، و <code>AbortSignal.any([...])</code> بيجمع كذا signal في واحد."
         },
         code: "function sleep(ms, { signal } = {}) {\n  return new Promise((resolve, reject) => {\n    const id = setTimeout(resolve, ms, \"done\");\n    signal?.addEventListener(\"abort\", () => { clearTimeout(id); reject(signal.reason); }, { once: true });\n  });\n}\nconst c = new AbortController();\nsleep(1000, { signal: c.signal }).catch((e) => console.log(e.name));\nc.abort();",
         out: "AbortError",
@@ -932,7 +932,7 @@ STUDY.deepen("javascript", {
         mid: { en: "With <code>AbortController</code>: pass the signal to <code>fetch</code> and call <code>abort()</code>.", ar: "بـ <code>AbortController</code>: ابعت الـ signal لـ <code>fetch</code> ونادي <code>abort()</code>." },
         senior: {
           en: "Promises can't be cancelled — the work can. I pass a <code>signal</code> to <code>fetch</code> and to my own async helpers; the promise rejects with <code>AbortError</code>, which the UI treats as “not an error”. <code>AbortSignal.timeout</code> gives deadlines and <code>AbortSignal.any</code> combines user-cancel with a timeout. In React I abort in effect cleanup, and TanStack Query passes a signal to the query function and aborts when nobody needs the query — that's what Smart FAQ's HTTP client does. And aborting a POST doesn't roll back the server: the write may already have happened.",
-          ar: "الـ promises مينفعش تتلغي — الشغل هو اللي بيتلغي. ببعت <code>signal</code> لـ <code>fetch</code> وللـ helpers الـ async بتاعتي؛ والـ promise بيعمل reject بـ <code>AbortError</code>، والـ UI بيعتبره «مش error». و <code>AbortSignal.timeout</code> للمهلة، و <code>AbortSignal.any</code> بيجمع إلغاء اليوزر مع الـ timeout. وفي React بعمل abort في الـ cleanup بتاع الـ effect، و TanStack Query بيبعت signal للـ query function ويعمل abort لما محدش يبقى محتاج الـ query — وده اللي الـ HTTP client في Smart FAQ بيعمله. والـ abort لـ POST مش بيرجّع اللي حصل على السيرفر: ممكن الكتابة تكون حصلت خلاص."
+          ar: "الـ promises مينفعش تتلغي، الشغل نفسه هو اللي بيتلغي. ببعت <code>signal</code> لـ <code>fetch</code> وللـ helpers الـ async بتاعتي. والـ promise بيعمل reject بـ <code>AbortError</code>، والـ UI بيعتبره «مش error». و <code>AbortSignal.timeout</code> للمهلة، و <code>AbortSignal.any</code> بيجمع إلغاء اليوزر مع الـ timeout. وفي React بعمل abort في الـ cleanup بتاع الـ effect. و TanStack Query بيبعت signal للـ query function، وبيعمل abort لما محدش يبقى محتاج الـ query، وده اللي الـ HTTP client في Smart FAQ بيعمله. وخلي بالك: الـ abort لـ POST مش بيرجّع اللي حصل على السيرفر، ممكن الكتابة تكون حصلت خلاص."
         }
       },
       {
@@ -940,7 +940,7 @@ STUDY.deepen("javascript", {
         mid: { en: "I wrap <code>await</code> calls in <code>try/catch</code> and show a message.", ar: "بلف الـ <code>await</code> في <code>try/catch</code> وبعرض رسالة." },
         senior: {
           en: "Turn transport failures into typed errors at one boundary (an <code>ApiError</code> with status and code), let them propagate instead of catching everywhere, and handle them in one place per concern: TanStack Query error state or <code>onError</code>, error boundaries for render failures, form-level errors for 4xx validation. Tell apart aborted, expected and unexpected errors. Retry only idempotent requests, with backoff. Report <code>unhandledrejection</code> to monitoring, and lint for floating promises.",
-          ar: "بحوّل أخطاء الشبكة لـ errors بنوع واضح في مكان واحد (<code>ApiError</code> فيه الـ status والـ code)، وبسيبها تطلع لفوق بدل ما أعمل catch في كل حتة، وبتعامل معاها في مكان واحد لكل نوع: الـ error state أو <code>onError</code> في TanStack Query، والـ error boundaries لأخطاء الـ render، وأخطاء الفورم لـ validation الـ 4xx. وبفرّق بين اللي اتلغى، والمتوقع، واللي مش متوقع. وبعمل retry للـ requests الـ idempotent بس، مع backoff. وببعت <code>unhandledrejection</code> للـ monitoring، وبعمل lint للـ floating promises."
+          ar: "بحوّل أخطاء الشبكة لـ errors بنوع واضح في مكان واحد: <code>ApiError</code> فيه الـ status والـ code. وبسيبها تطلع لفوق، بدل ما أعمل catch في كل حتة. وبتعامل مع كل نوع في مكانه: الـ error state أو <code>onError</code> في TanStack Query، والـ error boundaries لأخطاء الـ render، وأخطاء الفورم لـ validation الـ 4xx. وبفرّق بين اللي اتلغى، واللي متوقع، واللي مش متوقع. وبعمل retry للـ requests الـ idempotent بس، ومعاه backoff. وببعت <code>unhandledrejection</code> للـ monitoring، وبعمل lint للـ floating promises."
         }
       }
     ],
@@ -951,7 +951,7 @@ STUDY.deepen("javascript", {
         follow: [
           {
             q: "What if you attach the catch a moment later?",
-            a: { en: "The check runs once the microtask queue drains. A <code>catch</code> attached from a later task is too late: Node has already crashed; browsers report it and then fire <code>rejectionhandled</code>.", ar: "الـ check بيحصل أول ما طابور الـ microtasks يفضى. فالـ <code>catch</code> اللي بيتحط من task بعد كده بيبقى متأخر: Node بيكون وقع خلاص؛ والمتصفحات بتبلّغ عنه وبعدين تطلع <code>rejectionhandled</code>." },
+            a: { en: "The check runs once the microtask queue drains. A <code>catch</code> attached from a later task is too late: Node has already crashed; browsers report it and then fire <code>rejectionhandled</code>.", ar: "الـ check بيحصل أول ما طابور الـ microtasks يفضى. فالـ <code>catch</code> اللي بيتحط من task بعد كده بيبقى متأخر. Node بيكون وقع خلاص. والمتصفحات بتبلّغ عنه، وبعدين تطلع <code>rejectionhandled</code>." },
             follow: [
               {
                 q: "So how do you start work now and handle it later safely?",
@@ -963,7 +963,7 @@ STUDY.deepen("javascript", {
       }
     ],
     story: {
-      text: { en: "Smart FAQ HTTP client: throws a typed ApiError when the response isn't ok, passes the AbortSignal from React Query, and shares one in-flight antiforgery refresh between parallel calls.", ar: "الـ HTTP client في Smart FAQ: بيرمي ApiError بنوع واضح لما الـ response يبقى مش ok، وبيبعت الـ AbortSignal اللي جاي من React Query، وبيشارك refresh واحد للـ antiforgery token بين النداءات اللي شغالة مع بعض." },
+      text: { en: "Smart FAQ HTTP client: throws a typed ApiError when the response isn't ok, passes the AbortSignal from React Query, and shares one in-flight antiforgery refresh between parallel calls.", ar: "الـ HTTP client في Smart FAQ بيعمل 3 حاجات. بيرمي ApiError بنوع واضح لما الـ response ميبقاش ok. وبيبعت الـ AbortSignal اللي جاي من React Query. ولو كذا نداء شغالين مع بعض، بيخليهم يشاركوا refresh واحد للـ antiforgery token." },
       p: "smartfaq", tab: "how", label: "Smart FAQ"
     },
     sources: [
@@ -996,7 +996,7 @@ STUDY.deepen("javascript", {
         title: { en: "Spread copies one level", ar: "الـ spread بينسخ مستوى واحد" },
         body: {
           en: "<code>{ ...a }</code>, <code>Object.assign</code>, <code>[...arr]</code> and <code>Array.from</code> create a new outer object but keep the same nested objects. Changing a nested field through the copy changes the original; replacing a nested field doesn't.",
-          ar: "<code>{ ...a }</code> و <code>Object.assign</code> و <code>[...arr]</code> و <code>Array.from</code> بيعملوا object جديد من برّه بس الـ objects اللي جوه هي هي. لو عدّلت field جوه من النسخة، الأصل بيتغير؛ لكن لو بدّلت الـ field كله لأ."
+          ar: "الأدوات دي: <code>{ ...a }</code> و <code>Object.assign</code> و <code>[...arr]</code> و <code>Array.from</code>، بتعمل object جديد من برّه بس، والـ objects اللي جوه هي هي. فلو عدّلت field جوه من النسخة، الأصل بيتغير. لكن لو بدّلت الـ field كله، الأصل مش بيتغير."
         },
         code: "const a = { user: { name: \"A\" }, tags: [\"x\"] };\nconst b = { ...a };\nb.user.name = \"B\";\nb.tags = [...b.tags, \"y\"];\nconsole.log(a.user.name, a.tags.length);",
         out: "B 1",
@@ -1026,7 +1026,7 @@ STUDY.deepen("javascript", {
         title: { en: "const and Object.freeze are both shallow", ar: "الـ const و Object.freeze الاتنين shallow" },
         body: {
           en: "<code>const</code> stops reassigning the variable, not changing the object. <code>Object.freeze</code> locks one level; nested objects stay mutable.",
-          ar: "الـ <code>const</code> بيمنع إنك تعمل assign للمتغير تاني، مش إن الـ object يتغير. و <code>Object.freeze</code> بيقفل مستوى واحد؛ والـ objects اللي جوه بتفضل تتغير عادي."
+          ar: "الـ <code>const</code> بيمنع إنك تعمل assign للمتغير تاني، لكن الـ object نفسه ينفع يتغير. و <code>Object.freeze</code> بيقفل مستوى واحد بس، والـ objects اللي جوه بتفضل تتغير عادي."
         },
         code: "const cfg = Object.freeze({ api: { url: \"a\" } });\ncfg.api.url = \"b\";\nconsole.log(cfg.api.url);",
         out: "b",
@@ -1042,13 +1042,13 @@ STUDY.deepen("javascript", {
         },
         code: "items.push(newItem);\nsetItems(items);                         // same reference → no render\n\nsetItems((prev) => [...prev, newItem]);  // new array → renders",
         run: "browser",
-        fix: { en: "Always create new objects for the changed path; use copying array methods (<code>toSorted</code>, <code>toSpliced</code>, <code>with</code>) or Immer for deep updates.", ar: "دايمًا اعمل objects جديدة للطريق اللي اتغير؛ واستخدم الـ array methods اللي بتنسخ (<code>toSorted</code>، <code>toSpliced</code>، <code>with</code>) أو Immer للتحديثات العميقة." }
+        fix: { en: "Always create new objects for the changed path; use copying array methods (<code>toSorted</code>, <code>toSpliced</code>, <code>with</code>) or Immer for deep updates.", ar: "دايمًا اعمل objects جديدة للطريق اللي اتغير. واستخدم الـ array methods اللي بتنسخ (<code>toSorted</code> و <code>toSpliced</code> و <code>with</code>)، أو Immer للتحديثات العميقة." }
       },
       {
         title: { en: "New references every render defeat memo", ar: "references جديدة مع كل render بتبوّظ الـ memo" },
         body: {
           en: "An inline array, object or arrow is a new reference each render. <code>React.memo</code> compares props with <code>Object.is</code>, so it never skips; an effect with that object in its deps runs every render.",
-          ar: "أي array أو object أو arrow مكتوب inline بيبقى reference جديد كل render. و <code>React.memo</code> بيقارن الـ props بـ <code>Object.is</code>، فعمره ما بيتخطى؛ وأي effect الـ object ده في الـ deps بتاعته بيشتغل كل render."
+          ar: "أي array أو object أو arrow مكتوب inline بيبقى reference جديد في كل render. و <code>React.memo</code> بيقارن الـ props بـ <code>Object.is</code>، فعمره ما هيتخطى الـ render. وأي effect الـ object ده جوه الـ deps بتاعته هيشتغل مع كل render."
         },
         code: "<Row actions={[edit, remove]} />                // memo(Row) never skips\nuseEffect(() => load(options), [options]);       // options = {} made in render → runs every render",
         run: "browser",
@@ -1069,7 +1069,7 @@ STUDY.deepen("javascript", {
         mid: { en: "Spread is shallow. For deep copies use <code>JSON.parse(JSON.stringify())</code> or <code>structuredClone</code>.", ar: "الـ spread shallow. وللـ deep copy استخدم <code>JSON.parse(JSON.stringify())</code> أو <code>structuredClone</code>." },
         senior: {
           en: "Spread copies one level. For deep copies I know what each tool loses: the JSON round-trip drops Dates, <code>undefined</code> and Maps and throws on cycles; <code>structuredClone</code> keeps those but drops functions and class identity. In state I rarely want a deep copy at all: structural sharing keeps unchanged parts identical, and that identity is what memo and selectors rely on.",
-          ar: "الـ spread بينسخ مستوى واحد. وفي الـ deep copy عارف كل أداة بتضيّع إيه: الـ JSON بيضيّع الـ Dates والـ <code>undefined</code> والـ Maps وبيرمي error مع الـ cycles؛ والـ <code>structuredClone</code> بيحافظ عليهم بس بيضيّع الـ functions ونوع الـ class. وفي الـ state نادرًا ما بحتاج deep copy أصلًا: الـ structural sharing بيخلي الأجزاء اللي متغيرتش زي ما هي، والـ identity دي هي اللي الـ memo والـ selectors معتمدين عليها."
+          ar: "الـ spread بينسخ مستوى واحد. وفي الـ deep copy أنا عارف كل أداة بتضيّع إيه. الـ JSON بيضيّع الـ Dates والـ <code>undefined</code> والـ Maps، وبيرمي error مع الـ cycles. والـ <code>structuredClone</code> بيحافظ عليهم، بس بيضيّع الـ functions ونوع الـ class. وفي الـ state نادرًا ما بحتاج deep copy أصلًا. الـ structural sharing بيسيب الأجزاء اللي متغيرتش زي ما هي، والـ identity دي هي اللي الـ memo والـ selectors معتمدين عليها."
         }
       },
       {
@@ -1077,7 +1077,7 @@ STUDY.deepen("javascript", {
         mid: { en: "So React can detect that something changed.", ar: "علشان React يعرف إن في حاجة اتغيرت." },
         senior: {
           en: "React compares with <code>Object.is</code> — the state bail-out, <code>memo</code> props, effect deps. That's O(1) instead of a deep comparison, and it's only correct if “changed” means “new reference”. Immutable updates also keep render pure — React may render a component, throw the result away and render again under concurrent features, so mutating during render leaks half-done changes — and they make snapshots, undo and debugging cheap.",
-          ar: "React بيقارن بـ <code>Object.is</code> — في الـ state bail-out، وفي props الـ <code>memo</code>، وفي deps الـ effects. ودي O(1) بدل مقارنة عميقة، وتبقى صح بس لو «اتغير» معناها «reference جديد». والـ immutable updates كمان بتخلي الـ render pure — React ممكن يعمل render لـ component ويرمي النتيجة ويعمل render تاني مع الـ concurrent features، فالتعديل وقت الـ render بيسرّب تغييرات نصها خلص — وبتخلي الـ snapshots والـ undo والـ debugging رخيصين."
+          ar: "React بيقارن بـ <code>Object.is</code> في 3 أماكن: الـ state bail-out، والـ props بتاعة <code>memo</code>، والـ deps بتاعة الـ effects. ودي O(1) بدل مقارنة عميقة، بس تبقى صح لو «اتغير» معناها «reference جديد». والـ immutable updates كمان بتحافظ على الـ render إنه pure. مع الـ concurrent features، React ممكن يعمل render لـ component ويرمي النتيجة ويعمل render تاني. فلو عدّلت حاجة وقت الـ render، هتسرّب تغييرات نصها خلص. وكمان بتخلي الـ snapshots والـ undo والـ debugging رخيصين."
         }
       }
     ],
@@ -1092,7 +1092,7 @@ STUDY.deepen("javascript", {
             follow: [
               {
                 q: "Then what does const guarantee?",
-                a: { en: "Only that the binding can't be reassigned. The object can still change; use <code>Object.freeze</code> (shallow) or <code>readonly</code> types to state intent.", ar: "إن الـ binding مينفعش يتعمل له assign تاني بس. والـ object لسه ينفع يتغير؛ استخدم <code>Object.freeze</code> (shallow) أو أنواع <code>readonly</code> علشان توضّح النية." }
+                a: { en: "Only that the binding can't be reassigned. The object can still change; use <code>Object.freeze</code> (shallow) or <code>readonly</code> types to state intent.", ar: "بيضمن إن الـ binding مينفعش يتعمل له assign تاني، وبس. والـ object نفسه لسه ينفع يتغير. ولو عايز توضّح إنه مش هيتغير، استخدم <code>Object.freeze</code> (shallow) أو أنواع <code>readonly</code>." }
               }
             ]
           }
@@ -1151,7 +1151,7 @@ STUDY.deepen("javascript", {
         title: { en: "The cost model: lookups and shifts are O(n)", ar: "حساب التكلفة: البحث والـ shift بـ O(n)" },
         body: {
           en: "<code>includes</code>, <code>find</code> and <code>indexOf</code> scan the array; <code>shift</code>/<code>unshift</code> move every element. Inside a loop over another list that's O(n·m). Build a <code>Set</code> or <code>Map</code> once and look up in O(1).",
-          ar: "الـ <code>includes</code> و <code>find</code> و <code>indexOf</code> بيلفوا على الـ array كله؛ و <code>shift</code>/<code>unshift</code> بيحرّكوا كل العناصر. ولو ده جوه loop على list تانية يبقى O(n·m). اعمل <code>Set</code> أو <code>Map</code> مرة واحدة ودوّر فيه بـ O(1)."
+          ar: "الـ <code>includes</code> و <code>find</code> و <code>indexOf</code> بيلفوا على الـ array كله. و <code>shift</code>/<code>unshift</code> بيحرّكوا كل العناصر. ولو ده جوه loop على list تانية، يبقى O(n·m). الحل: اعمل <code>Set</code> أو <code>Map</code> مرة واحدة، ودوّر فيه بـ O(1)."
         },
         code: "const rows = Array.from({ length: 5 }, (_, i) => ({ id: i }));\nconst selected = [{ id: 1 }, { id: 3 }];\nconst ids = new Set(selected.map((s) => s.id));      // O(m) once\nconsole.log(rows.filter((r) => ids.has(r.id)).map((r) => r.id).join()); // O(1) per row",
         out: "1,3",
@@ -1195,10 +1195,10 @@ STUDY.deepen("javascript", {
     levels: [
       {
         q: "Which array methods mutate, and why does it matter?",
-        mid: { en: "<code>push</code>, <code>pop</code>, <code>splice</code>, <code>sort</code>, <code>reverse</code> mutate; <code>map</code>, <code>filter</code>, <code>slice</code> don't. Mutation can break React state.", ar: "<code>push</code> و <code>pop</code> و <code>splice</code> و <code>sort</code> و <code>reverse</code> بيعدّلوا؛ و <code>map</code> و <code>filter</code> و <code>slice</code> لأ. والتعديل ممكن يبوّظ الـ state في React." },
+        mid: { en: "<code>push</code>, <code>pop</code>, <code>splice</code>, <code>sort</code>, <code>reverse</code> mutate; <code>map</code>, <code>filter</code>, <code>slice</code> don't. Mutation can break React state.", ar: "اللي بيعدّلوا: <code>push</code> و <code>pop</code> و <code>splice</code> و <code>sort</code> و <code>reverse</code>. واللي مش بيعدّلوا: <code>map</code> و <code>filter</code> و <code>slice</code>. والتعديل ممكن يبوّظ الـ state في React." },
         senior: {
           en: "Same list, plus why it bites: React and Redux detect changes by reference, and arrays are shared between components and caches, so an in-place <code>sort</code> changes someone else's data silently. I use the ES2023 copies (<code>toSorted</code>, <code>toSpliced</code>, <code>with</code>). I also watch the cost side: <code>includes</code>/<code>find</code> inside a <code>map</code> is O(n·m) in render, so I build a <code>Set</code> or <code>Map</code> first.",
-          ar: "نفس الليستة، وزيادة ليه بتأذي: React و Redux بيعرفوا التغيير بالـ reference، والـ arrays بتتشارك بين components و caches، فـ <code>sort</code> في مكانه بيغيّر داتا حد تاني من غير ما حد ياخد باله. فبستخدم النسخ بتاعة ES2023 (<code>toSorted</code> و <code>toSpliced</code> و <code>with</code>). وباخد بالي من التكلفة كمان: <code>includes</code>/<code>find</code> جوه <code>map</code> يبقى O(n·m) في الـ render، فبعمل <code>Set</code> أو <code>Map</code> الأول."
+          ar: "نفس الليستة، وبقول كمان ليه بتأذي. React و Redux بيعرفوا التغيير بالـ reference. والـ arrays بتتشارك بين components و caches. فـ <code>sort</code> اللي بيعدّل في مكانه بيغيّر داتا حد تاني من غير ما حد ياخد باله. علشان كده بستخدم النسخ بتاعة ES2023: <code>toSorted</code> و <code>toSpliced</code> و <code>with</code>. وباخد بالي من التكلفة كمان. <code>includes</code> أو <code>find</code> جوه <code>map</code> بيبقى O(n·m) في الـ render، فبعمل <code>Set</code> أو <code>Map</code> الأول."
         }
       },
       {
@@ -1206,7 +1206,7 @@ STUDY.deepen("javascript", {
         mid: { en: "<code>map</code> to transform, <code>forEach</code> for side effects, <code>reduce</code> to compute one value.", ar: "<code>map</code> للتحويل، و <code>forEach</code> للـ side effects، و <code>reduce</code> علشان تطلع قيمة واحدة." },
         senior: {
           en: "<code>map</code>/<code>filter</code> when I produce a new array. <code>for...of</code> when I need <code>break</code>, <code>continue</code> or sequential <code>await</code> — <code>forEach</code> supports none of those. <code>reduce</code> only when it reads more clearly than a loop; for grouping there's now <code>Object.groupBy</code>/<code>Map.groupBy</code>. And I don't chain five passes over a huge list in a hot path.",
-          ar: "<code>map</code>/<code>filter</code> لما بطلّع array جديد. و <code>for...of</code> لما أحتاج <code>break</code> أو <code>continue</code> أو <code>await</code> ورا بعض — و <code>forEach</code> مبيدعمش أي واحدة منهم. و <code>reduce</code> بس لما يبقى أوضح من loop؛ وللـ grouping فيه دلوقتي <code>Object.groupBy</code>/<code>Map.groupBy</code>. ومش بعمل 5 لفات ورا بعض على list ضخمة في مكان بيتنادى كتير."
+          ar: "بستخدم <code>map</code>/<code>filter</code> لما بطلّع array جديد. و <code>for...of</code> لما أحتاج <code>break</code> أو <code>continue</code> أو <code>await</code> ورا بعض، لأن <code>forEach</code> مبيدعمش أي واحدة منهم. و <code>reduce</code> بس لما يبقى أوضح من loop. وللـ grouping فيه دلوقتي <code>Object.groupBy</code> و <code>Map.groupBy</code>. ومش بلف 5 لفات ورا بعض على list ضخمة في مكان بيتنادى كتير."
         }
       }
     ],
@@ -1239,14 +1239,14 @@ STUDY.deepen("javascript", {
   modules: {
     why: {
       en: "Module questions lead to bundle size, code splitting, “window is not defined” in Next.js and circular-import crashes — things you only explain well if you know how modules load.",
-      ar: "أسئلة الـ modules بتوصل لحجم الـ bundle، والـ code splitting، و «window is not defined» في Next.js، والـ circular imports اللي بتوقّع — حاجات مش هتشرحها كويس غير لو فاهم الـ modules بتتحمّل إزاي."
+      ar: "أسئلة الـ modules بتوصل لحجم الـ bundle، والـ code splitting، و «window is not defined» في Next.js، والـ circular imports اللي بتوقّع الـ app. ودي كلها حاجات مش هتشرحها كويس غير لو فاهم الـ modules بتتحمّل إزاي."
     },
     how: [
       {
         title: { en: "ESM is static and loads in three phases", ar: "الـ ESM ثابت وبيتحمّل على 3 مراحل" },
         body: {
           en: "<b>Parse</b> every file and read its <code>import</code>/<code>export</code> statements (they can't be inside <code>if</code>), <b>link</b> imports to exports without running anything, then <b>evaluate</b> depth-first, each module once. Because the graph is known before running, bundlers can tree-shake and the engine can report a missing export before any code runs.",
-          ar: "<b>Parse</b> لكل ملف وقراية الـ <code>import</code>/<code>export</code> بتوعه (مينفعش يبقوا جوه <code>if</code>)، وبعدين <b>link</b> للـ imports مع الـ exports من غير ما يشغّل حاجة، وبعدين <b>evaluate</b> من الأعمق للأعلى، وكل module مرة واحدة. ولأن الـ graph معروف قبل التشغيل، الـ bundlers تقدر تعمل tree-shaking، والـ engine يقدر يقولك إن في export ناقص قبل ما أي كود يشتغل."
+          ar: "الأول بيعمل <b>parse</b> لكل ملف ويقرا الـ <code>import</code>/<code>export</code> بتوعه (ومينفعش يبقوا جوه <code>if</code>). وبعدين بيعمل <b>link</b> للـ imports مع الـ exports، من غير ما يشغّل حاجة. وبعدين بيعمل <b>evaluate</b> من الأعمق للأعلى، وكل module مرة واحدة. ولأن الـ graph معروف قبل التشغيل، الـ bundlers تقدر تعمل tree-shaking، والـ engine يقدر يقولك إن فيه export ناقص قبل ما أي كود يشتغل."
         }
       },
       {
@@ -1272,7 +1272,7 @@ STUDY.deepen("javascript", {
         title: { en: "Node: two systems and their interop", ar: "Node: نظامين والتعامل بينهم" },
         body: {
           en: "<code>\"type\": \"module\"</code> or <code>.mjs</code> means ESM, <code>.cjs</code> means CommonJS. ESM can import CommonJS (the default import is <code>module.exports</code>). Recent Node versions can also <code>require()</code> an ES module as long as its graph has no top-level <code>await</code>. Packages describe their entry points per environment in the <code>\"exports\"</code> field; shipping both formats risks two copies of the same state (the dual-package hazard).",
-          ar: "<code>\"type\": \"module\"</code> أو <code>.mjs</code> معناها ESM، و <code>.cjs</code> معناها CommonJS. الـ ESM يقدر يعمل import لـ CommonJS (الـ default import بيبقى <code>module.exports</code>). وإصدارات Node الجديدة تقدر كمان تعمل <code>require()</code> لـ ES module طالما الـ graph بتاعه مفيهوش top-level <code>await</code>. والـ packages بتوصف نقط الدخول لكل بيئة في الـ field <code>\"exports\"</code>؛ ولو الـ package نازل بالشكلين، ممكن يبقى فيه نسختين من نفس الـ state (الـ dual-package hazard)."
+          ar: "لو كتبت <code>\"type\": \"module\"</code> أو الملف <code>.mjs</code> يبقى ESM، ولو <code>.cjs</code> يبقى CommonJS. الـ ESM يقدر يعمل import لـ CommonJS، والـ default import بيبقى <code>module.exports</code>. وإصدارات Node الجديدة تقدر كمان تعمل <code>require()</code> لـ ES module، طالما الـ graph بتاعه مفيهوش top-level <code>await</code>. والـ packages بتحدد نقط الدخول لكل بيئة في الـ field <code>\"exports\"</code>. ولو الـ package نازل بالشكلين، ممكن يبقى فيه نسختين من نفس الـ state، ودي اسمها الـ dual-package hazard."
         }
       }
     ],
@@ -1291,7 +1291,7 @@ STUDY.deepen("javascript", {
         title: { en: "Barrel files bloat the graph", ar: "الـ barrel files بتنفخ الـ graph" },
         body: {
           en: "<code>import { Button } from \"@/components\"</code> through an <code>index.ts</code> that re-exports 200 files makes the dev server load all of them, and any file with side effects can't be tree-shaken out of the bundle.",
-          ar: "<code>import { Button } from \"@/components\"</code> عن طريق <code>index.ts</code> بيعمل re-export لـ 200 ملف بيخلي الـ dev server يحمّلهم كلهم، وأي ملف فيه side effects مينفعش يتشال من الـ bundle بالـ tree-shaking."
+          ar: "لو كتبت <code>import { Button } from \"@/components\"</code>، والـ <code>index.ts</code> ده بيعمل re-export لـ 200 ملف، الـ dev server هيحمّلهم كلهم. وأي ملف فيهم فيه side effects مش هيتشال من الـ bundle بالـ tree-shaking."
         },
         fix: { en: "Import from the file directly, mark packages <code>\"sideEffects\": false</code> when true, use Next's <code>optimizePackageImports</code> for big libraries, and check with a bundle analyzer.", ar: "اعمل import من الملف نفسه، وعلّم الـ packages بـ <code>\"sideEffects\": false</code> لو ده صح، واستخدم <code>optimizePackageImports</code> في Next مع المكتبات الكبيرة، واتأكد بـ bundle analyzer." }
       },
@@ -1299,7 +1299,7 @@ STUDY.deepen("javascript", {
         title: { en: "Circular imports", ar: "الـ circular imports" },
         body: {
           en: "In a cycle, one module evaluates while the other is half-done. Reading its <code>const</code>/<code>class</code> exports at the top level throws “Cannot access before initialization”; function declarations work because they're initialised during linking.",
-          ar: "في الـ cycle، module بيتعمل له evaluate والتاني لسه مخلصش. ولو قريت الـ <code>const</code>/<code>class</code> exports بتاعته في أول مستوى بيرمي «Cannot access before initialization»؛ والـ function declarations بتشتغل لأنها بتاخد قيمتها وقت الـ linking."
+          ar: "في الـ cycle، module بيتعمل له evaluate والتاني لسه مخلصش. ولو قريت الـ exports بتاعته من نوع <code>const</code>/<code>class</code> في أول مستوى، هيرمي «Cannot access before initialization». أما الـ function declarations فبتشتغل، لأنها بتاخد قيمتها وقت الـ linking."
         },
         fix: { en: "Break the cycle (move shared code to a third module), read imports inside functions, and lint with <code>import/no-cycle</code>.", ar: "اكسر الـ cycle (انقل الكود المشترك لـ module تالت)، واقرا الـ imports جوه functions، واعمل lint بـ <code>import/no-cycle</code>." }
       }
@@ -1307,10 +1307,10 @@ STUDY.deepen("javascript", {
     levels: [
       {
         q: "ES modules vs CommonJS?",
-        mid: { en: "ESM uses <code>import</code>/<code>export</code> and is the standard; CommonJS uses <code>require</code> and is older Node.", ar: "الـ ESM بيستخدم <code>import</code>/<code>export</code> وهو الـ standard؛ والـ CommonJS بيستخدم <code>require</code> وده الـ Node القديم." },
+        mid: { en: "ESM uses <code>import</code>/<code>export</code> and is the standard; CommonJS uses <code>require</code> and is older Node.", ar: "الـ ESM بيستخدم <code>import</code>/<code>export</code> وهو الـ standard. والـ CommonJS بيستخدم <code>require</code>، وده بتاع Node القديم." },
         senior: {
           en: "ESM is static: the graph is known before running, which enables tree-shaking and early errors. Imports are live read-only bindings instead of value copies. Loading is async, so top-level <code>await</code> is possible, and modules are always strict. In Node there are file-type rules and interop rules — ESM imports CJS; newer Node can <code>require</code> synchronous ESM — plus the dual-package hazard. For apps I use ESM everywhere; CJS only where legacy tooling needs it.",
-          ar: "الـ ESM ثابت: الـ graph معروف قبل التشغيل، وده بيسمح بالـ tree-shaking وبالـ errors بدري. والـ imports عبارة عن bindings حية للقراية بس بدل نسخ من القيم. والتحميل async، فينفع top-level <code>await</code>، والـ modules دايمًا strict. وفي Node فيه قواعد لنوع الملف وقواعد للتعامل بين الاتنين — الـ ESM يعمل import لـ CJS، و Node الجديد يقدر يعمل <code>require</code> لـ ESM اللي مفيهوش await في أول مستوى — وفيه كمان الـ dual-package hazard. وفي الـ apps بستخدم ESM في كل حتة؛ والـ CJS بس لما أداة قديمة تحتاجه."
+          ar: "الـ ESM ثابت، يعني الـ graph معروف قبل التشغيل. وده بيسمح بالـ tree-shaking، وبإن الـ errors تبان بدري. والـ imports عبارة عن live bindings للقراية بس، مش نسخ من القيم. والتحميل async، فينفع تكتب top-level <code>await</code>، والـ modules دايمًا strict. وفي Node فيه قواعد لنوع الملف، وقواعد للتعامل بين الاتنين. الـ ESM يقدر يعمل import لـ CJS، و Node الجديد يقدر يعمل <code>require</code> لـ ESM اللي مفيهوش await في أول مستوى. وفيه كمان الـ dual-package hazard. في الـ apps بستخدم ESM في كل حتة، والـ CJS بس لما أداة قديمة تحتاجه."
         }
       },
       {
@@ -1329,11 +1329,11 @@ STUDY.deepen("javascript", {
         follow: [
           {
             q: "Can the importer change it?",
-            a: { en: "No. Imports are read-only; assigning throws a TypeError. Only the exporting module can change it (e.g. through an exported function).", ar: "لأ. الـ imports للقراية بس؛ والـ assign بيرمي TypeError. الـ module اللي عامل export بس هو اللي يقدر يغيّرها (مثلًا عن طريق function عاملها export)." },
+            a: { en: "No. Imports are read-only; assigning throws a TypeError. Only the exporting module can change it (e.g. through an exported function).", ar: "لأ. الـ imports للقراية بس، والـ assign بيرمي TypeError. الـ module اللي عامل export هو بس اللي يقدر يغيّرها، مثلًا عن طريق function عاملها export." },
             follow: [
               {
                 q: "How does that relate to circular imports?",
-                a: { en: "The binding exists from linking, before the exporter runs. Reading it during the cycle hits the TDZ for <code>let</code>/<code>const</code>/<code>class</code>; function declarations already have their value, so they work.", ar: "الـ binding موجود من وقت الـ linking، قبل ما الـ module اللي عامل export يشتغل. فلو اتقرا وقت الـ cycle بيقع في الـ TDZ لو <code>let</code>/<code>const</code>/<code>class</code>؛ والـ function declarations قيمتها موجودة من الأول، فبتشتغل." }
+                a: { en: "The binding exists from linking, before the exporter runs. Reading it during the cycle hits the TDZ for <code>let</code>/<code>const</code>/<code>class</code>; function declarations already have their value, so they work.", ar: "الـ binding موجود من وقت الـ linking، قبل ما الـ module اللي عامل export يشتغل. فلو اتقرا وقت الـ cycle وهو <code>let</code>/<code>const</code>/<code>class</code>، هيقع في الـ TDZ. أما الـ function declarations فقيمتها موجودة من الأول، فبتشتغل." }
               }
             ]
           }
@@ -1368,14 +1368,14 @@ STUDY.deepen("javascript", {
         title: { en: "target vs currentTarget, and the three “stops”", ar: "target قصاد currentTarget، والـ 3 «stops»" },
         body: {
           en: "<code>target</code> is where the event started (maybe an icon inside the button); <code>currentTarget</code> is the element whose listener is running. <code>preventDefault</code> cancels the browser's default action (submit, navigation) — it does not stop propagation. <code>stopPropagation</code> stops travel to the next elements; <code>stopImmediatePropagation</code> also skips the remaining listeners on the same element.",
-          ar: "الـ <code>target</code> هو المكان اللي الـ event بدأ منه (ممكن icon جوه الزرار)؛ والـ <code>currentTarget</code> هو الـ element اللي الـ listener بتاعه شغال دلوقتي. و <code>preventDefault</code> بيلغي الأكشن الافتراضي للمتصفح (submit، navigation) — ومش بيوقف الانتشار. و <code>stopPropagation</code> بيوقف الوصول للـ elements اللي بعده؛ و <code>stopImmediatePropagation</code> كمان بيتخطى باقي الـ listeners على نفس الـ element."
+          ar: "الـ <code>target</code> هو المكان اللي الـ event بدأ منه، وممكن يكون icon جوه الزرار. والـ <code>currentTarget</code> هو الـ element اللي الـ listener بتاعه شغال دلوقتي. و <code>preventDefault</code> بيلغي الأكشن الافتراضي للمتصفح (زي الـ submit أو الـ navigation)، ومش بيوقف الانتشار. و <code>stopPropagation</code> بيمنع الـ event يوصل للـ elements اللي بعده. و <code>stopImmediatePropagation</code> بيعمل كده، وكمان بيتخطى باقي الـ listeners اللي على نفس الـ element."
         }
       },
       {
         title: { en: "Listener options: once, passive, signal", ar: "خيارات الـ listener: once و passive و signal" },
         body: {
           en: "<code>once</code> removes the listener after the first call. <code>passive: true</code> promises not to call <code>preventDefault</code>, so the browser can scroll without waiting for your JS (Chrome makes <code>touchstart</code>/<code>wheel</code> on <code>window</code>/<code>document</code> passive by default). <code>signal</code> lets one <code>AbortController</code> remove many listeners at once.",
-          ar: "الـ <code>once</code> بيشيل الـ listener بعد أول مرة. و <code>passive: true</code> وعد إنك مش هتنادي <code>preventDefault</code>، فالمتصفح يقدر يعمل scroll من غير ما يستنى الـ JS بتاعك (و Chrome بيخلي <code>touchstart</code>/<code>wheel</code> على <code>window</code>/<code>document</code> passive افتراضيًا). و <code>signal</code> بيخلي <code>AbortController</code> واحد يشيل listeners كتير مرة واحدة."
+          ar: "الـ <code>once</code> بيشيل الـ listener بعد أول مرة. و <code>passive: true</code> معناها وعد إنك مش هتنادي <code>preventDefault</code>، فالمتصفح يقدر يعمل scroll من غير ما يستنى الـ JS بتاعك. (و Chrome بيخلي <code>touchstart</code>/<code>wheel</code> على <code>window</code>/<code>document</code> passive لوحده.) و <code>signal</code> بيخليك تشيل listeners كتير مرة واحدة بـ <code>AbortController</code> واحد."
         },
         code: "const ac = new AbortController();\nwindow.addEventListener(\"resize\", onResize, { signal: ac.signal });\nwindow.addEventListener(\"keydown\", onKey, { signal: ac.signal });\nac.abort();   // removes both — handy in effect cleanup",
         run: "browser"
@@ -1406,7 +1406,7 @@ STUDY.deepen("javascript", {
         },
         code: "<div onClick={closeMenu}>\n  {createPortal(<Modal onSave={save} />, document.body)}   {/* clicks in Modal also call closeMenu */}\n</div>",
         run: "browser",
-        fix: { en: "Don't put click handlers on ancestors of portals, or check <code>e.currentTarget.contains(e.target)</code> (a DOM check) before acting, or stop propagation at the portal's root.", ar: "متحطش click handlers على الـ ancestors بتاعة الـ portals، أو اتأكد بـ <code>e.currentTarget.contains(e.target)</code> (check على الـ DOM) قبل ما تعمل حاجة، أو وقّف الانتشار عند أول الـ portal." }
+        fix: { en: "Don't put click handlers on ancestors of portals, or check <code>e.currentTarget.contains(e.target)</code> (a DOM check) before acting, or stop propagation at the portal's root.", ar: "عندك 3 حلول. متحطش click handlers على الـ ancestors بتاعة الـ portals. أو قبل ما تعمل حاجة، اتأكد بـ <code>e.currentTarget.contains(e.target)</code> (ودي check على الـ DOM). أو وقّف الانتشار عند أول الـ portal." }
       },
       {
         title: { en: "stopPropagation breaks other features", ar: "الـ stopPropagation بيبوّظ features تانية" },
@@ -1414,7 +1414,7 @@ STUDY.deepen("javascript", {
           en: "Outside-click detection, analytics and focus traps usually listen higher up. Stopping propagation “to fix” one component silently disables them for clicks inside it.",
           ar: "الـ outside-click والـ analytics والـ focus traps غالبًا بيسمعوا فوق. ولو وقفت الانتشار «علشان تصلّح» component، بتعطّلهم من غير ما تاخد بالك لأي ضغطة جواه."
         },
-        fix: { en: "Let events travel; decide in the outer handler with <code>composedPath()</code> or <code>contains()</code> whether the click was inside.", ar: "سيب الـ events تمشي؛ وقرر في الـ handler اللي برّه بـ <code>composedPath()</code> أو <code>contains()</code> إذا كانت الضغطة جوه ولا لأ." }
+        fix: { en: "Let events travel; decide in the outer handler with <code>composedPath()</code> or <code>contains()</code> whether the click was inside.", ar: "سيب الـ events تمشي. والـ handler اللي برّه هو اللي يقرر الضغطة كانت جوه ولا لأ، بـ <code>composedPath()</code> أو <code>contains()</code>." }
       },
       {
         title: { en: "preventDefault in a passive listener", ar: "preventDefault في listener passive" },
@@ -1422,7 +1422,7 @@ STUDY.deepen("javascript", {
           en: "A passive listener can't cancel scrolling — the call is ignored with a console warning. Making every listener non-passive to get it back makes scrolling wait for JS.",
           ar: "الـ listener الـ passive مينفعش يلغي الـ scroll — النداء بيتجاهل ومعاه warning في الـ console. ولو خليت كل الـ listeners مش passive علشان ترجّعه، الـ scroll هيستنى الـ JS."
         },
-        fix: { en: "Prefer CSS (<code>touch-action</code>, <code>overscroll-behavior</code>); use <code>{ passive: false }</code> only on the one element that truly needs to cancel.", ar: "الأحسن CSS (<code>touch-action</code>، <code>overscroll-behavior</code>)؛ واستخدم <code>{ passive: false }</code> بس على الـ element الوحيد اللي فعلًا محتاج يلغي." }
+        fix: { en: "Prefer CSS (<code>touch-action</code>, <code>overscroll-behavior</code>); use <code>{ passive: false }</code> only on the one element that truly needs to cancel.", ar: "الأحسن تستخدم CSS: <code>touch-action</code> و <code>overscroll-behavior</code>. واستخدم <code>{ passive: false }</code> بس على الـ element الوحيد اللي فعلًا محتاج يلغي." }
       }
     ],
     levels: [
@@ -1431,22 +1431,22 @@ STUDY.deepen("javascript", {
         mid: { en: "Put one listener on the parent and check <code>event.target</code> to know which child was clicked.", ar: "حط listener واحد على الـ parent وشوف <code>event.target</code> علشان تعرف أنهي child اتضغط." },
         senior: {
           en: "It relies on bubbling: one listener on a container, then <code>event.target.closest(selector)</code> to find the item, because the target can be a nested element. Benefits: fewer listeners, and it works for items added later. Limits: non-bubbling events (use <code>focusin</code>), and checking that the match is still inside the container. In React you rarely do it by hand — React already delegates everything to the root — but it's still the right tool for big vanilla lists or third-party DOM.",
-          ar: "معتمدة على الـ bubbling: listener واحد على الـ container، وبعدين <code>event.target.closest(selector)</code> علشان تلاقي العنصر، لأن الـ target ممكن يكون element جوّاه. المميزات: listeners أقل، وبتشتغل مع العناصر اللي بتتضاف بعدين. الحدود: الـ events اللي مش بتعمل bubble (استخدم <code>focusin</code>)، وإنك تتأكد إن العنصر اللي لقيته لسه جوه الـ container. وفي React نادرًا ما بتعملها بإيدك — React بيعمل delegation لكل حاجة على الـ root أصلًا — بس لسه هي الأداة الصح للـ lists الكبيرة من غير framework أو للـ DOM اللي جاي من مكتبة تانية."
+          ar: "هي معتمدة على الـ bubbling. بتحط listener واحد على الـ container، وبعدين <code>event.target.closest(selector)</code> علشان تلاقي العنصر، لأن الـ target ممكن يكون element جوّاه. مميزاتها: listeners أقل، وبتشتغل مع العناصر اللي بتتضاف بعدين. وليها حدود: الـ events اللي مش بتعمل bubble (استخدم <code>focusin</code> بدلها)، ولازم تتأكد إن العنصر اللي لقيته لسه جوه الـ container. وفي React نادرًا ما بتعملها بإيدك، لأن React أصلًا بيعمل delegation لكل حاجة على الـ root. بس لسه هي الأداة الصح للـ lists الكبيرة من غير framework، أو للـ DOM اللي جاي من مكتبة تانية."
         }
       },
       {
         q: "stopPropagation vs preventDefault?",
-        mid: { en: "<code>stopPropagation</code> stops the event from bubbling; <code>preventDefault</code> stops the default browser action.", ar: "<code>stopPropagation</code> بيوقف الـ bubbling؛ و <code>preventDefault</code> بيوقف الأكشن الافتراضي للمتصفح." },
+        mid: { en: "<code>stopPropagation</code> stops the event from bubbling; <code>preventDefault</code> stops the default browser action.", ar: "الـ <code>stopPropagation</code> بيوقف الـ bubbling، والـ <code>preventDefault</code> بيوقف الأكشن الافتراضي للمتصفح." },
         senior: {
           en: "Different jobs: <code>preventDefault</code> cancels the browser's action (needs a non-passive listener for scroll and touch); <code>stopPropagation</code> stops the event reaching other elements; <code>stopImmediatePropagation</code> also skips the remaining listeners on the same element. I avoid stopping propagation because it hides events from outside-click logic, analytics and focus management. I'd rather let the event travel and have the outer handler check where it came from.",
-          ar: "كل واحد ليه شغلانة: <code>preventDefault</code> بيلغي أكشن المتصفح (ومحتاج listener مش passive مع الـ scroll والـ touch)؛ و <code>stopPropagation</code> بيمنع الـ event يوصل لـ elements تانية؛ و <code>stopImmediatePropagation</code> كمان بيتخطى باقي الـ listeners على نفس الـ element. وبتجنب إني أوقف الانتشار لأنه بيخبّي الـ events عن الـ outside-click والـ analytics وإدارة الـ focus. الأحسن أسيب الـ event يمشي، والـ handler اللي برّه يشوف هو جاي منين."
+          ar: "كل واحد ليه شغلانة. الـ <code>preventDefault</code> بيلغي أكشن المتصفح، ومحتاج listener مش passive مع الـ scroll والـ touch. والـ <code>stopPropagation</code> بيمنع الـ event يوصل لـ elements تانية. والـ <code>stopImmediatePropagation</code> بيعمل كده، وكمان بيتخطى باقي الـ listeners اللي على نفس الـ element. وأنا بتجنب إني أوقف الانتشار، لأنه بيخبّي الـ events عن الـ outside-click والـ analytics وإدارة الـ focus. الأحسن أسيب الـ event يمشي، والـ handler اللي برّه يشوف هو جاي منين."
         }
       }
     ],
     drill: [
       {
         q: "Where does React attach its event listeners?",
-        a: { en: "On the root container you pass to <code>createRoot</code> (since React 17; before that on <code>document</code>).", ar: "على الـ root container اللي بتبعته لـ <code>createRoot</code> (من React 17؛ قبلها كان على <code>document</code>)." },
+        a: { en: "On the root container you pass to <code>createRoot</code> (since React 17; before that on <code>document</code>).", ar: "على الـ root container اللي بتبعته لـ <code>createRoot</code>. ده من React 17، وقبلها كان على <code>document</code>." },
         follow: [
           {
             q: "Why did they move it?",
@@ -1479,14 +1479,14 @@ STUDY.deepen("javascript", {
         title: { en: "Garbage collection is about reachability", ar: "الـ Garbage collection متعلق بإمكانية الوصول" },
         body: {
           en: "An object stays alive while it can be reached from a root: globals, the current stack, and anything held by closures, DOM nodes, listeners, timers or caches that are themselves reachable. A leak is not “memory GC missed” — it's an object you no longer need that something still references.",
-          ar: "الـ object بيفضل عايش طول ما ينفع توصله من root: الـ globals، والـ stack الحالي، وأي حاجة ماسكاها closures أو DOM nodes أو listeners أو timers أو caches هي نفسها ينفع توصلها. والـ leak مش «ذاكرة الـ GC نسيها» — ده object إنت مش محتاجه بس لسه في حاجة ماسكة reference ليه."
+          ar: "الـ object بيفضل عايش طول ما ينفع توصله من root. والـ roots هي الـ globals، والـ stack الحالي، وأي closures أو DOM nodes أو listeners أو timers أو caches ينفع توصلها. والـ leak مش «ذاكرة الـ GC نسيها». ده object إنت مش محتاجه، بس لسه فيه حاجة ماسكة reference ليه."
         }
       },
       {
         title: { en: "V8 collects by generation", ar: "الـ V8 بيجمع حسب العمر" },
         body: {
           en: "Most objects die young. V8 allocates them in a small young generation cleaned often by a fast scavenger; survivors move to the old generation, cleaned by mark-compact, mostly incrementally and concurrently to keep pauses short. Allocating a lot in hot paths (every frame, every keystroke) still means more GC work and possible jank.",
-          ar: "أغلب الـ objects بتموت صغيرة. الـ V8 بيحطها في young generation صغير بيتنضف كتير بـ scavenger سريع؛ واللي بيعيش بيتنقل للـ old generation اللي بيتنضف بـ mark-compact، وغالبًا على حتت وبالتوازي علشان الوقفات تبقى قصيرة. ولو عملت allocations كتير في أماكن بتتنادى كتير (كل frame، كل حرف)، ده برضه شغل GC أكتر وممكن تقطيع."
+          ar: "أغلب الـ objects بتموت صغيرة. علشان كده الـ V8 بيحطها في young generation صغير، بيتنضف كتير بـ scavenger سريع. واللي بيعيش بيتنقل للـ old generation، وده بيتنضف بـ mark-compact، وغالبًا على حتت وبالتوازي علشان الوقفات تبقى قصيرة. ولو عملت allocations كتير في أماكن بتتنادى كتير (كل frame أو كل حرف)، ده برضه شغل GC أكتر، وممكن الصفحة تقطّع."
         }
       },
       {
@@ -1503,7 +1503,7 @@ STUDY.deepen("javascript", {
         title: { en: "How to find a leak: compare heap snapshots", ar: "إزاي تلاقي leak: قارن heap snapshots" },
         body: {
           en: "Pick a repeatable action (open and close a modal, switch routes). In DevTools → Memory: take a snapshot, repeat the action several times, take another, and use the Comparison view. Look for counts that grow with each repeat and for “Detached” DOM nodes, then read the <b>Retainers</b> panel up to the root — it names the listener, timer, closure, store or cache holding it. Fix, and repeat to confirm the count stops growing.",
-          ar: "اختار أكشن تقدر تكرره (افتح واقفل modal، اتنقل بين routes). في DevTools ← Memory: خد snapshot، كرر الأكشن كذا مرة، خد snapshot تاني، واستخدم الـ Comparison view. دوّر على أعداد بتزيد مع كل تكرار وعلى DOM nodes مكتوب عليها «Detached»، وبعدين اقرا الـ <b>Retainers</b> لحد الـ root — هيقولك أنهي listener أو timer أو closure أو store أو cache ماسكها. صلّح، وكرر تاني علشان تتأكد إن العدد بطّل يزيد."
+          ar: "اختار أكشن تقدر تكرره، زي إنك تفتح وتقفل modal، أو تتنقل بين routes. افتح DevTools ← Memory، وخد snapshot. كرر الأكشن كذا مرة، وخد snapshot تاني، واستخدم الـ Comparison view. دوّر على أعداد بتزيد مع كل تكرار، وعلى DOM nodes مكتوب عليها «Detached». وبعدين اقرا الـ <b>Retainers</b> لحد الـ root، وهيقولك أنهي listener أو timer أو closure أو store أو cache ماسكها. صلّح، وكرر تاني علشان تتأكد إن العدد بطّل يزيد."
         }
       }
     ],
@@ -1516,7 +1516,7 @@ STUDY.deepen("javascript", {
         },
         code: "useEffect(() => {\n  const conn = createConnection(token);\n  conn.start();\n  return () => conn.stop();   // without this, every token change leaks a live connection\n}, [token]);",
         run: "browser",
-        fix: { en: "Every effect that starts something returns a cleanup; group DOM listeners with an <code>AbortController</code> signal.", ar: "أي effect بيبدأ حاجة لازم يرجّع cleanup؛ واجمع الـ DOM listeners بـ signal من <code>AbortController</code>." }
+        fix: { en: "Every effect that starts something returns a cleanup; group DOM listeners with an <code>AbortController</code> signal.", ar: "أي effect بيبدأ حاجة لازم يرجّع cleanup. والـ DOM listeners اجمعهم بـ signal من <code>AbortController</code>." }
       },
       {
         title: { en: "Caches that only grow", ar: "Caches بتكبر بس" },
@@ -1544,7 +1544,7 @@ STUDY.deepen("javascript", {
         mid: { en: "The engine frees memory that's no longer used, with mark and sweep.", ar: "الـ engine بيحرر الذاكرة اللي مبقتش مستخدمة، بـ mark and sweep." },
         senior: {
           en: "Reachability from roots decides what lives. V8 is generational: a fast scavenger for the young generation where most objects die, and mark-compact for the old generation, done incrementally and concurrently to keep pauses short. So a leak is a reachability bug — something still references what I don't need — and heavy allocation in hot paths shows up as GC pauses and jank.",
-          ar: "اللي بيحدد مين يعيش هو إمكانية الوصول من الـ roots. والـ V8 بيقسم حسب العمر: scavenger سريع للـ young generation اللي أغلب الـ objects بتموت فيه، و mark-compact للـ old generation، بيتعمل على حتت وبالتوازي علشان الوقفات تبقى قصيرة. فالـ leak عبارة عن bug في الوصول — حاجة لسه ماسكة reference لحاجة مش محتاجها — والـ allocations الكتير في الأماكن اللي بتتنادى كتير بتبان كوقفات GC وتقطيع."
+          ar: "اللي بيحدد مين يعيش هو إن ينفع توصله من الـ roots. والـ V8 بيقسم حسب العمر. فيه scavenger سريع للـ young generation، اللي أغلب الـ objects بتموت فيه. وفيه mark-compact للـ old generation، وبيتعمل على حتت وبالتوازي علشان الوقفات تبقى قصيرة. يعني الـ leak عبارة عن bug في الوصول: حاجة لسه ماسكة reference لحاجة مش محتاجها. والـ allocations الكتير في الأماكن اللي بتتنادى كتير بتبان كوقفات GC وتقطيع."
         }
       },
       {
@@ -1575,7 +1575,7 @@ STUDY.deepen("javascript", {
       }
     ],
     story: {
-      text: { en: "okoRent: the SignalR connection opens in an effect and is stopped in its cleanup; a new token reconnects.", ar: "okoRent: الـ SignalR connection بيتفتح في effect وبيتقفل في الـ cleanup بتاعه؛ ولما ييجي token جديد بيعمل reconnect." },
+      text: { en: "okoRent: the SignalR connection opens in an effect and is stopped in its cleanup; a new token reconnects.", ar: "okoRent: الـ SignalR connection بيتفتح في effect، وبيتقفل في الـ cleanup بتاعه. ولما ييجي token جديد بيعمل reconnect." },
       p: "okorent", tab: "hooks", label: "okoRent"
     },
     sources: [
