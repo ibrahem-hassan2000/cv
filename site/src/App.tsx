@@ -1,6 +1,7 @@
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Hub } from "./Hub";
 import { LangProvider } from "./i18n";
+import { CompaniesHome, CompanyPage, TrackPage } from "./companies/Companies";
 import { ConceptsPage, ProjectPage, ProjectsHome } from "./projects/Projects";
 import { StudyGroup, StudyHome, StudyQuick, StudyQuiz, StudySearch, StudySection, StudyTopic } from "./study/Study";
 
@@ -22,6 +23,9 @@ export default function App() {
           <Route path="/projects" element={<ProjectsHome />} />
           <Route path="/projects/concepts/:id?" element={<ConceptsPage />} />
           <Route path="/projects/:id/:tab?" element={<ProjectPage />} />
+          <Route path="/companies" element={<CompaniesHome />} />
+          <Route path="/companies/track/:id" element={<TrackPage />} />
+          <Route path="/companies/:id" element={<CompanyPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </HashRouter>

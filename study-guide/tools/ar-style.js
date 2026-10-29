@@ -7,7 +7,7 @@
 const fs = require("fs");
 const path = require("path");
 const [cmd, file, fixesPath] = process.argv.slice(2);
-const DIRS = ["study-guide/data", "project-guides/data"];
+const DIRS = ["study-guide/data", "project-guides/data", "market/data"];
 const LIT = /ar:\s*"((?:\\.|[^"\\])*)"/g;
 
 // Real problems only: «؛», or one sentence (between full stops) longer than ~170 characters.

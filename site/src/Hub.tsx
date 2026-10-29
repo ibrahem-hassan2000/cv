@@ -1,7 +1,7 @@
-// Landing page: two doors, the Study Guide and the Project Guides.
+// Landing page: three doors, the Study Guide, the Project Guides and Companies.
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { isReady, projects, sections } from "./data";
+import { isReady, market, projects, sections } from "./data";
 import { useLang, useUI } from "./i18n";
 import { arrow, LangSwitch } from "./ui";
 
@@ -10,6 +10,7 @@ const UI = {
     title: "Interview Kit — Ibrahem Hassan", sub: "Frontend · React · Next.js · React Native",
     study: "Study Guide", studyText: "Everything a frontend interview can ask, from HTML to system design, with “what does this print?” questions, live coding, working with AI, and behavioral answers.",
     projects: "Project Guides", projectsText: "Every project I worked on: what I built, why I chose each tool, how it works, the problems I solved, and how I answer questions about it.",
+    companies: "Companies", companiesText: "Companies in Cairo and Alexandria that hire React / Next.js / React Native developers: where to search, how fresh the last posting is, and what to study for each one.", companiesN: "companies",
     open: "Open", sections: "sections", topics: "topics", questions: "questions", projectsN: "projects",
     foot: "Switch the language (عربي / English / Both) here or inside each guide.",
   },
@@ -17,6 +18,7 @@ const UI = {
     title: "عُدّة الإنترفيو — إبراهيم حسن", sub: "Frontend · React · Next.js · React Native",
     study: "دليل المذاكرة", studyText: "كل اللي ممكن يتسأل في إنترفيو Frontend، من HTML لحد الـ system design، ومعاه أسئلة «هيطبع إيه؟»، و live coding، والشغل مع الـ AI، والـ behavioral.",
     projects: "شرح المشاريع", projectsText: "كل مشروع اشتغلت عليه: عملت فيه إيه، وليه اخترت كل أداة، وشغال إزاي، والمشاكل اللي حليتها، وتجاوب إزاي في الإنترفيو.",
+    companies: "الشركات", companiesText: "شركات في القاهرة واسكندرية بتوظّف React و Next.js و React Native. تدوّر فين، وآخر وظيفة كانت إمتى، وتذاكر إيه علشان كل شركة.", companiesN: "companies",
     open: "افتح", sections: "sections", topics: "topics", questions: "questions", projectsN: "projects",
     foot: "اللغة (عربي / English / Both) بتتغير من هنا أو من جوه كل دليل.",
   },
@@ -52,6 +54,13 @@ export function Hub() {
             <h2>{U.projects}</h2>
             <p>{U.projectsText}</p>
             <div className="facts"><span>{projects.length} {U.projectsN}</span><span>Decisions</span><span>STAR</span></div>
+            <span className="go">{U.open} {arrow(lang)}</span>
+          </Link>
+          <Link className="door companies" to="/companies">
+            <div className="icon">CO</div>
+            <h2>{U.companies}</h2>
+            <p>{U.companiesText}</p>
+            <div className="facts"><span>{market.companies.length} {U.companiesN}</span><span>Cairo · Alexandria</span></div>
             <span className="go">{U.open} {arrow(lang)}</span>
           </Link>
         </div>

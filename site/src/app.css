@@ -29,5 +29,35 @@
 .hub .go { margin-top: auto; font-weight: 700; color: var(--tone); font-size: 15.5px; }
 .hub .study { --tone: var(--study); --tone-soft: var(--study-soft); }
 .hub .projects { --tone: var(--projects); --tone-soft: var(--projects-soft); }
+.hub .companies { --tone: #0f766e; --tone-soft: #dff3ee; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hub .companies { --tone: #5cc4a6; --tone-soft: #1b3830; } }
 .hub footer { color: var(--muted); font-size: 13px; }
 @media (prefers-reduced-motion: reduce) { .hub a.door { transition: none; } }
+
+/* Companies */
+.co-brand { background: #0f766e; color: #fff; }
+.co-status { display: inline-block; font: 700 12px var(--font-en); padding: 2px 9px; border-radius: 999px; }
+html[dir="rtl"] .co-status { font-family: var(--font-ar); }
+.co-status.recent { background: var(--yes-soft); color: var(--yes); }
+.co-status.check { background: var(--part-soft); color: var(--part); }
+.co-status.old { background: var(--surface-2); color: var(--muted); }
+.co-status.none { background: var(--no-soft); color: var(--no); }
+.co-card { display: flex; flex-direction: column; gap: 8px; }
+.co-card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.co-tier { font: 700 11px var(--font-en); color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: 0 6px; }
+.co-boards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.co-board { display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: inherit; margin: 0; }
+.co-board b { color: var(--brand); }
+.co-board div { color: var(--muted); font-size: 14.5px; }
+.co-topics { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin-bottom: 8px; }
+.co-topic { display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); text-decoration: none; color: inherit; }
+.co-topic:hover { border-color: color-mix(in srgb, var(--brand) 45%, var(--line)); }
+.co-topic-sec { font-size: 12px; color: var(--muted); }
+.co-topic .st-deep-mark { background: #7c3aed; }
+.co-sub { font-size: 16px; margin: 18px 0 8px; }
+.co-core { background: var(--accent-soft); border-color: transparent; }
+.co-statuscard { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.co-statuscard p { margin: 0; }
+.co-proj { text-decoration: none; }
+.co-checked { margin-top: 18px; font-size: 13px; }
+button.chip { cursor: pointer; font: inherit; color: inherit; }

@@ -49,6 +49,8 @@ import "../../project-guides/data/aquadic.js";
 import "../../project-guides/data/freelance.js";
 import "../../project-guides/data/concepts.js";
 
+import "../../market/data/companies.js";
+
 import ahsLogo from "../../project-guides/assets/img/ahs-logo.svg";
 import bitesLogo from "../../project-guides/assets/img/bites-logo.png";
 import kalimaLogo from "../../project-guides/assets/img/kalima-logo.png";
@@ -78,8 +80,17 @@ export interface Section { id: string; icon: string; color: string; name: Bi; in
 export interface Project { id: string; name: string; logo?: string; monogram?: string; color: string; company: string; years: string; period: string; [k: string]: any }
 export interface Concept { id: string; name: string; tagline: Bi; what: Bi; when: Bi; pitfall?: Bi; q?: string; a?: Bi }
 
+export type StatusLevel = "recent" | "check" | "old" | "none";
+export interface Track { name: Bi; why: Bi; study: string[]; lead?: string[] }
+export interface Company {
+  id: string; name: string; city: string; mode: string; sector: Bi; tracks: string[]; tier: "A" | "B" | "C";
+  stack: string[]; status: { level: StatusLevel; note: Bi; url?: string }; fit: Bi; gap?: Bi; study?: string[];
+}
+export interface Market { checked: string; boards: { name: string; url: string; note: Bi }[]; salary: { note: Bi; url: string }; tracks: Record<string, Track>; companies: Company[] }
+
 declare global {
   interface Window {
+    MARKET: Market;
     STUDY: { sections: Section[] };
     HANDBOOK: { projects: Project[]; concepts: Concept[]; todo: { name: string; where: string }[] };
   }
@@ -95,6 +106,7 @@ const LOGOS: Record<string, string> = {
 export const sections: Section[] = window.STUDY.sections;
 export const projects: Project[] = window.HANDBOOK.projects.map((p) => ({ ...p, logo: p.logo ? LOGOS[p.logo] ?? p.logo : undefined }));
 export const concepts: Concept[] = window.HANDBOOK.concepts;
+export const market: Market = window.MARKET;
 
 export const isReady = (s: Section) => !!(s.topics?.length || s.groups?.length);
 export const sectionById = (id?: string) => sections.find((s) => s.id === id);
