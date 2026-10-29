@@ -87,7 +87,7 @@ STUDY.fill("testing", {
       blocks: [
         { type: "list", items: [
           { en: "Bug → reproduce it in a test → fix → the test stays forever.", ar: "Bug ← اعمل test بيوريه ← صلّح ← الـ test بيفضل للأبد." },
-          { en: "Smart FAQ commits note “Checked: build, lint, 523 tests, live as a Knowledge Manager” before merging a fix — a good habit to describe.", ar: "كوميتات Smart FAQ بتكتب «Checked: build, lint, 523 tests, live as a Knowledge Manager» قبل merge لأي fix — عادة كويسة تحكيها." }
+          { en: "Smart FAQ's progress tracker records “Checked: build, lint, 523 tests, live as a Knowledge Manager” before a fix was merged — a good habit to describe.", ar: "الـ progress tracker في Smart FAQ مكتوب فيه «Checked: build, lint, 523 tests, live as a Knowledge Manager» قبل merge لـ fix — عادة كويسة تحكيها." }
         ] }
       ],
       say: "Coverage tells me what's untested; I write a regression test for every bug, and CI blocks merges on lint, types and tests.",
