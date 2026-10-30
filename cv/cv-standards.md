@@ -68,6 +68,8 @@ No wrong numbers found. Spelling fixed: "Quran" → "Qur'an" everywhere.
 
 ## 4. Stronger wording (X-Y-Z) — ready to use
 
+> **2026-10-30 (user):** on a sent CV, drop the commit / test / page / screen / endpoint / module counts from these rewrites (see the §6 rule). The current number-free wording is in `cv/variants/general.html`.
+
 | Where | Current | Stronger (all facts verified) |
 |---|---|---|
 | Smart FAQ (lead bullet) | Built the frontend from the first commit … 27 Figma screens … ~3 weeks | **Delivered a healthcare-operations knowledge platform's frontend in three weeks — 27 screens, 3 roles with MFA and 551 automated tests — as lead and main author (166 of 173 commits), using React 19, TypeScript and TanStack Query.** |
@@ -103,6 +105,7 @@ No wrong numbers found. Spelling fixed: "Quran" → "Qur'an" everywhere.
 - [ ] Top 8–10 keywords from the post appear (exact spelling) in summary, skills and bullets — only where true.
 - [ ] Each job starts with its strongest X-Y-Z bullet.
 - [ ] Every number is in the numbers bank (`master-cv.md`).
+- [ ] **Only impact numbers on a sent CV** (user, 2026-10-30): keep ~20 → ~2 ms (Smart FAQ), the 17% GPS fix (ONE14), 9 client projects (Aquadic), plus context like "three weeks", "7 months part-time", "14-person team", "two teammates", "four clients". **No** commit counts, test counts, page / screen / endpoint / story / module counts, or repo sizes — say ownership in words ("as the only frontend developer", "main author"). Those numbers stay in the numbers bank for interview answers.
 - [ ] Bites says "Part-time · Remote"; Freelance says "alongside full-time roles".
 - [ ] 2 pages max, one column, PDF (DOCX if the portal asks).
 - [ ] Links work (GitHub, LinkedIn; live demos only if he wants them).

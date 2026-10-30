@@ -153,6 +153,7 @@ Software company; client websites and web apps (GitHub org `AQuadic`).
 ---
 
 ## Numbers bank (all measured — safe to use)
+> **On a sent CV (user, 2026-10-30):** only ~20 → ~2 ms, the 17% GPS fix and 9 Aquadic client projects. Commit, test, page, screen, endpoint and module counts are for interview answers only (`cv/cv-standards.md` §6).
 | Number | Source |
 |---|---|
 | 166 of 173 commits, Smart FAQ | git |
