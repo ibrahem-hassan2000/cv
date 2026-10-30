@@ -24,3 +24,5 @@ li { margin: 2.5px 0; }
 h2, .row, .meta, .sub { break-after: avoid; page-break-after: avoid; }
 li { break-inside: avoid; page-break-inside: avoid; }
 p { margin: 0; }
+/* A project heading and its bullets stay on one page. */
+.proj { break-inside: avoid; page-break-inside: avoid; }

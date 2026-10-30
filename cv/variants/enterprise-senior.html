@@ -6,22 +6,22 @@
 <link rel="stylesheet" href="cv.css">
 </head>
 <body>
-<!-- Variant: Enterprise Senior. Targets: _VOIS, Robusta, Sumerge, ITWorx, Link Development, iGate, CrossWorkers. Source: ../master-cv.md -->
+<!-- Variant: Enterprise Senior. Targets: _VOIS, Robusta, Sumerge, ITWorx, Link Development, Giza Systems, CrossWorkers. Source: ../master-cv.md (bullets) + ../cv-standards.md §4 (X-Y-Z rewrites). Rebuilt 2026-10-30. -->
 <h1>IBRAHEM HASSAN</h1>
 <div class="headline">Senior Frontend Engineer · React · Next.js · TypeScript</div>
 <div class="contact">Alexandria, Egypt (open to Cairo / hybrid) · +20 127 679 0349 · <a href="mailto:hibrahem266@gmail.com">hibrahem266@gmail.com</a> · <a href="https://linkedin.com/in/ibrahem-hassan-521956247">linkedin.com/in/ibrahem-hassan-521956247</a> · <a href="https://github.com/ibrahem-hassan2000">github.com/ibrahem-hassan2000</a> · Military status: Exempted</div>
 
 <h2>Summary</h2>
-<p>Frontend engineer with 4 years of commercial experience delivering React and Next.js applications for healthcare, B2B and agency clients. I work well in large multi-team codebases — ticketed branches, code review, staged refactors — and as the lead frontend on greenfield client products. At nWeave I designed a 25-module TanStack Query layer for a healthcare platform with a 3.9k-commit history, built a client's knowledge platform from the first commit with role-based access, a typed API contract and 551 automated tests, and led a mobile app now live on both app stores. Part-time at Bites, I built finance and sales modules for a Next.js 14 business platform in a 14-person team. I document what I build and have mentored two teammates.</p>
+<p>Frontend engineer with 4 years of commercial experience delivering React and Next.js applications on .NET backends for healthcare, business-platform and agency clients. I work well in large multi-team codebases — ticketed branches, code review, staged refactors — and as the lead or only frontend developer on greenfield products: a healthcare knowledge platform (27 screens, 551 automated tests), a rental marketplace (110 pages, SignalR chat) and the admin and doctor portals of a healthcare platform. I document what I build and have mentored two teammates.</p>
 
 <h2>Skills</h2>
 <div class="skills">
-<p><b>Frameworks</b>React 19, Next.js 14 (App Router), TypeScript, JavaScript, Vite, Astro, React Native (Expo)</p>
-<p><b>Data &amp; state</b>TanStack Query, Zustand, REST, OpenAPI-generated types, React Hook Form, Zod</p>
-<p><b>UI systems</b>Tailwind CSS, shadcn/ui, Radix UI, PrimeReact, MUI, Storybook, Atomic Design</p>
-<p><b>Testing &amp; quality</b>Vitest, React Testing Library, Jest, Playwright, oxlint, code review</p>
-<p><b>Integration</b>ASP.NET Core APIs, Supabase, Firebase, role-based access, MFA, session handling</p>
-<p><b>Process</b>Git, Bitbucket, GitHub, Jira, Figma, Agile/Scrum, technical documentation, AI-assisted development</p>
+<p><b>Frameworks</b>React 19, Next.js (App Router), TypeScript, JavaScript, Vite, Astro, React Native (Expo)</p>
+<p><b>Data &amp; state</b>TanStack Query (React Query), Zustand, Redux Toolkit, REST, OpenAPI-generated types, React Hook Form, Zod</p>
+<p><b>UI systems</b>Tailwind CSS, shadcn/ui, Radix UI, MUI, Mantine, PrimeReact, Storybook, Atomic Design, Arabic / English (RTL)</p>
+<p><b>Testing &amp; quality</b>Vitest, React Testing Library, Jest, Playwright, Storybook a11y checks, code review</p>
+<p><b>Integration</b>ASP.NET Core / .NET APIs, SignalR, Firebase, Supabase, role- and permission-based access, MFA, cookie sessions</p>
+<p><b>Process</b>Git, Bitbucket, GitHub, Jira, Azure DevOps, Figma, Agile / Scrum, technical documentation, AI-assisted development</p>
 </div>
 
 <h2>Experience</h2>
@@ -29,58 +29,69 @@
 <div class="job">
 <div class="row"><div class="role">nWeave <span>— Software Engineer (Frontend)</span></div><div class="date">10/2025 – Present</div></div>
 <p class="meta">Alexandria, Egypt · Healthcare and B2B SaaS products, client websites, mobile apps</p>
-
-<p class="sub">AHS Medical Exchange <em>— healthcare B2B platform · multi-team codebase (3.9k commits)</em></p>
+<div class="proj"><p class="sub">AHS Medical Exchange <em>— healthcare B2B platform · multi-team codebase (3.9k commits)</em></p>
 <ul>
-<li>Designed a TanStack Query layer of <b>25 domain modules</b> to replace a custom Axios hook, and migrated core flows (orders, invitations, messaging, staff, billing) in stages without blocking other teams' work.</li>
-<li>Built a formula builder and evaluation engine for healthcare billing — drag-and-drop editor, custom parser and evaluator on mathjs, live validation and a test panel — that later payment features build on.</li>
-<li>Wrote the team's React Query implementation guide, worked through Jira-ticketed branches and code review, and <b>mentored two teammates</b>.</li>
-</ul>
-
-<p class="sub">Smart FAQ System <em>— knowledge platform for a healthcare operations client · lead frontend</em></p>
+<li>Designed a <b>25-module TanStack Query layer</b> to replace a custom Axios hook across orders, invitations, messaging, staff and billing, and wrote the team's guide; the shared client and pattern are used for new features.</li>
+<li>Built a <b>billing-formula builder</b> that lets admins write pricing rules safely — a mathjs parser with an allowlist (no functions, no eval), live validation, divide-by-zero checks and a test panel.</li>
+<li>Worked in a 3.9k-commit, multi-team codebase through Jira-ticketed branches and code review, and <b>mentored two teammates</b>.</li>
+</ul></div>
+<div class="proj"><p class="sub">Smart FAQ System <em>— knowledge platform for a healthcare operations client · lead frontend</em></p>
 <ul>
-<li>Built the frontend from the first commit (React 19, TypeScript, TanStack Query, Tailwind, shadcn/ui): 27 Figma screens for desktop and mobile in about three weeks, as the main author (166 of 173 commits).</li>
-<li>Set up the architecture: Atomic-Design component system with 75 Storybook stories, feature folders, central route and capability config, and written context docs for the team.</li>
-<li>Typed the full API contract (<b>94 endpoints</b>) from OpenAPI and integrated with an ASP.NET Core backend built by a separate team, with a typed error catalogue and session handling.</li>
-<li>Wrote <b>551 unit and component tests</b> (Vitest, Testing Library); built three roles with capability-based routing, MFA for admins, an approval workflow and an audit log.</li>
-</ul>
-
-<p class="sub">ONE14 QARDIO <em>— Qur'an &amp; running app, live on Google Play &amp; App Store · product &amp; technical lead</em></p>
+<li>Delivered the frontend in three weeks — <b>27 screens, 3 roles with MFA and 551 automated tests</b> — as lead and main author (166 of 173 commits), using React 19, TypeScript and TanStack Query.</li>
+<li>Typed the full API contract (<b>94 endpoints</b>) from OpenAPI against an ASP.NET Core backend, and built an Atomic-Design component system with 75 Storybook stories and accessibility checks.</li>
+<li>Secured the app with a cookie session, antiforgery tokens on every write, capability-based routing and <b>MFA for admins</b>, and ETag checks so two admins can't overwrite each other.</li>
+<li>Cut admin-table re-render time from <b>~20 ms to ~2 ms</b> by rendering one layout per screen size, memoizing row menus and badges, and mounting menus on first open.</li>
+</ul></div>
+<div class="proj"><p class="sub">ONE14 QARDIO <em>— Qur'an &amp; running app, live on Google Play &amp; App Store · product &amp; technical lead</em></p>
 <ul>
-<li>Led product and technical direction for a React Native (Expo) and Firebase app: planned features, UX flows and technical approach, directed an AI-assisted build with a teammate, and owned on-device QA on iOS and Android.</li>
-<li>Drove the fix for GPS distance under-counting (a 30 km run recorded as ~25 km): 1 Hz high-accuracy tracking with a tuned software filter, field-tested against Strava and Apple Watch on paired iPhone and Android devices.</li>
-</ul>
-
-<p class="sub">Client websites &amp; other products</p>
+<li>Led product and technical direction for a React Native (Expo) and Firebase app: planned the features and UX, directed an AI-assisted build with a teammate, and owned on-device QA on iOS and Android.</li>
+<li>Led the fix for a <b>17% GPS distance under-count</b> (a 30 km run recorded as ~25 km) by moving tracking to 1 Hz high-accuracy fixes with a tuned software filter, field-tested against Strava and Apple Watch.</li>
+</ul></div>
 <ul>
-<li>OsLoop studio website: built with React Three Fiber and GSAP (3D hero, markets globe, scroll-driven sections), responsive from 320px, delivered through two client feedback rounds (26+ items).</li>
-<li>Shipped features, SEO data and legal pages on agency sites (Astro, React, GSAP), and product features on ElevateMate (job dashboard, validated application form) and Boost-KGoal (pattern editor, admin route guards with tests).</li>
+<li>Also built the OsLoop studio's 3D website (React Three Fiber, GSAP) through two client feedback rounds, and features on Boost-KGoal, ElevateMate and two agency sites.</li>
 </ul>
 </div>
 
 <div class="job">
-<div class="row"><div class="role">Bites <span>— Frontend Developer (Part-time)</span></div><div class="date">09/2025 – 04/2026</div></div>
+<div class="row"><div class="role">Bites <span>— Frontend Developer · Part-time</span></div><div class="date">09/2025 – 04/2026</div></div>
 <p class="meta">Remote · Cairo-based ERP-style business platform in Next.js 14 · 14-person team</p>
 <ul>
-<li>Built finance and sales modules: invoices, bills, expenses, double-entry journal reports, sales orders, quotes, accounts and opportunities (Next.js 14, TanStack Query, React Hook Form, Zod, MUI).</li>
-<li>Added OTP-verified e-signatures and the contract-creation workflow, and co-built Theater OS, a cinema booking module with seat selection, food ordering and checkout.</li>
-<li>Worked through feature branches and pull requests in a 2.5k-commit codebase: <b>190 commits shipped to production</b> over 7 months part-time, the second-most of any contributor.</li>
+<li>Built finance and sales modules for an ERP-style platform: invoices, bills, expenses, double-entry journal reports, sales orders, quotes, accounts and opportunities.</li>
+<li>Added OTP-verified e-signatures and the contract-creation workflow, and co-built a cinema booking module with seat selection and checkout.</li>
+<li>Shipped <b>190 commits to production in 7 months part-time</b> — second-most in a 14-person team — across invoicing, accounting and e-signature modules (Next.js 14, TanStack Query, React Hook Form, Zod, MUI).</li>
 </ul>
 </div>
 
 <div class="job">
 <div class="row"><div class="role">Profound Agency <span>— Frontend Developer</span></div><div class="date">07/2024 – 09/2025</div></div>
-<p class="meta">Alexandria, Egypt · Client web applications in Next.js</p>
+<p class="meta">Alexandria, Egypt · Client products on .NET backends (Azure DevOps)</p>
+<div class="proj"><p class="sub">Spectra <em>— healthcare services platform · admin and doctor portals</em></p>
 <ul>
-<li>Built okoRent, a peer-to-peer rental marketplace: storefront and admin panel with live chat, notifications and user roles.</li>
+<li>Built the admin back office — client organizations, staff, master-data CRUD (drugs, diagnostics, departments, services), website content and <b>user permissions</b> — on a .NET backend.</li>
+<li>Built the doctor workspace: appointment calendar, patient records with prescriptions and reports, contracts, chats and wallet, with all 242 commits shipped to production.</li>
+</ul></div>
+<div class="proj"><p class="sub">okoRent <em>— peer-to-peer rental marketplace · sole frontend developer</em></p>
+<ul>
+<li>Built a rental marketplace's <b>entire frontend alone — 110 pages</b> across guest, user, business and admin portals (336 of 364 commits) — with Next.js 14, TypeScript and TanStack Query.</li>
+<li>Added real-time chat and notifications with <b>SignalR</b>, and built booking, checkout and payments: a booking calendar, payment links, a wallet and invoices.</li>
+<li>Structured the data layer as 31 TanStack Query modules with URL-synced filters, shared loading and error states, and role-based route protection in Next.js middleware.</li>
+</ul></div>
+</div>
+
+<div class="job">
+<div class="row"><div class="role">Freelance <span>— Frontend Developer</span></div><div class="date">02/2024 – 05/2025</div></div>
+<p class="meta">Remote · alongside full-time roles · four clients</p>
+<ul>
+<li>Built bilingual (Arabic / English) Next.js 14 + TypeScript websites for four clients, including a Saudi trip-sharing app's site and a homework-help platform with Google sign-in and a user dashboard.</li>
 </ul>
 </div>
 
 <div class="job">
 <div class="row"><div class="role">Aquadic <span>— Frontend Developer</span></div><div class="date">10/2022 – 07/2024</div></div>
-<p class="meta">Alexandria, Egypt · Websites for e-commerce and corporate clients</p>
+<p class="meta">Alexandria, Egypt · Client websites and web apps</p>
 <ul>
-<li>Built responsive React and Next.js websites for multiple clients, translating Figma designs into production layouts.</li>
+<li>Built <b>9 client websites and web apps</b> as the main frontend developer on each (~530 commits), from responsive HTML / CSS / JavaScript sites to Next.js 13 apps.</li>
+<li>Built a bilingual (Arabic / English, RTL) e-learning platform and a services marketplace with Firebase chat, SMS OTP sign-in and checkout in Next.js 13.</li>
 </ul>
 </div>
 
