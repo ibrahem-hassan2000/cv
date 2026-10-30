@@ -55,7 +55,7 @@ Healthtech ★★★ · Enterprise ★★★ · Fintech ★★☆ (billing formu
 
 ## Final bullets to use (2026-10-28, rule §1.8: show what he built)
 1. Built a formula builder and evaluation engine for healthcare billing: drag-and-drop editor, custom parser and evaluator on mathjs, safe validation (allowlisted variables and operators, no functions, divide-by-zero check) and a test panel, merged into the main branch. (All four of his formula commits are ancestors of origin/dev.)
-2. Designed a TanStack Query layer of 25 domain modules to replace a custom Axios hook and migrated the core flows (orders, invitations, messaging, staff, billing); the shared query client and module pattern are now used for new features.
+2. Designed a 25-module TanStack Query layer to replace a custom Axios hook across orders, invitations, messaging, staff and billing; the shared query client and module pattern are used for new features. (Changed 2026-10-30 at the user's request: "migrated the core flows" removed — the 25-module migration is on an unmerged branch, so rule §1.8 doesn't cover it.)
 3. Wrote the team's React Query implementation guide and mentored 2 engineers on the new data layer.
 
 Interview note: the later restructure and the staged rollout are in the Interview Handbook (data/ahs.js) so he can answer follow-ups honestly.

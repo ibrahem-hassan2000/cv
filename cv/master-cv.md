@@ -63,7 +63,7 @@ Healthcare and B2B SaaS products, agency websites, and mobile apps (including ON
 
 **AHS Medical Exchange — healthcare B2B platform (Dec 2025 – Feb 2026)**
 - Built a formula builder and evaluation engine for healthcare billing: drag-and-drop editor, custom parser and evaluator on mathjs, safe validation (allowlisted variables and operators, no functions, divide-by-zero check) and a test panel, merged into the main branch. ⟨ahs-medx — all of it merged to dev in Dec 2025; a teammate later simplified the editor. CV shows what he built (rule §1.8)⟩
-- Designed a TanStack Query layer of 25 domain modules to replace a custom Axios hook and migrated the core flows (orders, invitations, messaging, staff, billing); the shared query client and module pattern are now used for new features. ⟨ahs-medx — migration on branch MEDX-879, rolled out in stages⟩
+- Designed a 25-module TanStack Query layer to replace a custom Axios hook across orders, invitations, messaging, staff and billing; the shared query client and module pattern are used for new features. ⟨ahs-medx — the 25 modules are on branch MEDX-879 (not merged); the base client + pattern shipped. Never say "migrated the app / the core flows" (2026-10-30)⟩
 - Wrote the team's React Query implementation guide. ⟨ahs-medx⟩
 - Worked in a 3.9k-commit, multi-team codebase through Jira-ticketed branches and code review. ⟨ahs-medx⟩
 
