@@ -20,6 +20,7 @@
 - **ONE14 belongs to nWeave.** List it under nWeave experience, not as a separate contract.
 - **Bites location:** he worked remotely; the company is based in Cairo.
 - **GitHub `cv` repo:** stays **public for now**. The user makes it private when the project is finished.
+- **Degree grade (2026-10-30):** B.Sc. Computer Science, Minia University — **Very Good** (تقدير جيد جدًا). Shown on every CV. Exact percentage not given — don't add one or convert to GPA.
 - **Re-confirmed 2026-10-30:** keep the repo public, knowing that the public Vercel site shows each project's "My role" / "Don't say" lists and the repo holds the real Profound end month. Don't ask again.
 
 ## 2026-10-27 — laptop 3 (Windows)

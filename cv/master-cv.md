@@ -148,7 +148,7 @@ Software company; client websites and web apps (GitHub org `AQuadic`).
 ---
 
 ## Education
-**B.Sc. Computer Science** — Faculty of Science, Minia University · 10/2018 – 06/2022
+**B.Sc. Computer Science** — Faculty of Science, Minia University · Grade: Very Good · 10/2018 – 06/2022 ⟨user, 2026-10-30⟩
 
 ---
 
